@@ -26,13 +26,20 @@ header {
 .header-inner a {
   color: white;
   text-decoration: none;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .header-inner a.home {
   font-weight: bold;
   margin-right: 15px;
   color: white;
+}
+
+.ic-download {
+  background-image: url(/img/ic_cloud_download_white_24dp_1x.png);
+  padding-left: 25px;
+  background-size: 20px;
+  background-repeat: no-repeat;
 }
 
 .header-right {
