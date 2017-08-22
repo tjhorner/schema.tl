@@ -1,0 +1,1 @@
+Full list of photos with auxiliary data.

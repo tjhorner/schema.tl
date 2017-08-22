@@ -1,0 +1,1 @@
+Data for copying of authorization between data centres.

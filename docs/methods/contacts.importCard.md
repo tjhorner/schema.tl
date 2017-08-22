@@ -1,0 +1,1 @@
+Returns general information on a user using his previously exported card as input.The app may use it to open a conversation without knowing the user's phone number.

@@ -1,0 +1,1 @@
+Returns the current user's contact list.

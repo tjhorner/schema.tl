@@ -1,0 +1,1 @@
+Returns text of a text message with an invitation.

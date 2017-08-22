@@ -1,0 +1,1 @@
+Returns the support user for the ‘ask a question’ feature.

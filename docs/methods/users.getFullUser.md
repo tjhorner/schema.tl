@@ -1,0 +1,1 @@
+Returns extended user info by ID.

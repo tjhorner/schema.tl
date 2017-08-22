@@ -1,0 +1,1 @@
+Empty media content of a message.

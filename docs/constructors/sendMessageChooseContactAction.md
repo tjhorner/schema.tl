@@ -1,0 +1,1 @@
+User is selecting a contact to share.

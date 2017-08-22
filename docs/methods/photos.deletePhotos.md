@@ -1,0 +1,1 @@
+Deletes profile photos.

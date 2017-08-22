@@ -1,0 +1,1 @@
+Corresponds to an arbitrary empty object.

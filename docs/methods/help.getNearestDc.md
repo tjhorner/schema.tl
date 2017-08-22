@@ -1,0 +1,1 @@
+Returns info on data centre nearest to the user.

@@ -1,0 +1,1 @@
+PNG image. MIME type: image/png.

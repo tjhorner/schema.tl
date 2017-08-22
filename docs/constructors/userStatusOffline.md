@@ -1,0 +1,1 @@
+The user's offline status.

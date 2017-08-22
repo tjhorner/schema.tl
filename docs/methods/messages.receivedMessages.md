@@ -1,0 +1,1 @@
+Confirms receipt of messages by a client, cancels PUSH-notification sending.

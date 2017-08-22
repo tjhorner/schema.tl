@@ -1,0 +1,1 @@
+Binds a temporary authorization key temp_auth_key_id to the permanent authorization key perm_auth_key_id.Each permanent key may only be bound to one temporary key at a time, binding a new temporary key overwrites the previous one.

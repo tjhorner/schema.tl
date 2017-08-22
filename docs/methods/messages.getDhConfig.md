@@ -1,0 +1,1 @@
+Returns configuration parameters for Diffie–Hellman key generation. Can also return a random sequence of bytes of required length.

@@ -1,0 +1,1 @@
+Gets current notification settings for a given user/group, from all users/all groups.

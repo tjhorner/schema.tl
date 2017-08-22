@@ -1,0 +1,1 @@
+Description of an image and its content.

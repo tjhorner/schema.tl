@@ -1,0 +1,1 @@
+Adds a user to a chat and sends a service message on it.

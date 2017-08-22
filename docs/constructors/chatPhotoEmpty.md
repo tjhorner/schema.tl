@@ -1,0 +1,1 @@
+Group photo is not set.

@@ -1,0 +1,1 @@
+Sends a request to start a secret chat to the user.

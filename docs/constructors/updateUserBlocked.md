@@ -1,0 +1,1 @@
+User was added to the blacklist (method contacts.block) or removed from the blacklist (method contacts.unblock).

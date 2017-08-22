@@ -1,0 +1,1 @@
+Empty GeoPoint constructor.

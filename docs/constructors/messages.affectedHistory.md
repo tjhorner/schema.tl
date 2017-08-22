@@ -1,0 +1,1 @@
+Affected part of communication history with the user or in a chat.

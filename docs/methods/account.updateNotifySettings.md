@@ -1,0 +1,1 @@
+Edits notification settings from a given user/group, from all users/all groups.

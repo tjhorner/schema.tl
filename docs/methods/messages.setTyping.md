@@ -1,0 +1,1 @@
+Sends a current user typing event (see SendMessageAction for all event types) to a conversation partner or group.

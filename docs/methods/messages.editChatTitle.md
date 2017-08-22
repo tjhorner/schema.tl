@@ -1,0 +1,1 @@
+Chanages chat name and sends a service message on it.

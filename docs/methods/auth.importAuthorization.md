@@ -1,0 +1,1 @@
+Logs in a user using a key transmitted from his native data-centre.

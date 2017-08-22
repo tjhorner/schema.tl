@@ -1,0 +1,1 @@
+Quicktime video. MIME type: video/quicktime.

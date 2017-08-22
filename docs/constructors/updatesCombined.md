@@ -1,0 +1,1 @@
+Constructor for a group of updates.

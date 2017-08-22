@@ -1,0 +1,1 @@
+A contact of the current user that is registered in the system.

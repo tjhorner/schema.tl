@@ -1,0 +1,1 @@
+Creates an encrypted chat.

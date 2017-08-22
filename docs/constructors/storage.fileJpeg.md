@@ -1,0 +1,1 @@
+JPEG image. MIME type: image/jpeg.

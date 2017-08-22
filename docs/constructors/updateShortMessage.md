@@ -1,0 +1,1 @@
+Shortened constructor containing info on one new incoming message from a contact

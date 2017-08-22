@@ -1,0 +1,1 @@
+Message with a file enclosure sent to a protected chat

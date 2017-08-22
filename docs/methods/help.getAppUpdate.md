@@ -1,0 +1,1 @@
+Returns information on update availability for the current application.

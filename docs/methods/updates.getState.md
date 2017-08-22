@@ -1,0 +1,1 @@
+Returns a current state of updates.

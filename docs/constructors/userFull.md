@@ -1,0 +1,1 @@
+Object contains detailed info on a user.

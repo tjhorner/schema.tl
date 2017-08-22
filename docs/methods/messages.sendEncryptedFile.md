@@ -1,0 +1,1 @@
+Sends a message with a file attachment to a secret chat

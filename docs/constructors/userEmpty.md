@@ -1,0 +1,1 @@
+Empty constructor, non-existent user.

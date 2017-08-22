@@ -1,0 +1,1 @@
+Discarded or deleted chat.

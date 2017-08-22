@@ -1,0 +1,1 @@
+Deletes messages by their identifiers.

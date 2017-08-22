@@ -1,0 +1,1 @@
+A group to which the user has no access. E.g., because the user was kicked from the group.

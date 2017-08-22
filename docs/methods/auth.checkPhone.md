@@ -1,0 +1,1 @@
+Returns information on whether the passed phone number was registered.

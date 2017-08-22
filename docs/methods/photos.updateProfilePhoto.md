@@ -1,0 +1,1 @@
+Installs a previously uploaded photo as a profile photo.

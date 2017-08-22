@@ -1,0 +1,1 @@
+Request to create an encrypted chat.

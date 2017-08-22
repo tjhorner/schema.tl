@@ -1,0 +1,1 @@
+Text of a text message with an invitation to install application.

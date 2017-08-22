@@ -1,0 +1,1 @@
+Photo with auxiliary data.

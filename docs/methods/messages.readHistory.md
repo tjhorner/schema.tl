@@ -1,0 +1,1 @@
+Marks message history as read.

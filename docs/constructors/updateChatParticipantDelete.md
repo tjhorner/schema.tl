@@ -1,0 +1,1 @@
+A member has left the group.

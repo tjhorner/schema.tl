@@ -1,0 +1,1 @@
+Cancels a request for creation and/or delete info on secret chat.

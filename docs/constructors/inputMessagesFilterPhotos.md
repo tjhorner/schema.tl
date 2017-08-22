@@ -1,0 +1,1 @@
+Filter for messages containing photos.

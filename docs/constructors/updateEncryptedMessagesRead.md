@@ -1,0 +1,1 @@
+Communication history in an encrypted chat was marked as read.

@@ -1,0 +1,1 @@
+Returns the list of user photos.

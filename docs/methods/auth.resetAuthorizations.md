@@ -1,0 +1,1 @@
+Terminates all user's authorized sessions except for the current one.
