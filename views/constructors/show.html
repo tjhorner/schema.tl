@@ -1,0 +1,30 @@
+<div class="content-inner">
+  <h1 class="title title-constructor">{{ constructor.predicate }}#{{ constructor.id | toHex }}</h1>
+
+  <h2>Fields</h2>
+
+  <table ng-show="constructor.params.length">
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Type
+      </th>
+    </tr>
+    <tr ng-repeat="param in constructor.params">
+      <td>
+        {{ param.name }}
+      </td>
+      <td>
+        <a href="#!/type/{{ param.type | actualType }}">{{ param.type }}</a>
+      </td>
+    </tr>
+  </table>
+
+  <div ng-hide="constructor.params.length">
+    This constructor has no fields.
+  </div>
+
+  <h3>Constructs <a href="#!/type/{{ constructor.type | actualType }}">{{ constructor.type }}</a></h3>
+</div>

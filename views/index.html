@@ -1,0 +1,54 @@
+<div class="hero">
+  <div class="hero-title">
+    Search for Telegram API methods, constructors, and types
+  </div>
+
+  <div class="hero-input">
+    <input type="text" id="heroSearchBar" class="hero-search" placeholder="{{ searchPlaceholder }}" ng-model="search" ng-focus="displayTypeahead = true" ng-blur="displayTypeahead = false" ng-change="updateSearchResults()" my-enter="goToResult()" my-arrow-down="selectedResult = (selectedResult === 100 ? selectedResult : selectedResult + 1)" my-arrow-up="selectedResult = (selectedResult === 0 ? selectedResult : selectedResult - 1)">
+    <div class="hero-typeahead">
+      <div class="typeahead-result {{ result.type }} {{ selectedResult === index ? 'selected' : '' }}" ng-repeat="(index, result) in typeaheadResults | limitTo:50 track by $index">
+        {{ result.name }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="index-listing">
+  <div class="section group">
+    <div class="col span_1_of_3">
+      <h2>Methods</h2>
+      
+      <p ng-repeat="method in schema.methods | limitTo:methodListingLimit track by $index">
+        <a href="#!/method/{{ method.method }}">{{ method.method }}</a>
+      </p>
+
+      <p ng-show="methodListingLimit === 10">
+        <a ng-click="methodListingLimit = schema.methods.length"><strong>Show all {{ schema.methods.length }}...</strong></a>
+      </p>
+    </div>
+
+    <div class="col span_1_of_3">
+      <h2>Constructors</h2>
+      
+      <p ng-repeat="constructor in schema.constructors | limitTo:constructorListingLimit track by $index">
+        <a href="#!/constructor/{{ constructor.predicate }}">{{ constructor.predicate }}</a>
+      </p>
+
+      <p ng-show="constructorListingLimit === 10">
+        <a ng-click="constructorListingLimit = schema.constructors.length"><strong>Show all {{ schema.constructors.length }}...</strong></a>
+      </p>
+    </div>
+
+    <div class="col span_1_of_3">
+      <h2>Types</h2>
+      
+      <p ng-repeat="type in schema.types | limitTo:typeListingLimit track by $index">
+        <a href="#!/type/{{ type.name }}">{{ type.name }}</a>
+      </p>
+
+      <p ng-show="typeListingLimit === 10">
+        <a ng-click="typeListingLimit = schema.types.length"><strong>Show all {{ schema.types.length }}...</strong></a>
+      </p>
+    </div>
+  </div>
+</div>

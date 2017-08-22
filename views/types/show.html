@@ -1,0 +1,18 @@
+<div class="content-inner">
+  <h1 class="title title-type">{{ type.name }}</h1>
+
+  <h2>Constructors</h2>
+
+  <table>
+    <tr>
+      <th>
+        Predicate
+      </th>
+    </tr>
+    <tr ng-repeat="constructor in type.constrs">
+      <td>
+        <a href="#!/constructor/{{ constructor.predicate }}">{{ constructor.predicate }}</a>
+      </td>
+    </tr>
+  </table>
+</div>

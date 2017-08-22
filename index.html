@@ -1,0 +1,26 @@
+<html ng-app="tlDocsApp">
+  <head>
+    <title>TL-Schema Explorer</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/rgs.css">
+    <script src="/js/schema.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/ngroute.min.js"></script>
+    <script src="/js/app.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <a href="#!/" class="home">TL-Schema Explorer (Layer 71)</a>
+        <a href="/resources/schema.json">Download schema.json</a>
+        <a href="/resources/schema.tl">Download schema.tl</a>
+
+        <div class="header-right">
+          <input type="text" placeholder="Search..." ng-hide="hideGlobalSearch" class="header-search" ng-model="globalSearch" ng-change="doSearch()">
+        </div>
+      </div>
+    </header>
+
+    <div class="content" ng-view></div>
+  </body>
+</html>
