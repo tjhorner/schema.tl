@@ -173,6 +173,7 @@ tlDocsApp.config(function($routeProvider, $locationProvider) {
 
 tlDocsApp.controller("mainController", function($scope, $rootScope, $location, schema, layerVersion, SchemaService) {
   $rootScope.hideGlobalSearch = true
+  $rootScope.title = null
 
   $scope.title = "TL-Schema Explorer"
   $scope.schema = schema
@@ -224,6 +225,8 @@ tlDocsApp.controller("viewConstructorController", function($scope, $routeParams,
   $scope.constructor = SchemaService.findConstructor($routeParams.predicate)
   if(!$scope.constructor) $location.path("/")
 
+  $rootScope.title = $scope.constructor.predicate
+
   $scope.updatePlayground = function() {
     var example = { flags: 0, _: $scope.constructor.predicate }
 
@@ -245,6 +248,8 @@ tlDocsApp.controller("viewMethodController", function($scope, $routeParams, $loc
   
   $scope.method = SchemaService.findMethod($routeParams.method)
   if(!$scope.method) $location.path("/")
+
+  $rootScope.title = $scope.method.method
 
   $scope.playgroundVals = { }
   $scope.playgroundOutput = ""
@@ -270,4 +275,6 @@ tlDocsApp.controller("viewTypeController", function($scope, $routeParams, $locat
 
   $scope.type = SchemaService.findType($routeParams.type)
   if(!$scope.type) $location.path("/")
+
+  $rootScope.title = $scope.type.name
 })
