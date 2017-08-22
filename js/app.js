@@ -185,6 +185,10 @@ tlDocsApp.controller("mainController", function($scope, $rootScope, $location, s
     $location.path(`/${result.type}/${result.name}`)
   }
 
+  $scope.clickResult = function(result) {
+    $location.path(`/${result.type}/${result.name}`)
+  }
+
   if($rootScope.globalSearch) {
     $scope.search = $rootScope.globalSearch
     document.getElementById("heroSearchBar").focus()

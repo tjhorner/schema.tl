@@ -115,6 +115,7 @@ header {
 
 .hero-typeahead .typeahead-result {
   padding: 15px;
+  cursor: pointer;
 }
 
 .hero-typeahead .typeahead-result.selected {
