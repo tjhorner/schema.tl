@@ -11,6 +11,9 @@
       <th>
         Type
       </th>
+      <th>
+        Value
+      </th>
     </tr>
     <tr ng-repeat="param in method.params">
       <td>
@@ -18,6 +21,9 @@
       </td>
       <td>
         <a href="#!/type/{{ param.type | actualType }}">{{ param.type }}</a>
+      </td>
+      <td>
+        <input ng-show="param.type !== '#'" type="{{ param.type | htmlType }}" ng-model="playgroundVals[param.name]" ng-change="updatePlayground()" id="param-{{ param.name }}">
       </td>
     </tr>
   </table>
@@ -27,4 +33,18 @@
   </div>
 
   <h3>Returns <a href="#!/type/{{ method.type | actualType }}">{{ method.type }}</a></h3>
+
+  <h2>Example (beta)</h2>
+
+  <p ng-show="method.params.length">
+    Type values in the table above to update the example below.
+  </p>
+
+  <p>
+    You can use this example in the API Playground at <a target="_blank" href="https://tjhorner.com/webogram">Telegram for Devs</a>.
+    <strong>Please note</strong> that only primitive types (such as int and string) are supported. You will need to go to
+    other constructors' pages to build them.
+  </p>
+  
+  <pre>{{ playgroundOutput }}</pre>
 </div>

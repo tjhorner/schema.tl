@@ -28,6 +28,18 @@ tlDocsApp.filter("actualType", function() {
   }
 })
 
+tlDocsApp.filter("htmlType", function() {
+  return function(type) {
+    if(type === "int") {
+      return "number"
+    } else if(type.toLowerCase().indexOf("bool") !== -1 || type.toLowerCase().indexOf("true") !== -1 || type.toLowerCase().indexOf("false") !== -1) {
+      return "checkbox"
+    } else {
+      return "text"
+    }
+  }
+})
+
 // https://stackoverflow.com/a/17472118
 tlDocsApp.directive('myEnter', function () {
   return function (scope, element, attrs) {
@@ -204,9 +216,26 @@ tlDocsApp.controller("mainController", function($scope, $rootScope, $location, s
 
 tlDocsApp.controller("viewConstructorController", function($scope, $routeParams, $location, $rootScope, SchemaService) {
   $rootScope.hideGlobalSearch = false
+  $scope.playgroundVals = { }
+  $scope.playgroundOutput = ""
 
   $scope.constructor = SchemaService.findConstructor($routeParams.predicate)
   if(!$scope.constructor) $location.path("/")
+
+  $scope.updatePlayground = function() {
+    var example = { flags: 0, _: $scope.constructor.predicate }
+
+    $scope.constructor.params.forEach(param => {
+      if($scope.playgroundVals[param.name] && param.type.indexOf("flags.") === 0)
+        example.flags = example.flags | parseInt(/flags\.([0-9]+)/g.exec(param.type)[1])
+        
+      example[param.name] = $scope.playgroundVals[param.name] || null
+    })
+
+    $scope.playgroundOutput = JSON.stringify(example, null, 2)
+  }
+
+  $scope.updatePlayground()
 })
 
 tlDocsApp.controller("viewMethodController", function($scope, $routeParams, $location, $rootScope, SchemaService) {
@@ -214,6 +243,24 @@ tlDocsApp.controller("viewMethodController", function($scope, $routeParams, $loc
   
   $scope.method = SchemaService.findMethod($routeParams.method)
   if(!$scope.method) $location.path("/")
+
+  $scope.playgroundVals = { }
+  $scope.playgroundOutput = ""
+
+  $scope.updatePlayground = function() {
+    var example = { flags: 0 }
+
+    $scope.method.params.forEach(param => {
+      if($scope.playgroundVals[param.name] && param.type.indexOf("flags.") === 0)
+        example.flags = example.flags | parseInt(/flags\.([0-9]+)/g.exec(param.type)[1])
+
+      example[param.name] = $scope.playgroundVals[param.name] || null
+    })
+
+    $scope.playgroundOutput = JSON.stringify(example, null, 2)
+  }
+
+  $scope.updatePlayground()
 })
 
 tlDocsApp.controller("viewTypeController", function($scope, $routeParams, $location, $rootScope, SchemaService) {

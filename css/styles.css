@@ -167,8 +167,7 @@ header {
 
 .content-inner {
   max-width: 1100px;
-  margin: 0 auto;
-  margin-top: 10px;
+  margin: 20px auto;
 }
 
 h1.title {
@@ -236,4 +235,11 @@ a {
 
 a:active {
   color: #1976D2;
+}
+
+/* playground */
+
+pre {
+  background: #E0E0E0;
+  padding: 20px;
 }
