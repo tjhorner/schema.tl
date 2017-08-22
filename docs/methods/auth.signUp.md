@@ -1,1 +1,1 @@
-This method is used to register a new Telegram user. If their phone number is already in the Telegram system (e.g. they already have an account), they should use [auth.signIn](#!/method/auth.signIn)Registers a validated phone number in the system.
+This method is used to register a new Telegram user. If their phone number is already in the Telegram system (e.g. they already have an account), they should use [auth.signIn](#!/method/auth.signIn).
