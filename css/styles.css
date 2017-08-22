@@ -42,6 +42,13 @@ header {
   background-repeat: no-repeat;
 }
 
+.ic-docs {
+  background-image: url(/img/ic_library_books_black_24px.svg);
+  padding-left: 25px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+}
+
 a.home {
   background-image: url(/img/telegram-plane.png);
   padding-left: 35px;
