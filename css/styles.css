@@ -171,7 +171,7 @@ header {
 }
 
 h1.title {
-  font-family: "Fira Code", monospace;
+  font-family: "Fira Mono", monospace;
 }
 
 h1.title::before {
