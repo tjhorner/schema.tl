@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-Medium.eot");
+    src: url("/fonts/hinted-AvenirNext-Medium.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-Medium.woff") format("woff"),url("/fonts/hinted-AvenirNext-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-UltraLightItalic.eot");
+    src: url("/fonts/hinted-AvenirNext-UltraLightItalic.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-UltraLightItalic.woff") format("woff"),url("/fonts/hinted-AvenirNext-UltraLightItalic.ttf") format("truetype");
+    font-weight: 200;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-DemiBoldItalic.eot");
+    src: url("/fonts/hinted-AvenirNext-DemiBoldItalic.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-DemiBoldItalic.woff") format("woff"),url("/fonts/hinted-AvenirNext-DemiBoldItalic.ttf") format("truetype");
+    font-weight: 600;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-Italic.eot");
+    src: url("/fonts/hinted-AvenirNext-Italic.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-Italic.woff") format("woff"),url("/fonts/hinted-AvenirNext-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-Regular.eot");
+    src: url("/fonts/hinted-AvenirNext-Regular.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-Regular.woff") format("woff"),url("/fonts/hinted-AvenirNext-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-Bold.eot");
+    src: url("/fonts/hinted-AvenirNext-Bold.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-Bold.woff") format("woff"),url("/fonts/hinted-AvenirNext-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-Heavy.eot");
+    src: url("/fonts/hinted-AvenirNext-Heavy.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-Heavy.woff") format("woff"),url("/fonts/hinted-AvenirNext-Heavy.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-MediumItalic.eot");
+    src: url("/fonts/hinted-AvenirNext-MediumItalic.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-MediumItalic.woff") format("woff"),url("/fonts/hinted-AvenirNext-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-DemiBold.eot");
+    src: url("/fonts/hinted-AvenirNext-DemiBold.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-DemiBold.woff") format("woff"),url("/fonts/hinted-AvenirNext-DemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-HeavyItalic.eot");
+    src: url("/fonts/hinted-AvenirNext-HeavyItalic.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-HeavyItalic.woff") format("woff"),url("/fonts/hinted-AvenirNext-HeavyItalic.ttf") format("truetype");
+    font-weight: 900;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-BoldItalic.eot");
+    src: url("/fonts/hinted-AvenirNext-BoldItalic.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-BoldItalic.woff") format("woff"),url("/fonts/hinted-AvenirNext-BoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url("/fonts/hinted-AvenirNext-UltraLight.eot");
+    src: url("/fonts/hinted-AvenirNext-UltraLight.eot?#iefix") format("embedded-opentype"),url("/fonts/hinted-AvenirNext-UltraLight.woff") format("woff"),url("/fonts/hinted-AvenirNext-UltraLight.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal
+}
