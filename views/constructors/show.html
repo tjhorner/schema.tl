@@ -1,6 +1,10 @@
 <div class="content-inner">
   <h1 class="title title-constructor">{{ constructor.predicate }}#{{ constructor.id | toHex }}</h1>
 
+  <a class="ic-docs" href="https://github.com/tjhorner/schema.tl/edit/master/docs/constructors/{{ constructor.predicate }}.md">Help document this method</a>
+
+  <div btf-markdown ng-include="'/docs/constructors/' + constructor.predicate + '.md'"></div>
+
   <h2>Fields</h2>
 
   <table ng-show="constructor.params.length">
