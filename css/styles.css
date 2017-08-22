@@ -26,7 +26,7 @@ header {
 .header-inner a {
   color: white;
   text-decoration: none;
-  margin-right: 15px;
+  margin-right: 15px; 
 }
 
 .header-inner a.home {
@@ -132,6 +132,7 @@ a.home {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   z-index: 5;
+  padding-top: 10px;
 }
 
 .hero-typeahead .typeahead-result {
