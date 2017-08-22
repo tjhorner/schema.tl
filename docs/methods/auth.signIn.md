@@ -1,1 +1,1 @@
-This method is used to authenticate an existing Telegram user. If the user needs to register an account, they should use [auth.signUp](#!/method/auth.signUp) to register their number with the system.
+No!!!!!!!!!!!!!
