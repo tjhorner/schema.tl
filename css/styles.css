@@ -13,7 +13,7 @@ body {
 
 header {
   width: 100%;
-  background: #2196F3;
+  background: #2CA5E0;
   padding: 20px;
 }
 
@@ -42,6 +42,13 @@ header {
   background-repeat: no-repeat;
 }
 
+a.home {
+  background-image: url(/img/telegram-plane.png);
+  padding-left: 35px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+}
+
 .header-right {
   display: inline-block;
   float: right;
@@ -64,7 +71,7 @@ header {
 .hero {
   width: 100%;
   text-align: center;
-  background: #2196F3;
+  background: #2CA5E0;
   color: white;
   padding: 100px 0;
 }
