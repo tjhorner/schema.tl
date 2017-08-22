@@ -30,12 +30,14 @@ tlDocsApp.filter("actualType", function() {
 
 tlDocsApp.filter("htmlType", function() {
   return function(type) {
-    if(type === "int") {
+    if(type.toLowerCase().indexOf("int") !== -1 || type.toLowerCase().indexOf("long") !== -1) {
       return "number"
     } else if(type.toLowerCase().indexOf("bool") !== -1 || type.toLowerCase().indexOf("true") !== -1 || type.toLowerCase().indexOf("false") !== -1) {
       return "checkbox"
-    } else {
+    } else if(type.toLowerCase().indexOf("string") !== -1) {
       return "text"
+    } else {
+      return "hidden"
     }
   }
 })
