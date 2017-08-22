@@ -257,3 +257,15 @@ pre {
   background: #E0E0E0;
   padding: 20px;
 }
+
+/* footer */
+
+footer {
+  width: 100%;
+  border-top: 1px solid #E0E0E0;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 20px auto;
+}
