@@ -186,7 +186,7 @@ h1.title::before {
   color: white;
   margin-right: 10px;
   position: relative;
-  bottom: 2px;
+  bottom: 3px;
   font-weight: normal;
   font-family: "Avenir Next", sans-serif;
 }
