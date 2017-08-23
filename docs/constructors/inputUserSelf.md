@@ -1,1 +1,1 @@
-This constructor represents the currently signed in Telegram user.Defines the current user.
+This constructor represents the currently signed in Telegram user.
