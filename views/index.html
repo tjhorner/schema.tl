@@ -5,7 +5,7 @@
 
   <div class="hero-input">
     <input type="text" id="heroSearchBar" class="hero-search" placeholder="{{ searchPlaceholder }}" ng-model="search" ng-focus="displayTypeahead = true" ng-blur="displayTypeahead = false" ng-change="updateSearchResults()" my-enter="goToResult()" my-arrow-down="selectedResult = (selectedResult === 100 ? selectedResult : selectedResult + 1)" my-arrow-up="selectedResult = (selectedResult === 0 ? selectedResult : selectedResult - 1)">
-    <div class="hero-typeahead">
+    <div class="hero-typeahead" ng-show="displayTypeahead === true">
       <div class="typeahead-result {{ result.type }} {{ selectedResult === index ? 'selected' : '' }}" ng-repeat="(index, result) in typeaheadResults | limitTo:50 track by $index" ng-click="clickResult(result)">
         {{ result.name }}
       </div>
