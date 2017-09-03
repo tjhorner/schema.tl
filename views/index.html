@@ -18,7 +18,7 @@
     <div class="col span_1_of_3">
       <h2>Methods</h2>
       
-      <p ng-repeat="method in schema.methods | limitTo:methodListingLimit track by $index">
+      <p ng-repeat="method in schema.methods | orderBy: 'method' | limitTo:methodListingLimit track by $index">
         <a href="#!/method/{{ method.method }}">{{ method.method }}</a>
       </p>
 
@@ -30,7 +30,7 @@
     <div class="col span_1_of_3">
       <h2>Constructors</h2>
       
-      <p ng-repeat="constructor in schema.constructors | limitTo:constructorListingLimit track by $index">
+      <p ng-repeat="constructor in schema.constructors | orderBy: 'predicate' | limitTo:constructorListingLimit track by $index">
         <a href="#!/constructor/{{ constructor.predicate }}">{{ constructor.predicate }}</a>
       </p>
 
@@ -42,7 +42,7 @@
     <div class="col span_1_of_3">
       <h2>Types</h2>
       
-      <p ng-repeat="type in schema.types | limitTo:typeListingLimit track by $index">
+      <p ng-repeat="type in schema.types | orderBy: 'name' | limitTo:typeListingLimit track by $index">
         <a href="#!/type/{{ type.name }}">{{ type.name }}</a>
       </p>
 
