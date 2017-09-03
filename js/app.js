@@ -201,6 +201,7 @@ tlDocsApp.controller("mainController", function($scope, $rootScope, $location, s
   }
 
   $scope.clickResult = function(result) {
+    $scope.displayTypeahead = false
     $location.path(`/${result.type}/${result.name}`)
   }
 

@@ -167,7 +167,11 @@ a.home {
 
   .content-inner {
     margin: 20px 10px !important;
-    word-break: break-all;
+    word-break: break-word;
+  }
+
+  .content-inner .title {
+    word-break: break-all !important;
   }
 
   .footer-inner {
