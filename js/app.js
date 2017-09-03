@@ -192,6 +192,7 @@ tlDocsApp.controller("mainController", function($scope, $rootScope, $location, s
   $scope.updateSearchResults = function() {
     $scope.selectedResult = 0
     $scope.typeaheadResults = SchemaService.search($scope.search)
+    $scope.displayTypeahead = true
     if($scope.search.length === 0) $scope.typeaheadResults = [ ]
   }
 
