@@ -172,6 +172,12 @@ a.home {
 
   .content-inner .title {
     word-break: break-all !important;
+    font-size: 1.2em;
+  }
+
+  .content-inner .title::before {
+    height: 20px !important;
+    width: 20px !important;
   }
 
   .footer-inner {
