@@ -135,6 +135,46 @@ a.home {
   padding-top: 10px;
 }
 
+@media only screen and (max-width: 480px) {
+  .hero {
+    padding: 50px 0
+  }
+  
+  .hero-title {
+    padding: 0px 10px;
+  }
+
+  .hero-search {
+    width: 300px;
+  }
+
+  .hero-input {
+    width: 300px;
+  }
+
+  .hero-typeahead {
+    width: 300px;
+  }
+
+  .header-right {
+    display: none;
+  }
+
+  .index-listing {
+    margin: 0px 10px !important;
+    text-align: center;
+  }
+
+  .content-inner {
+    margin: 20px 10px !important;
+    word-break: break-all;
+  }
+
+  .footer-inner {
+    margin: 20px 10px !important;
+  }
+}
+
 .hero-typeahead .typeahead-result {
   padding: 15px;
   cursor: pointer;
