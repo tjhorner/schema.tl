@@ -20,7 +20,9 @@ tlDocsApp.filter("actualType", function() {
   return function(type) {
     if(type.indexOf("Vector<") !== -1)
       return /Vector\<(.+)\>/i.exec(type)[1]
-    
+
+    if (type === '#') return 'uint'
+
     if(type.indexOf("flags") === 0)
       return type.split("?")[1]
     else
@@ -30,14 +32,26 @@ tlDocsApp.filter("actualType", function() {
 
 tlDocsApp.filter("htmlType", function() {
   return function(type) {
-    if(type.toLowerCase().indexOf("int") !== -1 || type.toLowerCase().indexOf("long") !== -1) {
+    if(type.toLowerCase().indexOf("int") !== -1 || type.toLowerCase().indexOf("long") !== -1 || type === "#" || type.toLowerCase().indexOf("double") !== -1) {
       return "number"
     } else if(type.toLowerCase().indexOf("bool") !== -1 || type.toLowerCase().indexOf("true") !== -1 || type.toLowerCase().indexOf("false") !== -1) {
       return "checkbox"
-    } else if(type.toLowerCase().indexOf("string") !== -1) {
+    } else if(type.toLowerCase().indexOf("string") !== -1 || type.toLowerCase().indexOf("bytes") !== -1) {
       return "text"
     } else {
       return "hidden"
+    }
+  }
+})
+
+tlDocsApp.filter("htmlStep", function() {
+  return function(type) {
+    if(type.toLowerCase().indexOf("int") !== -1 || type.toLowerCase().indexOf("long") !== -1 || type === "#") {
+      return 1
+    } else if(type.toLowerCase().indexOf("double") !== -1 || type.toLowerCase().indexOf("float") !== -1) {
+      return "any"
+    } else {
+      return ""
     }
   }
 })
@@ -230,13 +244,22 @@ tlDocsApp.controller("viewConstructorController", function($scope, $routeParams,
   $rootScope.title = $scope.constructor.predicate
 
   $scope.updatePlayground = function() {
-    var example = { flags: 0, _: $scope.constructor.predicate }
+    var example = { _: $scope.constructor.predicate }
 
     $scope.constructor.params.forEach(param => {
-      if($scope.playgroundVals[param.name] && param.type.indexOf("flags.") === 0)
-        example.flags = example.flags | parseInt(/flags\.([0-9]+)/g.exec(param.type)[1])
-        
-      example[param.name] = $scope.playgroundVals[param.name] || null
+      if (param.type.indexOf("flags.") === 0) {
+        if ($scope.playgroundVals[param.name]) {
+          example.flags = example.flags | parseInt(/flags\.([0-9]+)/g.exec(param.type)[1])
+        } else example.flags = 0
+      }
+
+      if (param.type === 'Bool') {
+        example[param.name] = $scope.playgroundVals[param.name] || false
+      } else if (param.type === 'bytes') {
+        example[param.name] = atob($scope.playgroundVals[param.name]) || false
+      } else {
+        example[param.name] = $scope.playgroundVals[param.name] || null
+      }
     })
 
     $scope.playgroundOutput = JSON.stringify(example, null, 2)
@@ -257,13 +280,22 @@ tlDocsApp.controller("viewMethodController", function($scope, $routeParams, $loc
   $scope.playgroundOutput = ""
 
   $scope.updatePlayground = function() {
-    var example = { flags: 0 }
+    var example = {}
 
     $scope.method.params.forEach(param => {
-      if($scope.playgroundVals[param.name] && param.type.indexOf("flags.") === 0)
-        example.flags = example.flags | parseInt(/flags\.([0-9]+)/g.exec(param.type)[1])
+      if (param.type.indexOf("flags.") === 0) {
+        if ($scope.playgroundVals[param.name]) {
+          example.flags = example.flags | parseInt(/flags\.([0-9]+)/g.exec(param.type)[1])
+        } else example.flags = 0
+      }
 
-      example[param.name] = $scope.playgroundVals[param.name] || null
+      if (param.type === 'Bool') {
+        example[param.name] = $scope.playgroundVals[param.name] || false
+      } else if (param.type === 'bytes') {
+        example[param.name] = atob($scope.playgroundVals[param.name]) || false
+      } else {
+        example[param.name] = $scope.playgroundVals[param.name] || null
+      }
     })
 
     $scope.playgroundOutput = JSON.stringify(example, null, 2)
