@@ -24,10 +24,10 @@
         {{ param.name }}
       </td>
       <td>
-        <a href="#!/type/{{ param.type | actualType }}">{{ param.type }}</a>
+        <a href="#!/type/{{ param.type | actualType }}">{{ param.type | actualType }}</a>
       </td>
       <td>
-        <input ng-show="param.type !== '#'" type="{{ param.type | htmlType }}" ng-model="playgroundVals[param.name]" ng-change="updatePlayground()" id="param-{{ param.name }}">
+        <input ng-show="param.name !== 'flags'" type="{{ param.type | htmlType }}"  step="{{ param.type | htmlStep }}" ng-model="playgroundVals[param.name]" ng-change="updatePlayground()" id="param-{{ param.name }}">
       </td>
     </tr>
   </table>
@@ -46,7 +46,7 @@
 
   <p>
     You can use this example in the API Playground at <a target="_blank" href="https://tjhorner.com/webogram">Telegram for Devs</a>.
-    <strong>Please note</strong> that only primitive types (such as int and string) are supported. You will need to go to
+    <strong>Please note</strong> that only primitive types (such as numbers and strings) are supported. You will need to go to
     other constructors' pages to build them.
   </p>
   
