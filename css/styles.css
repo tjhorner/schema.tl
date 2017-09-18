@@ -303,6 +303,7 @@ a {
   cursor: pointer;
   color: #1E88E5;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
 a:active {
