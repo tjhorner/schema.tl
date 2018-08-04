@@ -24,7 +24,7 @@
         {{ param.name }}
       </td>
       <td>
-        <a href="#!/type/{{ param.type | actualType }}">{{ param.type | actualType }}</a>
+        <a href="#!/type/{{ param.type | actualType }}">{{ param.type }}</a>
       </td>
       <td>
         <input type="{{ param.type | htmlType }}" step="{{ param.type | htmlStep }}" ng-model="playgroundVals[param.name]" ng-change="updatePlayground()" id="param-{{ param.name }}">
