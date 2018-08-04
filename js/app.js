@@ -292,7 +292,7 @@ tlDocsApp.controller("viewMethodController", function($scope, $routeParams, $loc
       if (param.type === 'Bool') {
         example[param.name] = $scope.playgroundVals[param.name] || false
       } else if (param.type === 'bytes') {
-        example[param.name] = atob($scope.playgroundVals[param.name]) || false
+        example[param.name] = atob($scope.playgroundVals[param.name] || '') || false
       } else {
         example[param.name] = $scope.playgroundVals[param.name] || null
       }
