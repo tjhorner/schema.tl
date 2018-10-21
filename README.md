@@ -24,6 +24,17 @@ You can use the playground on constructor and method pages to easily test the AP
 
 ![](https://i.imgur.com/vEBEWqq.png)
 
+### Updating the Schema
+
+If you find that the schema is out-of-date (check [here](https://github.com/zhukov/webogram/blob/master/app/js/lib/config.js)), you can submit a PR if I don't update it in a timely manner (I don't monitor it 24/7!):
+
+1. Update the `SCHEMA_GLOBAL` and `LAYER_NUMBER` in [`js/schema.js`](https://github.com/tjhorner/schema.tl/blob/master/js/schema.js).
+2. Replace [`resources/schema.json`](https://github.com/tjhorner/schema.tl/blob/master/resources/schema.json) with the current schema in JSON format (prettify it, pretty please).
+3. Replace [`resources/schema.tl`](https://github.com/tjhorner/schema.tl/blob/master/resources/schema.tl) with the current schema in Type-Language format.
+4. Update the layer number in [`index.html`](https://github.com/tjhorner/schema.tl/blob/master/index.html).
+
+That's it. Submit your PR and I'll accept it ASAP.
+
 ### Documentation
 
 Anyone in the community can add documentation to constructors or methods. To do so, click the "Help document this method" button, make your changes, and submit a pull request. Simple as that!
