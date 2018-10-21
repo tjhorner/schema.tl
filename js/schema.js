@@ -14472,6 +14472,8 @@ var SCHEMA_GLOBAL = {
 
 // build type database
 
+SCHEMA_GLOBAL.types = [ ]
+
 function findInArray(array, key, value){
   return array.filter((thing) => { return (thing[key] === value ? true : false) })
 }
@@ -14486,7 +14488,7 @@ SCHEMA_GLOBAL.constructors.forEach(constr => {
         }
       ]
     })
-  }else{
+  } else {
     SCHEMA_GLOBAL.types[SCHEMA_GLOBAL.types.indexOf(findInArray(SCHEMA_GLOBAL.types, "name", constr.type)[0])].constrs.push({
       predicate: constr.predicate
     })
