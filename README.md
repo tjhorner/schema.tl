@@ -16,7 +16,7 @@ An AngularJS app to search and view the Telegram API TL-schema in a beautiful wa
 
 Search is blazing fast since everything is local.
 
-![](https://i.imgur.com/lfAs0XQ.png)
+![](https://user-images.githubusercontent.com/2646487/52002101-eef02580-2475-11e9-8277-b80f118f87dd.png)
 
 ### Playground
 
