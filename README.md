@@ -22,7 +22,7 @@ Search is blazing fast since everything is local.
 
 You can use the playground on constructor and method pages to easily test the API with [Telegram for Devs](https://tjhorner.com/webogram).
 
-![](https://i.imgur.com/vEBEWqq.png)
+![](https://user-images.githubusercontent.com/2646487/52001701-ea773d00-2474-11e9-8806-397278cb4387.png)
 
 ### Updating the Schema
 
