@@ -1,4 +1,4 @@
-var tlDocsApp = angular.module("tlDocsApp", [ "ngRoute", "ngSanitize", "btford.markdown" ])
+var tlDocsApp = angular.module("tlDocsApp", [ "ngRoute", "ngSanitize", "btford.markdown", "hljs" ])
   .run(function($rootScope, $location){
     $rootScope.doSearch = function() {
       $location.path("/")
