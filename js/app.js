@@ -1,3 +1,28 @@
+// build type database
+
+SCHEMA_GLOBAL.types = [ ]
+
+function findInArray(array, key, value){
+  return array.filter((thing) => { return (thing[key] === value ? true : false) })
+}
+
+SCHEMA_GLOBAL.constructors.forEach(constr => {
+  if(findInArray(SCHEMA_GLOBAL.types, "name", constr.type).length === 0){
+    SCHEMA_GLOBAL.types.push({
+      name: constr.type,
+      constrs: [
+        {
+          predicate: constr.predicate
+        }
+      ]
+    })
+  } else {
+    SCHEMA_GLOBAL.types[SCHEMA_GLOBAL.types.indexOf(findInArray(SCHEMA_GLOBAL.types, "name", constr.type)[0])].constrs.push({
+      predicate: constr.predicate
+    })
+  }
+})
+
 var tlDocsApp = angular.module("tlDocsApp", [ "ngRoute", "ngSanitize", "btford.markdown", "hljs" ])
   .run(function($rootScope, $location){
     $rootScope.doSearch = function() {
