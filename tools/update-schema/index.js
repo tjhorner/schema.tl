@@ -28,6 +28,10 @@ async function request(url) {
   })
 }
 
+async function wait(ms) {
+  return new Promise((resolve, reject) => { setTimeout(() => { resolve() }, ms)})
+}
+
 async function start() {
   const currentLayerNumber = parseInt(await fs.readFile("current_layer.txt"))
 
@@ -48,6 +52,24 @@ async function start() {
     console.log("Creating working directory if it does not already exist...")
 
     await fs.mkdir(config.REPO_WORKING_DIRECTORY)
+
+    console.log("Deleting any existing forks, we won't need those...")
+
+    await octokit.repos.delete({
+      owner: "schemabot",
+      repo: "schema.tl"
+    })
+
+    console.log("Forking tjhorner/schema.tl...")
+
+    await octokit.repos.createFork({
+      owner: "tjhorner",
+      repo: "schema.tl"
+    })
+
+    console.log("Waiting 10 seconds to ensure the forking is done...")
+
+    await wait(10000)
 
     console.log("Cloning repository...")
 
