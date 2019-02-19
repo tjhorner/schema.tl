@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 91
+var LAYER_NUMBER = 95
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -300,24 +300,12 @@ var SCHEMA_GLOBAL = {
       "type": "X"
     },
     {
-      "id": "-2035355412",
+      "id": "-1502141361",
       "method": "auth.sendCode",
       "params": [
         {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "allow_flashcall",
-          "type": "flags.0?true"
-        },
-        {
           "name": "phone_number",
           "type": "string"
-        },
-        {
-          "name": "current_number",
-          "type": "flags.0?Bool"
         },
         {
           "name": "api_id",
@@ -326,6 +314,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "api_hash",
           "type": "string"
+        },
+        {
+          "name": "settings",
+          "type": "CodeSettings"
         }
       ],
       "type": "auth.SentCode"
@@ -642,10 +634,15 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "-1068696894",
+      "id": "-1430579357",
       "method": "account.getWallPapers",
-      "params": [],
-      "type": "Vector<WallPaper>"
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        }
+      ],
+      "type": "account.WallPapers"
     },
     {
       "id": "-1374118561",
@@ -739,24 +736,16 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "149257707",
+      "id": "-2108208411",
       "method": "account.sendChangePhoneCode",
       "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "allow_flashcall",
-          "type": "flags.0?true"
-        },
         {
           "name": "phone_number",
           "type": "string"
         },
         {
-          "name": "current_number",
-          "type": "flags.0?Bool"
+          "name": "settings",
+          "type": "CodeSettings"
         }
       ],
       "type": "auth.SentCode"
@@ -841,24 +830,16 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "353818557",
+      "id": "457157256",
       "method": "account.sendConfirmPhoneCode",
       "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "allow_flashcall",
-          "type": "flags.0?true"
-        },
         {
           "name": "hash",
           "type": "string"
         },
         {
-          "name": "current_number",
-          "type": "flags.0?Bool"
+          "name": "settings",
+          "type": "CodeSettings"
         }
       ],
       "type": "auth.SentCode"
@@ -1006,24 +987,16 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "-2110553932",
+      "id": "-1516022023",
       "method": "account.sendVerifyPhoneCode",
       "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "allow_flashcall",
-          "type": "flags.0?true"
-        },
         {
           "name": "phone_number",
           "type": "string"
         },
         {
-          "name": "current_number",
-          "type": "flags.0?Bool"
+          "name": "settings",
+          "type": "CodeSettings"
         }
       ],
       "type": "auth.SentCode"
@@ -1185,6 +1158,76 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": "-57811990",
+      "method": "account.getWallPaper",
+      "params": [
+        {
+          "name": "wallpaper",
+          "type": "InputWallPaper"
+        }
+      ],
+      "type": "WallPaper"
+    },
+    {
+      "id": "-578472351",
+      "method": "account.uploadWallPaper",
+      "params": [
+        {
+          "name": "file",
+          "type": "InputFile"
+        },
+        {
+          "name": "mime_type",
+          "type": "string"
+        },
+        {
+          "name": "settings",
+          "type": "WallPaperSettings"
+        }
+      ],
+      "type": "WallPaper"
+    },
+    {
+      "id": "1817860919",
+      "method": "account.saveWallPaper",
+      "params": [
+        {
+          "name": "wallpaper",
+          "type": "InputWallPaper"
+        },
+        {
+          "name": "unsave",
+          "type": "Bool"
+        },
+        {
+          "name": "settings",
+          "type": "WallPaperSettings"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "-18000023",
+      "method": "account.installWallPaper",
+      "params": [
+        {
+          "name": "wallpaper",
+          "type": "InputWallPaper"
+        },
+        {
+          "name": "settings",
+          "type": "WallPaperSettings"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "-1153722364",
+      "method": "account.resetWallPapers",
+      "params": [],
+      "type": "Bool"
     },
     {
       "id": "227648840",
@@ -2202,12 +2245,12 @@ var SCHEMA_GLOBAL = {
       "type": "MessageMedia"
     },
     {
-      "id": "2106086025",
+      "id": "234312524",
       "method": "messages.exportChatInvite",
       "params": [
         {
-          "name": "chat_id",
-          "type": "int"
+          "name": "peer",
+          "type": "InputPeer"
         }
       ],
       "type": "ExportedChatInvite"
@@ -2312,21 +2355,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Vector<int>"
-    },
-    {
-      "id": "-326379039",
-      "method": "messages.toggleChatAdmins",
-      "params": [
-        {
-          "name": "chat_id",
-          "type": "int"
-        },
-        {
-          "name": "enabled",
-          "type": "Bool"
-        }
-      ],
-      "type": "Updates"
     },
     {
       "id": "-1444503762",
@@ -3446,6 +3474,36 @@ var SCHEMA_GLOBAL = {
       "type": "StatsURL"
     },
     {
+      "id": "-554301545",
+      "method": "messages.editChatAbout",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "about",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "-1517917375",
+      "method": "messages.editChatDefaultBannedRights",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "banned_rights",
+          "type": "ChatBannedRights"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
       "id": "-304838614",
       "method": "updates.getState",
       "params": [],
@@ -4056,22 +4114,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "333610782",
-      "method": "channels.editAbout",
-      "params": [
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "about",
-          "type": "string"
-        }
-      ],
-      "type": "Bool"
-    },
-    {
-      "id": "548962836",
+      "id": "1895338938",
       "method": "channels.editAdmin",
       "params": [
         {
@@ -4084,7 +4127,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "admin_rights",
-          "type": "ChannelAdminRights"
+          "type": "ChatAdminRights"
         }
       ],
       "type": "Updates"
@@ -4187,38 +4230,12 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "-950663035",
-      "method": "channels.exportInvite",
-      "params": [
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        }
-      ],
-      "type": "ExportedChatInvite"
-    },
-    {
       "id": "-1072619549",
       "method": "channels.deleteChannel",
       "params": [
         {
           "name": "channel",
           "type": "InputChannel"
-        }
-      ],
-      "type": "Updates"
-    },
-    {
-      "id": "1231065863",
-      "method": "channels.toggleInvites",
-      "params": [
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "enabled",
-          "type": "Bool"
         }
       ],
       "type": "Updates"
@@ -4264,7 +4281,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Chats"
     },
     {
-      "id": "-1076292147",
+      "id": "1920559378",
       "method": "channels.editBanned",
       "params": [
         {
@@ -4277,7 +4294,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "banned_rights",
-          "type": "ChannelBannedRights"
+          "type": "ChatBannedRights"
         }
       ],
       "type": "Updates"
@@ -6510,7 +6527,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": "-652419756",
+      "id": "1004149726",
       "predicate": "chat",
       "params": [
         {
@@ -6528,14 +6545,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "left",
           "type": "flags.2?true"
-        },
-        {
-          "name": "admins_enabled",
-          "type": "flags.3?true"
-        },
-        {
-          "name": "admin",
-          "type": "flags.4?true"
         },
         {
           "name": "deactivated",
@@ -6568,6 +6577,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "migrated_to",
           "type": "flags.6?InputChannel"
+        },
+        {
+          "name": "admin_rights",
+          "type": "flags.14?ChatAdminRights"
+        },
+        {
+          "name": "default_banned_rights",
+          "type": "flags.18?ChatBannedRights"
         }
       ],
       "type": "Chat"
@@ -6588,7 +6605,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": "-930515796",
+      "id": "1307772980",
       "predicate": "channel",
       "params": [
         {
@@ -6602,10 +6619,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "left",
           "type": "flags.2?true"
-        },
-        {
-          "name": "editor",
-          "type": "flags.3?true"
         },
         {
           "name": "broadcast",
@@ -6622,10 +6635,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "restricted",
           "type": "flags.9?true"
-        },
-        {
-          "name": "democracy",
-          "type": "flags.10?true"
         },
         {
           "name": "signatures",
@@ -6669,11 +6678,15 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "admin_rights",
-          "type": "flags.14?ChannelAdminRights"
+          "type": "flags.14?ChatAdminRights"
         },
         {
           "name": "banned_rights",
-          "type": "flags.15?ChannelBannedRights"
+          "type": "flags.15?ChatBannedRights"
+        },
+        {
+          "name": "default_banned_rights",
+          "type": "flags.18?ChatBannedRights"
         },
         {
           "name": "participants_count",
@@ -6718,7 +6731,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": "-304961647",
+      "id": "581055962",
       "predicate": "chatFull",
       "params": [
         {
@@ -6726,8 +6739,16 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "can_set_username",
+          "type": "flags.7?true"
+        },
+        {
           "name": "id",
           "type": "int"
+        },
+        {
+          "name": "about",
+          "type": "string"
         },
         {
           "name": "participants",
@@ -7796,6 +7817,21 @@ var SCHEMA_GLOBAL = {
       "type": "PhotoSize"
     },
     {
+      "id": "-525288402",
+      "predicate": "photoStrippedSize",
+      "params": [
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "bytes",
+          "type": "bytes"
+        }
+      ],
+      "type": "PhotoSize"
+    },
+    {
       "id": "286776671",
       "predicate": "geoPointEmpty",
       "params": [],
@@ -7999,47 +8035,48 @@ var SCHEMA_GLOBAL = {
       "type": "PeerSettings"
     },
     {
-      "id": "-860866985",
+      "id": "-1539849235",
       "predicate": "wallPaper",
       "params": [
         {
           "name": "id",
-          "type": "int"
+          "type": "long"
         },
         {
-          "name": "title",
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "creator",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "default",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "pattern",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "dark",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        },
+        {
+          "name": "slug",
           "type": "string"
         },
         {
-          "name": "sizes",
-          "type": "Vector"
+          "name": "document",
+          "type": "Document"
         },
         {
-          "name": "color",
-          "type": "int"
-        }
-      ],
-      "type": "WallPaper"
-    },
-    {
-      "id": "1662091044",
-      "predicate": "wallPaperSolid",
-      "params": [
-        {
-          "name": "id",
-          "type": "int"
-        },
-        {
-          "name": "title",
-          "type": "string"
-        },
-        {
-          "name": "bg_color",
-          "type": "int"
-        },
-        {
-          "name": "color",
-          "type": "int"
+          "name": "settings",
+          "type": "flags.2?WallPaperSettings"
         }
       ],
       "type": "WallPaper"
@@ -8386,9 +8423,17 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": "189033187",
+      "id": "-1497072982",
       "predicate": "messages.messagesSlice",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "inexact",
+          "type": "flags.1?true"
+        },
         {
           "name": "count",
           "type": "int"
@@ -9204,25 +9249,6 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": "1855224129",
-      "predicate": "updateChatAdmins",
-      "params": [
-        {
-          "name": "chat_id",
-          "type": "int"
-        },
-        {
-          "name": "enabled",
-          "type": "Bool"
-        },
-        {
-          "name": "version",
-          "type": "int"
-        }
-      ],
-      "type": "Update"
-    },
-    {
       "id": "-1232070311",
       "predicate": "updateChatParticipantAdmin",
       "params": [
@@ -9822,6 +9848,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "results",
           "type": "PollResults"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "1421875280",
+      "predicate": "updateChatDefaultBannedRights",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "default_banned_rights",
+          "type": "ChatBannedRights"
+        },
+        {
+          "name": "version",
+          "type": "int"
         }
       ],
       "type": "Update"
@@ -10998,9 +11043,13 @@ var SCHEMA_GLOBAL = {
       "type": "Document"
     },
     {
-      "id": "1498631756",
+      "id": "-1683841855",
       "predicate": "document",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "id",
           "type": "long"
@@ -11026,8 +11075,8 @@ var SCHEMA_GLOBAL = {
           "type": "int"
         },
         {
-          "name": "thumb",
-          "type": "PhotoSize"
+          "name": "thumbs",
+          "type": "flags.0?Vector"
         },
         {
           "name": "dc_id",
@@ -12805,7 +12854,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelParticipant"
     },
     {
-      "id": "-1473271656",
+      "id": "1571450403",
       "predicate": "channelParticipantAdmin",
       "params": [
         {
@@ -12817,12 +12866,16 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "self",
+          "type": "flags.1?true"
+        },
+        {
           "name": "user_id",
           "type": "int"
         },
         {
           "name": "inviter_id",
-          "type": "int"
+          "type": "flags.1?int"
         },
         {
           "name": "promoted_by",
@@ -12834,13 +12887,13 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "admin_rights",
-          "type": "ChannelAdminRights"
+          "type": "ChatAdminRights"
         }
       ],
       "type": "ChannelParticipant"
     },
     {
-      "id": "573315206",
+      "id": "470789295",
       "predicate": "channelParticipantBanned",
       "params": [
         {
@@ -12865,7 +12918,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "banned_rights",
-          "type": "ChannelBannedRights"
+          "type": "ChatBannedRights"
         }
       ],
       "type": "ChannelParticipant"
@@ -12913,6 +12966,17 @@ var SCHEMA_GLOBAL = {
     {
       "id": "106343499",
       "predicate": "channelParticipantsSearch",
+      "params": [
+        {
+          "name": "q",
+          "type": "string"
+        }
+      ],
+      "type": "ChannelParticipantsFilter"
+    },
+    {
+      "id": "-1150621555",
+      "predicate": "channelParticipantsContacts",
       "params": [
         {
           "name": "q",
@@ -16034,104 +16098,6 @@ var SCHEMA_GLOBAL = {
       "type": "LangPackLanguage"
     },
     {
-      "id": "1568467877",
-      "predicate": "channelAdminRights",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "change_info",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "post_messages",
-          "type": "flags.1?true"
-        },
-        {
-          "name": "edit_messages",
-          "type": "flags.2?true"
-        },
-        {
-          "name": "delete_messages",
-          "type": "flags.3?true"
-        },
-        {
-          "name": "ban_users",
-          "type": "flags.4?true"
-        },
-        {
-          "name": "invite_users",
-          "type": "flags.5?true"
-        },
-        {
-          "name": "invite_link",
-          "type": "flags.6?true"
-        },
-        {
-          "name": "pin_messages",
-          "type": "flags.7?true"
-        },
-        {
-          "name": "add_admins",
-          "type": "flags.9?true"
-        },
-        {
-          "name": "manage_call",
-          "type": "flags.10?true"
-        }
-      ],
-      "type": "ChannelAdminRights"
-    },
-    {
-      "id": "1489977929",
-      "predicate": "channelBannedRights",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "view_messages",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "send_messages",
-          "type": "flags.1?true"
-        },
-        {
-          "name": "send_media",
-          "type": "flags.2?true"
-        },
-        {
-          "name": "send_stickers",
-          "type": "flags.3?true"
-        },
-        {
-          "name": "send_gifs",
-          "type": "flags.4?true"
-        },
-        {
-          "name": "send_games",
-          "type": "flags.5?true"
-        },
-        {
-          "name": "send_inline",
-          "type": "flags.6?true"
-        },
-        {
-          "name": "embed_links",
-          "type": "flags.7?true"
-        },
-        {
-          "name": "until_date",
-          "type": "int"
-        }
-      ],
-      "type": "ChannelBannedRights"
-    },
-    {
       "id": "-421545947",
       "predicate": "channelAdminLogEventActionChangeTitle",
       "params": [
@@ -16325,6 +16291,32 @@ var SCHEMA_GLOBAL = {
         {
           "name": "new_value",
           "type": "Bool"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": "771095562",
+      "predicate": "channelAdminLogEventActionDefaultBannedRights",
+      "params": [
+        {
+          "name": "prev_banned_rights",
+          "type": "ChatBannedRights"
+        },
+        {
+          "name": "new_banned_rights",
+          "type": "ChatBannedRights"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": "-1895328189",
+      "predicate": "channelAdminLogEventActionStopPoll",
+      "params": [
+        {
+          "name": "message",
+          "type": "Message"
         }
       ],
       "type": "ChannelAdminLogEventAction"
@@ -18035,31 +18027,213 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "StatsURL"
+    },
+    {
+      "id": "1605510357",
+      "predicate": "chatAdminRights",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "change_info",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "post_messages",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "edit_messages",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "delete_messages",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "ban_users",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "invite_users",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "pin_messages",
+          "type": "flags.7?true"
+        },
+        {
+          "name": "add_admins",
+          "type": "flags.9?true"
+        }
+      ],
+      "type": "ChatAdminRights"
+    },
+    {
+      "id": "-1626209256",
+      "predicate": "chatBannedRights",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "view_messages",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "send_messages",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "send_media",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "send_stickers",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "send_gifs",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "send_games",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "send_inline",
+          "type": "flags.6?true"
+        },
+        {
+          "name": "embed_links",
+          "type": "flags.7?true"
+        },
+        {
+          "name": "send_polls",
+          "type": "flags.8?true"
+        },
+        {
+          "name": "change_info",
+          "type": "flags.10?true"
+        },
+        {
+          "name": "invite_users",
+          "type": "flags.15?true"
+        },
+        {
+          "name": "pin_messages",
+          "type": "flags.17?true"
+        },
+        {
+          "name": "until_date",
+          "type": "int"
+        }
+      ],
+      "type": "ChatBannedRights"
+    },
+    {
+      "id": "-433014407",
+      "predicate": "inputWallPaper",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        }
+      ],
+      "type": "InputWallPaper"
+    },
+    {
+      "id": "1913199744",
+      "predicate": "inputWallPaperSlug",
+      "params": [
+        {
+          "name": "slug",
+          "type": "string"
+        }
+      ],
+      "type": "InputWallPaper"
+    },
+    {
+      "id": "471437699",
+      "predicate": "account.wallPapersNotModified",
+      "params": [],
+      "type": "account.WallPapers"
+    },
+    {
+      "id": "1881892265",
+      "predicate": "account.wallPapers",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        },
+        {
+          "name": "wallpapers",
+          "type": "Vector"
+        }
+      ],
+      "type": "account.WallPapers"
+    },
+    {
+      "id": "808409587",
+      "predicate": "codeSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "allow_flashcall",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "current_number",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "app_hash_persistent",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "app_hash",
+          "type": "flags.3?string"
+        }
+      ],
+      "type": "CodeSettings"
+    },
+    {
+      "id": "-1590738760",
+      "predicate": "wallPaperSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "blur",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "motion",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "background_color",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "intensity",
+          "type": "flags.3?int"
+        }
+      ],
+      "type": "WallPaperSettings"
     }
   ]
-}
-
-// build type database
-
-SCHEMA_GLOBAL.types = [ ]
-
-function findInArray(array, key, value){
-  return array.filter((thing) => { return (thing[key] === value ? true : false) })
-}
-
-SCHEMA_GLOBAL.constructors.forEach(constr => {
-  if(findInArray(SCHEMA_GLOBAL.types, "name", constr.type).length === 0){
-    SCHEMA_GLOBAL.types.push({
-      name: constr.type,
-      constrs: [
-        {
-          predicate: constr.predicate
-        }
-      ]
-    })
-  } else {
-    SCHEMA_GLOBAL.types[SCHEMA_GLOBAL.types.indexOf(findInArray(SCHEMA_GLOBAL.types, "name", constr.type)[0])].constrs.push({
-      predicate: constr.predicate
-    })
-  }
 })
