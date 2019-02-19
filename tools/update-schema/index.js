@@ -111,7 +111,7 @@ async function start() {
 
     console.log("Alright, everything has been replaced. Committing changes.")
 
-    await exec(`git add -A && git -c "user.signingkey=${config.GIT_SIGNING_KEY_ID}" -c "user.name=${config.GIT_NAME}" -c "user.email=${config.GIT_EMAIL}" commit -S -m "[chore] Update to layer ${newLayerNumber}"`, { cwd: config.REPO_WORKING_DIRECTORY, shell: "bash" })
+    await exec(`git add -A && git -c "user.signingkey=${config.GIT_SIGNING_KEY_ID}" -c "user.name=${config.GIT_NAME}" -c "user.email=${config.GIT_EMAIL}" commit -S --allow-empty -m "[chore] Update to layer ${newLayerNumber}"`, { cwd: config.REPO_WORKING_DIRECTORY, shell: "bash" })
 
     console.log("Pushing changes to GitHub...")
 
@@ -128,7 +128,7 @@ async function start() {
 
     console.log("Working directory is cleaned. Submitting the PR...")
 
-    const pr = await octokit.pulls.create({
+    const { data: pr } = await octokit.pulls.create({
       owner: "tjhorner",
       repo: "schema.tl",
       head: `schemabot:layer-${newLayerNumber}`,
@@ -137,7 +137,21 @@ async function start() {
       body: `Hello! It's time... time to update the schema layer! This pull request migrates from layer ${currentLayerNumber} to layer ${newLayerNumber}. Please check to make sure I didn't screw anything up!\n\nWith ❤️,\nYour Friendly Neighborhood Schemabot`
     })
 
-    console.log("PR created, check it out:", pr.data.html_url)
+    await octokit.issues.addLabels({
+      owner: "tjhorner",
+      repo: "schema.tl",
+      number: pr.number,
+      labels: [ "layer update" ]
+    })
+
+    await octokit.pulls.createReviewRequest({
+      owner: "tjhorner",
+      repo: "schema.tl",
+      number: pr.number,
+      reviewers: [ "tjhorner" ]
+    })
+
+    console.log("PR created, check it out:", pr.html_url)
 
     await fs.writeFile("current_layer.txt", newLayerNumber)
 
