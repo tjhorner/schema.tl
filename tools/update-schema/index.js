@@ -4,7 +4,7 @@ const fs = require('fs').promises
 
 const { promisify } = require('util')
 
-const exec = promisify(require('child_process').exec)
+const execOld = promisify(require('child_process').exec)
 
 const rimraf = promisify(require('rimraf'))
 
@@ -30,6 +30,11 @@ async function request(url) {
 
 async function wait(ms) {
   return new Promise((resolve, reject) => { setTimeout(() => { resolve() }, ms)})
+}
+
+async function exec(cmd, opts) {
+  console.log(`  > ${cmd}`)
+  return await execOld(cmd, opts)
 }
 
 async function start() {
@@ -106,7 +111,7 @@ async function start() {
 
     console.log("Alright, everything has been replaced. Committing changes.")
 
-    await exec(`git add -A && git -c "user.name=${config.GIT_NAME}" -c "user.email=${config.GIT_EMAIL}" commit -m "[chore] Update to layer ${newLayerNumber}"`, { cwd: config.REPO_WORKING_DIRECTORY, shell: "bash" })
+    await exec(`git add -A && git -c "user.name=${config.GIT_NAME}" -c "user.email=${config.GIT_EMAIL}" commit --allow-empty -m "[chore] Update to layer ${newLayerNumber}"`, { cwd: config.REPO_WORKING_DIRECTORY, shell: "bash" })
 
     console.log("Pushing changes to GitHub...")
 
@@ -135,6 +140,8 @@ async function start() {
     console.log("PR created, check it out:", pr.data.html_url)
 
     await fs.writeFile("current_layer.txt", newLayerNumber)
+
+    console.log(`\nEverything is done! Updated layer ${currentLayerNumber} -> ${newLayerNumber}.`)
   } else {
     console.log("New layer is the same as current layer. Nothing to change! Bye")
   }
