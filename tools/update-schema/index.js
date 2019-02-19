@@ -94,6 +94,34 @@ async function start() {
     await fs.writeFile(path.join(config.REPO_WORKING_DIRECTORY, "resources", "schema.json"), JSON.stringify(newSchema, null, 2))
     await fs.writeFile(path.join(config.REPO_WORKING_DIRECTORY, "resources", "schema.tl"), schema)
 
+    console.log("Ensuring all documentation files for methods/constructors exist...")
+
+    const newDocs = { methods: [ ], constructors: [ ] }
+
+    newSchema.methods.forEach(async method => {
+      const docPath = path.join(config.REPO_WORKING_DIRECTORY, "docs", "methods", `${method.method}.md`)
+
+      try {
+        await fs.open(docPath, "r")
+      } catch(e) {
+        console.log(`Writing empty doc file for new method ${method.method}...`)
+        newDocs.methods.push(method.method)
+        await fs.writeFile(docPath, "")
+      }
+    })
+
+    newSchema.constructors.forEach(async constructor => {
+      const docPath = path.join(config.REPO_WORKING_DIRECTORY, "docs", "constructors", `${constructor.predicate}.md`)
+
+      try {
+        await fs.open(docPath, "r")
+      } catch(e) {
+        console.log(`Writing empty doc file for new constructor ${constructor.predicate}...`)
+        newDocs.constructors.push(constructor.predicate)
+        await fs.writeFile(docPath, "")
+      }
+    })
+
     console.log("Replacing schema in schema.js and updating version number...")
 
     var schemaJs = (await fs.readFile(path.join(config.REPO_WORKING_DIRECTORY, "js", "schema.js"))).toString()
@@ -126,7 +154,21 @@ async function start() {
 
     await rimraf(config.REPO_WORKING_DIRECTORY)
 
-    console.log("Working directory is cleaned. Submitting the PR...")
+    console.log("Working directory is clean. Submitting the PR...")
+
+    var newDocsText = "### New constructors"
+
+    newDocs.constructors.forEach(constructor => {
+      newDocsText += `\n- ${constructor}`
+    })
+
+    newDocsText = "\n\n### New methods"
+
+    newDocs.methods.forEach(method => {
+      newDocsText += `\n- ${method}`
+    })
+
+    newDocsText += "\n\nDocumentation files were created for these new constructors and methods."
 
     const { data: pr } = await octokit.pulls.create({
       owner: "tjhorner",
@@ -134,7 +176,7 @@ async function start() {
       head: `schemabot:layer-${newLayerNumber}`,
       base: "master",
       title: `[chore] Update to layer ${newLayerNumber}`,
-      body: `Hello! It's time... time to update the schema layer! This pull request migrates from layer ${currentLayerNumber} to layer ${newLayerNumber}. Please check to make sure I didn't screw anything up!\n\nWith ❤️,\nYour Friendly Neighborhood Schemabot`
+      body: `Hello! It's time... time to update the schema layer! This pull request migrates from layer ${currentLayerNumber} to layer ${newLayerNumber}. Please check to make sure I didn't screw anything up!\n\n${newDocsText}\n\nWith ❤️,\nYour Friendly Neighborhood Schemabot`
     })
 
     await octokit.issues.addLabels({
