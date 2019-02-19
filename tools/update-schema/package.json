@@ -1,0 +1,17 @@
+{
+  "name": "update-schema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^16.16.0",
+    "request": "^2.88.0",
+    "rimraf": "^2.6.3"
+  }
+}
