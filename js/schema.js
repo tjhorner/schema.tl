@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 95
+var LAYER_NUMBER = 97
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -1230,6 +1230,35 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": "1457130303",
+      "method": "account.getAutoDownloadSettings",
+      "params": [],
+      "type": "account.AutoDownloadSettings"
+    },
+    {
+      "id": "1995661875",
+      "method": "account.saveAutoDownloadSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "low",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "high",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "settings",
+          "type": "AutoDownloadSettings"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
       "id": "227648840",
       "method": "users.getUsers",
       "params": [
@@ -1656,6 +1685,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "just_clear",
           "type": "flags.0?true"
+        },
+        {
+          "name": "revoke",
+          "type": "flags.1?true"
         },
         {
           "name": "peer",
@@ -3463,12 +3496,24 @@ var SCHEMA_GLOBAL = {
       "type": "ChatOnlines"
     },
     {
-      "id": "-2080980787",
+      "id": "-2127811866",
       "method": "messages.getStatsURL",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "dark",
+          "type": "flags.0?true"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "params",
+          "type": "string"
         }
       ],
       "type": "StatsURL"
@@ -3502,6 +3547,43 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": "899735650",
+      "method": "messages.getEmojiKeywords",
+      "params": [
+        {
+          "name": "lang_code",
+          "type": "string"
+        }
+      ],
+      "type": "EmojiKeywordsDifference"
+    },
+    {
+      "id": "352892591",
+      "method": "messages.getEmojiKeywordsDifference",
+      "params": [
+        {
+          "name": "lang_code",
+          "type": "string"
+        },
+        {
+          "name": "from_version",
+          "type": "int"
+        }
+      ],
+      "type": "EmojiKeywordsDifference"
+    },
+    {
+      "id": "-709817306",
+      "method": "messages.getEmojiURL",
+      "params": [
+        {
+          "name": "lang_code",
+          "type": "string"
+        }
+      ],
+      "type": "EmojiURL"
     },
     {
       "id": "-304838614",
@@ -4714,9 +4796,17 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "475228724",
+      "id": "1508562471",
       "method": "phone.setCallRating",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "user_initiative",
+          "type": "flags.0?true"
+        },
         {
           "name": "peer",
           "type": "InputPhoneCall"
@@ -4782,9 +4872,13 @@ var SCHEMA_GLOBAL = {
       "type": "Vector<LangPackString>"
     },
     {
-      "id": "-1655576556",
+      "id": "-845657435",
       "method": "langpack.getDifference",
       "params": [
+        {
+          "name": "lang_pack",
+          "type": "string"
+        },
         {
           "name": "lang_code",
           "type": "string"
@@ -6392,6 +6486,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "bot_inline_geo",
           "type": "flags.21?true"
+        },
+        {
+          "name": "support",
+          "type": "flags.23?true"
         },
         {
           "name": "id",
@@ -9815,7 +9913,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": "579418918",
+      "id": "-519195831",
       "predicate": "updateChatPinnedMessage",
       "params": [
         {
@@ -9824,6 +9922,10 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "version",
           "type": "int"
         }
       ],
@@ -11284,6 +11386,18 @@ var SCHEMA_GLOBAL = {
       "type": "InputPrivacyKey"
     },
     {
+      "id": "-1529000952",
+      "predicate": "inputPrivacyKeyForwards",
+      "params": [],
+      "type": "InputPrivacyKey"
+    },
+    {
+      "id": "1461304012",
+      "predicate": "inputPrivacyKeyProfilePhoto",
+      "params": [],
+      "type": "InputPrivacyKey"
+    },
+    {
       "id": "-1137792208",
       "predicate": "privacyKeyStatusTimestamp",
       "params": [],
@@ -11304,6 +11418,18 @@ var SCHEMA_GLOBAL = {
     {
       "id": "961092808",
       "predicate": "privacyKeyPhoneP2P",
+      "params": [],
+      "type": "PrivacyKey"
+    },
+    {
+      "id": "1777096355",
+      "predicate": "privacyKeyForwards",
+      "params": [],
+      "type": "PrivacyKey"
+    },
+    {
+      "id": "-1777000467",
+      "predicate": "privacyKeyProfilePhoto",
       "params": [],
       "type": "PrivacyKey"
     },
@@ -12076,7 +12202,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputStickerSet"
     },
     {
-      "id": "1434820921",
+      "id": "1787870391",
       "predicate": "stickerSet",
       "params": [
         {
@@ -12114,6 +12240,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "short_name",
           "type": "string"
+        },
+        {
+          "name": "thumb",
+          "type": "flags.4?PhotoSize"
         },
         {
           "name": "count",
@@ -13700,7 +13830,7 @@ var SCHEMA_GLOBAL = {
       "type": "ExportedMessageLink"
     },
     {
-      "id": "1436466797",
+      "id": "-332168592",
       "predicate": "messageFwdHeader",
       "params": [
         {
@@ -13710,6 +13840,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "from_id",
           "type": "flags.0?int"
+        },
+        {
+          "name": "from_name",
+          "type": "flags.5?string"
         },
         {
           "name": "date",
@@ -18234,6 +18368,128 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "WallPaperSettings"
+    },
+    {
+      "id": "-767099577",
+      "predicate": "autoDownloadSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "disabled",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "video_preload_large",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "audio_preload_next",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "phonecalls_less_data",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "photo_size_max",
+          "type": "int"
+        },
+        {
+          "name": "video_size_max",
+          "type": "int"
+        },
+        {
+          "name": "file_size_max",
+          "type": "int"
+        }
+      ],
+      "type": "AutoDownloadSettings"
+    },
+    {
+      "id": "1674235686",
+      "predicate": "account.autoDownloadSettings",
+      "params": [
+        {
+          "name": "low",
+          "type": "AutoDownloadSettings"
+        },
+        {
+          "name": "medium",
+          "type": "AutoDownloadSettings"
+        },
+        {
+          "name": "high",
+          "type": "AutoDownloadSettings"
+        }
+      ],
+      "type": "account.AutoDownloadSettings"
+    },
+    {
+      "id": "-709641735",
+      "predicate": "emojiKeyword",
+      "params": [
+        {
+          "name": "keyword",
+          "type": "string"
+        },
+        {
+          "name": "emoticons",
+          "type": "Vector"
+        }
+      ],
+      "type": "EmojiKeyword"
+    },
+    {
+      "id": "594408994",
+      "predicate": "emojiKeywordDeleted",
+      "params": [
+        {
+          "name": "keyword",
+          "type": "string"
+        },
+        {
+          "name": "emoticons",
+          "type": "Vector"
+        }
+      ],
+      "type": "EmojiKeyword"
+    },
+    {
+      "id": "1556570557",
+      "predicate": "emojiKeywordsDifference",
+      "params": [
+        {
+          "name": "lang_code",
+          "type": "string"
+        },
+        {
+          "name": "from_version",
+          "type": "int"
+        },
+        {
+          "name": "version",
+          "type": "int"
+        },
+        {
+          "name": "keywords",
+          "type": "Vector"
+        }
+      ],
+      "type": "EmojiKeywordsDifference"
+    },
+    {
+      "id": "-1519029347",
+      "predicate": "emojiURL",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "EmojiURL"
     }
   ]
 }
