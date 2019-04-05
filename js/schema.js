@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 97
+var LAYER_NUMBER = 98
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -3575,6 +3575,17 @@ var SCHEMA_GLOBAL = {
       "type": "EmojiKeywordsDifference"
     },
     {
+      "id": "1318675378",
+      "method": "messages.getEmojiKeywordsLanguages",
+      "params": [
+        {
+          "name": "lang_codes",
+          "type": "Vector"
+        }
+      ],
+      "type": "Vector<EmojiLanguage>"
+    },
+    {
       "id": "-709817306",
       "method": "messages.getEmojiURL",
       "params": [
@@ -4697,9 +4708,17 @@ var SCHEMA_GLOBAL = {
       "type": "DataJSON"
     },
     {
-      "id": "1536537556",
+      "id": "1124046573",
       "method": "phone.requestCall",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "video",
+          "type": "flags.0?true"
+        },
         {
           "name": "user_id",
           "type": "InputUser"
@@ -4773,9 +4792,17 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "2027164582",
+      "id": "-1295269440",
       "method": "phone.discardCall",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "video",
+          "type": "flags.0?true"
+        },
         {
           "name": "peer",
           "type": "InputPhoneCall"
@@ -6246,7 +6273,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputFileLocation"
     },
     {
-      "id": "426148825",
+      "id": "-1160743548",
       "predicate": "inputDocumentFileLocation",
       "params": [
         {
@@ -6260,6 +6287,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "file_reference",
           "type": "bytes"
+        },
+        {
+          "name": "thumb_size",
+          "type": "string"
         }
       ],
       "type": "InputFileLocation"
@@ -6283,6 +6314,75 @@ var SCHEMA_GLOBAL = {
       "id": "700340377",
       "predicate": "inputTakeoutFileLocation",
       "params": [],
+      "type": "InputFileLocation"
+    },
+    {
+      "id": "1075322878",
+      "predicate": "inputPhotoFileLocation",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        },
+        {
+          "name": "file_reference",
+          "type": "bytes"
+        },
+        {
+          "name": "thumb_size",
+          "type": "string"
+        }
+      ],
+      "type": "InputFileLocation"
+    },
+    {
+      "id": "668375447",
+      "predicate": "inputPeerPhotoFileLocation",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "big",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "volume_id",
+          "type": "long"
+        },
+        {
+          "name": "local_id",
+          "type": "int"
+        }
+      ],
+      "type": "InputFileLocation"
+    },
+    {
+      "id": "230353641",
+      "predicate": "inputStickerSetThumb",
+      "params": [
+        {
+          "name": "stickerset",
+          "type": "InputStickerSet"
+        },
+        {
+          "name": "volume_id",
+          "type": "long"
+        },
+        {
+          "name": "local_id",
+          "type": "int"
+        }
+      ],
       "type": "InputFileLocation"
     },
     {
@@ -6377,52 +6477,6 @@ var SCHEMA_GLOBAL = {
       "predicate": "storage.fileWebp",
       "params": [],
       "type": "storage.FileType"
-    },
-    {
-      "id": "2086234950",
-      "predicate": "fileLocationUnavailable",
-      "params": [
-        {
-          "name": "volume_id",
-          "type": "long"
-        },
-        {
-          "name": "local_id",
-          "type": "int"
-        },
-        {
-          "name": "secret",
-          "type": "long"
-        }
-      ],
-      "type": "FileLocation"
-    },
-    {
-      "id": "152900075",
-      "predicate": "fileLocation",
-      "params": [
-        {
-          "name": "dc_id",
-          "type": "int"
-        },
-        {
-          "name": "volume_id",
-          "type": "long"
-        },
-        {
-          "name": "local_id",
-          "type": "int"
-        },
-        {
-          "name": "secret",
-          "type": "long"
-        },
-        {
-          "name": "file_reference",
-          "type": "bytes"
-        }
-      ],
-      "type": "FileLocation"
     },
     {
       "id": "537022650",
@@ -6549,7 +6603,7 @@ var SCHEMA_GLOBAL = {
       "type": "UserProfilePhoto"
     },
     {
-      "id": "-715532088",
+      "id": "-321430132",
       "predicate": "userProfilePhoto",
       "params": [
         {
@@ -6563,6 +6617,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "photo_big",
           "type": "FileLocation"
+        },
+        {
+          "name": "dc_id",
+          "type": "int"
         }
       ],
       "type": "UserProfilePhoto"
@@ -7076,7 +7134,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatPhoto"
     },
     {
-      "id": "1632839530",
+      "id": "1197267925",
       "predicate": "chatPhoto",
       "params": [
         {
@@ -7086,6 +7144,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "photo_big",
           "type": "FileLocation"
+        },
+        {
+          "name": "dc_id",
+          "type": "int"
         }
       ],
       "type": "ChatPhoto"
@@ -7674,6 +7736,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "video",
+          "type": "flags.2?true"
+        },
+        {
           "name": "call_id",
           "type": "long"
         },
@@ -7815,7 +7881,7 @@ var SCHEMA_GLOBAL = {
       "type": "Photo"
     },
     {
-      "id": "-1673036328",
+      "id": "-797637467",
       "predicate": "photo",
       "params": [
         {
@@ -7845,6 +7911,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "sizes",
           "type": "Vector"
+        },
+        {
+          "name": "dc_id",
+          "type": "int"
         }
       ],
       "type": "Photo"
@@ -12127,7 +12197,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatInvite"
     },
     {
-      "id": "-613092008",
+      "id": "-540871282",
       "predicate": "chatInvite",
       "params": [
         {
@@ -12156,7 +12226,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "photo",
-          "type": "ChatPhoto"
+          "type": "Photo"
         },
         {
           "name": "participants_count",
@@ -12202,7 +12272,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputStickerSet"
     },
     {
-      "id": "1787870391",
+      "id": "-290164953",
       "predicate": "stickerSet",
       "params": [
         {
@@ -12244,6 +12314,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "thumb",
           "type": "flags.4?PhotoSize"
+        },
+        {
+          "name": "thumb_dc_id",
+          "type": "flags.4?int"
         },
         {
           "name": "count",
@@ -15781,6 +15855,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "video",
+          "type": "flags.5?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -15812,9 +15890,17 @@ var SCHEMA_GLOBAL = {
       "type": "PhoneCall"
     },
     {
-      "id": "-2089411356",
+      "id": "-2014659757",
       "predicate": "phoneCallRequested",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "video",
+          "type": "flags.5?true"
+        },
         {
           "name": "id",
           "type": "long"
@@ -15847,9 +15933,17 @@ var SCHEMA_GLOBAL = {
       "type": "PhoneCall"
     },
     {
-      "id": "1828732223",
+      "id": "-1719909046",
       "predicate": "phoneCallAccepted",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "video",
+          "type": "flags.5?true"
+        },
         {
           "name": "id",
           "type": "long"
@@ -15882,7 +15976,7 @@ var SCHEMA_GLOBAL = {
       "type": "PhoneCall"
     },
     {
-      "id": "-419832333",
+      "id": "-2025673089",
       "predicate": "phoneCall",
       "params": [
         {
@@ -15926,11 +16020,7 @@ var SCHEMA_GLOBAL = {
           "type": "PhoneCallProtocol"
         },
         {
-          "name": "connection",
-          "type": "PhoneConnection"
-        },
-        {
-          "name": "alternative_connections",
+          "name": "connections",
           "type": "Vector"
         },
         {
@@ -15955,6 +16045,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "need_debug",
           "type": "flags.3?true"
+        },
+        {
+          "name": "video",
+          "type": "flags.5?true"
         },
         {
           "name": "id",
@@ -16277,16 +16371,16 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelAdminLogEventAction"
     },
     {
-      "id": "-1204857405",
+      "id": "1129042607",
       "predicate": "channelAdminLogEventActionChangePhoto",
       "params": [
         {
           "name": "prev_photo",
-          "type": "ChatPhoto"
+          "type": "Photo"
         },
         {
           "name": "new_photo",
-          "type": "ChatPhoto"
+          "type": "Photo"
         }
       ],
       "type": "ChannelAdminLogEventAction"
@@ -18490,6 +18584,32 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "EmojiURL"
+    },
+    {
+      "id": "-1275374751",
+      "predicate": "emojiLanguage",
+      "params": [
+        {
+          "name": "lang_code",
+          "type": "string"
+        }
+      ],
+      "type": "EmojiLanguage"
+    },
+    {
+      "id": "-1132476723",
+      "predicate": "fileLocationToBeDeprecated",
+      "params": [
+        {
+          "name": "volume_id",
+          "type": "long"
+        },
+        {
+          "name": "local_id",
+          "type": "int"
+        }
+      ],
+      "type": "FileLocation"
     }
   ]
 }
