@@ -32,7 +32,7 @@ class Parser {
         continue
       } else {
         const identifier = /([A-z0-9_\.]+)#([a-f0-9]+)/
-        const parameter = /([A-z0-9_]+):([A-z0-9_\#\?\.]+)/g
+        const parameter = /([A-z0-9_]+):([A-z0-9_\#\?\.<>]+)/g
         const returnType = /= (.+);/
 
         var ident = identifier.exec(line)
