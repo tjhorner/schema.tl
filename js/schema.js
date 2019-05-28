@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 98
+var LAYER_NUMBER = 100
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -191,7 +191,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "msg_ids",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "X"
@@ -516,7 +516,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "except_auth_keys",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -543,7 +543,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "other_uids",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -562,7 +562,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "other_uids",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -702,7 +702,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "rules",
-          "type": "Vector<InputPrivacyRule>"
+          "type": "Vector"
         }
       ],
       "type": "account.PrivacyRules"
@@ -909,7 +909,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "types",
-          "type": "Vector<SecureValueType>"
+          "type": "Vector"
         }
       ],
       "type": "Vector<SecureValue>"
@@ -935,7 +935,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "types",
-          "type": "Vector<SecureValueType>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -977,7 +977,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "value_hashes",
-          "type": "Vector<SecureValueHash>"
+          "type": "Vector"
         },
         {
           "name": "credentials",
@@ -1264,7 +1264,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "id",
-          "type": "Vector<InputUser>"
+          "type": "Vector"
         }
       ],
       "type": "Vector<User>"
@@ -1290,7 +1290,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "errors",
-          "type": "Vector<SecureValueError>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -1329,7 +1329,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "contacts",
-          "type": "Vector<InputContact>"
+          "type": "Vector"
         }
       ],
       "type": "contacts.ImportedContacts"
@@ -1351,7 +1351,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "id",
-          "type": "Vector<InputUser>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -1362,7 +1362,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "phones",
-          "type": "Vector<string>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -1455,6 +1455,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.3?true"
         },
         {
+          "name": "forward_users",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "forward_chats",
+          "type": "flags.5?true"
+        },
+        {
           "name": "groups",
           "type": "flags.10?true"
         },
@@ -1521,13 +1529,13 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "id",
-          "type": "Vector<InputMessage>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Messages"
     },
     {
-      "id": "-1332171034",
+      "id": "-1594999949",
       "method": "messages.getDialogs",
       "params": [
         {
@@ -1537,6 +1545,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "exclude_pinned",
           "type": "flags.0?true"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.1?int"
         },
         {
           "name": "offset_date",
@@ -1715,7 +1727,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "messages.AffectedMessages"
@@ -1792,7 +1804,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.3?Vector<MessageEntity>"
+          "type": "flags.3?Vector"
         }
       ],
       "type": "Updates"
@@ -1843,7 +1855,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.3?Vector<MessageEntity>"
+          "type": "flags.3?Vector"
         }
       ],
       "type": "Updates"
@@ -1878,11 +1890,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         },
         {
           "name": "random_id",
-          "type": "Vector<long>"
+          "type": "Vector"
         },
         {
           "name": "to_peer",
@@ -1934,7 +1946,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         },
         {
           "name": "reason",
@@ -1949,7 +1961,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Chats"
@@ -2035,7 +2047,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "users",
-          "type": "Vector<InputUser>"
+          "type": "Vector"
         },
         {
           "name": "title",
@@ -2227,7 +2239,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "messages.AffectedMessages"
@@ -2272,7 +2284,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.3?Vector<MessageEntity>"
+          "type": "flags.3?Vector"
         }
       ],
       "type": "MessageMedia"
@@ -2380,7 +2392,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         },
         {
           "name": "increment",
@@ -2420,7 +2432,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "-1640190800",
+      "id": "259638801",
       "method": "messages.searchGlobal",
       "params": [
         {
@@ -2428,7 +2440,7 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         },
         {
-          "name": "offset_date",
+          "name": "offset_rate",
           "type": "int"
         },
         {
@@ -2460,7 +2472,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "order",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -2578,7 +2590,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "results",
-          "type": "Vector<InputBotInlineResult>"
+          "type": "Vector"
         },
         {
           "name": "cache_time",
@@ -2691,7 +2703,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.3?Vector<MessageEntity>"
+          "type": "flags.3?Vector"
         }
       ],
       "type": "Updates"
@@ -2726,7 +2738,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.3?Vector<MessageEntity>"
+          "type": "flags.3?Vector"
         }
       ],
       "type": "Bool"
@@ -2795,7 +2807,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "peers",
-          "type": "Vector<InputDialogPeer>"
+          "type": "Vector"
         }
       ],
       "type": "messages.PeerDialogs"
@@ -2826,7 +2838,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.3?Vector<MessageEntity>"
+          "type": "flags.3?Vector"
         }
       ],
       "type": "Bool"
@@ -2854,7 +2866,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "id",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -3086,7 +3098,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "except_ids",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Chats"
@@ -3126,7 +3138,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "1532089919",
+      "id": "991616823",
       "method": "messages.reorderPinnedDialogs",
       "params": [
         {
@@ -3138,16 +3150,25 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "folder_id",
+          "type": "int"
+        },
+        {
           "name": "order",
-          "type": "Vector<InputDialogPeer>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
     },
     {
-      "id": "-497756594",
+      "id": "-692498958",
       "method": "messages.getPinnedDialogs",
-      "params": [],
+      "params": [
+        {
+          "name": "folder_id",
+          "type": "int"
+        }
+      ],
       "type": "messages.PeerDialogs"
     },
     {
@@ -3168,7 +3189,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "shipping_options",
-          "type": "flags.1?Vector<ShippingOption>"
+          "type": "flags.1?Vector"
         }
       ],
       "type": "Bool"
@@ -3347,7 +3368,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "multi_media",
-          "type": "Vector<InputSingleMedia>"
+          "type": "Vector"
         }
       ],
       "type": "Updates"
@@ -3464,7 +3485,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "options",
-          "type": "Vector<bytes>"
+          "type": "Vector"
         }
       ],
       "type": "Updates"
@@ -3580,7 +3601,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "lang_codes",
-          "type": "Vector<string>"
+          "type": "Vector"
         }
       ],
       "type": "Vector<EmojiLanguage>"
@@ -3595,6 +3616,67 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "EmojiURL"
+    },
+    {
+      "id": "1932455680",
+      "method": "messages.getSearchCounters",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "filters",
+          "type": "Vector"
+        }
+      ],
+      "type": "Vector<messages.SearchCounter>"
+    },
+    {
+      "id": "-482388461",
+      "method": "messages.requestUrlAuth",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "button_id",
+          "type": "int"
+        }
+      ],
+      "type": "UrlAuthResult"
+    },
+    {
+      "id": "-148247912",
+      "method": "messages.acceptUrlAuth",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "write_allowed",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "button_id",
+          "type": "int"
+        }
+      ],
+      "type": "UrlAuthResult"
     },
     {
       "id": "-304838614",
@@ -3688,7 +3770,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "id",
-          "type": "Vector<InputPhoto>"
+          "type": "Vector"
         }
       ],
       "type": "Vector<long>"
@@ -3984,7 +4066,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "events",
-          "type": "Vector<InputAppEvent>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -4031,7 +4113,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "Vector<MessageEntity>"
+          "type": "Vector"
         }
       ],
       "type": "help.UserInfo"
@@ -4061,7 +4143,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "messages.AffectedMessages"
@@ -4095,7 +4177,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -4110,7 +4192,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
-          "type": "Vector<InputMessage>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Messages"
@@ -4163,7 +4245,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "id",
-          "type": "Vector<InputChannel>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Chats"
@@ -4317,7 +4399,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<InputUser>"
+          "type": "Vector"
         }
       ],
       "type": "Updates"
@@ -4414,7 +4496,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "admins",
-          "type": "flags.1?Vector<InputUser>"
+          "type": "flags.1?Vector"
         },
         {
           "name": "max_id",
@@ -4456,7 +4538,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "id",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "Bool"
@@ -4501,6 +4583,33 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.Chats"
+    },
+    {
+      "id": "-170208392",
+      "method": "channels.getGroupsForDiscussion",
+      "params": [],
+      "type": "messages.Chats"
+    },
+    {
+      "id": "445117188",
+      "method": "channels.getBroadcastsForDiscussion",
+      "params": [],
+      "type": "messages.Chats"
+    },
+    {
+      "id": "1079520178",
+      "method": "channels.setDiscussionGroup",
+      "params": [
+        {
+          "name": "broadcast",
+          "type": "InputChannel"
+        },
+        {
+          "name": "group",
+          "type": "InputChannel"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": "-1440257555",
@@ -4655,7 +4764,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "stickers",
-          "type": "Vector<InputStickerSetItem>"
+          "type": "Vector"
         }
       ],
       "type": "messages.StickerSet"
@@ -4893,7 +5002,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "keys",
-          "type": "Vector<string>"
+          "type": "Vector"
         }
       ],
       "type": "Vector<LangPackString>"
@@ -4942,6 +5051,28 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "LangPackLanguage"
+    },
+    {
+      "id": "1749536939",
+      "method": "folders.editPeerFolders",
+      "params": [
+        {
+          "name": "folder_peers",
+          "type": "Vector"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": "472471681",
+      "method": "folders.deleteFolder",
+      "params": [
+        {
+          "name": "folder_id",
+          "type": "int"
+        }
+      ],
+      "type": "Updates"
     }
   ],
   "constructors": [
@@ -4963,7 +5094,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "server_public_key_fingerprints",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "ResPQ"
@@ -5281,7 +5412,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "msg_ids",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "MsgsAck"
@@ -5334,7 +5465,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "msg_ids",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "MsgsStateReq"
@@ -5360,7 +5491,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "msg_ids",
-          "type": "Vector<long>"
+          "type": "Vector"
         },
         {
           "name": "info",
@@ -5417,7 +5548,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "msg_ids",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "MsgResendReq"
@@ -5501,7 +5632,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "salts",
-          "type": "vector<future_salt>"
+          "type": "vector"
         }
       ],
       "type": "FutureSalts"
@@ -5629,7 +5760,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "ips",
-          "type": "vector<IpPort>"
+          "type": "vector"
         }
       ],
       "type": "AccessPointRule"
@@ -5648,7 +5779,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "rules",
-          "type": "vector<AccessPointRule>"
+          "type": "vector"
         }
       ],
       "type": "help.ConfigSimple"
@@ -5757,6 +5888,44 @@ var SCHEMA_GLOBAL = {
       "type": "InputPeer"
     },
     {
+      "id": "398123750",
+      "predicate": "inputPeerUserFromMessage",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "user_id",
+          "type": "int"
+        }
+      ],
+      "type": "InputPeer"
+    },
+    {
+      "id": "-1667893317",
+      "predicate": "inputPeerChannelFromMessage",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "channel_id",
+          "type": "int"
+        }
+      ],
+      "type": "InputPeer"
+    },
+    {
       "id": "-1182234929",
       "predicate": "inputUserEmpty",
       "params": [],
@@ -5779,6 +5948,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "access_hash",
           "type": "long"
+        }
+      ],
+      "type": "InputUser"
+    },
+    {
+      "id": "756118935",
+      "predicate": "inputUserFromMessage",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "user_id",
+          "type": "int"
         }
       ],
       "type": "InputUser"
@@ -5868,7 +6056,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "stickers",
-          "type": "flags.0?Vector<InputDocument>"
+          "type": "flags.0?Vector"
         },
         {
           "name": "ttl_seconds",
@@ -5956,11 +6144,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "attributes",
-          "type": "Vector<DocumentAttribute>"
+          "type": "Vector"
         },
         {
           "name": "stickers",
-          "type": "flags.0?Vector<InputDocument>"
+          "type": "flags.0?Vector"
         },
         {
           "name": "ttl_seconds",
@@ -6546,6 +6734,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.23?true"
         },
         {
+          "name": "scam",
+          "type": "flags.24?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -6801,6 +6993,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.12?true"
         },
         {
+          "name": "scam",
+          "type": "flags.19?true"
+        },
+        {
+          "name": "has_link",
+          "type": "flags.20?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -6887,7 +7087,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": "581055962",
+      "id": "461151667",
       "predicate": "chatFull",
       "params": [
         {
@@ -6924,17 +7124,21 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "bot_info",
-          "type": "flags.3?Vector<BotInfo>"
+          "type": "flags.3?Vector"
         },
         {
           "name": "pinned_msg_id",
           "type": "flags.6?int"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.11?int"
         }
       ],
       "type": "ChatFull"
     },
     {
-      "id": "478652186",
+      "id": "-1736252138",
       "predicate": "channelFull",
       "params": [
         {
@@ -7015,7 +7219,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "bot_info",
-          "type": "Vector<BotInfo>"
+          "type": "Vector"
         },
         {
           "name": "migrated_from_chat_id",
@@ -7036,6 +7240,18 @@ var SCHEMA_GLOBAL = {
         {
           "name": "available_min_id",
           "type": "flags.9?int"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.11?int"
+        },
+        {
+          "name": "linked_chat_id",
+          "type": "flags.13?int"
+        },
+        {
+          "name": "pts",
+          "type": "int"
         }
       ],
       "type": "ChatFull"
@@ -7118,7 +7334,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "participants",
-          "type": "Vector<ChatParticipant>"
+          "type": "Vector"
         },
         {
           "name": "version",
@@ -7196,6 +7412,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.18?true"
         },
         {
+          "name": "legacy",
+          "type": "flags.19?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -7237,7 +7457,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.7?Vector<MessageEntity>"
+          "type": "flags.7?Vector"
         },
         {
           "name": "views",
@@ -7285,6 +7505,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "post",
           "type": "flags.14?true"
+        },
+        {
+          "name": "legacy",
+          "type": "flags.19?true"
         },
         {
           "name": "id",
@@ -7547,7 +7771,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "MessageAction"
@@ -7586,7 +7810,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "users",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "MessageAction"
@@ -7788,7 +8012,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "values",
-          "type": "Vector<SecureValue>"
+          "type": "Vector"
         },
         {
           "name": "credentials",
@@ -7803,7 +8027,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "types",
-          "type": "Vector<SecureValueType>"
+          "type": "Vector"
         }
       ],
       "type": "MessageAction"
@@ -7815,7 +8039,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
-      "id": "-455150117",
+      "id": "739712882",
       "predicate": "dialog",
       "params": [
         {
@@ -7865,6 +8089,53 @@ var SCHEMA_GLOBAL = {
         {
           "name": "draft",
           "type": "flags.1?DraftMessage"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.4?int"
+        }
+      ],
+      "type": "Dialog"
+    },
+    {
+      "id": "1908216652",
+      "predicate": "dialogFolder",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "pinned",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "folder",
+          "type": "Folder"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "top_message",
+          "type": "int"
+        },
+        {
+          "name": "unread_muted_peers_count",
+          "type": "int"
+        },
+        {
+          "name": "unread_unmuted_peers_count",
+          "type": "int"
+        },
+        {
+          "name": "unread_muted_messages_count",
+          "type": "int"
+        },
+        {
+          "name": "unread_unmuted_messages_count",
+          "type": "int"
         }
       ],
       "type": "Dialog"
@@ -7910,7 +8181,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "sizes",
-          "type": "Vector<PhotoSize>"
+          "type": "Vector"
         },
         {
           "name": "dc_id",
@@ -8291,7 +8562,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReportReason"
     },
     {
-      "id": "-1901811583",
+      "id": "1951750604",
       "predicate": "userFull",
       "params": [
         {
@@ -8345,6 +8616,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "common_chats_count",
           "type": "int"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.11?int"
         }
       ],
       "type": "UserFull"
@@ -8440,7 +8715,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "contacts",
-          "type": "Vector<Contact>"
+          "type": "Vector"
         },
         {
           "name": "saved_count",
@@ -8448,7 +8723,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "contacts.Contacts"
@@ -8459,19 +8734,19 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "imported",
-          "type": "Vector<ImportedContact>"
+          "type": "Vector"
         },
         {
           "name": "popular_invites",
-          "type": "Vector<PopularContact>"
+          "type": "Vector"
         },
         {
           "name": "retry_contacts",
-          "type": "Vector<long>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "contacts.ImportedContacts"
@@ -8482,11 +8757,11 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "blocked",
-          "type": "Vector<ContactBlocked>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "contacts.Blocked"
@@ -8501,11 +8776,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "blocked",
-          "type": "Vector<ContactBlocked>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "contacts.Blocked"
@@ -8516,19 +8791,19 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "dialogs",
-          "type": "Vector<Dialog>"
+          "type": "Vector"
         },
         {
           "name": "messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Dialogs"
@@ -8543,19 +8818,19 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "dialogs",
-          "type": "Vector<Dialog>"
+          "type": "Vector"
         },
         {
           "name": "messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Dialogs"
@@ -8577,21 +8852,21 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Messages"
     },
     {
-      "id": "-1497072982",
+      "id": "-923939298",
       "predicate": "messages.messagesSlice",
       "params": [
         {
@@ -8607,16 +8882,20 @@ var SCHEMA_GLOBAL = {
           "type": "int"
         },
         {
+          "name": "next_rate",
+          "type": "flags.0?int"
+        },
+        {
           "name": "messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Messages"
@@ -8643,15 +8922,15 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Messages"
@@ -8673,7 +8952,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Chats"
@@ -8688,7 +8967,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Chats"
@@ -8703,11 +8982,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "messages.ChatFull"
@@ -8876,7 +9155,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "messages",
-          "type": "Vector<int>"
+          "type": "Vector"
         },
         {
           "name": "pts",
@@ -9126,7 +9405,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "dc_options",
-          "type": "Vector<DcOption>"
+          "type": "Vector"
         }
       ],
       "type": "Update"
@@ -9191,7 +9470,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "Vector<MessageEntity>"
+          "type": "Vector"
         }
       ],
       "type": "Update"
@@ -9206,7 +9485,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "rules",
-          "type": "Vector<PrivacyRule>"
+          "type": "Vector"
         }
       ],
       "type": "Update"
@@ -9227,15 +9506,27 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": "-1721631396",
+      "id": "-1667805217",
       "predicate": "updateReadHistoryInbox",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.0?int"
+        },
         {
           "name": "peer",
           "type": "Peer"
         },
         {
           "name": "max_id",
+          "type": "int"
+        },
+        {
+          "name": "still_unread_count",
           "type": "int"
         },
         {
@@ -9297,7 +9588,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "messages",
-          "type": "Vector<int>"
+          "type": "Vector"
         },
         {
           "name": "pts",
@@ -9360,15 +9651,31 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": "1108669311",
+      "id": "856380452",
       "predicate": "updateReadChannelInbox",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.0?int"
+        },
         {
           "name": "channel_id",
           "type": "int"
         },
         {
           "name": "max_id",
+          "type": "int"
+        },
+        {
+          "name": "still_unread_count",
+          "type": "int"
+        },
+        {
+          "name": "pts",
           "type": "int"
         }
       ],
@@ -9384,7 +9691,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "messages",
-          "type": "Vector<int>"
+          "type": "Vector"
         },
         {
           "name": "pts",
@@ -9464,7 +9771,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "order",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "Update"
@@ -9748,7 +10055,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": "433225532",
+      "id": "1852826908",
       "predicate": "updateDialogPinned",
       "params": [
         {
@@ -9760,6 +10067,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "folder_id",
+          "type": "flags.1?int"
+        },
+        {
           "name": "peer",
           "type": "DialogPeer"
         }
@@ -9767,7 +10078,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": "-364071333",
+      "id": "-99664734",
       "predicate": "updatePinnedDialogs",
       "params": [
         {
@@ -9775,8 +10086,12 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "folder_id",
+          "type": "flags.1?int"
+        },
+        {
           "name": "order",
-          "type": "flags.0?Vector<DialogPeer>"
+          "type": "flags.0?Vector"
         }
       ],
       "type": "Update"
@@ -9922,7 +10237,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "messages",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "Update"
@@ -10044,6 +10359,25 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": "422972864",
+      "predicate": "updateFolderPeers",
+      "params": [
+        {
+          "name": "folder_peers",
+          "type": "Vector"
+        },
+        {
+          "name": "pts",
+          "type": "int"
+        },
+        {
+          "name": "pts_count",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": "-1519637954",
       "predicate": "updates.state",
       "params": [
@@ -10091,23 +10425,23 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "new_messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "new_encrypted_messages",
-          "type": "Vector<EncryptedMessage>"
+          "type": "Vector"
         },
         {
           "name": "other_updates",
-          "type": "Vector<Update>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         },
         {
           "name": "state",
@@ -10122,23 +10456,23 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "new_messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "new_encrypted_messages",
-          "type": "Vector<EncryptedMessage>"
+          "type": "Vector"
         },
         {
           "name": "other_updates",
-          "type": "Vector<Update>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         },
         {
           "name": "intermediate_state",
@@ -10226,7 +10560,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.7?Vector<MessageEntity>"
+          "type": "flags.7?Vector"
         }
       ],
       "type": "Updates"
@@ -10297,7 +10631,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.7?Vector<MessageEntity>"
+          "type": "flags.7?Vector"
         }
       ],
       "type": "Updates"
@@ -10323,15 +10657,15 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "updates",
-          "type": "Vector<Update>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "date",
@@ -10354,15 +10688,15 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "updates",
-          "type": "Vector<Update>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "date",
@@ -10409,7 +10743,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.7?Vector<MessageEntity>"
+          "type": "flags.7?Vector"
         }
       ],
       "type": "Updates"
@@ -10420,11 +10754,11 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "photos",
-          "type": "Vector<Photo>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "photos.Photos"
@@ -10439,11 +10773,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "photos",
-          "type": "Vector<Photo>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "photos.Photos"
@@ -10458,7 +10792,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "photos.Photo"
@@ -10504,7 +10838,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "file_hashes",
-          "type": "Vector<FileHash>"
+          "type": "Vector"
         }
       ],
       "type": "upload.File"
@@ -10557,7 +10891,7 @@ var SCHEMA_GLOBAL = {
       "type": "DcOption"
     },
     {
-      "id": "-422959626",
+      "id": "856375399",
       "predicate": "config",
       "params": [
         {
@@ -10610,7 +10944,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "dc_options",
-          "type": "Vector<DcOption>"
+          "type": "Vector"
         },
         {
           "name": "dc_txt_domain_name",
@@ -10698,6 +11032,10 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "pinned_dialogs_count_max",
+          "type": "int"
+        },
+        {
+          "name": "pinned_infolder_count_max",
           "type": "int"
         },
         {
@@ -10812,7 +11150,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "Vector<MessageEntity>"
+          "type": "Vector"
         },
         {
           "name": "document",
@@ -11248,7 +11586,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "thumbs",
-          "type": "flags.0?Vector<PhotoSize>"
+          "type": "flags.0?Vector"
         },
         {
           "name": "dc_id",
@@ -11256,7 +11594,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "attributes",
-          "type": "Vector<DocumentAttribute>"
+          "type": "Vector"
         }
       ],
       "type": "Document"
@@ -11414,19 +11752,19 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "my_results",
-          "type": "Vector<Peer>"
+          "type": "Vector"
         },
         {
           "name": "results",
-          "type": "Vector<Peer>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "contacts.Found"
@@ -11468,6 +11806,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputPrivacyKey"
     },
     {
+      "id": "55761658",
+      "predicate": "inputPrivacyKeyPhoneNumber",
+      "params": [],
+      "type": "InputPrivacyKey"
+    },
+    {
       "id": "-1137792208",
       "predicate": "privacyKeyStatusTimestamp",
       "params": [],
@@ -11504,6 +11848,12 @@ var SCHEMA_GLOBAL = {
       "type": "PrivacyKey"
     },
     {
+      "id": "-778378131",
+      "predicate": "privacyKeyPhoneNumber",
+      "params": [],
+      "type": "PrivacyKey"
+    },
+    {
       "id": "218751099",
       "predicate": "inputPrivacyValueAllowContacts",
       "params": [],
@@ -11521,7 +11871,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "users",
-          "type": "Vector<InputUser>"
+          "type": "Vector"
         }
       ],
       "type": "InputPrivacyRule"
@@ -11544,7 +11894,29 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "users",
-          "type": "Vector<InputUser>"
+          "type": "Vector"
+        }
+      ],
+      "type": "InputPrivacyRule"
+    },
+    {
+      "id": "1283572154",
+      "predicate": "inputPrivacyValueAllowChatParticipants",
+      "params": [
+        {
+          "name": "chats",
+          "type": "Vector"
+        }
+      ],
+      "type": "InputPrivacyRule"
+    },
+    {
+      "id": "-668769361",
+      "predicate": "inputPrivacyValueDisallowChatParticipants",
+      "params": [
+        {
+          "name": "chats",
+          "type": "Vector"
         }
       ],
       "type": "InputPrivacyRule"
@@ -11567,7 +11939,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "users",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "PrivacyRule"
@@ -11590,22 +11962,48 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "users",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "PrivacyRule"
     },
     {
-      "id": "1430961007",
+      "id": "415136107",
+      "predicate": "privacyValueAllowChatParticipants",
+      "params": [
+        {
+          "name": "chats",
+          "type": "Vector"
+        }
+      ],
+      "type": "PrivacyRule"
+    },
+    {
+      "id": "-1397881200",
+      "predicate": "privacyValueDisallowChatParticipants",
+      "params": [
+        {
+          "name": "chats",
+          "type": "Vector"
+        }
+      ],
+      "type": "PrivacyRule"
+    },
+    {
+      "id": "1352683077",
       "predicate": "account.privacyRules",
       "params": [
         {
           "name": "rules",
-          "type": "Vector<PrivacyRule>"
+          "type": "Vector"
+        },
+        {
+          "name": "chats",
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "account.PrivacyRules"
@@ -11764,7 +12162,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "stickers",
-          "type": "Vector<Document>"
+          "type": "Vector"
         }
       ],
       "type": "messages.Stickers"
@@ -11779,7 +12177,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "documents",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "StickerPack"
@@ -11800,7 +12198,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "sets",
-          "type": "Vector<StickerSet>"
+          "type": "Vector"
         }
       ],
       "type": "messages.AllStickers"
@@ -11829,12 +12227,6 @@ var SCHEMA_GLOBAL = {
     {
       "id": "-17968211",
       "predicate": "contactLinkNone",
-      "params": [],
-      "type": "ContactLink"
-    },
-    {
-      "id": "646922073",
-      "predicate": "contactLinkHasPhone",
       "params": [],
       "type": "ContactLink"
     },
@@ -12032,7 +12424,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "authorizations",
-          "type": "Vector<Authorization>"
+          "type": "Vector"
         }
       ],
       "type": "account.Authorizations"
@@ -12234,7 +12626,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "participants",
-          "type": "flags.4?Vector<User>"
+          "type": "flags.4?Vector"
         }
       ],
       "type": "ChatInvite"
@@ -12340,11 +12732,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "packs",
-          "type": "Vector<StickerPack>"
+          "type": "Vector"
         },
         {
           "name": "documents",
-          "type": "Vector<Document>"
+          "type": "Vector"
         }
       ],
       "type": "messages.StickerSet"
@@ -12378,7 +12770,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "commands",
-          "type": "Vector<BotCommand>"
+          "type": "Vector"
         }
       ],
       "type": "BotInfo"
@@ -12492,12 +12884,70 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
+      "id": "280464681",
+      "predicate": "keyboardButtonUrlAuth",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "fwd_text",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "button_id",
+          "type": "int"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
+      "id": "-802258988",
+      "predicate": "inputKeyboardButtonUrlAuth",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "request_write_access",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "fwd_text",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "bot",
+          "type": "InputUser"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
       "id": "2002815875",
       "predicate": "keyboardButtonRow",
       "params": [
         {
           "name": "buttons",
-          "type": "Vector<KeyboardButton>"
+          "type": "Vector"
         }
       ],
       "type": "KeyboardButtonRow"
@@ -12558,7 +13008,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "rows",
-          "type": "Vector<KeyboardButtonRow>"
+          "type": "Vector"
         }
       ],
       "type": "ReplyMarkup"
@@ -12569,7 +13019,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "rows",
-          "type": "Vector<KeyboardButtonRow>"
+          "type": "Vector"
         }
       ],
       "type": "ReplyMarkup"
@@ -12837,6 +13287,25 @@ var SCHEMA_GLOBAL = {
       "type": "InputChannel"
     },
     {
+      "id": "707290417",
+      "predicate": "inputChannelFromMessage",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "channel_id",
+          "type": "int"
+        }
+      ],
+      "type": "InputChannel"
+    },
+    {
       "id": "2131196633",
       "predicate": "contacts.resolvedPeer",
       "params": [
@@ -12846,11 +13315,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "contacts.ResolvedPeer"
@@ -12894,7 +13363,7 @@ var SCHEMA_GLOBAL = {
       "type": "updates.ChannelDifference"
     },
     {
-      "id": "1788705589",
+      "id": "-1531132162",
       "predicate": "updates.channelDifferenceTooLong",
       "params": [
         {
@@ -12906,44 +13375,24 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
-          "name": "pts",
-          "type": "int"
-        },
-        {
           "name": "timeout",
           "type": "flags.1?int"
         },
         {
-          "name": "top_message",
-          "type": "int"
-        },
-        {
-          "name": "read_inbox_max_id",
-          "type": "int"
-        },
-        {
-          "name": "read_outbox_max_id",
-          "type": "int"
-        },
-        {
-          "name": "unread_count",
-          "type": "int"
-        },
-        {
-          "name": "unread_mentions_count",
-          "type": "int"
+          "name": "dialog",
+          "type": "Dialog"
         },
         {
           "name": "messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "updates.ChannelDifference"
@@ -12970,19 +13419,19 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "new_messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "other_updates",
-          "type": "Vector<Update>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "updates.ChannelDifference"
@@ -13007,7 +13456,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "ranges",
-          "type": "Vector<MessageRange>"
+          "type": "Vector"
         }
       ],
       "type": "ChannelMessagesFilter"
@@ -13199,11 +13648,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "participants",
-          "type": "Vector<ChannelParticipant>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "channels.ChannelParticipants"
@@ -13224,7 +13673,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "channels.ChannelParticipant"
@@ -13251,7 +13700,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "Vector<MessageEntity>"
+          "type": "Vector"
         },
         {
           "name": "min_age_confirm",
@@ -13320,7 +13769,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "results",
-          "type": "Vector<FoundGif>"
+          "type": "Vector"
         }
       ],
       "type": "messages.FoundGifs"
@@ -13341,7 +13790,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "gifs",
-          "type": "Vector<Document>"
+          "type": "Vector"
         }
       ],
       "type": "messages.SavedGifs"
@@ -13360,7 +13809,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.1?Vector<MessageEntity>"
+          "type": "flags.1?Vector"
         },
         {
           "name": "reply_markup",
@@ -13387,7 +13836,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.1?Vector<MessageEntity>"
+          "type": "flags.1?Vector"
         },
         {
           "name": "reply_markup",
@@ -13638,7 +14087,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.1?Vector<MessageEntity>"
+          "type": "flags.1?Vector"
         },
         {
           "name": "reply_markup",
@@ -13665,7 +14114,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.1?Vector<MessageEntity>"
+          "type": "flags.1?Vector"
         },
         {
           "name": "reply_markup",
@@ -13875,7 +14324,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "results",
-          "type": "Vector<BotInlineResult>"
+          "type": "Vector"
         },
         {
           "name": "cache_time",
@@ -13883,7 +14332,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "messages.BotResults"
@@ -14098,19 +14547,19 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "dialogs",
-          "type": "Vector<Dialog>"
+          "type": "Vector"
         },
         {
           "name": "messages",
-          "type": "Vector<Message>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         },
         {
           "name": "state",
@@ -14171,6 +14620,18 @@ var SCHEMA_GLOBAL = {
       "type": "TopPeerCategory"
     },
     {
+      "id": "-1472172887",
+      "predicate": "topPeerCategoryForwardUsers",
+      "params": [],
+      "type": "TopPeerCategory"
+    },
+    {
+      "id": "-68239120",
+      "predicate": "topPeerCategoryForwardChats",
+      "params": [],
+      "type": "TopPeerCategory"
+    },
+    {
       "id": "-75283823",
       "predicate": "topPeerCategoryPeers",
       "params": [
@@ -14184,7 +14645,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "peers",
-          "type": "Vector<TopPeer>"
+          "type": "Vector"
         }
       ],
       "type": "TopPeerCategoryPeers"
@@ -14201,15 +14662,15 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "categories",
-          "type": "Vector<TopPeerCategoryPeers>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "contacts.TopPeers"
@@ -14257,7 +14718,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.3?Vector<MessageEntity>"
+          "type": "flags.3?Vector"
         },
         {
           "name": "date",
@@ -14282,11 +14743,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "sets",
-          "type": "Vector<StickerSetCovered>"
+          "type": "Vector"
         },
         {
           "name": "unread",
-          "type": "Vector<long>"
+          "type": "Vector"
         }
       ],
       "type": "messages.FeaturedStickers"
@@ -14307,15 +14768,15 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "packs",
-          "type": "Vector<StickerPack>"
+          "type": "Vector"
         },
         {
           "name": "stickers",
-          "type": "Vector<Document>"
+          "type": "Vector"
         },
         {
           "name": "dates",
-          "type": "Vector<int>"
+          "type": "Vector"
         }
       ],
       "type": "messages.RecentStickers"
@@ -14330,7 +14791,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "sets",
-          "type": "Vector<StickerSetCovered>"
+          "type": "Vector"
         }
       ],
       "type": "messages.ArchivedStickers"
@@ -14347,7 +14808,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "sets",
-          "type": "Vector<StickerSetCovered>"
+          "type": "Vector"
         }
       ],
       "type": "messages.StickerSetInstallResult"
@@ -14377,7 +14838,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "covers",
-          "type": "Vector<Document>"
+          "type": "Vector"
         }
       ],
       "type": "StickerSetCovered"
@@ -14521,11 +14982,11 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "scores",
-          "type": "Vector<HighScore>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "messages.HighScores"
@@ -14642,7 +15103,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "texts",
-          "type": "Vector<RichText>"
+          "type": "Vector"
         }
       ],
       "type": "RichText"
@@ -14854,7 +15315,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "items",
-          "type": "Vector<PageListItem>"
+          "type": "Vector"
         }
       ],
       "type": "PageBlock"
@@ -15023,7 +15484,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "blocks",
-          "type": "Vector<PageBlock>"
+          "type": "Vector"
         },
         {
           "name": "caption",
@@ -15038,7 +15499,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "items",
-          "type": "Vector<PageBlock>"
+          "type": "Vector"
         },
         {
           "name": "caption",
@@ -15053,7 +15514,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "items",
-          "type": "Vector<PageBlock>"
+          "type": "Vector"
         },
         {
           "name": "caption",
@@ -15121,7 +15582,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "rows",
-          "type": "Vector<PageTableRow>"
+          "type": "Vector"
         }
       ],
       "type": "PageBlock"
@@ -15132,7 +15593,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "items",
-          "type": "Vector<PageListOrderedItem>"
+          "type": "Vector"
         }
       ],
       "type": "PageBlock"
@@ -15151,7 +15612,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "blocks",
-          "type": "Vector<PageBlock>"
+          "type": "Vector"
         },
         {
           "name": "title",
@@ -15170,7 +15631,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "articles",
-          "type": "Vector<PageRelatedArticle>"
+          "type": "Vector"
         }
       ],
       "type": "PageBlock"
@@ -15298,7 +15759,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "prices",
-          "type": "Vector<LabeledPrice>"
+          "type": "Vector"
         }
       ],
       "type": "Invoice"
@@ -15413,7 +15874,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "attributes",
-          "type": "Vector<DocumentAttribute>"
+          "type": "Vector"
         }
       ],
       "type": "WebDocument"
@@ -15436,7 +15897,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "attributes",
-          "type": "Vector<DocumentAttribute>"
+          "type": "Vector"
         }
       ],
       "type": "WebDocument"
@@ -15459,7 +15920,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "attributes",
-          "type": "Vector<DocumentAttribute>"
+          "type": "Vector"
         }
       ],
       "type": "InputWebDocument"
@@ -15587,7 +16048,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "payments.PaymentForm"
@@ -15606,7 +16067,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "shipping_options",
-          "type": "flags.1?Vector<ShippingOption>"
+          "type": "flags.1?Vector"
         }
       ],
       "type": "payments.ValidatedRequestedInfo"
@@ -15679,7 +16140,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "payments.PaymentReceipt"
@@ -15792,7 +16253,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "prices",
-          "type": "Vector<LabeledPrice>"
+          "type": "Vector"
         }
       ],
       "type": "ShippingOption"
@@ -16021,7 +16482,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "connections",
-          "type": "Vector<PhoneConnection>"
+          "type": "Vector"
         },
         {
           "name": "start_date",
@@ -16129,7 +16590,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "phone.PhoneCall"
@@ -16177,7 +16638,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "public_keys",
-          "type": "Vector<CdnPublicKey>"
+          "type": "Vector"
         }
       ],
       "type": "CdnConfig"
@@ -16265,7 +16726,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "strings",
-          "type": "Vector<LangPackString>"
+          "type": "Vector"
         }
       ],
       "type": "LangPackDifference"
@@ -16550,6 +17011,21 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelAdminLogEventAction"
     },
     {
+      "id": "-1569748965",
+      "predicate": "channelAdminLogEventActionChangeLinkedChat",
+      "params": [
+        {
+          "name": "prev_value",
+          "type": "int"
+        },
+        {
+          "name": "new_value",
+          "type": "int"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
       "id": "995769920",
       "predicate": "channelAdminLogEvent",
       "params": [
@@ -16578,15 +17054,15 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "events",
-          "type": "Vector<ChannelAdminLogEvent>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "channels.AdminLogResults"
@@ -16689,11 +17165,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "packs",
-          "type": "Vector<StickerPack>"
+          "type": "Vector"
         },
         {
           "name": "stickers",
-          "type": "Vector<Document>"
+          "type": "Vector"
         }
       ],
       "type": "messages.FavedStickers"
@@ -16775,15 +17251,15 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "urls",
-          "type": "Vector<RecentMeUrl>"
+          "type": "Vector"
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "help.RecentMeUrls"
@@ -16810,7 +17286,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.0?Vector<MessageEntity>"
+          "type": "flags.0?Vector"
         }
       ],
       "type": "InputSingleMedia"
@@ -16864,11 +17340,11 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "authorizations",
-          "type": "Vector<WebAuthorization>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "account.WebAuthorizations"
@@ -16913,12 +17389,34 @@ var SCHEMA_GLOBAL = {
       "type": "InputDialogPeer"
     },
     {
+      "id": "1684014375",
+      "predicate": "inputDialogPeerFolder",
+      "params": [
+        {
+          "name": "folder_id",
+          "type": "int"
+        }
+      ],
+      "type": "InputDialogPeer"
+    },
+    {
       "id": "-445792507",
       "predicate": "dialogPeer",
       "params": [
         {
           "name": "peer",
           "type": "Peer"
+        }
+      ],
+      "type": "DialogPeer"
+    },
+    {
+      "id": "1363483106",
+      "predicate": "dialogPeerFolder",
+      "params": [
+        {
+          "name": "folder_id",
+          "type": "int"
         }
       ],
       "type": "DialogPeer"
@@ -16939,7 +17437,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "sets",
-          "type": "Vector<StickerSetCovered>"
+          "type": "Vector"
         }
       ],
       "type": "messages.FoundStickerSets"
@@ -17003,11 +17501,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "chats",
-          "type": "Vector<Chat>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         }
       ],
       "type": "help.ProxyData"
@@ -17270,11 +17768,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "translation",
-          "type": "flags.6?Vector<SecureFile>"
+          "type": "flags.6?Vector"
         },
         {
           "name": "files",
-          "type": "flags.4?Vector<SecureFile>"
+          "type": "flags.4?Vector"
         },
         {
           "name": "plain_data",
@@ -17317,11 +17815,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "translation",
-          "type": "flags.6?Vector<InputSecureFile>"
+          "type": "flags.6?Vector"
         },
         {
           "name": "files",
-          "type": "flags.4?Vector<InputSecureFile>"
+          "type": "flags.4?Vector"
         },
         {
           "name": "plain_data",
@@ -17454,7 +17952,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "file_hash",
-          "type": "Vector<bytes>"
+          "type": "Vector"
         },
         {
           "name": "text",
@@ -17511,7 +18009,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "file_hash",
-          "type": "Vector<bytes>"
+          "type": "Vector"
         },
         {
           "name": "text",
@@ -17549,19 +18047,19 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "required_types",
-          "type": "Vector<SecureRequiredType>"
+          "type": "Vector"
         },
         {
           "name": "values",
-          "type": "Vector<SecureValue>"
+          "type": "Vector"
         },
         {
           "name": "errors",
-          "type": "Vector<SecureValueError>"
+          "type": "Vector"
         },
         {
           "name": "users",
-          "type": "Vector<User>"
+          "type": "Vector"
         },
         {
           "name": "privacy_policy_url",
@@ -17609,7 +18107,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "flags.1?Vector<MessageEntity>"
+          "type": "flags.1?Vector"
         }
       ],
       "type": "help.DeepLinkInfo"
@@ -17782,7 +18280,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "types",
-          "type": "Vector<SecureRequiredType>"
+          "type": "Vector"
         }
       ],
       "type": "SecureRequiredType"
@@ -17891,7 +18389,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "value",
-          "type": "Vector<JSONValue>"
+          "type": "Vector"
         }
       ],
       "type": "JSONValue"
@@ -17902,7 +18400,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "value",
-          "type": "Vector<JSONObjectValue>"
+          "type": "Vector"
         }
       ],
       "type": "JSONValue"
@@ -17956,7 +18454,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "cells",
-          "type": "Vector<PageTableCell>"
+          "type": "Vector"
         }
       ],
       "type": "PageTableRow"
@@ -17993,7 +18491,7 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "blocks",
-          "type": "Vector<PageBlock>"
+          "type": "Vector"
         }
       ],
       "type": "PageListItem"
@@ -18023,7 +18521,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "blocks",
-          "type": "Vector<PageBlock>"
+          "type": "Vector"
         }
       ],
       "type": "PageListOrderedItem"
@@ -18093,15 +18591,15 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "blocks",
-          "type": "Vector<PageBlock>"
+          "type": "Vector"
         },
         {
           "name": "photos",
-          "type": "Vector<Photo>"
+          "type": "Vector"
         },
         {
           "name": "documents",
-          "type": "Vector<Document>"
+          "type": "Vector"
         }
       ],
       "type": "Page"
@@ -18133,7 +18631,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "entities",
-          "type": "Vector<MessageEntity>"
+          "type": "Vector"
         },
         {
           "name": "author",
@@ -18183,7 +18681,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "answers",
-          "type": "Vector<PollAnswer>"
+          "type": "Vector"
         }
       ],
       "type": "Poll"
@@ -18225,7 +18723,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "results",
-          "type": "flags.1?Vector<PollAnswerVoters>"
+          "type": "flags.1?Vector"
         },
         {
           "name": "total_voters",
@@ -18404,7 +18902,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "wallpapers",
-          "type": "Vector<WallPaper>"
+          "type": "Vector"
         }
       ],
       "type": "account.WallPapers"
@@ -18531,7 +19029,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "emoticons",
-          "type": "Vector<string>"
+          "type": "Vector"
         }
       ],
       "type": "EmojiKeyword"
@@ -18546,7 +19044,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "emoticons",
-          "type": "Vector<string>"
+          "type": "Vector"
         }
       ],
       "type": "EmojiKeyword"
@@ -18569,7 +19067,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "keywords",
-          "type": "Vector<EmojiKeyword>"
+          "type": "Vector"
         }
       ],
       "type": "EmojiKeywordsDifference"
@@ -18610,6 +19108,134 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "FileLocation"
+    },
+    {
+      "id": "-11252123",
+      "predicate": "folder",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "autofill_new_broadcasts",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "autofill_public_groups",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "autofill_new_correspondents",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.3?ChatPhoto"
+        }
+      ],
+      "type": "Folder"
+    },
+    {
+      "id": "-70073706",
+      "predicate": "inputFolderPeer",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "folder_id",
+          "type": "int"
+        }
+      ],
+      "type": "InputFolderPeer"
+    },
+    {
+      "id": "-373643672",
+      "predicate": "folderPeer",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "folder_id",
+          "type": "int"
+        }
+      ],
+      "type": "FolderPeer"
+    },
+    {
+      "id": "-398136321",
+      "predicate": "messages.searchCounter",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "inexact",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "filter",
+          "type": "MessagesFilter"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "type": "messages.SearchCounter"
+    },
+    {
+      "id": "-1831650802",
+      "predicate": "urlAuthResultRequest",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "request_write_access",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "bot",
+          "type": "User"
+        },
+        {
+          "name": "domain",
+          "type": "string"
+        }
+      ],
+      "type": "UrlAuthResult"
+    },
+    {
+      "id": "-1886646706",
+      "predicate": "urlAuthResultAccepted",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "UrlAuthResult"
+    },
+    {
+      "id": "-1445536993",
+      "predicate": "urlAuthResultDefault",
+      "params": [],
+      "type": "UrlAuthResult"
     }
   ]
 }
