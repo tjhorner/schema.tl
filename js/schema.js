@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 100
+var LAYER_NUMBER = 102
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -1335,18 +1335,7 @@ var SCHEMA_GLOBAL = {
       "type": "contacts.ImportedContacts"
     },
     {
-      "id": "-1902823612",
-      "method": "contacts.deleteContact",
-      "params": [
-        {
-          "name": "id",
-          "type": "InputUser"
-        }
-      ],
-      "type": "contacts.Link"
-    },
-    {
-      "id": "1504393374",
+      "id": "157945344",
       "method": "contacts.deleteContacts",
       "params": [
         {
@@ -1354,7 +1343,7 @@ var SCHEMA_GLOBAL = {
           "type": "Vector<InputUser>"
         }
       ],
-      "type": "Bool"
+      "type": "Updates"
     },
     {
       "id": "269745566",
@@ -1522,6 +1511,59 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": "-386636848",
+      "method": "contacts.addContact",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "add_phone_privacy_exception",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "id",
+          "type": "InputUser"
+        },
+        {
+          "name": "first_name",
+          "type": "string"
+        },
+        {
+          "name": "last_name",
+          "type": "string"
+        },
+        {
+          "name": "phone",
+          "type": "string"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": "-130964977",
+      "method": "contacts.acceptContact",
+      "params": [
+        {
+          "name": "id",
+          "type": "InputUser"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": "171270230",
+      "method": "contacts.getLocated",
+      "params": [
+        {
+          "name": "geo_point",
+          "type": "InputGeoPoint"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": "1673946374",
@@ -1906,17 +1948,6 @@ var SCHEMA_GLOBAL = {
     {
       "id": "-820669733",
       "method": "messages.reportSpam",
-      "params": [
-        {
-          "name": "peer",
-          "type": "InputPeer"
-        }
-      ],
-      "type": "Bool"
-    },
-    {
-      "id": "-1460572005",
-      "method": "messages.hideReportSpam",
       "params": [
         {
           "name": "peer",
@@ -2432,9 +2463,17 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "259638801",
+      "id": "-1083038300",
       "method": "messages.searchGlobal",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.0?int"
+        },
         {
           "name": "q",
           "type": "string"
@@ -3679,6 +3718,17 @@ var SCHEMA_GLOBAL = {
       "type": "UrlAuthResult"
     },
     {
+      "id": "1336717624",
+      "method": "messages.hidePeerSettingsBar",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
       "id": "-304838614",
       "method": "updates.getState",
       "params": [],
@@ -4262,7 +4312,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.ChatFull"
     },
     {
-      "id": "-192332417",
+      "id": "1029681423",
       "method": "channels.createChannel",
       "params": [
         {
@@ -4284,6 +4334,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "about",
           "type": "string"
+        },
+        {
+          "name": "geo_point",
+          "type": "flags.2?InputGeoPoint"
+        },
+        {
+          "name": "address",
+          "type": "flags.2?string"
         }
       ],
       "type": "Updates"
@@ -4450,9 +4508,22 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "-1920105769",
+      "id": "-122669393",
       "method": "channels.getAdminedPublicChannels",
-      "params": [],
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "by_location",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "check_limit",
+          "type": "flags.1?true"
+        }
+      ],
       "type": "messages.Chats"
     },
     {
@@ -4591,12 +4662,6 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Chats"
     },
     {
-      "id": "445117188",
-      "method": "channels.getBroadcastsForDiscussion",
-      "params": [],
-      "type": "messages.Chats"
-    },
-    {
       "id": "1079520178",
       "method": "channels.setDiscussionGroup",
       "params": [
@@ -4607,6 +4672,44 @@ var SCHEMA_GLOBAL = {
         {
           "name": "group",
           "type": "InputChannel"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "-1892102881",
+      "method": "channels.editCreator",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "password",
+          "type": "InputCheckPasswordSRP"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": "1491484525",
+      "method": "channels.editLocation",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "geo_point",
+          "type": "InputGeoPoint"
+        },
+        {
+          "name": "address",
+          "type": "string"
         }
       ],
       "type": "Bool"
@@ -7138,7 +7241,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatFull"
     },
     {
-      "id": "-1736252138",
+      "id": "277964371",
       "predicate": "channelFull",
       "params": [
         {
@@ -7164,6 +7267,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "can_view_stats",
           "type": "flags.12?true"
+        },
+        {
+          "name": "can_set_location",
+          "type": "flags.16?true"
         },
         {
           "name": "id",
@@ -7247,7 +7354,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "linked_chat_id",
-          "type": "flags.13?int"
+          "type": "flags.14?int"
+        },
+        {
+          "name": "location",
+          "type": "flags.15?ChannelLocation"
         },
         {
           "name": "pts",
@@ -8469,6 +8580,26 @@ var SCHEMA_GLOBAL = {
         {
           "name": "report_spam",
           "type": "flags.0?true"
+        },
+        {
+          "name": "add_contact",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "block_contact",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "share_contact",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "need_contacts_exception",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "report_geo",
+          "type": "flags.5?true"
         }
       ],
       "type": "PeerSettings"
@@ -8562,7 +8693,13 @@ var SCHEMA_GLOBAL = {
       "type": "ReportReason"
     },
     {
-      "id": "1951750604",
+      "id": "-606798099",
+      "predicate": "inputReportReasonGeoIrrelevant",
+      "params": [],
+      "type": "ReportReason"
+    },
+    {
+      "id": "-302941166",
       "predicate": "userFull",
       "params": [
         {
@@ -8594,8 +8731,8 @@ var SCHEMA_GLOBAL = {
           "type": "flags.1?string"
         },
         {
-          "name": "link",
-          "type": "contacts.Link"
+          "name": "settings",
+          "type": "PeerSettings"
         },
         {
           "name": "profile_photo",
@@ -8683,25 +8820,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "ContactStatus"
-    },
-    {
-      "id": "986597452",
-      "predicate": "contacts.link",
-      "params": [
-        {
-          "name": "my_link",
-          "type": "ContactLink"
-        },
-        {
-          "name": "foreign_link",
-          "type": "ContactLink"
-        },
-        {
-          "name": "user",
-          "type": "User"
-        }
-      ],
-      "type": "contacts.Link"
     },
     {
       "id": "-1219778094",
@@ -9270,25 +9388,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "previous",
           "type": "Bool"
-        }
-      ],
-      "type": "Update"
-    },
-    {
-      "id": "-1657903163",
-      "predicate": "updateContactLink",
-      "params": [
-        {
-          "name": "user_id",
-          "type": "int"
-        },
-        {
-          "name": "my_link",
-          "type": "ContactLink"
-        },
-        {
-          "name": "foreign_link",
-          "type": "ContactLink"
         }
       ],
       "type": "Update"
@@ -10373,6 +10472,32 @@ var SCHEMA_GLOBAL = {
         {
           "name": "pts_count",
           "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "1786671974",
+      "predicate": "updatePeerSettings",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "settings",
+          "type": "PeerSettings"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "-1263546448",
+      "predicate": "updatePeerLocated",
+      "params": [
+        {
+          "name": "peers",
+          "type": "Vector<PeerLocated>"
         }
       ],
       "type": "Update"
@@ -12219,24 +12344,6 @@ var SCHEMA_GLOBAL = {
       "type": "messages.AffectedMessages"
     },
     {
-      "id": "1599050311",
-      "predicate": "contactLinkUnknown",
-      "params": [],
-      "type": "ContactLink"
-    },
-    {
-      "id": "-17968211",
-      "predicate": "contactLinkNone",
-      "params": [],
-      "type": "ContactLink"
-    },
-    {
-      "id": "-721239344",
-      "predicate": "contactLinkContact",
-      "params": [],
-      "type": "ContactLink"
-    },
-    {
       "id": "-350980120",
       "predicate": "webPageEmpty",
       "params": [
@@ -12682,6 +12789,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "masks",
           "type": "flags.3?true"
+        },
+        {
+          "name": "animated",
+          "type": "flags.5?true"
         },
         {
           "name": "installed_date",
@@ -13253,6 +13364,51 @@ var SCHEMA_GLOBAL = {
     {
       "id": "1280209983",
       "predicate": "messageEntityCashtag",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": "-1672577397",
+      "predicate": "messageEntityUnderline",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": "-1090087980",
+      "predicate": "messageEntityStrike",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": "34469328",
+      "predicate": "messageEntityBlockquote",
       "params": [
         {
           "name": "offset",
@@ -17026,6 +17182,21 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelAdminLogEventAction"
     },
     {
+      "id": "241923758",
+      "predicate": "channelAdminLogEventActionChangeLocation",
+      "params": [
+        {
+          "name": "prev_value",
+          "type": "ChannelLocation"
+        },
+        {
+          "name": "new_value",
+          "type": "ChannelLocation"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
       "id": "995769920",
       "predicate": "channelAdminLogEvent",
       "params": [
@@ -19236,6 +19407,46 @@ var SCHEMA_GLOBAL = {
       "predicate": "urlAuthResultDefault",
       "params": [],
       "type": "UrlAuthResult"
+    },
+    {
+      "id": "-1078612597",
+      "predicate": "channelLocationEmpty",
+      "params": [],
+      "type": "ChannelLocation"
+    },
+    {
+      "id": "547062491",
+      "predicate": "channelLocation",
+      "params": [
+        {
+          "name": "geo_point",
+          "type": "GeoPoint"
+        },
+        {
+          "name": "address",
+          "type": "string"
+        }
+      ],
+      "type": "ChannelLocation"
+    },
+    {
+      "id": "-901375139",
+      "predicate": "peerLocated",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "expires",
+          "type": "int"
+        },
+        {
+          "name": "distance",
+          "type": "int"
+        }
+      ],
+      "type": "PeerLocated"
     }
   ]
 }
