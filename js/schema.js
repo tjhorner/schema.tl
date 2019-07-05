@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 102
+var LAYER_NUMBER = 103
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -522,9 +522,17 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "1555998096",
+      "id": "1754754159",
       "method": "account.registerDevice",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "no_muted",
+          "type": "flags.0?true"
+        },
         {
           "name": "token_type",
           "type": "int"
@@ -7102,6 +7110,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "has_link",
           "type": "flags.20?true"
+        },
+        {
+          "name": "has_geo",
+          "type": "flags.21?true"
         },
         {
           "name": "id",
