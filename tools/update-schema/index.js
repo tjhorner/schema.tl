@@ -42,7 +42,7 @@ async function start() {
 
   console.log("Latest fetched layer number:", currentLayerNumber)
 
-  const { body: schema } = await request(`https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/scheme.tl?${Date.now()}`)
+  const { body: schema } = await request(`https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/tl/api.tl?${Date.now()}`)
 
   const layerRegex = /\/\/ LAYER ([0-9]+)/g
   const newLayerNumber = parseInt(layerRegex.exec(schema)[1])
@@ -67,18 +67,18 @@ async function start() {
 
     console.log("Forking tjhorner/schema.tl...")
 
-    await octokit.repos.createFork({
+    const fork = await octokit.repos.createFork({
       owner: "tjhorner",
       repo: "schema.tl"
     })
 
-    console.log("Waiting 10 seconds to ensure the forking is done...")
+    console.log("Waiting 30 seconds to ensure the forking is done...")
 
-    await wait(10000)
+    await wait(30000)
 
     console.log("Cloning repository...")
 
-    await exec(`git clone --depth=1 git@github.com:schemabot/schema.tl.git ${config.REPO_WORKING_DIRECTORY}`)
+    await exec(`git clone --depth=1 git@github.com:schemabot/${fork.name}.git ${config.REPO_WORKING_DIRECTORY}`)
 
     console.log(`Checking out new branch layer-${newLayerNumber}...`)
 
@@ -162,7 +162,7 @@ async function start() {
       newDocsText += `\n- ${constructor}`
     })
 
-    newDocsText = "\n\n### New methods"
+    newDocsText += "\n\n### New methods"
 
     newDocs.methods.forEach(method => {
       newDocsText += `\n- ${method}`
@@ -175,7 +175,7 @@ async function start() {
       repo: "schema.tl",
       head: `schemabot:layer-${newLayerNumber}`,
       base: "master",
-      title: `[chore] Update to layer ${newLayerNumber}`,
+      title: `chore: Update to layer ${newLayerNumber}`,
       body: `Hello! It's time... time to update the schema layer! This pull request migrates from layer ${currentLayerNumber} to layer ${newLayerNumber}. Please check to make sure I didn't screw anything up!\n\n${newDocsText}\n\nWith ❤️,\nYour Friendly Neighborhood Schemabot`
     })
 
