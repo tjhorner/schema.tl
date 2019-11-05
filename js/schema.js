@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 105
+var LAYER_NUMBER = 106
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -5276,6 +5276,28 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": "-490089666",
+      "method": "wallet.sendLiteRequest",
+      "params": [
+        {
+          "name": "body",
+          "type": "bytes"
+        }
+      ],
+      "type": "wallet.LiteResponse"
+    },
+    {
+      "id": "190313286",
+      "method": "wallet.getKeySecretSalt",
+      "params": [
+        {
+          "name": "revoke",
+          "type": "Bool"
+        }
+      ],
+      "type": "wallet.KeySecretSalt"
     }
   ],
   "constructors": [
@@ -19068,6 +19090,28 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "account.Themes"
+    },
+    {
+      "id": "1984136919",
+      "predicate": "wallet.liteResponse",
+      "params": [
+        {
+          "name": "response",
+          "type": "bytes"
+        }
+      ],
+      "type": "wallet.LiteResponse"
+    },
+    {
+      "id": "-582464156",
+      "predicate": "wallet.secretSalt",
+      "params": [
+        {
+          "name": "salt",
+          "type": "bytes"
+        }
+      ],
+      "type": "wallet.KeySecretSalt"
     }
   ]
 }
