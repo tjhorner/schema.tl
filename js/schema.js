@@ -1,171 +1,7 @@
-var LAYER_NUMBER = 103
+var LAYER_NUMBER = 106
 
 var SCHEMA_GLOBAL = {
   "methods": [
-    {
-      "id": "1615239032",
-      "method": "req_pq",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        }
-      ],
-      "type": "ResPQ"
-    },
-    {
-      "id": "-1099002127",
-      "method": "req_pq_multi",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        }
-      ],
-      "type": "ResPQ"
-    },
-    {
-      "id": "-686627650",
-      "method": "req_DH_params",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "p",
-          "type": "string"
-        },
-        {
-          "name": "q",
-          "type": "string"
-        },
-        {
-          "name": "public_key_fingerprint",
-          "type": "long"
-        },
-        {
-          "name": "encrypted_data",
-          "type": "string"
-        }
-      ],
-      "type": "Server_DH_Params"
-    },
-    {
-      "id": "-184262881",
-      "method": "set_client_DH_params",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "encrypted_data",
-          "type": "string"
-        }
-      ],
-      "type": "Set_client_DH_params_answer"
-    },
-    {
-      "id": "-784117408",
-      "method": "destroy_auth_key",
-      "params": [],
-      "type": "DestroyAuthKeyRes"
-    },
-    {
-      "id": "1491380032",
-      "method": "rpc_drop_answer",
-      "params": [
-        {
-          "name": "req_msg_id",
-          "type": "long"
-        }
-      ],
-      "type": "RpcDropAnswer"
-    },
-    {
-      "id": "-1188971260",
-      "method": "get_future_salts",
-      "params": [
-        {
-          "name": "num",
-          "type": "int"
-        }
-      ],
-      "type": "FutureSalts"
-    },
-    {
-      "id": "2059302892",
-      "method": "ping",
-      "params": [
-        {
-          "name": "ping_id",
-          "type": "long"
-        }
-      ],
-      "type": "Pong"
-    },
-    {
-      "id": "-213746804",
-      "method": "ping_delay_disconnect",
-      "params": [
-        {
-          "name": "ping_id",
-          "type": "long"
-        },
-        {
-          "name": "disconnect_delay",
-          "type": "int"
-        }
-      ],
-      "type": "Pong"
-    },
-    {
-      "id": "-414113498",
-      "method": "destroy_session",
-      "params": [
-        {
-          "name": "session_id",
-          "type": "long"
-        }
-      ],
-      "type": "DestroySessionRes"
-    },
-    {
-      "id": "-1705021803",
-      "method": "contest.saveDeveloperInfo",
-      "params": [
-        {
-          "name": "vk_id",
-          "type": "int"
-        },
-        {
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "name": "phone_number",
-          "type": "string"
-        },
-        {
-          "name": "age",
-          "type": "int"
-        },
-        {
-          "name": "city",
-          "type": "string"
-        }
-      ],
-      "type": "Bool"
-    },
     {
       "id": "-878758099",
       "method": "invokeAfterMsg",
@@ -323,7 +159,7 @@ var SCHEMA_GLOBAL = {
       "type": "auth.SentCode"
     },
     {
-      "id": "453408308",
+      "id": "-2131827673",
       "method": "auth.signUp",
       "params": [
         {
@@ -332,10 +168,6 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "phone_code_hash",
-          "type": "string"
-        },
-        {
-          "name": "phone_code",
           "type": "string"
         },
         {
@@ -1267,6 +1099,155 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": "473805619",
+      "method": "account.uploadTheme",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "file",
+          "type": "InputFile"
+        },
+        {
+          "name": "thumb",
+          "type": "flags.0?InputFile"
+        },
+        {
+          "name": "file_name",
+          "type": "string"
+        },
+        {
+          "name": "mime_type",
+          "type": "string"
+        }
+      ],
+      "type": "Document"
+    },
+    {
+      "id": "729808255",
+      "method": "account.createTheme",
+      "params": [
+        {
+          "name": "slug",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "document",
+          "type": "InputDocument"
+        }
+      ],
+      "type": "Theme"
+    },
+    {
+      "id": "999203330",
+      "method": "account.updateTheme",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "format",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "InputTheme"
+        },
+        {
+          "name": "slug",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "title",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "document",
+          "type": "flags.2?InputDocument"
+        }
+      ],
+      "type": "Theme"
+    },
+    {
+      "id": "-229175188",
+      "method": "account.saveTheme",
+      "params": [
+        {
+          "name": "theme",
+          "type": "InputTheme"
+        },
+        {
+          "name": "unsave",
+          "type": "Bool"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "2061776695",
+      "method": "account.installTheme",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "dark",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "format",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "theme",
+          "type": "flags.1?InputTheme"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "-1919060949",
+      "method": "account.getTheme",
+      "params": [
+        {
+          "name": "format",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "InputTheme"
+        },
+        {
+          "name": "document_id",
+          "type": "long"
+        }
+      ],
+      "type": "Theme"
+    },
+    {
+      "id": "676939512",
+      "method": "account.getThemes",
+      "params": [
+        {
+          "name": "format",
+          "type": "string"
+        },
+        {
+          "name": "hash",
+          "type": "int"
+        }
+      ],
+      "type": "account.Themes"
+    },
+    {
       "id": "227648840",
       "method": "users.getUsers",
       "params": [
@@ -1809,7 +1790,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "-91733382",
+      "id": "1376532592",
       "method": "messages.sendMessage",
       "params": [
         {
@@ -1855,12 +1836,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "entities",
           "type": "flags.3?Vector<MessageEntity>"
+        },
+        {
+          "name": "schedule_date",
+          "type": "flags.10?int"
         }
       ],
       "type": "Updates"
     },
     {
-      "id": "-1194252757",
+      "id": "881978281",
       "method": "messages.sendMedia",
       "params": [
         {
@@ -1906,12 +1891,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "entities",
           "type": "flags.3?Vector<MessageEntity>"
+        },
+        {
+          "name": "schedule_date",
+          "type": "flags.10?int"
         }
       ],
       "type": "Updates"
     },
     {
-      "id": "1888354709",
+      "id": "-637606386",
       "method": "messages.forwardMessages",
       "params": [
         {
@@ -1949,6 +1938,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "to_peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "schedule_date",
+          "type": "flags.10?int"
         }
       ],
       "type": "Updates"
@@ -2655,7 +2648,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "-1318189314",
+      "id": "570955184",
       "method": "messages.sendInlineBotResult",
       "params": [
         {
@@ -2697,6 +2690,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "id",
           "type": "string"
+        },
+        {
+          "name": "schedule_date",
+          "type": "flags.10?int"
         }
       ],
       "type": "Updates"
@@ -2717,7 +2714,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.MessageEditData"
     },
     {
-      "id": "-787025122",
+      "id": "1224152952",
       "method": "messages.editMessage",
       "params": [
         {
@@ -2751,6 +2748,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "entities",
           "type": "flags.3?Vector<MessageEntity>"
+        },
+        {
+          "name": "schedule_date",
+          "type": "flags.15?int"
         }
       ],
       "type": "Updates"
@@ -3386,7 +3387,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": "546656559",
+      "id": "-872345397",
       "method": "messages.sendMultiMedia",
       "params": [
         {
@@ -3416,6 +3417,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "multi_media",
           "type": "Vector<InputSingleMedia>"
+        },
+        {
+          "name": "schedule_date",
+          "type": "flags.10?int"
         }
       ],
       "type": "Updates"
@@ -3737,6 +3742,66 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": "-490575781",
+      "method": "messages.getScheduledHistory",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "hash",
+          "type": "int"
+        }
+      ],
+      "type": "messages.Messages"
+    },
+    {
+      "id": "-1111817116",
+      "method": "messages.getScheduledMessages",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "messages.Messages"
+    },
+    {
+      "id": "-1120369398",
+      "method": "messages.sendScheduledMessages",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": "1504586518",
+      "method": "messages.deleteScheduledMessages",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
       "id": "-304838614",
       "method": "updates.getState",
       "params": [],
@@ -3876,9 +3941,17 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": "-475607115",
+      "id": "-1319462148",
       "method": "upload.getFile",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "precise",
+          "type": "flags.0?true"
+        },
         {
           "name": "location",
           "type": "InputFileLocation"
@@ -4355,7 +4428,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "1895338938",
+      "id": "-751007486",
       "method": "channels.editAdmin",
       "params": [
         {
@@ -4369,6 +4442,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "admin_rights",
           "type": "ChatAdminRights"
+        },
+        {
+          "name": "rank",
+          "type": "string"
         }
       ],
       "type": "Updates"
@@ -4721,6 +4798,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": "-304832784",
+      "method": "channels.toggleSlowMode",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "seconds",
+          "type": "int"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": "-1440257555",
@@ -5184,717 +5276,31 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
-    }
-  ],
-  "constructors": [
+    },
     {
-      "id": "85337187",
-      "predicate": "resPQ",
+      "id": "-490089666",
+      "method": "wallet.sendLiteRequest",
       "params": [
         {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "pq",
-          "type": "string"
-        },
-        {
-          "name": "server_public_key_fingerprints",
-          "type": "Vector<long>"
-        }
-      ],
-      "type": "ResPQ"
-    },
-    {
-      "id": "-2083955988",
-      "predicate": "p_q_inner_data",
-      "params": [
-        {
-          "name": "pq",
-          "type": "string"
-        },
-        {
-          "name": "p",
-          "type": "string"
-        },
-        {
-          "name": "q",
-          "type": "string"
-        },
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "new_nonce",
-          "type": "int256"
-        }
-      ],
-      "type": "P_Q_inner_data"
-    },
-    {
-      "id": "-1443537003",
-      "predicate": "p_q_inner_data_dc",
-      "params": [
-        {
-          "name": "pq",
-          "type": "string"
-        },
-        {
-          "name": "p",
-          "type": "string"
-        },
-        {
-          "name": "q",
-          "type": "string"
-        },
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "new_nonce",
-          "type": "int256"
-        },
-        {
-          "name": "dc",
-          "type": "int"
-        }
-      ],
-      "type": "P_Q_inner_data"
-    },
-    {
-      "id": "1013613780",
-      "predicate": "p_q_inner_data_temp",
-      "params": [
-        {
-          "name": "pq",
-          "type": "string"
-        },
-        {
-          "name": "p",
-          "type": "string"
-        },
-        {
-          "name": "q",
-          "type": "string"
-        },
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "new_nonce",
-          "type": "int256"
-        },
-        {
-          "name": "expires_in",
-          "type": "int"
-        }
-      ],
-      "type": "P_Q_inner_data"
-    },
-    {
-      "id": "1459478408",
-      "predicate": "p_q_inner_data_temp_dc",
-      "params": [
-        {
-          "name": "pq",
-          "type": "string"
-        },
-        {
-          "name": "p",
-          "type": "string"
-        },
-        {
-          "name": "q",
-          "type": "string"
-        },
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "new_nonce",
-          "type": "int256"
-        },
-        {
-          "name": "dc",
-          "type": "int"
-        },
-        {
-          "name": "expires_in",
-          "type": "int"
-        }
-      ],
-      "type": "P_Q_inner_data"
-    },
-    {
-      "id": "2043348061",
-      "predicate": "server_DH_params_fail",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "new_nonce_hash",
-          "type": "int128"
-        }
-      ],
-      "type": "Server_DH_Params"
-    },
-    {
-      "id": "-790100132",
-      "predicate": "server_DH_params_ok",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "encrypted_answer",
-          "type": "string"
-        }
-      ],
-      "type": "Server_DH_Params"
-    },
-    {
-      "id": "-1249309254",
-      "predicate": "server_DH_inner_data",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "g",
-          "type": "int"
-        },
-        {
-          "name": "dh_prime",
-          "type": "string"
-        },
-        {
-          "name": "g_a",
-          "type": "string"
-        },
-        {
-          "name": "server_time",
-          "type": "int"
-        }
-      ],
-      "type": "Server_DH_inner_data"
-    },
-    {
-      "id": "1715713620",
-      "predicate": "client_DH_inner_data",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "retry_id",
-          "type": "long"
-        },
-        {
-          "name": "g_b",
-          "type": "string"
-        }
-      ],
-      "type": "Client_DH_Inner_Data"
-    },
-    {
-      "id": "1003222836",
-      "predicate": "dh_gen_ok",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "new_nonce_hash1",
-          "type": "int128"
-        }
-      ],
-      "type": "Set_client_DH_params_answer"
-    },
-    {
-      "id": "1188831161",
-      "predicate": "dh_gen_retry",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "new_nonce_hash2",
-          "type": "int128"
-        }
-      ],
-      "type": "Set_client_DH_params_answer"
-    },
-    {
-      "id": "-1499615742",
-      "predicate": "dh_gen_fail",
-      "params": [
-        {
-          "name": "nonce",
-          "type": "int128"
-        },
-        {
-          "name": "server_nonce",
-          "type": "int128"
-        },
-        {
-          "name": "new_nonce_hash3",
-          "type": "int128"
-        }
-      ],
-      "type": "Set_client_DH_params_answer"
-    },
-    {
-      "id": "-161422892",
-      "predicate": "destroy_auth_key_ok",
-      "params": [],
-      "type": "DestroyAuthKeyRes"
-    },
-    {
-      "id": "178201177",
-      "predicate": "destroy_auth_key_none",
-      "params": [],
-      "type": "DestroyAuthKeyRes"
-    },
-    {
-      "id": "-368010477",
-      "predicate": "destroy_auth_key_fail",
-      "params": [],
-      "type": "DestroyAuthKeyRes"
-    },
-    {
-      "id": "1658238041",
-      "predicate": "msgs_ack",
-      "params": [
-        {
-          "name": "msg_ids",
-          "type": "Vector<long>"
-        }
-      ],
-      "type": "MsgsAck"
-    },
-    {
-      "id": "-1477445615",
-      "predicate": "bad_msg_notification",
-      "params": [
-        {
-          "name": "bad_msg_id",
-          "type": "long"
-        },
-        {
-          "name": "bad_msg_seqno",
-          "type": "int"
-        },
-        {
-          "name": "error_code",
-          "type": "int"
-        }
-      ],
-      "type": "BadMsgNotification"
-    },
-    {
-      "id": "-307542917",
-      "predicate": "bad_server_salt",
-      "params": [
-        {
-          "name": "bad_msg_id",
-          "type": "long"
-        },
-        {
-          "name": "bad_msg_seqno",
-          "type": "int"
-        },
-        {
-          "name": "error_code",
-          "type": "int"
-        },
-        {
-          "name": "new_server_salt",
-          "type": "long"
-        }
-      ],
-      "type": "BadMsgNotification"
-    },
-    {
-      "id": "-630588590",
-      "predicate": "msgs_state_req",
-      "params": [
-        {
-          "name": "msg_ids",
-          "type": "Vector<long>"
-        }
-      ],
-      "type": "MsgsStateReq"
-    },
-    {
-      "id": "81704317",
-      "predicate": "msgs_state_info",
-      "params": [
-        {
-          "name": "req_msg_id",
-          "type": "long"
-        },
-        {
-          "name": "info",
-          "type": "string"
-        }
-      ],
-      "type": "MsgsStateInfo"
-    },
-    {
-      "id": "-1933520591",
-      "predicate": "msgs_all_info",
-      "params": [
-        {
-          "name": "msg_ids",
-          "type": "Vector<long>"
-        },
-        {
-          "name": "info",
-          "type": "string"
-        }
-      ],
-      "type": "MsgsAllInfo"
-    },
-    {
-      "id": "661470918",
-      "predicate": "msg_detailed_info",
-      "params": [
-        {
-          "name": "msg_id",
-          "type": "long"
-        },
-        {
-          "name": "answer_msg_id",
-          "type": "long"
-        },
-        {
-          "name": "bytes",
-          "type": "int"
-        },
-        {
-          "name": "status",
-          "type": "int"
-        }
-      ],
-      "type": "MsgDetailedInfo"
-    },
-    {
-      "id": "-2137147681",
-      "predicate": "msg_new_detailed_info",
-      "params": [
-        {
-          "name": "answer_msg_id",
-          "type": "long"
-        },
-        {
-          "name": "bytes",
-          "type": "int"
-        },
-        {
-          "name": "status",
-          "type": "int"
-        }
-      ],
-      "type": "MsgDetailedInfo"
-    },
-    {
-      "id": "2105940488",
-      "predicate": "msg_resend_req",
-      "params": [
-        {
-          "name": "msg_ids",
-          "type": "Vector<long>"
-        }
-      ],
-      "type": "MsgResendReq"
-    },
-    {
-      "id": "558156313",
-      "predicate": "rpc_error",
-      "params": [
-        {
-          "name": "error_code",
-          "type": "int"
-        },
-        {
-          "name": "error_message",
-          "type": "string"
-        }
-      ],
-      "type": "RpcError"
-    },
-    {
-      "id": "1579864942",
-      "predicate": "rpc_answer_unknown",
-      "params": [],
-      "type": "RpcDropAnswer"
-    },
-    {
-      "id": "-847714938",
-      "predicate": "rpc_answer_dropped_running",
-      "params": [],
-      "type": "RpcDropAnswer"
-    },
-    {
-      "id": "-1539647305",
-      "predicate": "rpc_answer_dropped",
-      "params": [
-        {
-          "name": "msg_id",
-          "type": "long"
-        },
-        {
-          "name": "seq_no",
-          "type": "int"
-        },
-        {
-          "name": "bytes",
-          "type": "int"
-        }
-      ],
-      "type": "RpcDropAnswer"
-    },
-    {
-      "id": "155834844",
-      "predicate": "future_salt",
-      "params": [
-        {
-          "name": "valid_since",
-          "type": "int"
-        },
-        {
-          "name": "valid_until",
-          "type": "int"
-        },
-        {
-          "name": "salt",
-          "type": "long"
-        }
-      ],
-      "type": "FutureSalt"
-    },
-    {
-      "id": "-1370486635",
-      "predicate": "future_salts",
-      "params": [
-        {
-          "name": "req_msg_id",
-          "type": "long"
-        },
-        {
-          "name": "now",
-          "type": "int"
-        },
-        {
-          "name": "salts",
-          "type": "vector<future_salt>"
-        }
-      ],
-      "type": "FutureSalts"
-    },
-    {
-      "id": "880243653",
-      "predicate": "pong",
-      "params": [
-        {
-          "name": "msg_id",
-          "type": "long"
-        },
-        {
-          "name": "ping_id",
-          "type": "long"
-        }
-      ],
-      "type": "Pong"
-    },
-    {
-      "id": "-501201412",
-      "predicate": "destroy_session_ok",
-      "params": [
-        {
-          "name": "session_id",
-          "type": "long"
-        }
-      ],
-      "type": "DestroySessionRes"
-    },
-    {
-      "id": "1658015945",
-      "predicate": "destroy_session_none",
-      "params": [
-        {
-          "name": "session_id",
-          "type": "long"
-        }
-      ],
-      "type": "DestroySessionRes"
-    },
-    {
-      "id": "-1631450872",
-      "predicate": "new_session_created",
-      "params": [
-        {
-          "name": "first_msg_id",
-          "type": "long"
-        },
-        {
-          "name": "unique_id",
-          "type": "long"
-        },
-        {
-          "name": "server_salt",
-          "type": "long"
-        }
-      ],
-      "type": "NewSession"
-    },
-    {
-      "id": "-1835453025",
-      "predicate": "http_wait",
-      "params": [
-        {
-          "name": "max_delay",
-          "type": "int"
-        },
-        {
-          "name": "wait_after",
-          "type": "int"
-        },
-        {
-          "name": "max_wait",
-          "type": "int"
-        }
-      ],
-      "type": "HttpWait"
-    },
-    {
-      "id": "-734810765",
-      "predicate": "ipPort",
-      "params": [
-        {
-          "name": "ipv4",
-          "type": "int"
-        },
-        {
-          "name": "port",
-          "type": "int"
-        }
-      ],
-      "type": "IpPort"
-    },
-    {
-      "id": "932718150",
-      "predicate": "ipPortSecret",
-      "params": [
-        {
-          "name": "ipv4",
-          "type": "int"
-        },
-        {
-          "name": "port",
-          "type": "int"
-        },
-        {
-          "name": "secret",
+          "name": "body",
           "type": "bytes"
         }
       ],
-      "type": "IpPort"
+      "type": "wallet.LiteResponse"
     },
     {
-      "id": "1182381663",
-      "predicate": "accessPointRule",
+      "id": "190313286",
+      "method": "wallet.getKeySecretSalt",
       "params": [
         {
-          "name": "phone_prefix_rules",
-          "type": "string"
-        },
-        {
-          "name": "dc_id",
-          "type": "int"
-        },
-        {
-          "name": "ips",
-          "type": "vector<IpPort>"
+          "name": "revoke",
+          "type": "Bool"
         }
       ],
-      "type": "AccessPointRule"
-    },
-    {
-      "id": "1515793004",
-      "predicate": "help.configSimple",
-      "params": [
-        {
-          "name": "date",
-          "type": "int"
-        },
-        {
-          "name": "expires",
-          "type": "int"
-        },
-        {
-          "name": "rules",
-          "type": "vector<AccessPointRule>"
-        }
-      ],
-      "type": "help.ConfigSimple"
-    },
+      "type": "wallet.KeySecretSalt"
+    }
+  ],
+  "constructors": [
     {
       "id": "-1132882121",
       "predicate": "boolFalse",
@@ -6789,7 +6195,7 @@ var SCHEMA_GLOBAL = {
       "type": "User"
     },
     {
-      "id": "773059779",
+      "id": "-1820043071",
       "predicate": "user",
       "params": [
         {
@@ -6886,7 +6292,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "restriction_reason",
-          "type": "flags.18?string"
+          "type": "flags.18?Vector<RestrictionReason>"
         },
         {
           "name": "bot_inline_placeholder",
@@ -7064,7 +6470,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": "1307772980",
+      "id": "-753232354",
       "predicate": "channel",
       "params": [
         {
@@ -7116,6 +6522,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.21?true"
         },
         {
+          "name": "slowmode_enabled",
+          "type": "flags.22?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -7145,7 +6555,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "restriction_reason",
-          "type": "flags.9?string"
+          "type": "flags.9?Vector<RestrictionReason>"
         },
         {
           "name": "admin_rights",
@@ -7214,6 +6624,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.7?true"
         },
         {
+          "name": "has_scheduled",
+          "type": "flags.8?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -7253,7 +6667,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatFull"
     },
     {
-      "id": "277964371",
+      "id": "763976820",
       "predicate": "channelFull",
       "params": [
         {
@@ -7283,6 +6697,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "can_set_location",
           "type": "flags.16?true"
+        },
+        {
+          "name": "has_scheduled",
+          "type": "flags.19?true"
         },
         {
           "name": "id",
@@ -7371,6 +6789,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "location",
           "type": "flags.15?ChannelLocation"
+        },
+        {
+          "name": "slowmode_seconds",
+          "type": "flags.17?int"
+        },
+        {
+          "name": "slowmode_next_send_date",
+          "type": "flags.18?int"
         },
         {
           "name": "pts",
@@ -7503,7 +6929,7 @@ var SCHEMA_GLOBAL = {
       "type": "Message"
     },
     {
-      "id": "1157215293",
+      "id": "1160515173",
       "predicate": "message",
       "params": [
         {
@@ -7537,6 +6963,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "legacy",
           "type": "flags.19?true"
+        },
+        {
+          "name": "edit_hide",
+          "type": "flags.21?true"
         },
         {
           "name": "id",
@@ -7597,6 +7027,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "grouped_id",
           "type": "flags.17?long"
+        },
+        {
+          "name": "restriction_reason",
+          "type": "flags.22?Vector<RestrictionReason>"
         }
       ],
       "type": "Message"
@@ -8419,27 +7853,12 @@ var SCHEMA_GLOBAL = {
       "type": "GeoPoint"
     },
     {
-      "id": "-2128698738",
-      "predicate": "auth.checkedPhone",
-      "params": [
-        {
-          "name": "phone_registered",
-          "type": "Bool"
-        }
-      ],
-      "type": "auth.CheckedPhone"
-    },
-    {
-      "id": "955951967",
+      "id": "1577067778",
       "predicate": "auth.sentCode",
       "params": [
         {
           "name": "flags",
           "type": "#"
-        },
-        {
-          "name": "phone_registered",
-          "type": "flags.0?true"
         },
         {
           "name": "type",
@@ -8456,10 +7875,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "timeout",
           "type": "flags.2?int"
-        },
-        {
-          "name": "terms_of_service",
-          "type": "flags.3?help.TermsOfService"
         }
       ],
       "type": "auth.SentCode"
@@ -8479,6 +7894,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "user",
           "type": "User"
+        }
+      ],
+      "type": "auth.Authorization"
+    },
+    {
+      "id": "1148485274",
+      "predicate": "auth.authorizationSignUpRequired",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "terms_of_service",
+          "type": "flags.0?help.TermsOfService"
         }
       ],
       "type": "auth.Authorization"
@@ -8733,6 +8163,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "can_pin_message",
           "type": "flags.7?true"
+        },
+        {
+          "name": "has_scheduled",
+          "type": "flags.12?true"
         },
         {
           "name": "user",
@@ -10515,6 +9949,43 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": "967122427",
+      "predicate": "updateNewScheduledMessage",
+      "params": [
+        {
+          "name": "message",
+          "type": "Message"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "-1870238482",
+      "predicate": "updateDeleteScheduledMessages",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "messages",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "-2112423005",
+      "predicate": "updateTheme",
+      "params": [
+        {
+          "name": "theme",
+          "type": "Theme"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": "-1519637954",
       "predicate": "updates.state",
       "params": [
@@ -11270,7 +10741,7 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
-          "name": "popup",
+          "name": "can_not_skip",
           "type": "flags.0?true"
         },
         {
@@ -11949,6 +11420,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputPrivacyKey"
     },
     {
+      "id": "-786326563",
+      "predicate": "inputPrivacyKeyAddedByPhone",
+      "params": [],
+      "type": "InputPrivacyKey"
+    },
+    {
       "id": "-1137792208",
       "predicate": "privacyKeyStatusTimestamp",
       "params": [],
@@ -11987,6 +11464,12 @@ var SCHEMA_GLOBAL = {
     {
       "id": "-778378131",
       "predicate": "privacyKeyPhoneNumber",
+      "params": [],
+      "type": "PrivacyKey"
+    },
+    {
+      "id": "1124062251",
+      "predicate": "privacyKeyAddedByPhone",
       "params": [],
       "type": "PrivacyKey"
     },
@@ -12382,7 +11865,7 @@ var SCHEMA_GLOBAL = {
       "type": "WebPage"
     },
     {
-      "id": "1594340540",
+      "id": "-94051982",
       "predicate": "webPage",
       "params": [
         {
@@ -12452,6 +11935,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "document",
           "type": "flags.9?Document"
+        },
+        {
+          "name": "documents",
+          "type": "flags.11?Vector<Document>"
         },
         {
           "name": "cached_page",
@@ -12780,6 +12267,12 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         }
       ],
+      "type": "InputStickerSet"
+    },
+    {
+      "id": "42402760",
+      "predicate": "inputStickerSetAnimatedEmoji",
+      "params": [],
       "type": "InputStickerSet"
     },
     {
@@ -13664,18 +13157,26 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelParticipant"
     },
     {
-      "id": "-471670279",
+      "id": "-2138237532",
       "predicate": "channelParticipantCreator",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "user_id",
           "type": "int"
+        },
+        {
+          "name": "rank",
+          "type": "flags.0?string"
         }
       ],
       "type": "ChannelParticipant"
     },
     {
-      "id": "1571450403",
+      "id": "-859915345",
       "predicate": "channelParticipantAdmin",
       "params": [
         {
@@ -13709,6 +13210,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "admin_rights",
           "type": "ChatAdminRights"
+        },
+        {
+          "name": "rank",
+          "type": "flags.2?string"
         }
       ],
       "type": "ChannelParticipant"
@@ -16252,8 +15757,8 @@ var SCHEMA_GLOBAL = {
       "type": "payments.PaymentResult"
     },
     {
-      "id": "1800845601",
-      "predicate": "payments.paymentVerficationNeeded",
+      "id": "-666824391",
+      "predicate": "payments.paymentVerificationNeeded",
       "params": [
         {
           "name": "url",
@@ -17204,6 +16709,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "new_value",
           "type": "ChannelLocation"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": "1401984889",
+      "predicate": "channelAdminLogEventActionToggleSlowMode",
+      "params": [
+        {
+          "name": "prev_value",
+          "type": "int"
+        },
+        {
+          "name": "new_value",
+          "type": "int"
         }
       ],
       "type": "ChannelAdminLogEventAction"
@@ -19091,7 +18611,7 @@ var SCHEMA_GLOBAL = {
       "type": "account.WallPapers"
     },
     {
-      "id": "808409587",
+      "id": "-557924733",
       "predicate": "codeSettings",
       "params": [
         {
@@ -19107,12 +18627,8 @@ var SCHEMA_GLOBAL = {
           "type": "flags.1?true"
         },
         {
-          "name": "app_hash_persistent",
-          "type": "flags.2?true"
-        },
-        {
-          "name": "app_hash",
-          "type": "flags.3?string"
+          "name": "allow_app_hash",
+          "type": "flags.4?true"
         }
       ],
       "type": "CodeSettings"
@@ -19459,6 +18975,143 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "PeerLocated"
+    },
+    {
+      "id": "-797791052",
+      "predicate": "restrictionReason",
+      "params": [
+        {
+          "name": "platform",
+          "type": "string"
+        },
+        {
+          "name": "reason",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "type": "RestrictionReason"
+    },
+    {
+      "id": "1012306921",
+      "predicate": "inputTheme",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        }
+      ],
+      "type": "InputTheme"
+    },
+    {
+      "id": "-175567375",
+      "predicate": "inputThemeSlug",
+      "params": [
+        {
+          "name": "slug",
+          "type": "string"
+        }
+      ],
+      "type": "InputTheme"
+    },
+    {
+      "id": "1211967244",
+      "predicate": "themeDocumentNotModified",
+      "params": [],
+      "type": "Theme"
+    },
+    {
+      "id": "-136770336",
+      "predicate": "theme",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "creator",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "default",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        },
+        {
+          "name": "slug",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "document",
+          "type": "flags.2?Document"
+        },
+        {
+          "name": "installs_count",
+          "type": "int"
+        }
+      ],
+      "type": "Theme"
+    },
+    {
+      "id": "-199313886",
+      "predicate": "account.themesNotModified",
+      "params": [],
+      "type": "account.Themes"
+    },
+    {
+      "id": "2137482273",
+      "predicate": "account.themes",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        },
+        {
+          "name": "themes",
+          "type": "Vector<Theme>"
+        }
+      ],
+      "type": "account.Themes"
+    },
+    {
+      "id": "1984136919",
+      "predicate": "wallet.liteResponse",
+      "params": [
+        {
+          "name": "response",
+          "type": "bytes"
+        }
+      ],
+      "type": "wallet.LiteResponse"
+    },
+    {
+      "id": "-582464156",
+      "predicate": "wallet.secretSalt",
+      "params": [
+        {
+          "name": "salt",
+          "type": "bytes"
+        }
+      ],
+      "type": "wallet.KeySecretSalt"
     }
   ]
 }

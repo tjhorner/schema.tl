@@ -1,7 +1,3 @@
-// Core types (no need to gen)
-
-//vector#1cb5c415 {t:Type} # [ t ] = Vector t;
-
 ///////////////////////////////
 /////////////////// Layer cons
 ///////////////////////////////
@@ -29,113 +25,8 @@
 //invokeWithLayer#da9b0d0d layer:int query:!X = X; // after 18 layer
 
 ///////////////////////////////
-/// Authorization key creation
-///////////////////////////////
-
-resPQ#05162463 nonce:int128 server_nonce:int128 pq:string server_public_key_fingerprints:Vector<long> = ResPQ;
-
-p_q_inner_data#83c95aec pq:string p:string q:string nonce:int128 server_nonce:int128 new_nonce:int256 = P_Q_inner_data;
-p_q_inner_data_dc#a9f55f95 pq:string p:string q:string nonce:int128 server_nonce:int128 new_nonce:int256 dc:int = P_Q_inner_data;
-p_q_inner_data_temp#3c6a84d4 pq:string p:string q:string nonce:int128 server_nonce:int128 new_nonce:int256 expires_in:int = P_Q_inner_data;
-p_q_inner_data_temp_dc#56fddf88 pq:string p:string q:string nonce:int128 server_nonce:int128 new_nonce:int256 dc:int expires_in:int = P_Q_inner_data;
-
-server_DH_params_fail#79cb045d nonce:int128 server_nonce:int128 new_nonce_hash:int128 = Server_DH_Params;
-server_DH_params_ok#d0e8075c nonce:int128 server_nonce:int128 encrypted_answer:string = Server_DH_Params;
-
-server_DH_inner_data#b5890dba nonce:int128 server_nonce:int128 g:int dh_prime:string g_a:string server_time:int = Server_DH_inner_data;
-
-client_DH_inner_data#6643b654 nonce:int128 server_nonce:int128 retry_id:long g_b:string = Client_DH_Inner_Data;
-
-dh_gen_ok#3bcbf734 nonce:int128 server_nonce:int128 new_nonce_hash1:int128 = Set_client_DH_params_answer;
-dh_gen_retry#46dc1fb9 nonce:int128 server_nonce:int128 new_nonce_hash2:int128 = Set_client_DH_params_answer;
-dh_gen_fail#a69dae02 nonce:int128 server_nonce:int128 new_nonce_hash3:int128 = Set_client_DH_params_answer;
-
-destroy_auth_key_ok#f660e1d4 = DestroyAuthKeyRes;
-destroy_auth_key_none#0a9f2259 = DestroyAuthKeyRes;
-destroy_auth_key_fail#ea109b13 = DestroyAuthKeyRes;
-
----functions---
-
-req_pq#60469778 nonce:int128 = ResPQ;
-req_pq_multi#be7e8ef1 nonce:int128 = ResPQ;
-
-req_DH_params#d712e4be nonce:int128 server_nonce:int128 p:string q:string public_key_fingerprint:long encrypted_data:string = Server_DH_Params;
-
-set_client_DH_params#f5045f1f nonce:int128 server_nonce:int128 encrypted_data:string = Set_client_DH_params_answer;
-
-destroy_auth_key#d1435160 = DestroyAuthKeyRes;
-
-///////////////////////////////
-////////////// System messages
-///////////////////////////////
-
----types---
-
-msgs_ack#62d6b459 msg_ids:Vector<long> = MsgsAck;
-
-bad_msg_notification#a7eff811 bad_msg_id:long bad_msg_seqno:int error_code:int = BadMsgNotification;
-bad_server_salt#edab447b bad_msg_id:long bad_msg_seqno:int error_code:int new_server_salt:long = BadMsgNotification;
-
-msgs_state_req#da69fb52 msg_ids:Vector<long> = MsgsStateReq;
-msgs_state_info#04deb57d req_msg_id:long info:string = MsgsStateInfo;
-msgs_all_info#8cc0d131 msg_ids:Vector<long> info:string = MsgsAllInfo;
-
-msg_detailed_info#276d3ec6 msg_id:long answer_msg_id:long bytes:int status:int = MsgDetailedInfo;
-msg_new_detailed_info#809db6df answer_msg_id:long bytes:int status:int = MsgDetailedInfo;
-
-msg_resend_req#7d861a08 msg_ids:Vector<long> = MsgResendReq;
-
-//rpc_result#f35c6d01 req_msg_id:long result:Object = RpcResult; // parsed manually
-
-rpc_error#2144ca19 error_code:int error_message:string = RpcError;
-
-rpc_answer_unknown#5e2ad36e = RpcDropAnswer;
-rpc_answer_dropped_running#cd78e586 = RpcDropAnswer;
-rpc_answer_dropped#a43ad8b7 msg_id:long seq_no:int bytes:int = RpcDropAnswer;
-
-future_salt#0949d9dc valid_since:int valid_until:int salt:long = FutureSalt;
-future_salts#ae500895 req_msg_id:long now:int salts:vector<future_salt> = FutureSalts;
-
-pong#347773c5 msg_id:long ping_id:long = Pong;
-
-destroy_session_ok#e22045fc session_id:long = DestroySessionRes;
-destroy_session_none#62d350c9 session_id:long = DestroySessionRes;
-
-new_session_created#9ec20908 first_msg_id:long unique_id:long server_salt:long = NewSession;
-
-//message msg_id:long seqno:int bytes:int body:Object = Message; // parsed manually
-//msg_container#73f1f8dc messages:vector<message> = MessageContainer; // parsed manually
-//msg_copy#e06046b2 orig_message:Message = MessageCopy; // parsed manually, not used - use msg_container
-//gzip_packed#3072cfa1 packed_data:string = Object; // parsed manually
-
-http_wait#9299359f max_delay:int wait_after:int max_wait:int = HttpWait;
-
-//ipPort ipv4:int port:int = IpPort;
-//help.configSimple#d997c3c5 date:int expires:int dc_id:int ip_port_list:Vector<ipPort> = help.ConfigSimple;
-
-ipPort#d433ad73 ipv4:int port:int = IpPort;
-ipPortSecret#37982646 ipv4:int port:int secret:bytes = IpPort;
-accessPointRule#4679b65f phone_prefix_rules:string dc_id:int ips:vector<IpPort> = AccessPointRule;
-help.configSimple#5a592a6c date:int expires:int rules:vector<AccessPointRule> = help.ConfigSimple;
-
----functions---
-
-rpc_drop_answer#58e4a740 req_msg_id:long = RpcDropAnswer;
-
-get_future_salts#b921bd04 num:int = FutureSalts;
-
-ping#7abe77ec ping_id:long = Pong;
-ping_delay_disconnect#f3427b8c ping_id:long disconnect_delay:int = Pong;
-
-destroy_session#e7512126 session_id:long = DestroySessionRes;
-
-contest.saveDeveloperInfo#9a5f6e95 vk_id:int name:string phone_number:string age:int city:string = Bool;
-
-///////////////////////////////
 ///////// Main application API
 ///////////////////////////////
-
----types---
 
 boolFalse#bc799737 = Bool;
 boolTrue#997275b5 = Bool;
@@ -217,7 +108,7 @@ storage.fileMp4#b3cea0e4 = storage.FileType;
 storage.fileWebp#1081464c = storage.FileType;
 
 userEmpty#200250ba id:int = User;
-user#2e13f4c3 flags:# self:flags.10?true contact:flags.11?true mutual_contact:flags.12?true deleted:flags.13?true bot:flags.14?true bot_chat_history:flags.15?true bot_nochats:flags.16?true verified:flags.17?true restricted:flags.18?true min:flags.20?true bot_inline_geo:flags.21?true support:flags.23?true scam:flags.24?true id:int access_hash:flags.0?long first_name:flags.1?string last_name:flags.2?string username:flags.3?string phone:flags.4?string photo:flags.5?UserProfilePhoto status:flags.6?UserStatus bot_info_version:flags.14?int restriction_reason:flags.18?string bot_inline_placeholder:flags.19?string lang_code:flags.22?string = User;
+user#938458c1 flags:# self:flags.10?true contact:flags.11?true mutual_contact:flags.12?true deleted:flags.13?true bot:flags.14?true bot_chat_history:flags.15?true bot_nochats:flags.16?true verified:flags.17?true restricted:flags.18?true min:flags.20?true bot_inline_geo:flags.21?true support:flags.23?true scam:flags.24?true id:int access_hash:flags.0?long first_name:flags.1?string last_name:flags.2?string username:flags.3?string phone:flags.4?string photo:flags.5?UserProfilePhoto status:flags.6?UserStatus bot_info_version:flags.14?int restriction_reason:flags.18?Vector<RestrictionReason> bot_inline_placeholder:flags.19?string lang_code:flags.22?string = User;
 
 userProfilePhotoEmpty#4f11bae1 = UserProfilePhoto;
 userProfilePhoto#ecd75d8c photo_id:long photo_small:FileLocation photo_big:FileLocation dc_id:int = UserProfilePhoto;
@@ -232,11 +123,11 @@ userStatusLastMonth#77ebc742 = UserStatus;
 chatEmpty#9ba2d800 id:int = Chat;
 chat#3bda1bde flags:# creator:flags.0?true kicked:flags.1?true left:flags.2?true deactivated:flags.5?true id:int title:string photo:ChatPhoto participants_count:int date:int version:int migrated_to:flags.6?InputChannel admin_rights:flags.14?ChatAdminRights default_banned_rights:flags.18?ChatBannedRights = Chat;
 chatForbidden#7328bdb id:int title:string = Chat;
-channel#4df30834 flags:# creator:flags.0?true left:flags.2?true broadcast:flags.5?true verified:flags.7?true megagroup:flags.8?true restricted:flags.9?true signatures:flags.11?true min:flags.12?true scam:flags.19?true has_link:flags.20?true has_geo:flags.21?true id:int access_hash:flags.13?long title:string username:flags.6?string photo:ChatPhoto date:int version:int restriction_reason:flags.9?string admin_rights:flags.14?ChatAdminRights banned_rights:flags.15?ChatBannedRights default_banned_rights:flags.18?ChatBannedRights participants_count:flags.17?int = Chat;
+channel#d31a961e flags:# creator:flags.0?true left:flags.2?true broadcast:flags.5?true verified:flags.7?true megagroup:flags.8?true restricted:flags.9?true signatures:flags.11?true min:flags.12?true scam:flags.19?true has_link:flags.20?true has_geo:flags.21?true slowmode_enabled:flags.22?true id:int access_hash:flags.13?long title:string username:flags.6?string photo:ChatPhoto date:int version:int restriction_reason:flags.9?Vector<RestrictionReason> admin_rights:flags.14?ChatAdminRights banned_rights:flags.15?ChatBannedRights default_banned_rights:flags.18?ChatBannedRights participants_count:flags.17?int = Chat;
 channelForbidden#289da732 flags:# broadcast:flags.5?true megagroup:flags.8?true id:int access_hash:long title:string until_date:flags.16?int = Chat;
 
-chatFull#1b7c9db3 flags:# can_set_username:flags.7?true id:int about:string participants:ChatParticipants chat_photo:flags.2?Photo notify_settings:PeerNotifySettings exported_invite:ExportedChatInvite bot_info:flags.3?Vector<BotInfo> pinned_msg_id:flags.6?int folder_id:flags.11?int = ChatFull;
-channelFull#10916653 flags:# can_view_participants:flags.3?true can_set_username:flags.6?true can_set_stickers:flags.7?true hidden_prehistory:flags.10?true can_view_stats:flags.12?true can_set_location:flags.16?true id:int about:string participants_count:flags.0?int admins_count:flags.1?int kicked_count:flags.2?int banned_count:flags.2?int online_count:flags.13?int read_inbox_max_id:int read_outbox_max_id:int unread_count:int chat_photo:Photo notify_settings:PeerNotifySettings exported_invite:ExportedChatInvite bot_info:Vector<BotInfo> migrated_from_chat_id:flags.4?int migrated_from_max_id:flags.4?int pinned_msg_id:flags.5?int stickerset:flags.8?StickerSet available_min_id:flags.9?int folder_id:flags.11?int linked_chat_id:flags.14?int location:flags.15?ChannelLocation pts:int = ChatFull;
+chatFull#1b7c9db3 flags:# can_set_username:flags.7?true has_scheduled:flags.8?true id:int about:string participants:ChatParticipants chat_photo:flags.2?Photo notify_settings:PeerNotifySettings exported_invite:ExportedChatInvite bot_info:flags.3?Vector<BotInfo> pinned_msg_id:flags.6?int folder_id:flags.11?int = ChatFull;
+channelFull#2d895c74 flags:# can_view_participants:flags.3?true can_set_username:flags.6?true can_set_stickers:flags.7?true hidden_prehistory:flags.10?true can_view_stats:flags.12?true can_set_location:flags.16?true has_scheduled:flags.19?true id:int about:string participants_count:flags.0?int admins_count:flags.1?int kicked_count:flags.2?int banned_count:flags.2?int online_count:flags.13?int read_inbox_max_id:int read_outbox_max_id:int unread_count:int chat_photo:Photo notify_settings:PeerNotifySettings exported_invite:ExportedChatInvite bot_info:Vector<BotInfo> migrated_from_chat_id:flags.4?int migrated_from_max_id:flags.4?int pinned_msg_id:flags.5?int stickerset:flags.8?StickerSet available_min_id:flags.9?int folder_id:flags.11?int linked_chat_id:flags.14?int location:flags.15?ChannelLocation slowmode_seconds:flags.17?int slowmode_next_send_date:flags.18?int pts:int = ChatFull;
 
 chatParticipant#c8d7493e user_id:int inviter_id:int date:int = ChatParticipant;
 chatParticipantCreator#da13538a user_id:int = ChatParticipant;
@@ -249,7 +140,7 @@ chatPhotoEmpty#37c1011c = ChatPhoto;
 chatPhoto#475cdbd5 photo_small:FileLocation photo_big:FileLocation dc_id:int = ChatPhoto;
 
 messageEmpty#83e5de54 id:int = Message;
-message#44f9b43d flags:# out:flags.1?true mentioned:flags.4?true media_unread:flags.5?true silent:flags.13?true post:flags.14?true from_scheduled:flags.18?true legacy:flags.19?true id:int from_id:flags.8?int to_id:Peer fwd_from:flags.2?MessageFwdHeader via_bot_id:flags.11?int reply_to_msg_id:flags.3?int date:int message:string media:flags.9?MessageMedia reply_markup:flags.6?ReplyMarkup entities:flags.7?Vector<MessageEntity> views:flags.10?int edit_date:flags.15?int post_author:flags.16?string grouped_id:flags.17?long = Message;
+message#452c0e65 flags:# out:flags.1?true mentioned:flags.4?true media_unread:flags.5?true silent:flags.13?true post:flags.14?true from_scheduled:flags.18?true legacy:flags.19?true edit_hide:flags.21?true id:int from_id:flags.8?int to_id:Peer fwd_from:flags.2?MessageFwdHeader via_bot_id:flags.11?int reply_to_msg_id:flags.3?int date:int message:string media:flags.9?MessageMedia reply_markup:flags.6?ReplyMarkup entities:flags.7?Vector<MessageEntity> views:flags.10?int edit_date:flags.15?int post_author:flags.16?string grouped_id:flags.17?long restriction_reason:flags.22?Vector<RestrictionReason> = Message;
 messageService#9e19a1f6 flags:# out:flags.1?true mentioned:flags.4?true media_unread:flags.5?true silent:flags.13?true post:flags.14?true legacy:flags.19?true id:int from_id:flags.8?int to_id:Peer reply_to_msg_id:flags.3?int date:int action:MessageAction = Message;
 
 messageMediaEmpty#3ded6320 = MessageMedia;
@@ -303,11 +194,10 @@ photoStrippedSize#e0b0bc2e type:string bytes:bytes = PhotoSize;
 geoPointEmpty#1117dd5f = GeoPoint;
 geoPoint#296f104 long:double lat:double access_hash:long = GeoPoint;
 
-auth.checkedPhone#811ea28e phone_registered:Bool = auth.CheckedPhone;
-
-auth.sentCode#38faab5f flags:# phone_registered:flags.0?true type:auth.SentCodeType phone_code_hash:string next_type:flags.1?auth.CodeType timeout:flags.2?int terms_of_service:flags.3?help.TermsOfService = auth.SentCode;
+auth.sentCode#5e002502 flags:# type:auth.SentCodeType phone_code_hash:string next_type:flags.1?auth.CodeType timeout:flags.2?int = auth.SentCode;
 
 auth.authorization#cd050916 flags:# tmp_sessions:flags.0?int user:User = auth.Authorization;
+auth.authorizationSignUpRequired#44747e9a flags:# terms_of_service:flags.0?help.TermsOfService = auth.Authorization;
 
 auth.exportedAuthorization#df969c2d id:int bytes:bytes = auth.ExportedAuthorization;
 
@@ -332,7 +222,7 @@ inputReportReasonOther#e1746d0a text:string = ReportReason;
 inputReportReasonCopyright#9b89f93a = ReportReason;
 inputReportReasonGeoIrrelevant#dbd4feed = ReportReason;
 
-userFull#edf17c12 flags:# blocked:flags.0?true phone_calls_available:flags.4?true phone_calls_private:flags.5?true can_pin_message:flags.7?true user:User about:flags.1?string settings:PeerSettings profile_photo:flags.2?Photo notify_settings:PeerNotifySettings bot_info:flags.3?BotInfo pinned_msg_id:flags.6?int common_chats_count:int folder_id:flags.11?int = UserFull;
+userFull#edf17c12 flags:# blocked:flags.0?true phone_calls_available:flags.4?true phone_calls_private:flags.5?true can_pin_message:flags.7?true has_scheduled:flags.12?true user:User about:flags.1?string settings:PeerSettings profile_photo:flags.2?Photo notify_settings:PeerNotifySettings bot_info:flags.3?BotInfo pinned_msg_id:flags.6?int common_chats_count:int folder_id:flags.11?int = UserFull;
 
 contact#f911c994 user_id:int mutual:Bool = Contact;
 
@@ -454,6 +344,9 @@ updateChatDefaultBannedRights#54c01850 peer:Peer default_banned_rights:ChatBanne
 updateFolderPeers#19360dc0 folder_peers:Vector<FolderPeer> pts:int pts_count:int = Update;
 updatePeerSettings#6a7e7366 peer:Peer settings:PeerSettings = Update;
 updatePeerLocated#b4afcfb0 peers:Vector<PeerLocated> = Update;
+updateNewScheduledMessage#39a51dfb message:Message = Update;
+updateDeleteScheduledMessages#90866cee peer:Peer messages:Vector<int> = Update;
+updateTheme#8216fba3 theme:Theme = Update;
 
 updates.state#a56c2a3e pts:int qts:int date:int seq:int unread_count:int = updates.State;
 
@@ -484,7 +377,7 @@ config#330b4067 flags:# phonecalls_enabled:flags.1?true default_p2p_contacts:fla
 
 nearestDc#8e1a1775 country:string this_dc:int nearest_dc:int = NearestDc;
 
-help.appUpdate#1da7158f flags:# popup:flags.0?true id:int version:string text:string entities:Vector<MessageEntity> document:flags.1?Document url:flags.2?string = help.AppUpdate;
+help.appUpdate#1da7158f flags:# can_not_skip:flags.0?true id:int version:string text:string entities:Vector<MessageEntity> document:flags.1?Document url:flags.2?string = help.AppUpdate;
 help.noAppUpdate#c45a6536 = help.AppUpdate;
 
 help.inviteText#18cb9f78 message:string = help.InviteText;
@@ -550,6 +443,7 @@ inputPrivacyKeyPhoneP2P#db9e70d2 = InputPrivacyKey;
 inputPrivacyKeyForwards#a4dd4c08 = InputPrivacyKey;
 inputPrivacyKeyProfilePhoto#5719bacc = InputPrivacyKey;
 inputPrivacyKeyPhoneNumber#352dafa = InputPrivacyKey;
+inputPrivacyKeyAddedByPhone#d1219bdd = InputPrivacyKey;
 
 privacyKeyStatusTimestamp#bc2eab30 = PrivacyKey;
 privacyKeyChatInvite#500e6dfa = PrivacyKey;
@@ -558,6 +452,7 @@ privacyKeyPhoneP2P#39491cc8 = PrivacyKey;
 privacyKeyForwards#69ec56a3 = PrivacyKey;
 privacyKeyProfilePhoto#96151fed = PrivacyKey;
 privacyKeyPhoneNumber#d19ae46d = PrivacyKey;
+privacyKeyAddedByPhone#42ffd42b = PrivacyKey;
 
 inputPrivacyValueAllowContacts#d09e07b = InputPrivacyRule;
 inputPrivacyValueAllowAll#184b35ce = InputPrivacyRule;
@@ -601,7 +496,7 @@ messages.affectedMessages#84d19185 pts:int pts_count:int = messages.AffectedMess
 
 webPageEmpty#eb1477e8 id:long = WebPage;
 webPagePending#c586da1c id:long date:int = WebPage;
-webPage#5f07b4bc flags:# id:long url:string display_url:string hash:int type:flags.0?string site_name:flags.1?string title:flags.2?string description:flags.3?string photo:flags.4?Photo embed_url:flags.5?string embed_type:flags.5?string embed_width:flags.6?int embed_height:flags.6?int duration:flags.7?int author:flags.8?string document:flags.9?Document cached_page:flags.10?Page = WebPage;
+webPage#fa64e172 flags:# id:long url:string display_url:string hash:int type:flags.0?string site_name:flags.1?string title:flags.2?string description:flags.3?string photo:flags.4?Photo embed_url:flags.5?string embed_type:flags.5?string embed_width:flags.6?int embed_height:flags.6?int duration:flags.7?int author:flags.8?string document:flags.9?Document documents:flags.11?Vector<Document> cached_page:flags.10?Page = WebPage;
 webPageNotModified#85849473 = WebPage;
 
 authorization#ad01d61d flags:# current:flags.0?true official_app:flags.1?true password_pending:flags.2?true hash:long device_model:string platform:string system_version:string api_id:int app_name:string app_version:string date_created:int date_active:int ip:string country:string region:string = Authorization;
@@ -627,6 +522,7 @@ chatInvite#dfc2f58e flags:# channel:flags.0?true broadcast:flags.1?true public:f
 inputStickerSetEmpty#ffb62b95 = InputStickerSet;
 inputStickerSetID#9de7a269 id:long access_hash:long = InputStickerSet;
 inputStickerSetShortName#861cc8a0 short_name:string = InputStickerSet;
+inputStickerSetAnimatedEmoji#28703c8 = InputStickerSet;
 
 stickerSet#eeb46f27 flags:# archived:flags.1?true official:flags.2?true masks:flags.3?true animated:flags.5?true installed_date:flags.0?int id:long access_hash:long title:string short_name:string thumb:flags.4?PhotoSize thumb_dc_id:flags.4?int count:int hash:int = StickerSet;
 
@@ -690,8 +586,8 @@ channelMessagesFilter#cd77d957 flags:# exclude_new_messages:flags.1?true ranges:
 
 channelParticipant#15ebac1d user_id:int date:int = ChannelParticipant;
 channelParticipantSelf#a3289a6d user_id:int inviter_id:int date:int = ChannelParticipant;
-channelParticipantCreator#e3e2e1f9 user_id:int = ChannelParticipant;
-channelParticipantAdmin#5daa6e23 flags:# can_edit:flags.0?true self:flags.1?true user_id:int inviter_id:flags.1?int promoted_by:int date:int admin_rights:ChatAdminRights = ChannelParticipant;
+channelParticipantCreator#808d15a4 flags:# user_id:int rank:flags.0?string = ChannelParticipant;
+channelParticipantAdmin#ccbebbaf flags:# can_edit:flags.0?true self:flags.1?true user_id:int inviter_id:flags.1?int promoted_by:int date:int admin_rights:ChatAdminRights rank:flags.2?string = ChannelParticipant;
 channelParticipantBanned#1c0facaf flags:# left:flags.0?true user_id:int kicked_by:int date:int banned_rights:ChatBannedRights = ChannelParticipant;
 
 channelParticipantsRecent#de3f3c79 = ChannelParticipantsFilter;
@@ -892,7 +788,7 @@ payments.paymentForm#3f56aea3 flags:# can_save_credentials:flags.2?true password
 payments.validatedRequestedInfo#d1451883 flags:# id:flags.0?string shipping_options:flags.1?Vector<ShippingOption> = payments.ValidatedRequestedInfo;
 
 payments.paymentResult#4e5f810d updates:Updates = payments.PaymentResult;
-payments.paymentVerficationNeeded#6b56b921 url:string = payments.PaymentResult;
+payments.paymentVerificationNeeded#d8411139 url:string = payments.PaymentResult;
 
 payments.paymentReceipt#500911e1 flags:# date:int bot_id:int invoice:Invoice provider_id:int info:flags.0?PaymentRequestedInfo shipping:flags.1?ShippingOption currency:string total_amount:long credentials_title:string users:Vector<User> = payments.PaymentReceipt;
 
@@ -959,6 +855,7 @@ channelAdminLogEventActionDefaultBannedRights#2df5fc0a prev_banned_rights:ChatBa
 channelAdminLogEventActionStopPoll#8f079643 message:Message = ChannelAdminLogEventAction;
 channelAdminLogEventActionChangeLinkedChat#a26f881b prev_value:int new_value:int = ChannelAdminLogEventAction;
 channelAdminLogEventActionChangeLocation#e6b76ae prev_value:ChannelLocation new_value:ChannelLocation = ChannelAdminLogEventAction;
+channelAdminLogEventActionToggleSlowMode#53909779 prev_value:int new_value:int = ChannelAdminLogEventAction;
 
 channelAdminLogEvent#3b5a3e40 id:long date:int user_id:int action:ChannelAdminLogEventAction = ChannelAdminLogEvent;
 
@@ -1134,7 +1031,7 @@ inputWallPaperSlug#72091c80 slug:string = InputWallPaper;
 account.wallPapersNotModified#1c199183 = account.WallPapers;
 account.wallPapers#702b65a9 hash:int wallpapers:Vector<WallPaper> = account.WallPapers;
 
-codeSettings#302f59f3 flags:# allow_flashcall:flags.0?true current_number:flags.1?true app_hash_persistent:flags.2?true app_hash:flags.3?string = CodeSettings;
+codeSettings#debebe83 flags:# allow_flashcall:flags.0?true current_number:flags.1?true allow_app_hash:flags.4?true = CodeSettings;
 
 wallPaperSettings#a12f40b8 flags:# blur:flags.1?true motion:flags.2?true background_color:flags.0?int intensity:flags.3?int = WallPaperSettings;
 
@@ -1170,6 +1067,21 @@ channelLocation#209b82db geo_point:GeoPoint address:string = ChannelLocation;
 
 peerLocated#ca461b5d peer:Peer expires:int distance:int = PeerLocated;
 
+restrictionReason#d072acb4 platform:string reason:string text:string = RestrictionReason;
+
+inputTheme#3c5693e9 id:long access_hash:long = InputTheme;
+inputThemeSlug#f5890df1 slug:string = InputTheme;
+
+themeDocumentNotModified#483d270c = Theme;
+theme#f7d90ce0 flags:# creator:flags.0?true default:flags.1?true id:long access_hash:long slug:string title:string document:flags.2?Document installs_count:int = Theme;
+
+account.themesNotModified#f41eb622 = account.Themes;
+account.themes#7f676421 hash:int themes:Vector<Theme> = account.Themes;
+
+wallet.liteResponse#764386d7 response:bytes = wallet.LiteResponse;
+
+wallet.secretSalt#dd484d64 salt:bytes = wallet.KeySecretSalt;
+
 ---functions---
 
 invokeAfterMsg#cb9f372d {X:Type} msg_id:long query:!X = X;
@@ -1181,7 +1093,7 @@ invokeWithMessagesRange#365275f2 {X:Type} range:MessageRange query:!X = X;
 invokeWithTakeout#aca9fd2e {X:Type} takeout_id:long query:!X = X;
 
 auth.sendCode#a677244f phone_number:string api_id:int api_hash:string settings:CodeSettings = auth.SentCode;
-auth.signUp#1b067634 phone_number:string phone_code_hash:string phone_code:string first_name:string last_name:string = auth.Authorization;
+auth.signUp#80eee427 phone_number:string phone_code_hash:string first_name:string last_name:string = auth.Authorization;
 auth.signIn#bcd51581 phone_number:string phone_code_hash:string phone_code:string = auth.Authorization;
 auth.logOut#5717da40 = Bool;
 auth.resetAuthorizations#9fab0d1a = Bool;
@@ -1251,6 +1163,13 @@ account.installWallPaper#feed5769 wallpaper:InputWallPaper settings:WallPaperSet
 account.resetWallPapers#bb3b9804 = Bool;
 account.getAutoDownloadSettings#56da0b3f = account.AutoDownloadSettings;
 account.saveAutoDownloadSettings#76f36233 flags:# low:flags.0?true high:flags.1?true settings:AutoDownloadSettings = Bool;
+account.uploadTheme#1c3db333 flags:# file:InputFile thumb:flags.0?InputFile file_name:string mime_type:string = Document;
+account.createTheme#2b7ffd7f slug:string title:string document:InputDocument = Theme;
+account.updateTheme#3b8ea202 flags:# format:string theme:InputTheme slug:flags.0?string title:flags.1?string document:flags.2?InputDocument = Theme;
+account.saveTheme#f257106c theme:InputTheme unsave:Bool = Bool;
+account.installTheme#7ae43737 flags:# dark:flags.0?true format:flags.1?string theme:flags.1?InputTheme = Bool;
+account.getTheme#8d9d742b format:string theme:InputTheme document_id:long = Theme;
+account.getThemes#285946f8 format:string hash:int = account.Themes;
 
 users.getUsers#d91a548 id:Vector<InputUser> = Vector<User>;
 users.getFullUser#ca30a5b1 id:InputUser = UserFull;
@@ -1285,9 +1204,9 @@ messages.deleteHistory#1c015b09 flags:# just_clear:flags.0?true revoke:flags.1?t
 messages.deleteMessages#e58e95d2 flags:# revoke:flags.0?true id:Vector<int> = messages.AffectedMessages;
 messages.receivedMessages#5a954c0 max_id:int = Vector<ReceivedNotifyMessage>;
 messages.setTyping#a3825e50 peer:InputPeer action:SendMessageAction = Bool;
-messages.sendMessage#fa88427a flags:# no_webpage:flags.1?true silent:flags.5?true background:flags.6?true clear_draft:flags.7?true peer:InputPeer reply_to_msg_id:flags.0?int message:string random_id:long reply_markup:flags.2?ReplyMarkup entities:flags.3?Vector<MessageEntity> = Updates;
-messages.sendMedia#b8d1262b flags:# silent:flags.5?true background:flags.6?true clear_draft:flags.7?true peer:InputPeer reply_to_msg_id:flags.0?int media:InputMedia message:string random_id:long reply_markup:flags.2?ReplyMarkup entities:flags.3?Vector<MessageEntity> = Updates;
-messages.forwardMessages#708e0195 flags:# silent:flags.5?true background:flags.6?true with_my_score:flags.8?true grouped:flags.9?true from_peer:InputPeer id:Vector<int> random_id:Vector<long> to_peer:InputPeer = Updates;
+messages.sendMessage#520c3870 flags:# no_webpage:flags.1?true silent:flags.5?true background:flags.6?true clear_draft:flags.7?true peer:InputPeer reply_to_msg_id:flags.0?int message:string random_id:long reply_markup:flags.2?ReplyMarkup entities:flags.3?Vector<MessageEntity> schedule_date:flags.10?int = Updates;
+messages.sendMedia#3491eba9 flags:# silent:flags.5?true background:flags.6?true clear_draft:flags.7?true peer:InputPeer reply_to_msg_id:flags.0?int media:InputMedia message:string random_id:long reply_markup:flags.2?ReplyMarkup entities:flags.3?Vector<MessageEntity> schedule_date:flags.10?int = Updates;
+messages.forwardMessages#d9fee60e flags:# silent:flags.5?true background:flags.6?true with_my_score:flags.8?true grouped:flags.9?true from_peer:InputPeer id:Vector<int> random_id:Vector<long> to_peer:InputPeer schedule_date:flags.10?int = Updates;
 messages.reportSpam#cf1592db peer:InputPeer = Bool;
 messages.getPeerSettings#3672e09c peer:InputPeer = PeerSettings;
 messages.report#bd82b658 peer:InputPeer id:Vector<int> reason:ReportReason = Bool;
@@ -1331,9 +1250,9 @@ messages.getSavedGifs#83bf3d52 hash:int = messages.SavedGifs;
 messages.saveGif#327a30cb id:InputDocument unsave:Bool = Bool;
 messages.getInlineBotResults#514e999d flags:# bot:InputUser peer:InputPeer geo_point:flags.0?InputGeoPoint query:string offset:string = messages.BotResults;
 messages.setInlineBotResults#eb5ea206 flags:# gallery:flags.0?true private:flags.1?true query_id:long results:Vector<InputBotInlineResult> cache_time:int next_offset:flags.2?string switch_pm:flags.3?InlineBotSwitchPM = Bool;
-messages.sendInlineBotResult#b16e06fe flags:# silent:flags.5?true background:flags.6?true clear_draft:flags.7?true hide_via:flags.11?true peer:InputPeer reply_to_msg_id:flags.0?int random_id:long query_id:long id:string = Updates;
+messages.sendInlineBotResult#220815b0 flags:# silent:flags.5?true background:flags.6?true clear_draft:flags.7?true hide_via:flags.11?true peer:InputPeer reply_to_msg_id:flags.0?int random_id:long query_id:long id:string schedule_date:flags.10?int = Updates;
 messages.getMessageEditData#fda68d36 peer:InputPeer id:int = messages.MessageEditData;
-messages.editMessage#d116f31e flags:# no_webpage:flags.1?true peer:InputPeer id:int message:flags.11?string media:flags.14?InputMedia reply_markup:flags.2?ReplyMarkup entities:flags.3?Vector<MessageEntity> = Updates;
+messages.editMessage#48f71778 flags:# no_webpage:flags.1?true peer:InputPeer id:int message:flags.11?string media:flags.14?InputMedia reply_markup:flags.2?ReplyMarkup entities:flags.3?Vector<MessageEntity> schedule_date:flags.15?int = Updates;
 messages.editInlineBotMessage#83557dba flags:# no_webpage:flags.1?true id:InputBotInlineMessageID message:flags.11?string media:flags.14?InputMedia reply_markup:flags.2?ReplyMarkup entities:flags.3?Vector<MessageEntity> = Bool;
 messages.getBotCallbackAnswer#810a9fec flags:# game:flags.1?true peer:InputPeer msg_id:int data:flags.0?bytes = messages.BotCallbackAnswer;
 messages.setBotCallbackAnswer#d58f130a flags:# alert:flags.1?true query_id:long message:flags.0?string url:flags.2?string cache_time:int = Bool;
@@ -1367,7 +1286,7 @@ messages.faveSticker#b9ffc55b id:InputDocument unfave:Bool = Bool;
 messages.getUnreadMentions#46578472 peer:InputPeer offset_id:int add_offset:int limit:int max_id:int min_id:int = messages.Messages;
 messages.readMentions#f0189d3 peer:InputPeer = messages.AffectedHistory;
 messages.getRecentLocations#bbc45b09 peer:InputPeer limit:int hash:int = messages.Messages;
-messages.sendMultiMedia#2095512f flags:# silent:flags.5?true background:flags.6?true clear_draft:flags.7?true peer:InputPeer reply_to_msg_id:flags.0?int multi_media:Vector<InputSingleMedia> = Updates;
+messages.sendMultiMedia#cc0110cb flags:# silent:flags.5?true background:flags.6?true clear_draft:flags.7?true peer:InputPeer reply_to_msg_id:flags.0?int multi_media:Vector<InputSingleMedia> schedule_date:flags.10?int = Updates;
 messages.uploadEncryptedFile#5057c497 peer:InputEncryptedChat file:InputEncryptedFile = EncryptedFile;
 messages.searchStickerSets#c2b7d08b flags:# exclude_featured:flags.0?true q:string hash:int = messages.FoundStickerSets;
 messages.getSplitRanges#1cff7e08 = Vector<MessageRange>;
@@ -1389,6 +1308,10 @@ messages.getSearchCounters#732eef00 peer:InputPeer filters:Vector<MessagesFilter
 messages.requestUrlAuth#e33f5613 peer:InputPeer msg_id:int button_id:int = UrlAuthResult;
 messages.acceptUrlAuth#f729ea98 flags:# write_allowed:flags.0?true peer:InputPeer msg_id:int button_id:int = UrlAuthResult;
 messages.hidePeerSettingsBar#4facb138 peer:InputPeer = Bool;
+messages.getScheduledHistory#e2c2685b peer:InputPeer hash:int = messages.Messages;
+messages.getScheduledMessages#bdbb0464 peer:InputPeer id:Vector<int> = messages.Messages;
+messages.sendScheduledMessages#bd38850a peer:InputPeer id:Vector<int> = Updates;
+messages.deleteScheduledMessages#59ae2b16 peer:InputPeer id:Vector<int> = Updates;
 
 updates.getState#edd4882a = updates.State;
 updates.getDifference#25939651 flags:# pts:int pts_total_limit:flags.0?int date:int qts:int = updates.Difference;
@@ -1400,7 +1323,7 @@ photos.deletePhotos#87cf7f2f id:Vector<InputPhoto> = Vector<long>;
 photos.getUserPhotos#91cd32a8 user_id:InputUser offset:int max_id:long limit:int = photos.Photos;
 
 upload.saveFilePart#b304a621 file_id:long file_part:int bytes:bytes = Bool;
-upload.getFile#e3a6cfb5 location:InputFileLocation offset:int limit:int = upload.File;
+upload.getFile#b15a9afc flags:# precise:flags.0?true location:InputFileLocation offset:int limit:int = upload.File;
 upload.saveBigFilePart#de7b673d file_id:long file_part:int file_total_parts:int bytes:bytes = Bool;
 upload.getWebFile#24e6818d location:InputWebFileLocation offset:int limit:int = upload.WebFile;
 upload.getCdnFile#2000bcc3 file_token:bytes offset:int limit:int = upload.CdnFile;
@@ -1438,7 +1361,7 @@ channels.getParticipant#546dd7a6 channel:InputChannel user_id:InputUser = channe
 channels.getChannels#a7f6bbb id:Vector<InputChannel> = messages.Chats;
 channels.getFullChannel#8736a09 channel:InputChannel = messages.ChatFull;
 channels.createChannel#3d5fb10f flags:# broadcast:flags.0?true megagroup:flags.1?true title:string about:string geo_point:flags.2?InputGeoPoint address:flags.2?string = Updates;
-channels.editAdmin#70f893ba channel:InputChannel user_id:InputUser admin_rights:ChatAdminRights = Updates;
+channels.editAdmin#d33c8902 channel:InputChannel user_id:InputUser admin_rights:ChatAdminRights rank:string = Updates;
 channels.editTitle#566decd0 channel:InputChannel title:string = Updates;
 channels.editPhoto#f12e57c9 channel:InputChannel photo:InputChatPhoto = Updates;
 channels.checkUsername#10e6bd2c channel:InputChannel username:string = Bool;
@@ -1461,6 +1384,7 @@ channels.getGroupsForDiscussion#f5dad378 = messages.Chats;
 channels.setDiscussionGroup#40582bb2 broadcast:InputChannel group:InputChannel = Bool;
 channels.editCreator#8f38cd1f channel:InputChannel user_id:InputUser password:InputCheckPasswordSRP = Updates;
 channels.editLocation#58e63f6d channel:InputChannel geo_point:InputGeoPoint address:string = Bool;
+channels.toggleSlowMode#edd49ef0 channel:InputChannel seconds:int = Updates;
 
 bots.sendCustomRequest#aa2769ed custom_method:string params:DataJSON = DataJSON;
 bots.answerWebhookJSONQuery#e6213f4d query_id:long data:DataJSON = Bool;
@@ -1495,4 +1419,7 @@ langpack.getLanguage#6a596502 lang_pack:string lang_code:string = LangPackLangua
 folders.editPeerFolders#6847d0ab folder_peers:Vector<InputFolderPeer> = Updates;
 folders.deleteFolder#1c295881 folder_id:int = Updates;
 
-// LAYER 103
+wallet.sendLiteRequest#e2c9d33e body:bytes = wallet.LiteResponse;
+wallet.getKeySecretSalt#b57f346 revoke:Bool = wallet.KeySecretSalt;
+
+// LAYER 106
