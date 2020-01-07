@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 106
+var LAYER_NUMBER = 108
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -352,6 +352,47 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": "-1313598185",
+      "method": "auth.exportLoginToken",
+      "params": [
+        {
+          "name": "api_id",
+          "type": "int"
+        },
+        {
+          "name": "api_hash",
+          "type": "string"
+        },
+        {
+          "name": "except_ids",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "auth.LoginToken"
+    },
+    {
+      "id": "-1783866140",
+      "method": "auth.importLoginToken",
+      "params": [
+        {
+          "name": "token",
+          "type": "bytes"
+        }
+      ],
+      "type": "auth.LoginToken"
+    },
+    {
+      "id": "-392909491",
+      "method": "auth.acceptLoginToken",
+      "params": [
+        {
+          "name": "token",
+          "type": "bytes"
+        }
+      ],
+      "type": "Authorization"
     },
     {
       "id": "1754754159",
@@ -1126,9 +1167,13 @@ var SCHEMA_GLOBAL = {
       "type": "Document"
     },
     {
-      "id": "729808255",
+      "id": "-2077048289",
       "method": "account.createTheme",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "slug",
           "type": "string"
@@ -1139,13 +1184,17 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "document",
-          "type": "InputDocument"
+          "type": "flags.2?InputDocument"
+        },
+        {
+          "name": "settings",
+          "type": "flags.3?InputThemeSettings"
         }
       ],
       "type": "Theme"
     },
     {
-      "id": "999203330",
+      "id": "1555261397",
       "method": "account.updateTheme",
       "params": [
         {
@@ -1171,6 +1220,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "document",
           "type": "flags.2?InputDocument"
+        },
+        {
+          "name": "settings",
+          "type": "flags.3?InputThemeSettings"
         }
       ],
       "type": "Theme"
@@ -1246,6 +1299,38 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "account.Themes"
+    },
+    {
+      "id": "-1250643605",
+      "method": "account.setContentSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "sensitive_enabled",
+          "type": "flags.0?true"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "-1952756306",
+      "method": "account.getContentSettings",
+      "params": [],
+      "type": "account.ContentSettings"
+    },
+    {
+      "id": "1705865692",
+      "method": "account.getMultiWallPapers",
+      "params": [
+        {
+          "name": "wallpapers",
+          "type": "Vector<InputWallPaper>"
+        }
+      ],
+      "type": "Vector<WallPaper>"
     },
     {
       "id": "227648840",
@@ -4815,6 +4900,12 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
+      "id": "300429806",
+      "method": "channels.getInactiveChannels",
+      "params": [],
+      "type": "messages.InactiveChats"
+    },
+    {
       "id": "-1440257555",
       "method": "bots.sendCustomRequest",
       "params": [
@@ -6040,6 +6131,37 @@ var SCHEMA_GLOBAL = {
         {
           "name": "thumb_size",
           "type": "string"
+        }
+      ],
+      "type": "InputFileLocation"
+    },
+    {
+      "id": "-667654413",
+      "predicate": "inputPhotoLegacyFileLocation",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        },
+        {
+          "name": "file_reference",
+          "type": "bytes"
+        },
+        {
+          "name": "volume_id",
+          "type": "long"
+        },
+        {
+          "name": "local_id",
+          "type": "int"
+        },
+        {
+          "name": "secret",
+          "type": "long"
         }
       ],
       "type": "InputFileLocation"
@@ -8094,6 +8216,29 @@ var SCHEMA_GLOBAL = {
       "type": "WallPaper"
     },
     {
+      "id": "-1963717851",
+      "predicate": "wallPaperNoFile",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "default",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "dark",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "settings",
+          "type": "flags.2?WallPaperSettings"
+        }
+      ],
+      "type": "WallPaper"
+    },
+    {
       "id": "1490799288",
       "predicate": "inputReportReasonSpam",
       "params": [],
@@ -9986,6 +10131,27 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": "-2027964103",
+      "predicate": "updateGeoLiveViewed",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "1448076945",
+      "predicate": "updateLoginToken",
+      "params": [],
+      "type": "Update"
+    },
+    {
       "id": "-1519637954",
       "predicate": "updates.state",
       "params": [
@@ -11865,7 +12031,7 @@ var SCHEMA_GLOBAL = {
       "type": "WebPage"
     },
     {
-      "id": "-94051982",
+      "id": "-392411726",
       "predicate": "webPage",
       "params": [
         {
@@ -11937,12 +12103,12 @@ var SCHEMA_GLOBAL = {
           "type": "flags.9?Document"
         },
         {
-          "name": "documents",
-          "type": "flags.11?Vector<Document>"
-        },
-        {
           "name": "cached_page",
           "type": "flags.10?Page"
+        },
+        {
+          "name": "attributes",
+          "type": "flags.12?Vector<WebPageAttribute>"
         }
       ],
       "type": "WebPage"
@@ -18590,6 +18756,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputWallPaper"
     },
     {
+      "id": "-2077770836",
+      "predicate": "inputWallPaperNoFile",
+      "params": [],
+      "type": "InputWallPaper"
+    },
+    {
       "id": "471437699",
       "predicate": "account.wallPapersNotModified",
       "params": [],
@@ -18634,7 +18806,7 @@ var SCHEMA_GLOBAL = {
       "type": "CodeSettings"
     },
     {
-      "id": "-1590738760",
+      "id": "84438264",
       "predicate": "wallPaperSettings",
       "params": [
         {
@@ -18654,14 +18826,22 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?int"
         },
         {
+          "name": "second_background_color",
+          "type": "flags.4?int"
+        },
+        {
           "name": "intensity",
           "type": "flags.3?int"
+        },
+        {
+          "name": "rotation",
+          "type": "flags.4?int"
         }
       ],
       "type": "WallPaperSettings"
     },
     {
-      "id": "-767099577",
+      "id": "-532532493",
       "predicate": "autoDownloadSettings",
       "params": [
         {
@@ -18694,6 +18874,10 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "file_size_max",
+          "type": "int"
+        },
+        {
+          "name": "video_upload_maxbitrate",
           "type": "int"
         }
       ],
@@ -19028,7 +19212,7 @@ var SCHEMA_GLOBAL = {
       "type": "Theme"
     },
     {
-      "id": "-136770336",
+      "id": "42930452",
       "predicate": "theme",
       "params": [
         {
@@ -19062,6 +19246,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "document",
           "type": "flags.2?Document"
+        },
+        {
+          "name": "settings",
+          "type": "flags.3?ThemeSettings"
         },
         {
           "name": "installs_count",
@@ -19112,6 +19300,200 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "wallet.KeySecretSalt"
+    },
+    {
+      "id": "1654593920",
+      "predicate": "auth.loginToken",
+      "params": [
+        {
+          "name": "expires",
+          "type": "int"
+        },
+        {
+          "name": "token",
+          "type": "bytes"
+        }
+      ],
+      "type": "auth.LoginToken"
+    },
+    {
+      "id": "110008598",
+      "predicate": "auth.loginTokenMigrateTo",
+      "params": [
+        {
+          "name": "dc_id",
+          "type": "int"
+        },
+        {
+          "name": "token",
+          "type": "bytes"
+        }
+      ],
+      "type": "auth.LoginToken"
+    },
+    {
+      "id": "957176926",
+      "predicate": "auth.loginTokenSuccess",
+      "params": [
+        {
+          "name": "authorization",
+          "type": "auth.Authorization"
+        }
+      ],
+      "type": "auth.LoginToken"
+    },
+    {
+      "id": "1474462241",
+      "predicate": "account.contentSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "sensitive_enabled",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "sensitive_can_change",
+          "type": "flags.1?true"
+        }
+      ],
+      "type": "account.ContentSettings"
+    },
+    {
+      "id": "-1456996667",
+      "predicate": "messages.inactiveChats",
+      "params": [
+        {
+          "name": "dates",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "messages.InactiveChats"
+    },
+    {
+      "id": "-1012849566",
+      "predicate": "baseThemeClassic",
+      "params": [],
+      "type": "BaseTheme"
+    },
+    {
+      "id": "-69724536",
+      "predicate": "baseThemeDay",
+      "params": [],
+      "type": "BaseTheme"
+    },
+    {
+      "id": "-1212997976",
+      "predicate": "baseThemeNight",
+      "params": [],
+      "type": "BaseTheme"
+    },
+    {
+      "id": "1834973166",
+      "predicate": "baseThemeTinted",
+      "params": [],
+      "type": "BaseTheme"
+    },
+    {
+      "id": "1527845466",
+      "predicate": "baseThemeArctic",
+      "params": [],
+      "type": "BaseTheme"
+    },
+    {
+      "id": "-1118798639",
+      "predicate": "inputThemeSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "base_theme",
+          "type": "BaseTheme"
+        },
+        {
+          "name": "accent_color",
+          "type": "int"
+        },
+        {
+          "name": "message_top_color",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "message_bottom_color",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "wallpaper",
+          "type": "flags.1?InputWallPaper"
+        },
+        {
+          "name": "wallpaper_settings",
+          "type": "flags.1?WallPaperSettings"
+        }
+      ],
+      "type": "InputThemeSettings"
+    },
+    {
+      "id": "-1676371894",
+      "predicate": "themeSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "base_theme",
+          "type": "BaseTheme"
+        },
+        {
+          "name": "accent_color",
+          "type": "int"
+        },
+        {
+          "name": "message_top_color",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "message_bottom_color",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "wallpaper",
+          "type": "flags.1?WallPaper"
+        }
+      ],
+      "type": "ThemeSettings"
+    },
+    {
+      "id": "1421174295",
+      "predicate": "webPageAttributeTheme",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "documents",
+          "type": "flags.0?Vector<Document>"
+        },
+        {
+          "name": "settings",
+          "type": "flags.1?ThemeSettings"
+        }
+      ],
+      "type": "WebPageAttribute"
     }
   ]
 }
