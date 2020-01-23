@@ -3885,6 +3885,37 @@
       "type": "Updates"
     },
     {
+      "id": "-1200736242",
+      "method": "messages.getPollVotes",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "option",
+          "type": "flags.0?bytes"
+        },
+        {
+          "name": "offset",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.VotesList"
+    },
+    {
       "id": "-304838614",
       "method": "updates.getState",
       "params": [],
@@ -4034,6 +4065,10 @@
         {
           "name": "precise",
           "type": "flags.0?true"
+        },
+        {
+          "name": "cdn_supported",
+          "type": "flags.1?true"
         },
         {
           "name": "location",
@@ -5365,28 +5400,6 @@
         }
       ],
       "type": "Updates"
-    },
-    {
-      "id": "-490089666",
-      "method": "wallet.sendLiteRequest",
-      "params": [
-        {
-          "name": "body",
-          "type": "bytes"
-        }
-      ],
-      "type": "wallet.LiteResponse"
-    },
-    {
-      "id": "190313286",
-      "method": "wallet.getKeySecretSalt",
-      "params": [
-        {
-          "name": "revoke",
-          "type": "Bool"
-        }
-      ],
-      "type": "wallet.KeySecretSalt"
     }
   ],
   "constructors": [
@@ -5944,12 +5957,20 @@
       "type": "InputMedia"
     },
     {
-      "id": "112424539",
+      "id": "-1410741723",
       "predicate": "inputMediaPoll",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "poll",
           "type": "Poll"
+        },
+        {
+          "name": "correct_answers",
+          "type": "flags.0?Vector<bytes>"
         }
       ],
       "type": "InputMedia"
@@ -10150,6 +10171,25 @@
       "type": "Update"
     },
     {
+      "id": "1123585836",
+      "predicate": "updateMessagePollVote",
+      "params": [
+        {
+          "name": "poll_id",
+          "type": "long"
+        },
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "options",
+          "type": "Vector<bytes>"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": "-1519637954",
       "predicate": "updates.state",
       "params": [
@@ -12717,6 +12757,25 @@
         {
           "name": "bot",
           "type": "InputUser"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
+      "id": "-1144565411",
+      "predicate": "keyboardButtonRequestPoll",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "quiz",
+          "type": "flags.0?Bool"
+        },
+        {
+          "name": "text",
+          "type": "string"
         }
       ],
       "type": "KeyboardButton"
@@ -18543,6 +18602,18 @@
           "type": "flags.0?true"
         },
         {
+          "name": "public_voters",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "multiple_choice",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "quiz",
+          "type": "flags.3?true"
+        },
+        {
           "name": "question",
           "type": "string"
         },
@@ -18566,6 +18637,10 @@
           "type": "flags.0?true"
         },
         {
+          "name": "correct",
+          "type": "flags.1?true"
+        },
+        {
           "name": "option",
           "type": "bytes"
         },
@@ -18577,7 +18652,7 @@
       "type": "PollAnswerVoters"
     },
     {
-      "id": "1465219162",
+      "id": "-932174686",
       "predicate": "pollResults",
       "params": [
         {
@@ -18595,6 +18670,10 @@
         {
           "name": "total_voters",
           "type": "flags.2?int"
+        },
+        {
+          "name": "recent_voters",
+          "type": "flags.3?Vector<int>"
         }
       ],
       "type": "PollResults"
@@ -19204,12 +19283,6 @@
       "type": "InputTheme"
     },
     {
-      "id": "1211967244",
-      "predicate": "themeDocumentNotModified",
-      "params": [],
-      "type": "Theme"
-    },
-    {
       "id": "42930452",
       "predicate": "theme",
       "params": [
@@ -19276,28 +19349,6 @@
         }
       ],
       "type": "account.Themes"
-    },
-    {
-      "id": "1984136919",
-      "predicate": "wallet.liteResponse",
-      "params": [
-        {
-          "name": "response",
-          "type": "bytes"
-        }
-      ],
-      "type": "wallet.LiteResponse"
-    },
-    {
-      "id": "-582464156",
-      "predicate": "wallet.secretSalt",
-      "params": [
-        {
-          "name": "salt",
-          "type": "bytes"
-        }
-      ],
-      "type": "wallet.KeySecretSalt"
     },
     {
       "id": "1654593920",
@@ -19492,6 +19543,86 @@
         }
       ],
       "type": "WebPageAttribute"
+    },
+    {
+      "id": "-1567730343",
+      "predicate": "messageUserVote",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "option",
+          "type": "bytes"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageUserVote"
+    },
+    {
+      "id": "909603888",
+      "predicate": "messageUserVoteInputOption",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageUserVote"
+    },
+    {
+      "id": "244310238",
+      "predicate": "messageUserVoteMultiple",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "options",
+          "type": "Vector<bytes>"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageUserVote"
+    },
+    {
+      "id": "136574537",
+      "predicate": "messages.votesList",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "votes",
+          "type": "Vector<MessageUserVote>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        },
+        {
+          "name": "next_offset",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "messages.VotesList"
     }
   ]
 }
