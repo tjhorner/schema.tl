@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 108
+var LAYER_NUMBER = 111
 
 var SCHEMA_GLOBAL = {
   "methods": [
@@ -1629,12 +1629,24 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "171270230",
+      "id": "-750207932",
       "method": "contacts.getLocated",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "background",
+          "type": "flags.1?true"
+        },
+        {
           "name": "geo_point",
           "type": "InputGeoPoint"
+        },
+        {
+          "name": "self_expires",
+          "type": "flags.0?int"
         }
       ],
       "type": "Updates"
@@ -3887,6 +3899,106 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
+      "id": "-1200736242",
+      "method": "messages.getPollVotes",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "option",
+          "type": "flags.0?bytes"
+        },
+        {
+          "name": "offset",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.VotesList"
+    },
+    {
+      "id": "-1257951254",
+      "method": "messages.toggleStickerSets",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "uninstall",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "archive",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "unarchive",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "stickersets",
+          "type": "Vector<InputStickerSet>"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "-241247891",
+      "method": "messages.getDialogFilters",
+      "params": [],
+      "type": "Vector<DialogFilter>"
+    },
+    {
+      "id": "-1566780372",
+      "method": "messages.getSuggestedDialogFilters",
+      "params": [],
+      "type": "Vector<DialogFilterSuggested>"
+    },
+    {
+      "id": "450142282",
+      "method": "messages.updateDialogFilter",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "filter",
+          "type": "flags.0?DialogFilter"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": "-983318044",
+      "method": "messages.updateDialogFiltersOrder",
+      "params": [
+        {
+          "name": "order",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
       "id": "-304838614",
       "method": "updates.getState",
       "params": [],
@@ -4036,6 +4148,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "precise",
           "type": "flags.0?true"
+        },
+        {
+          "name": "cdn_supported",
+          "type": "flags.1?true"
         },
         {
           "name": "location",
@@ -5033,6 +5149,17 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": "779736953",
+      "method": "payments.getBankCardData",
+      "params": [
+        {
+          "name": "number",
+          "type": "string"
+        }
+      ],
+      "type": "payments.BankCardData"
+    },
+    {
       "id": "-1680314774",
       "method": "stickers.createStickerSet",
       "params": [
@@ -5369,26 +5496,42 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": "-490089666",
-      "method": "wallet.sendLiteRequest",
+      "id": "-1421720550",
+      "method": "stats.getBroadcastStats",
       "params": [
         {
-          "name": "body",
-          "type": "bytes"
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "dark",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "channel",
+          "type": "InputChannel"
         }
       ],
-      "type": "wallet.LiteResponse"
+      "type": "stats.BroadcastStats"
     },
     {
-      "id": "190313286",
-      "method": "wallet.getKeySecretSalt",
+      "id": "1646092192",
+      "method": "stats.loadAsyncGraph",
       "params": [
         {
-          "name": "revoke",
-          "type": "Bool"
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "x",
+          "type": "flags.0?long"
         }
       ],
-      "type": "wallet.KeySecretSalt"
+      "type": "StatsGraph"
     }
   ],
   "constructors": [
@@ -5946,14 +6089,28 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": "112424539",
+      "id": "-1410741723",
       "predicate": "inputMediaPoll",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "poll",
           "type": "Poll"
+        },
+        {
+          "name": "correct_answers",
+          "type": "flags.0?Vector<bytes>"
         }
       ],
+      "type": "InputMedia"
+    },
+    {
+      "id": "-1358977017",
+      "predicate": "inputMediaDice",
+      "params": [],
       "type": "InputMedia"
     },
     {
@@ -6789,7 +6946,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatFull"
     },
     {
-      "id": "763976820",
+      "id": "-253335766",
       "predicate": "channelFull",
       "params": [
         {
@@ -6919,6 +7076,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "slowmode_next_send_date",
           "type": "flags.18?int"
+        },
+        {
+          "name": "stats_dc",
+          "type": "flags.12?int"
         },
         {
           "name": "pts",
@@ -7430,6 +7591,17 @@ var SCHEMA_GLOBAL = {
         {
           "name": "results",
           "type": "PollResults"
+        }
+      ],
+      "type": "MessageMedia"
+    },
+    {
+      "id": "1670374507",
+      "predicate": "messageMediaDice",
+      "params": [
+        {
+          "name": "value",
+          "type": "int"
         }
       ],
       "type": "MessageMedia"
@@ -10152,6 +10324,61 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": "1123585836",
+      "predicate": "updateMessagePollVote",
+      "params": [
+        {
+          "name": "poll_id",
+          "type": "long"
+        },
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "options",
+          "type": "Vector<bytes>"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "654302845",
+      "predicate": "updateDialogFilter",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "filter",
+          "type": "flags.0?DialogFilter"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "-1512627963",
+      "predicate": "updateDialogFilterOrder",
+      "params": [
+        {
+          "name": "order",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": "889491791",
+      "predicate": "updateDialogFilters",
+      "params": [],
+      "type": "Update"
+    },
+    {
       "id": "-1519637954",
       "predicate": "updates.state",
       "params": [
@@ -12114,9 +12341,18 @@ var SCHEMA_GLOBAL = {
       "type": "WebPage"
     },
     {
-      "id": "-2054908813",
+      "id": "1930545681",
       "predicate": "webPageNotModified",
-      "params": [],
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "cached_page_views",
+          "type": "flags.0?int"
+        }
+      ],
       "type": "WebPage"
     },
     {
@@ -12442,6 +12678,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputStickerSet"
     },
     {
+      "id": "2044861011",
+      "predicate": "inputStickerSetDice",
+      "params": [],
+      "type": "InputStickerSet"
+    },
+    {
       "id": "-290164953",
       "predicate": "stickerSet",
       "params": [
@@ -12719,6 +12961,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "bot",
           "type": "InputUser"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
+      "id": "-1144565411",
+      "predicate": "keyboardButtonRequestPoll",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "quiz",
+          "type": "flags.0?Bool"
+        },
+        {
+          "name": "text",
+          "type": "string"
         }
       ],
       "type": "KeyboardButton"
@@ -13080,6 +13341,21 @@ var SCHEMA_GLOBAL = {
     {
       "id": "34469328",
       "predicate": "messageEntityBlockquote",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": "1981704948",
+      "predicate": "messageEntityBankCard",
       "params": [
         {
           "name": "offset",
@@ -16393,7 +16669,7 @@ var SCHEMA_GLOBAL = {
       "type": "PhoneConnection"
     },
     {
-      "id": "-1564789301",
+      "id": "-58224696",
       "predicate": "phoneCallProtocol",
       "params": [
         {
@@ -16415,6 +16691,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "max_layer",
           "type": "int"
+        },
+        {
+          "name": "library_versions",
+          "type": "Vector<string>"
         }
       ],
       "type": "PhoneCallProtocol"
@@ -18435,7 +18715,7 @@ var SCHEMA_GLOBAL = {
       "type": "PageRelatedArticle"
     },
     {
-      "id": "-1366746132",
+      "id": "-1738178803",
       "predicate": "page",
       "params": [
         {
@@ -18469,6 +18749,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "documents",
           "type": "Vector<Document>"
+        },
+        {
+          "name": "views",
+          "type": "flags.3?int"
         }
       ],
       "type": "Page"
@@ -18545,6 +18829,18 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "public_voters",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "multiple_choice",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "quiz",
+          "type": "flags.3?true"
+        },
+        {
           "name": "question",
           "type": "string"
         },
@@ -18568,6 +18864,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "correct",
+          "type": "flags.1?true"
+        },
+        {
           "name": "option",
           "type": "bytes"
         },
@@ -18579,7 +18879,7 @@ var SCHEMA_GLOBAL = {
       "type": "PollAnswerVoters"
     },
     {
-      "id": "1465219162",
+      "id": "-932174686",
       "predicate": "pollResults",
       "params": [
         {
@@ -18597,6 +18897,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "total_voters",
           "type": "flags.2?int"
+        },
+        {
+          "name": "recent_voters",
+          "type": "flags.3?Vector<int>"
         }
       ],
       "type": "PollResults"
@@ -19161,6 +19465,17 @@ var SCHEMA_GLOBAL = {
       "type": "PeerLocated"
     },
     {
+      "id": "-118740917",
+      "predicate": "peerSelfLocated",
+      "params": [
+        {
+          "name": "expires",
+          "type": "int"
+        }
+      ],
+      "type": "PeerLocated"
+    },
+    {
       "id": "-797791052",
       "predicate": "restrictionReason",
       "params": [
@@ -19204,12 +19519,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "InputTheme"
-    },
-    {
-      "id": "1211967244",
-      "predicate": "themeDocumentNotModified",
-      "params": [],
-      "type": "Theme"
     },
     {
       "id": "42930452",
@@ -19278,28 +19587,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "account.Themes"
-    },
-    {
-      "id": "1984136919",
-      "predicate": "wallet.liteResponse",
-      "params": [
-        {
-          "name": "response",
-          "type": "bytes"
-        }
-      ],
-      "type": "wallet.LiteResponse"
-    },
-    {
-      "id": "-582464156",
-      "predicate": "wallet.secretSalt",
-      "params": [
-        {
-          "name": "salt",
-          "type": "bytes"
-        }
-      ],
-      "type": "wallet.KeySecretSalt"
     },
     {
       "id": "1654593920",
@@ -19494,6 +19781,370 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "WebPageAttribute"
+    },
+    {
+      "id": "-1567730343",
+      "predicate": "messageUserVote",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "option",
+          "type": "bytes"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageUserVote"
+    },
+    {
+      "id": "909603888",
+      "predicate": "messageUserVoteInputOption",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageUserVote"
+    },
+    {
+      "id": "244310238",
+      "predicate": "messageUserVoteMultiple",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "options",
+          "type": "Vector<bytes>"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageUserVote"
+    },
+    {
+      "id": "136574537",
+      "predicate": "messages.votesList",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "votes",
+          "type": "Vector<MessageUserVote>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        },
+        {
+          "name": "next_offset",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "messages.VotesList"
+    },
+    {
+      "id": "-177732982",
+      "predicate": "bankCardOpenUrl",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "type": "BankCardOpenUrl"
+    },
+    {
+      "id": "1042605427",
+      "predicate": "payments.bankCardData",
+      "params": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "open_urls",
+          "type": "Vector<BankCardOpenUrl>"
+        }
+      ],
+      "type": "payments.BankCardData"
+    },
+    {
+      "id": "1949890536",
+      "predicate": "dialogFilter",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "contacts",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "non_contacts",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "groups",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "broadcasts",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "bots",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "exclude_muted",
+          "type": "flags.11?true"
+        },
+        {
+          "name": "exclude_read",
+          "type": "flags.12?true"
+        },
+        {
+          "name": "exclude_archived",
+          "type": "flags.13?true"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "emoticon",
+          "type": "flags.25?string"
+        },
+        {
+          "name": "pinned_peers",
+          "type": "Vector<InputPeer>"
+        },
+        {
+          "name": "include_peers",
+          "type": "Vector<InputPeer>"
+        },
+        {
+          "name": "exclude_peers",
+          "type": "Vector<InputPeer>"
+        }
+      ],
+      "type": "DialogFilter"
+    },
+    {
+      "id": "2004110666",
+      "predicate": "dialogFilterSuggested",
+      "params": [
+        {
+          "name": "filter",
+          "type": "DialogFilter"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "type": "DialogFilterSuggested"
+    },
+    {
+      "id": "-1237848657",
+      "predicate": "statsDateRangeDays",
+      "params": [
+        {
+          "name": "min_date",
+          "type": "int"
+        },
+        {
+          "name": "max_date",
+          "type": "int"
+        }
+      ],
+      "type": "StatsDateRangeDays"
+    },
+    {
+      "id": "-884757282",
+      "predicate": "statsAbsValueAndPrev",
+      "params": [
+        {
+          "name": "current",
+          "type": "double"
+        },
+        {
+          "name": "previous",
+          "type": "double"
+        }
+      ],
+      "type": "StatsAbsValueAndPrev"
+    },
+    {
+      "id": "-875679776",
+      "predicate": "statsPercentValue",
+      "params": [
+        {
+          "name": "part",
+          "type": "double"
+        },
+        {
+          "name": "total",
+          "type": "double"
+        }
+      ],
+      "type": "StatsPercentValue"
+    },
+    {
+      "id": "1244130093",
+      "predicate": "statsGraphAsync",
+      "params": [
+        {
+          "name": "token",
+          "type": "string"
+        }
+      ],
+      "type": "StatsGraph"
+    },
+    {
+      "id": "-1092839390",
+      "predicate": "statsGraphError",
+      "params": [
+        {
+          "name": "error",
+          "type": "string"
+        }
+      ],
+      "type": "StatsGraph"
+    },
+    {
+      "id": "-1901828938",
+      "predicate": "statsGraph",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "json",
+          "type": "DataJSON"
+        },
+        {
+          "name": "zoom_token",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "StatsGraph"
+    },
+    {
+      "id": "-1387279939",
+      "predicate": "messageInteractionCounters",
+      "params": [
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "views",
+          "type": "int"
+        },
+        {
+          "name": "forwards",
+          "type": "int"
+        }
+      ],
+      "type": "MessageInteractionCounters"
+    },
+    {
+      "id": "-1107852396",
+      "predicate": "stats.broadcastStats",
+      "params": [
+        {
+          "name": "period",
+          "type": "StatsDateRangeDays"
+        },
+        {
+          "name": "followers",
+          "type": "StatsAbsValueAndPrev"
+        },
+        {
+          "name": "views_per_post",
+          "type": "StatsAbsValueAndPrev"
+        },
+        {
+          "name": "shares_per_post",
+          "type": "StatsAbsValueAndPrev"
+        },
+        {
+          "name": "enabled_notifications",
+          "type": "StatsPercentValue"
+        },
+        {
+          "name": "growth_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "followers_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "mute_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "top_hours_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "interactions_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "iv_interactions_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "views_by_source_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "new_followers_by_source_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "languages_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "recent_message_interactions",
+          "type": "Vector<MessageInteractionCounters>"
+        }
+      ],
+      "type": "stats.BroadcastStats"
     }
   ]
 }
