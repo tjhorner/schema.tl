@@ -60,14 +60,16 @@ async function start() {
 
     console.log("Deleting any existing forks, we won't need those...")
 
-    await octokit.repos.delete({
-      owner: "schemabot",
-      repo: "schema.tl"
-    })
+    try {
+      await octokit.repos.delete({
+        owner: "schemabot",
+        repo: "schema.tl"
+      })
+    } catch(e) { }
 
     console.log("Forking tjhorner/schema.tl...")
 
-    const fork = await octokit.repos.createFork({
+    const { data: fork } = await octokit.repos.createFork({
       owner: "tjhorner",
       repo: "schema.tl"
     })
