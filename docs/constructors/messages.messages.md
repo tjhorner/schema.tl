@@ -1,1 +1,1 @@
-Full list of messages with auxilizry data.
+Full list of messages with auxiliary data.
