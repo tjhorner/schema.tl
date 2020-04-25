@@ -13,7 +13,7 @@ const Octokit = require('@octokit/rest')
 
 const path = require('path')
 
-const SchemaParser = require('../tl-to-json/lib/Parser')
+const { Parser } = require('tl-to-json')
 
 const octokit = new Octokit({
   auth: `token ${config.GITHUB_ACCESS_TOKEN}`
@@ -88,8 +88,8 @@ async function start() {
 
     console.log("Converting new schema to JSON...")
 
-    const parser = new SchemaParser()
-    const newSchema = parser.parse(schema)
+    const parser = new Parser(schema)
+    const newSchema = JSON.parse(parser.getJSON())
 
     console.log("Writing new schema to working directory...")
 
