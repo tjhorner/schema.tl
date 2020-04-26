@@ -1,0 +1,46 @@
+name: Check for schema update
+
+on:
+  schedule:
+    - cron: "0,30 * * * *"
+
+jobs:
+  check_for_update:
+    name: Check for schema update
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Copy deploy key to ~/.ssh
+      env:
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo $DEPLOY_KEY > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+    - name: Set up Node 14
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: Cache npm packages
+      uses: actions/cache@v1
+      working-directory: ./tools/update-schema
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    - name: Run update-schema tool
+      working-directory: ./tools/update-schema
+      env:
+        GITHUB_ACCESS_TOKEN: ${{ secrets.SCHEMABOT_ACCESS_TOKEN }}
+        REPO_WORKING_DIRECTORY: ./working
+        GIT_NAME: schemabot
+        GIT_EMAIL: schemabot@horner.tj
+        GIT_PRIVATE_KEY_PATH: ~/.ssh/id_rsa
+      run: |
+        npm install
+        node index

@@ -1,4 +1,11 @@
-const config = require('./config.json')
+let config
+
+try {
+  config = require('./config.json')
+} catch(e) {
+  console.warn("Couldn't find config.json, so falling back to environment variables.")
+  config = process.env
+}
 
 const fs = require('fs').promises
 
@@ -38,19 +45,34 @@ async function exec(cmd, opts) {
 }
 
 async function start() {
-  const currentLayerNumber = parseInt(await fs.readFile("current_layer.txt"))
+  const layerRegex = /\/\/ LAYER ([0-9]+)/g
 
+  const { body: currentSchema } = await request(`https://raw.githubusercontent.com/tjhorner/schema.tl/master/resources/schema.tl?${Date.now()}`)
+  const currentLayerNumber = parseInt(layerRegex.exec(currentSchema)[1])
   console.log("Latest fetched layer number:", currentLayerNumber)
 
-  const { body: schema } = await request(`https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/tl/api.tl?${Date.now()}`)
-
-  const layerRegex = /\/\/ LAYER ([0-9]+)/g
-  const newLayerNumber = parseInt(layerRegex.exec(schema)[1])
-
+  const { body: latestSchema } = await request(`https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/tl/api.tl?${Date.now()}`)
+  const newLayerNumber = parseInt(layerRegex.exec(latestSchema)[1])
   console.log("New fetched layer number:", newLayerNumber)
 
   if(Number.isNaN(currentLayerNumber) || newLayerNumber > currentLayerNumber) {
     console.log("Current layer is NaN or new > current, starting PR process...")
+
+    console.log("Checking for open PRs before we go any further...")
+
+    const { data: openPulls } = await octokit.pulls.list({
+      owner: "tjhorner",
+      repo: "schema.tl",
+      state: "open",
+      head: `SchemaBot:layer-${newLayerNumber}`
+    })
+
+    if(openPulls.length > 0) {
+      console.log("There is an open PR for this layer; aborting.")
+      process.exit(0)
+    }
+
+    console.log("No open PRs for this layer; continuing...")
 
     await rimraf(config.REPO_WORKING_DIRECTORY)
 
@@ -66,6 +88,8 @@ async function start() {
         repo: "schema.tl"
       })
     } catch(e) { }
+
+    await wait(5000)
 
     console.log("Forking tjhorner/schema.tl...")
 
@@ -141,7 +165,7 @@ async function start() {
 
     console.log("Alright, everything has been replaced. Committing changes.")
 
-    await exec(`git add -A && git -c "user.signingkey=${config.GIT_SIGNING_KEY_ID}" -c "user.name=${config.GIT_NAME}" -c "user.email=${config.GIT_EMAIL}" commit -S -m "[chore] Update to layer ${newLayerNumber}"`, { cwd: config.REPO_WORKING_DIRECTORY, shell: "bash" })
+    await exec(`git add -A && git -c "user.name=${config.GIT_NAME}" -c "user.email=${config.GIT_EMAIL}" commit -S -m "[chore] Update to layer ${newLayerNumber}"`, { cwd: config.REPO_WORKING_DIRECTORY, shell: "bash" })
 
     console.log("Pushing changes to GitHub...")
 
@@ -196,8 +220,6 @@ async function start() {
     })
 
     console.log("PR created, check it out:", pr.html_url)
-
-    await fs.writeFile("current_layer.txt", newLayerNumber)
 
     console.log(`\nEverything is done! Updated layer ${currentLayerNumber} -> ${newLayerNumber}.`)
   } else {
