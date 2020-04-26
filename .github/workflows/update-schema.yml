@@ -2,7 +2,7 @@ name: Check for schema update
 
 on:
   schedule:
-    - cron: "0,30 * * * *"
+    - cron: "0 0,12 * * *"
 
 jobs:
   check_for_update:
