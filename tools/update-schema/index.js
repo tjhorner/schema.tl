@@ -45,14 +45,14 @@ async function exec(cmd, opts) {
 }
 
 async function start() {
-  const layerRegex = /\/\/ LAYER ([0-9]+)/g
+  const layerRegex = /\/\/ LAYER ([0-9]+)/
 
   const { body: currentSchema } = await request(`https://raw.githubusercontent.com/tjhorner/schema.tl/master/resources/schema.tl?${Date.now()}`)
-  const currentLayerNumber = parseInt(layerRegex.exec(currentSchema)[1])
+  const currentLayerNumber = parseInt(currentSchema.match(layerRegex)[1])
   console.log("Latest fetched layer number:", currentLayerNumber)
 
   const { body: latestSchema } = await request(`https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/tl/api.tl?${Date.now()}`)
-  const newLayerNumber = parseInt(layerRegex.exec(latestSchema)[1])
+  const newLayerNumber = parseInt(latestSchema.match(layerRegex)[1])
   console.log("New fetched layer number:", newLayerNumber)
 
   if(Number.isNaN(currentLayerNumber) || newLayerNumber > currentLayerNumber) {
