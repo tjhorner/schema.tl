@@ -32,6 +32,9 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+    - name: Install npm packages
+      working-directory: ./tools/update-schema
+      run: npm install
     - name: Run update-schema tool
       working-directory: ./tools/update-schema
       env:
@@ -40,6 +43,4 @@ jobs:
         GIT_NAME: schemabot
         GIT_EMAIL: schemabot@horner.tj
         GIT_PRIVATE_KEY_PATH: ~/.ssh/id_rsa
-      run: |
-        npm install
-        node index
+      run: node index
