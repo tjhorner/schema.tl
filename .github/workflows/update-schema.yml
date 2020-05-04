@@ -1,6 +1,8 @@
 name: Check for schema update
 
 on:
+  repository_dispatch:
+    types: update-schema
   schedule:
     - cron: "0 * * * *"
 

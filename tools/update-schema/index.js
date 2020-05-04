@@ -64,7 +64,7 @@ async function start() {
       owner: "tjhorner",
       repo: "schema.tl",
       state: "open",
-      head: `SchemaBot:layer-${newLayerNumber}`
+      head: `layer-${newLayerNumber}`
     })
 
     if(openPulls.length > 0) {
@@ -79,32 +79,10 @@ async function start() {
     console.log("Creating working directory if it does not already exist...")
 
     await fs.mkdir(config.REPO_WORKING_DIRECTORY)
-
-    console.log("Deleting any existing forks, we won't need those...")
-
-    try {
-      await octokit.repos.delete({
-        owner: "schemabot",
-        repo: "schema.tl"
-      })
-    } catch(e) { }
-
-    await wait(5000)
-
-    console.log("Forking tjhorner/schema.tl...")
-
-    const { data: fork } = await octokit.repos.createFork({
-      owner: "tjhorner",
-      repo: "schema.tl"
-    })
-
-    console.log("Waiting 30 seconds to ensure the forking is done...")
-
-    await wait(30000)
-
+    
     console.log("Cloning repository...")
 
-    await exec(`git clone --depth=1 git@github.com:schemabot/${fork.name}.git ${config.REPO_WORKING_DIRECTORY}`)
+    await exec(`git clone --depth=1 git@github.com:tjhorner/schema.tl.git ${config.REPO_WORKING_DIRECTORY}`)
 
     console.log(`Checking out new branch layer-${newLayerNumber}...`)
 
