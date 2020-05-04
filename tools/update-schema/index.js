@@ -143,7 +143,7 @@ async function start() {
 
     console.log("Alright, everything has been replaced. Committing changes.")
 
-    await exec(`git add -A && git -c "user.name=${config.GIT_NAME}" -c "user.email=${config.GIT_EMAIL}" commit -S -m "[chore] Update to layer ${newLayerNumber}"`, { cwd: config.REPO_WORKING_DIRECTORY, shell: "bash" })
+    await exec(`git add -A && git -c "user.name=${config.GIT_NAME}" -c "user.email=${config.GIT_EMAIL}" commit -m "[chore] Update to layer ${newLayerNumber}"`, { cwd: config.REPO_WORKING_DIRECTORY, shell: "bash" })
 
     console.log("Pushing changes to GitHub...")
 
