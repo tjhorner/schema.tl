@@ -45,4 +45,5 @@ jobs:
         GIT_NAME: schemabot
         GIT_EMAIL: schemabot@horner.tj
         GIT_PRIVATE_KEY_PATH: ~/.ssh/id_rsa
+        NODE_NO_WARNINGS: "1"
       run: node index
