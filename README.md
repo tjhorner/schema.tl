@@ -26,7 +26,7 @@ You can use the playground on constructor and method pages to easily test the AP
 
 ### Updating the Schema
 
-There's a [GitHub Action](https://github.com/tjhorner/schema.tl/blob/master/.github/workflows/update-schema.yml) that checks for schema updates twice a day and submits a PR updating the schema in this repo. Neat!
+There's a [GitHub Action](https://github.com/tjhorner/schema.tl/blob/master/.github/workflows/update-schema.yml) that checks for schema updates every hour and submits a PR updating the schema in this repo. Neat!
 
 ~~If you find that the schema is out-of-date (check [here](https://github.com/zhukov/webogram/blob/master/app/js/lib/config.js)), you can submit a PR if I don't update it in a timely manner (I don't monitor it 24/7!):~~
 
