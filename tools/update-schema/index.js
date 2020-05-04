@@ -79,7 +79,7 @@ async function start() {
     console.log("Creating working directory if it does not already exist...")
 
     await fs.mkdir(config.REPO_WORKING_DIRECTORY)
-    
+
     console.log("Cloning repository...")
 
     await exec(`git clone --depth=1 git@github.com:tjhorner/schema.tl.git ${config.REPO_WORKING_DIRECTORY}`)
@@ -90,13 +90,13 @@ async function start() {
 
     console.log("Converting new schema to JSON...")
 
-    const parser = new Parser(schema)
+    const parser = new Parser(latestSchema)
     const newSchema = JSON.parse(parser.getJSON())
 
     console.log("Writing new schema to working directory...")
 
     await fs.writeFile(path.join(config.REPO_WORKING_DIRECTORY, "resources", "schema.json"), JSON.stringify(newSchema, null, 2))
-    await fs.writeFile(path.join(config.REPO_WORKING_DIRECTORY, "resources", "schema.tl"), schema)
+    await fs.writeFile(path.join(config.REPO_WORKING_DIRECTORY, "resources", "schema.tl"), latestSchema)
 
     console.log("Ensuring all documentation files for methods/constructors exist...")
 
