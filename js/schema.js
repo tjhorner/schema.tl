@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 112
+var LAYER_NUMBER = 113
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -8952,7 +8952,7 @@ var SCHEMA_GLOBAL = {
       "type": "ExportedMessageLink"
     },
     {
-      "id": 3962798704,
+      "id": 893020267,
       "predicate": "messageFwdHeader",
       "params": [
         {
@@ -8990,6 +8990,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "saved_from_msg_id",
           "type": "flags.4?int"
+        },
+        {
+          "name": "psa_type",
+          "type": "flags.6?string"
         }
       ],
       "type": "MessageFwdHeader"
@@ -12119,40 +12123,6 @@ var SCHEMA_GLOBAL = {
       "type": "InputClientProxy"
     },
     {
-      "id": 3768459192,
-      "predicate": "help.proxyDataEmpty",
-      "params": [
-        {
-          "name": "expires",
-          "type": "int"
-        }
-      ],
-      "type": "help.ProxyData"
-    },
-    {
-      "id": 737668643,
-      "predicate": "help.proxyDataPromo",
-      "params": [
-        {
-          "name": "expires",
-          "type": "int"
-        },
-        {
-          "name": "peer",
-          "type": "Peer"
-        },
-        {
-          "name": "chats",
-          "type": "Vector<Chat>"
-        },
-        {
-          "name": "users",
-          "type": "Vector<User>"
-        }
-      ],
-      "type": "help.ProxyData"
-    },
-    {
       "id": 3811614591,
       "predicate": "help.termsOfServiceUpdateEmpty",
       "params": [
@@ -14654,6 +14624,56 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "stats.BroadcastStats"
+    },
+    {
+      "id": 2566302837,
+      "predicate": "help.promoDataEmpty",
+      "params": [
+        {
+          "name": "expires",
+          "type": "int"
+        }
+      ],
+      "type": "help.PromoData"
+    },
+    {
+      "id": 2352576831,
+      "predicate": "help.promoData",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "proxy",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "expires",
+          "type": "int"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        },
+        {
+          "name": "psa_type",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "psa_message",
+          "type": "flags.2?string"
+        }
+      ],
+      "type": "help.PromoData"
     }
   ],
   "methods": [
@@ -19031,12 +19051,6 @@ var SCHEMA_GLOBAL = {
       "type": "help.RecentMeUrls"
     },
     {
-      "id": 1031231713,
-      "method": "help.getProxyData",
-      "params": [],
-      "type": "help.ProxyData"
-    },
-    {
       "id": 749019089,
       "method": "help.getTermsOfServiceUpdate",
       "params": [],
@@ -19127,6 +19141,23 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "help.UserInfo"
+    },
+    {
+      "id": 3231151137,
+      "method": "help.getPromoData",
+      "params": [],
+      "type": "help.PromoData"
+    },
+    {
+      "id": 505748629,
+      "method": "help.hidePromoData",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 3423619383,
@@ -20208,7 +20239,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 3861908922,
+      "id": 2873246746,
       "method": "stats.getBroadcastStats",
       "params": [
         {
@@ -20222,10 +20253,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "channel",
           "type": "InputChannel"
-        },
-        {
-          "name": "tz_offset",
-          "type": "int"
         }
       ],
       "type": "stats.BroadcastStats"
