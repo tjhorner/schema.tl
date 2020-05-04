@@ -177,7 +177,7 @@ async function start() {
     const { data: pr } = await octokit.pulls.create({
       owner: "tjhorner",
       repo: "schema.tl",
-      head: `schemabot:layer-${newLayerNumber}`,
+      head: `layer-${newLayerNumber}`,
       base: "master",
       title: `chore: Update to layer ${newLayerNumber}`,
       body: `Hello! It's time... time to update the schema layer! This pull request migrates from layer ${currentLayerNumber} to layer ${newLayerNumber}. Please check to make sure I didn't screw anything up!\n\n${newDocsText}\n\nWith ❤️,\nYour Friendly Neighborhood Schemabot`
