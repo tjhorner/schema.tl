@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 113
+var LAYER_NUMBER = 114
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -4858,6 +4858,21 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 643940105,
+      "predicate": "updatePhoneCallSignalingData",
+      "params": [
+        {
+          "name": "phone_call_id",
+          "type": "long"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 2775329342,
       "predicate": "updates.state",
       "params": [
@@ -6033,7 +6048,7 @@ var SCHEMA_GLOBAL = {
       "type": "Document"
     },
     {
-      "id": 2611125441,
+      "id": 512177195,
       "predicate": "document",
       "params": [
         {
@@ -6067,6 +6082,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "thumbs",
           "type": "flags.0?Vector<PhotoSize>"
+        },
+        {
+          "name": "video_thumbs",
+          "type": "flags.1?Vector<VideoSize>"
         },
         {
           "name": "dc_id",
@@ -14674,6 +14693,33 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "help.PromoData"
+    },
+    {
+      "id": 1130084743,
+      "predicate": "videoSize",
+      "params": [
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "type": "FileLocation"
+        },
+        {
+          "name": "w",
+          "type": "int"
+        },
+        {
+          "name": "h",
+          "type": "int"
+        },
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ],
+      "type": "VideoSize"
     }
   ],
   "methods": [
@@ -20133,6 +20179,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "debug",
           "type": "DataJSON"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 4286223235,
+      "method": "phone.sendSignalingData",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPhoneCall"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
         }
       ],
       "type": "Bool"
