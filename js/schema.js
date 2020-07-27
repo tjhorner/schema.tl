@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 114
+var LAYER_NUMBER = 116
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -344,6 +344,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.3?true"
         },
         {
+          "name": "force_file",
+          "type": "flags.4?true"
+        },
+        {
           "name": "file",
           "type": "InputFile"
         },
@@ -415,21 +419,6 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "venue_type",
-          "type": "string"
-        }
-      ],
-      "type": "InputMedia"
-    },
-    {
-      "id": 1212395773,
-      "predicate": "inputMediaGifExternal",
-      "params": [
-        {
-          "name": "url",
-          "type": "string"
-        },
-        {
-          "name": "q",
           "type": "string"
         }
       ],
@@ -595,12 +584,24 @@ var SCHEMA_GLOBAL = {
       "type": "InputChatPhoto"
     },
     {
-      "id": 2457621940,
+      "id": 3326243406,
       "predicate": "inputChatUploadedPhoto",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "file",
-          "type": "InputFile"
+          "type": "flags.0?InputFile"
+        },
+        {
+          "name": "video",
+          "type": "flags.1?InputFile"
+        },
+        {
+          "name": "video_start_ts",
+          "type": "flags.2?double"
         }
       ],
       "type": "InputChatPhoto"
@@ -1066,9 +1067,17 @@ var SCHEMA_GLOBAL = {
       "type": "UserProfilePhoto"
     },
     {
-      "id": 3973537164,
+      "id": 1775479590,
       "predicate": "userProfilePhoto",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "has_video",
+          "type": "flags.0?true"
+        },
         {
           "name": "photo_id",
           "type": "long"
@@ -1657,9 +1666,17 @@ var SCHEMA_GLOBAL = {
       "type": "ChatPhoto"
     },
     {
-      "id": 1197267925,
+      "id": 3523977020,
       "predicate": "chatPhoto",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "has_video",
+          "type": "flags.0?true"
+        },
         {
           "name": "photo_small",
           "type": "FileLocation"
@@ -2482,7 +2499,7 @@ var SCHEMA_GLOBAL = {
       "type": "Photo"
     },
     {
-      "id": 3497329829,
+      "id": 4212750949,
       "predicate": "photo",
       "params": [
         {
@@ -2512,6 +2529,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "sizes",
           "type": "Vector<PhotoSize>"
+        },
+        {
+          "name": "video_sizes",
+          "type": "flags.1?Vector<VideoSize>"
         },
         {
           "name": "dc_id",
@@ -2785,7 +2806,7 @@ var SCHEMA_GLOBAL = {
       "type": "PeerNotifySettings"
     },
     {
-      "id": 2172921549,
+      "id": 1933519201,
       "predicate": "peerSettings",
       "params": [
         {
@@ -2815,6 +2836,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "report_geo",
           "type": "flags.5?true"
+        },
+        {
+          "name": "autoarchived",
+          "type": "flags.7?true"
+        },
+        {
+          "name": "geo_distance",
+          "type": "flags.6?int"
         }
       ],
       "type": "PeerSettings"
@@ -4873,6 +4902,41 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 1708307556,
+      "predicate": "updateChannelParticipant",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "channel_id",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "prev_participant",
+          "type": "flags.0?ChannelParticipant"
+        },
+        {
+          "name": "new_participant",
+          "type": "flags.1?ChannelParticipant"
+        },
+        {
+          "name": "qts",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 2775329342,
       "predicate": "updates.state",
       "params": [
@@ -5714,9 +5778,17 @@ var SCHEMA_GLOBAL = {
       "type": "EncryptedChat"
     },
     {
-      "id": 3363328638,
+      "id": 1651608194,
       "predicate": "encryptedChatRequested",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "folder_id",
+          "type": "flags.0?int"
+        },
         {
           "name": "id",
           "type": "int"
@@ -7138,6 +7210,21 @@ var SCHEMA_GLOBAL = {
       "type": "ChatInvite"
     },
     {
+      "id": 1634294960,
+      "predicate": "chatInvitePeek",
+      "params": [
+        {
+          "name": "chat",
+          "type": "Chat"
+        },
+        {
+          "name": "expires",
+          "type": "int"
+        }
+      ],
+      "type": "ChatInvite"
+    },
+    {
       "id": 4290128789,
       "predicate": "inputStickerSetEmpty",
       "params": [],
@@ -8326,71 +8413,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "help.TermsOfService"
-    },
-    {
-      "id": 372165663,
-      "predicate": "foundGif",
-      "params": [
-        {
-          "name": "url",
-          "type": "string"
-        },
-        {
-          "name": "thumb_url",
-          "type": "string"
-        },
-        {
-          "name": "content_url",
-          "type": "string"
-        },
-        {
-          "name": "content_type",
-          "type": "string"
-        },
-        {
-          "name": "w",
-          "type": "int"
-        },
-        {
-          "name": "h",
-          "type": "int"
-        }
-      ],
-      "type": "FoundGif"
-    },
-    {
-      "id": 2624914441,
-      "predicate": "foundGifCached",
-      "params": [
-        {
-          "name": "url",
-          "type": "string"
-        },
-        {
-          "name": "photo",
-          "type": "Photo"
-        },
-        {
-          "name": "document",
-          "type": "Document"
-        }
-      ],
-      "type": "FoundGif"
-    },
-    {
-      "id": 1158290442,
-      "predicate": "messages.foundGifs",
-      "params": [
-        {
-          "name": "next_offset",
-          "type": "int"
-        },
-        {
-          "name": "results",
-          "type": "Vector<FoundGif>"
-        }
-      ],
-      "type": "messages.FoundGifs"
     },
     {
       "id": 3892468898,
@@ -14695,9 +14717,13 @@ var SCHEMA_GLOBAL = {
       "type": "help.PromoData"
     },
     {
-      "id": 1130084743,
+      "id": 3895575894,
       "predicate": "videoSize",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "type",
           "type": "string"
@@ -14717,9 +14743,160 @@ var SCHEMA_GLOBAL = {
         {
           "name": "size",
           "type": "int"
+        },
+        {
+          "name": "video_start_ts",
+          "type": "flags.0?double"
         }
       ],
       "type": "VideoSize"
+    },
+    {
+      "id": 418631927,
+      "predicate": "statsGroupTopPoster",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "messages",
+          "type": "int"
+        },
+        {
+          "name": "avg_chars",
+          "type": "int"
+        }
+      ],
+      "type": "StatsGroupTopPoster"
+    },
+    {
+      "id": 1611985938,
+      "predicate": "statsGroupTopAdmin",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "deleted",
+          "type": "int"
+        },
+        {
+          "name": "kicked",
+          "type": "int"
+        },
+        {
+          "name": "banned",
+          "type": "int"
+        }
+      ],
+      "type": "StatsGroupTopAdmin"
+    },
+    {
+      "id": 831924812,
+      "predicate": "statsGroupTopInviter",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "invitations",
+          "type": "int"
+        }
+      ],
+      "type": "StatsGroupTopInviter"
+    },
+    {
+      "id": 4018141462,
+      "predicate": "stats.megagroupStats",
+      "params": [
+        {
+          "name": "period",
+          "type": "StatsDateRangeDays"
+        },
+        {
+          "name": "members",
+          "type": "StatsAbsValueAndPrev"
+        },
+        {
+          "name": "messages",
+          "type": "StatsAbsValueAndPrev"
+        },
+        {
+          "name": "viewers",
+          "type": "StatsAbsValueAndPrev"
+        },
+        {
+          "name": "posters",
+          "type": "StatsAbsValueAndPrev"
+        },
+        {
+          "name": "growth_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "members_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "new_members_by_source_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "languages_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "messages_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "actions_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "top_hours_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "weekdays_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "top_posters",
+          "type": "Vector<StatsGroupTopPoster>"
+        },
+        {
+          "name": "top_admins",
+          "type": "Vector<StatsGroupTopAdmin>"
+        },
+        {
+          "name": "top_inviters",
+          "type": "Vector<StatsGroupTopInviter>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "stats.MegagroupStats"
+    },
+    {
+      "id": 3198350372,
+      "predicate": "globalPrivacySettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "archive_and_mute_new_noncontact_peers",
+          "type": "flags.0?Bool"
+        }
+      ],
+      "type": "GlobalPrivacySettings"
     }
   ],
   "methods": [
@@ -16058,6 +16235,23 @@ var SCHEMA_GLOBAL = {
       "type": "Vector<WallPaper>"
     },
     {
+      "id": 3945483510,
+      "method": "account.getGlobalPrivacySettings",
+      "params": [],
+      "type": "GlobalPrivacySettings"
+    },
+    {
+      "id": 517647042,
+      "method": "account.setGlobalPrivacySettings",
+      "params": [
+        {
+          "name": "settings",
+          "type": "GlobalPrivacySettings"
+        }
+      ],
+      "type": "GlobalPrivacySettings"
+    },
+    {
       "id": 227648840,
       "method": "users.getUsers",
       "params": [
@@ -17357,21 +17551,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Document"
-    },
-    {
-      "id": 3214571371,
-      "method": "messages.searchGifs",
-      "params": [
-        {
-          "name": "q",
-          "type": "string"
-        },
-        {
-          "name": "offset",
-          "type": "int"
-        }
-      ],
-      "type": "messages.FoundGifs"
     },
     {
       "id": 2210348370,
@@ -18818,12 +18997,24 @@ var SCHEMA_GLOBAL = {
       "type": "UserProfilePhoto"
     },
     {
-      "id": 1328726168,
+      "id": 2314407785,
       "method": "photos.uploadProfilePhoto",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "file",
-          "type": "InputFile"
+          "type": "flags.0?InputFile"
+        },
+        {
+          "name": "video",
+          "type": "flags.1?InputFile"
+        },
+        {
+          "name": "video_start_ts",
+          "type": "flags.2?double"
         }
       ],
       "type": "photos.Photo"
@@ -19201,6 +19392,17 @@ var SCHEMA_GLOBAL = {
         {
           "name": "peer",
           "type": "InputPeer"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 125807007,
+      "method": "help.dismissSuggestion",
+      "params": [
+        {
+          "name": "suggestion",
+          "type": "string"
         }
       ],
       "type": "Bool"
@@ -20336,6 +20538,25 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "StatsGraph"
+    },
+    {
+      "id": 3705636359,
+      "method": "stats.getMegagroupStats",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "dark",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        }
+      ],
+      "type": "stats.MegagroupStats"
     }
   ]
 }
