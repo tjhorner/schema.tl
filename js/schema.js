@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 116
+var LAYER_NUMBER = 117
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1010,6 +1010,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.24?true"
         },
         {
+          "name": "apply_min_photo",
+          "type": "flags.25?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -1454,16 +1458,16 @@ var SCHEMA_GLOBAL = {
           "type": "flags.10?true"
         },
         {
-          "name": "can_view_stats",
-          "type": "flags.12?true"
-        },
-        {
           "name": "can_set_location",
           "type": "flags.16?true"
         },
         {
           "name": "has_scheduled",
           "type": "flags.19?true"
+        },
+        {
+          "name": "can_view_stats",
+          "type": "flags.20?true"
         },
         {
           "name": "id",
@@ -2992,6 +2996,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "has_scheduled",
           "type": "flags.12?true"
+        },
+        {
+          "name": "video_calls_available",
+          "type": "flags.13?true"
         },
         {
           "name": "user",
@@ -10970,7 +10978,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "video",
-          "type": "flags.5?true"
+          "type": "flags.6?true"
         },
         {
           "name": "id",
@@ -11013,7 +11021,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "video",
-          "type": "flags.5?true"
+          "type": "flags.6?true"
         },
         {
           "name": "id",
@@ -11056,7 +11064,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "video",
-          "type": "flags.5?true"
+          "type": "flags.6?true"
         },
         {
           "name": "id",
@@ -11100,6 +11108,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "p2p_allowed",
           "type": "flags.5?true"
+        },
+        {
+          "name": "video",
+          "type": "flags.6?true"
         },
         {
           "name": "id",
@@ -11162,7 +11174,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "video",
-          "type": "flags.5?true"
+          "type": "flags.6?true"
         },
         {
           "name": "id",
@@ -11202,6 +11214,49 @@ var SCHEMA_GLOBAL = {
         {
           "name": "peer_tag",
           "type": "bytes"
+        }
+      ],
+      "type": "PhoneConnection"
+    },
+    {
+      "id": 1667228533,
+      "predicate": "phoneConnectionWebrtc",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "turn",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "stun",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "ip",
+          "type": "string"
+        },
+        {
+          "name": "ipv6",
+          "type": "string"
+        },
+        {
+          "name": "port",
+          "type": "int"
+        },
+        {
+          "name": "username",
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "type": "string"
         }
       ],
       "type": "PhoneConnection"
@@ -18986,7 +19041,7 @@ var SCHEMA_GLOBAL = {
       "type": "updates.ChannelDifference"
     },
     {
-      "id": 4038807890,
+      "id": 1926525996,
       "method": "photos.updateProfilePhoto",
       "params": [
         {
@@ -18994,7 +19049,7 @@ var SCHEMA_GLOBAL = {
           "type": "InputPhoto"
         }
       ],
-      "type": "UserProfilePhoto"
+      "type": "photos.Photo"
     },
     {
       "id": 2314407785,
