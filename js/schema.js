@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 119
+var LAYER_NUMBER = 120
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -517,7 +517,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": 3461251837,
+      "id": 2535434307,
       "predicate": "inputMediaGeoLive",
       "params": [
         {
@@ -533,8 +533,16 @@ var SCHEMA_GLOBAL = {
           "type": "InputGeoPoint"
         },
         {
+          "name": "heading",
+          "type": "flags.2?int"
+        },
+        {
           "name": "period",
           "type": "flags.1?int"
+        },
+        {
+          "name": "proximity_notification_radius",
+          "type": "flags.3?int"
         }
       ],
       "type": "InputMedia"
@@ -624,9 +632,13 @@ var SCHEMA_GLOBAL = {
       "type": "InputGeoPoint"
     },
     {
-      "id": 4088900809,
+      "id": 1210199983,
       "predicate": "inputGeoPoint",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "lat",
           "type": "double"
@@ -634,6 +646,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "long",
           "type": "double"
+        },
+        {
+          "name": "accuracy_radius",
+          "type": "flags.0?int"
         }
       ],
       "type": "InputGeoPoint"
@@ -1752,6 +1768,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.21?true"
         },
         {
+          "name": "pinned",
+          "type": "flags.24?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -2074,16 +2094,28 @@ var SCHEMA_GLOBAL = {
       "type": "MessageMedia"
     },
     {
-      "id": 2084316681,
+      "id": 3108030054,
       "predicate": "messageMediaGeoLive",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "geo",
           "type": "GeoPoint"
         },
         {
+          "name": "heading",
+          "type": "flags.0?int"
+        },
+        {
           "name": "period",
           "type": "int"
+        },
+        {
+          "name": "proximity_notification_radius",
+          "type": "flags.1?int"
         }
       ],
       "type": "MessageMedia"
@@ -2402,6 +2434,25 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
+      "id": 2564871831,
+      "predicate": "messageActionGeoProximityReached",
+      "params": [
+        {
+          "name": "from_id",
+          "type": "Peer"
+        },
+        {
+          "name": "to_id",
+          "type": "Peer"
+        },
+        {
+          "name": "distance",
+          "type": "int"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
       "id": 739712882,
       "predicate": "dialog",
       "params": [
@@ -2671,9 +2722,13 @@ var SCHEMA_GLOBAL = {
       "type": "GeoPoint"
     },
     {
-      "id": 43446532,
+      "id": 2997024355,
       "predicate": "geoPoint",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "long",
           "type": "double"
@@ -2685,6 +2740,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "access_hash",
           "type": "long"
+        },
+        {
+          "name": "accuracy_radius",
+          "type": "flags.0?int"
         }
       ],
       "type": "GeoPoint"
@@ -3295,7 +3354,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 3371027998,
+      "id": 978610270,
       "predicate": "messages.messagesSlice",
       "params": [
         {
@@ -3315,6 +3374,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?int"
         },
         {
+          "name": "offset_id_offset",
+          "type": "flags.2?int"
+        },
+        {
           "name": "messages",
           "type": "Vector<Message>"
         },
@@ -3330,7 +3393,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 2569416247,
+      "id": 1682413576,
       "predicate": "messages.channelMessages",
       "params": [
         {
@@ -3348,6 +3411,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "count",
           "type": "int"
+        },
+        {
+          "name": "offset_id_offset",
+          "type": "flags.2?int"
         },
         {
           "name": "messages",
@@ -3541,6 +3608,12 @@ var SCHEMA_GLOBAL = {
     {
       "id": 3764575107,
       "predicate": "inputMessagesFilterContacts",
+      "params": [],
+      "type": "MessagesFilter"
+    },
+    {
+      "id": 464520273,
+      "predicate": "inputMessagesFilterPinned",
       "params": [],
       "type": "MessagesFilter"
     },
@@ -4265,21 +4338,6 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 2555978869,
-      "predicate": "updateChannelPinnedMessage",
-      "params": [
-        {
-          "name": "channel_id",
-          "type": "int"
-        },
-        {
-          "name": "id",
-          "type": "int"
-        }
-      ],
-      "type": "Update"
-    },
-    {
       "id": 3879028705,
       "predicate": "updateBotCallbackQuery",
       "params": [
@@ -4678,40 +4736,6 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 1279515160,
-      "predicate": "updateUserPinnedMessage",
-      "params": [
-        {
-          "name": "user_id",
-          "type": "int"
-        },
-        {
-          "name": "id",
-          "type": "int"
-        }
-      ],
-      "type": "Update"
-    },
-    {
-      "id": 3775771465,
-      "predicate": "updateChatPinnedMessage",
-      "params": [
-        {
-          "name": "chat_id",
-          "type": "int"
-        },
-        {
-          "name": "id",
-          "type": "int"
-        },
-        {
-          "name": "version",
-          "type": "int"
-        }
-      ],
-      "type": "Update"
-    },
-    {
       "id": 2896258427,
       "predicate": "updateMessagePoll",
       "params": [
@@ -5068,6 +5092,68 @@ var SCHEMA_GLOBAL = {
         {
           "name": "action",
           "type": "SendMessageAction"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 3984976565,
+      "predicate": "updatePinnedMessages",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "pinned",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "messages",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "pts",
+          "type": "int"
+        },
+        {
+          "name": "pts_count",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 2240317323,
+      "predicate": "updatePinnedChannelMessages",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "pinned",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "channel_id",
+          "type": "int"
+        },
+        {
+          "name": "messages",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "pts",
+          "type": "int"
+        },
+        {
+          "name": "pts_count",
+          "type": "int"
         }
       ],
       "type": "Update"
@@ -8430,6 +8516,17 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelParticipant"
     },
     {
+      "id": 3284564331,
+      "predicate": "channelParticipantLeft",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "int"
+        }
+      ],
+      "type": "ChannelParticipant"
+    },
+    {
       "id": 3728686201,
       "predicate": "channelParticipantsRecent",
       "params": [],
@@ -8487,6 +8584,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "q",
           "type": "string"
+        }
+      ],
+      "type": "ChannelParticipantsFilter"
+    },
+    {
+      "id": 3763035371,
+      "predicate": "channelParticipantsMentions",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "q",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.1?int"
         }
       ],
       "type": "ChannelParticipantsFilter"
@@ -8634,7 +8750,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputBotInlineMessage"
     },
     {
-      "id": 3249626469,
+      "id": 2526190213,
       "predicate": "inputBotInlineMessageMediaGeo",
       "params": [
         {
@@ -8646,8 +8762,16 @@ var SCHEMA_GLOBAL = {
           "type": "InputGeoPoint"
         },
         {
+          "name": "heading",
+          "type": "flags.0?int"
+        },
+        {
           "name": "period",
-          "type": "int"
+          "type": "flags.1?int"
+        },
+        {
+          "name": "proximity_notification_radius",
+          "type": "flags.3?int"
         },
         {
           "name": "reply_markup",
@@ -8912,7 +9036,7 @@ var SCHEMA_GLOBAL = {
       "type": "BotInlineMessage"
     },
     {
-      "id": 3072515685,
+      "id": 85477117,
       "predicate": "botInlineMessageMediaGeo",
       "params": [
         {
@@ -8924,8 +9048,16 @@ var SCHEMA_GLOBAL = {
           "type": "GeoPoint"
         },
         {
+          "name": "heading",
+          "type": "flags.0?int"
+        },
+        {
           "name": "period",
-          "type": "int"
+          "type": "flags.1?int"
+        },
+        {
+          "name": "proximity_notification_radius",
+          "type": "flags.3?int"
         },
         {
           "name": "reply_markup",
@@ -15211,17 +15343,6 @@ var SCHEMA_GLOBAL = {
       "type": "messages.MessageViews"
     },
     {
-      "id": 2308567701,
-      "predicate": "stats.messageStats",
-      "params": [
-        {
-          "name": "views_graph",
-          "type": "StatsGraph"
-        }
-      ],
-      "type": "stats.MessageStats"
-    },
-    {
       "id": 4124938141,
       "predicate": "messages.discussionMessage",
       "params": [
@@ -15332,6 +15453,17 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "PeerBlocked"
+    },
+    {
+      "id": 2308567701,
+      "predicate": "stats.messageStats",
+      "params": [
+        {
+          "name": "views_graph",
+          "type": "StatsGraph"
+        }
+      ],
+      "type": "stats.MessageStats"
     }
   ],
   "methods": [
@@ -17122,7 +17254,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 1310163211,
+      "id": 204812012,
       "method": "messages.search",
       "params": [
         {
@@ -17139,7 +17271,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "from_id",
-          "type": "flags.0?InputUser"
+          "type": "flags.0?InputPeer"
         },
         {
           "name": "top_msg_id",
@@ -19016,6 +19148,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "unpin",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "pm_oneside",
+          "type": "flags.2?true"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
         },
@@ -19499,6 +19639,17 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 4029004939,
+      "method": "messages.unpinAllMessages",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "messages.AffectedHistory"
     },
     {
       "id": 3990128682,
