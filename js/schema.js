@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 120
+var LAYER_NUMBER = 122
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1309,6 +1309,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.22?true"
         },
         {
+          "name": "call_active",
+          "type": "flags.23?true"
+        },
+        {
+          "name": "call_not_empty",
+          "type": "flags.24?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -1450,7 +1458,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatFull"
     },
     {
-      "id": 4041631530,
+      "id": 4013583053,
       "predicate": "channelFull",
       "params": [
         {
@@ -1592,6 +1600,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "pts",
           "type": "int"
+        },
+        {
+          "name": "call",
+          "type": "flags.21?InputGroupCall"
         }
       ],
       "type": "ChatFull"
@@ -2453,6 +2465,40 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
+      "id": 2047704898,
+      "predicate": "messageActionGroupCall",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "duration",
+          "type": "flags.0?int"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 1991897370,
+      "predicate": "messageActionInviteToGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "users",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
       "id": 739712882,
       "predicate": "dialog",
       "params": [
@@ -2711,6 +2757,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "sizes",
           "type": "Vector<int>"
+        }
+      ],
+      "type": "PhotoSize"
+    },
+    {
+      "id": 3626061121,
+      "predicate": "photoPathSize",
+      "params": [
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "bytes",
+          "type": "bytes"
         }
       ],
       "type": "PhotoSize"
@@ -4257,7 +4318,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 1417832080,
+      "id": 1059076315,
       "predicate": "updateBotInlineQuery",
       "params": [
         {
@@ -4279,6 +4340,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "geo",
           "type": "flags.0?GeoPoint"
+        },
+        {
+          "name": "peer_type",
+          "type": "flags.1?InlineQueryPeerType"
         },
         {
           "name": "offset",
@@ -5154,6 +5219,40 @@ var SCHEMA_GLOBAL = {
         {
           "name": "pts_count",
           "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 4075543374,
+      "predicate": "updateGroupCallParticipants",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "participants",
+          "type": "Vector<GroupCallParticipant>"
+        },
+        {
+          "name": "version",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 1462009966,
+      "predicate": "updateGroupCall",
+      "params": [
+        {
+          "name": "channel_id",
+          "type": "int"
+        },
+        {
+          "name": "call",
+          "type": "GroupCall"
         }
       ],
       "type": "Update"
@@ -6537,6 +6636,12 @@ var SCHEMA_GLOBAL = {
           "type": "int"
         }
       ],
+      "type": "SendMessageAction"
+    },
+    {
+      "id": 3643548293,
+      "predicate": "speakingInGroupCallAction",
+      "params": [],
       "type": "SendMessageAction"
     },
     {
@@ -12036,6 +12141,61 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelAdminLogEventAction"
     },
     {
+      "id": 589338437,
+      "predicate": "channelAdminLogEventActionStartGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 3684667712,
+      "predicate": "channelAdminLogEventActionDiscardGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 4179895506,
+      "predicate": "channelAdminLogEventActionParticipantMute",
+      "params": [
+        {
+          "name": "participant",
+          "type": "GroupCallParticipant"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 3863226816,
+      "predicate": "channelAdminLogEventActionParticipantUnmute",
+      "params": [
+        {
+          "name": "participant",
+          "type": "GroupCallParticipant"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 1456906823,
+      "predicate": "channelAdminLogEventActionToggleGroupCallSetting",
+      "params": [
+        {
+          "name": "join_muted",
+          "type": "Bool"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
       "id": 995769920,
       "predicate": "channelAdminLogEvent",
       "params": [
@@ -12140,6 +12300,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "delete",
           "type": "flags.13?true"
+        },
+        {
+          "name": "group_call",
+          "type": "flags.14?true"
         }
       ],
       "type": "ChannelAdminLogEventsFilter"
@@ -12385,6 +12549,21 @@ var SCHEMA_GLOBAL = {
       "id": 2257003832,
       "predicate": "inputMessagePinned",
       "params": [],
+      "type": "InputMessage"
+    },
+    {
+      "id": 2902071934,
+      "predicate": "inputMessageCallbackQuery",
+      "params": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        }
+      ],
       "type": "InputMessage"
     },
     {
@@ -13813,6 +13992,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "anonymous",
           "type": "flags.10?true"
+        },
+        {
+          "name": "manage_call",
+          "type": "flags.11?true"
         }
       ],
       "type": "ChatAdminRights"
@@ -15464,6 +15647,198 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "stats.MessageStats"
+    },
+    {
+      "id": 2004925620,
+      "predicate": "groupCallDiscarded",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        },
+        {
+          "name": "duration",
+          "type": "int"
+        }
+      ],
+      "type": "GroupCall"
+    },
+    {
+      "id": 1435512961,
+      "predicate": "groupCall",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "join_muted",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "can_change_join_muted",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        },
+        {
+          "name": "participants_count",
+          "type": "int"
+        },
+        {
+          "name": "params",
+          "type": "flags.0?DataJSON"
+        },
+        {
+          "name": "version",
+          "type": "int"
+        }
+      ],
+      "type": "GroupCall"
+    },
+    {
+      "id": 3635053583,
+      "predicate": "inputGroupCall",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        }
+      ],
+      "type": "InputGroupCall"
+    },
+    {
+      "id": 1454409673,
+      "predicate": "groupCallParticipant",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "muted",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "left",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "can_self_unmute",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "user_id",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "active_date",
+          "type": "flags.3?int"
+        },
+        {
+          "name": "source",
+          "type": "int"
+        }
+      ],
+      "type": "GroupCallParticipant"
+    },
+    {
+      "id": 1722485756,
+      "predicate": "phone.groupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "GroupCall"
+        },
+        {
+          "name": "participants",
+          "type": "Vector<GroupCallParticipant>"
+        },
+        {
+          "name": "participants_next_offset",
+          "type": "string"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "phone.GroupCall"
+    },
+    {
+      "id": 2633939245,
+      "predicate": "phone.groupParticipants",
+      "params": [
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "participants",
+          "type": "Vector<GroupCallParticipant>"
+        },
+        {
+          "name": "next_offset",
+          "type": "string"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        },
+        {
+          "name": "version",
+          "type": "int"
+        }
+      ],
+      "type": "phone.GroupParticipants"
+    },
+    {
+      "id": 813821341,
+      "predicate": "inlineQueryPeerTypeSameBotPM",
+      "params": [],
+      "type": "InlineQueryPeerType"
+    },
+    {
+      "id": 2201751468,
+      "predicate": "inlineQueryPeerTypePM",
+      "params": [],
+      "type": "InlineQueryPeerType"
+    },
+    {
+      "id": 3613836554,
+      "predicate": "inlineQueryPeerTypeChat",
+      "params": [],
+      "type": "InlineQueryPeerType"
+    },
+    {
+      "id": 1589952067,
+      "predicate": "inlineQueryPeerTypeMegagroup",
+      "params": [],
+      "type": "InlineQueryPeerType"
+    },
+    {
+      "id": 1664413338,
+      "predicate": "inlineQueryPeerTypeBroadcast",
+      "params": [],
+      "type": "InlineQueryPeerType"
     }
   ],
   "methods": [
@@ -21149,6 +21524,180 @@ var SCHEMA_GLOBAL = {
         {
           "name": "data",
           "type": "bytes"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3827890690,
+      "method": "phone.createGroupCall",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "random_id",
+          "type": "int"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1604095586,
+      "method": "phone.joinGroupCall",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "muted",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "params",
+          "type": "DataJSON"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1342404601,
+      "method": "phone.leaveGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "source",
+          "type": "int"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1662282468,
+      "method": "phone.editGroupCallMember",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "muted",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 2067345760,
+      "method": "phone.inviteToGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "users",
+          "type": "Vector<InputUser>"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 2054648117,
+      "method": "phone.discardGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1958458429,
+      "method": "phone.toggleGroupCallSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "join_muted",
+          "type": "flags.0?Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 209498135,
+      "method": "phone.getGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        }
+      ],
+      "type": "phone.GroupCall"
+    },
+    {
+      "id": 3388068485,
+      "method": "phone.getGroupParticipants",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "ids",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "sources",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "offset",
+          "type": "string"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "phone.GroupParticipants"
+    },
+    {
+      "id": 3075111914,
+      "method": "phone.checkGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "source",
+          "type": "int"
         }
       ],
       "type": "Bool"
