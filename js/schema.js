@@ -375,7 +375,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": 598418386,
+      "id": 860303448,
       "predicate": "inputMediaDocument",
       "params": [
         {
@@ -389,6 +389,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "ttl_seconds",
           "type": "flags.0?int"
+        },
+        {
+          "name": "query",
+          "type": "flags.1?string"
         }
       ],
       "type": "InputMedia"
@@ -1199,6 +1203,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.5?true"
         },
         {
+          "name": "call_active",
+          "type": "flags.23?true"
+        },
+        {
+          "name": "call_not_empty",
+          "type": "flags.24?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -1403,7 +1415,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": 461151667,
+      "id": 231260545,
       "predicate": "chatFull",
       "params": [
         {
@@ -1453,6 +1465,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "folder_id",
           "type": "flags.11?int"
+        },
+        {
+          "name": "call",
+          "type": "flags.12?InputGroupCall"
         }
       ],
       "type": "ChatFull"
@@ -5224,6 +5240,17 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 321954198,
+      "predicate": "updateChat",
+      "params": [
+        {
+          "name": "chat_id",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 4075543374,
       "predicate": "updateGroupCallParticipants",
       "params": [
@@ -5243,11 +5270,11 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 1462009966,
+      "id": 2757671323,
       "predicate": "updateGroupCall",
       "params": [
         {
-          "name": "channel_id",
+          "name": "chat_id",
           "type": "int"
         },
         {
@@ -7601,7 +7628,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputStickerSet"
     },
     {
-      "id": 4004802343,
+      "id": 1088567208,
       "predicate": "stickerSet",
       "params": [
         {
@@ -7645,8 +7672,8 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         },
         {
-          "name": "thumb",
-          "type": "flags.4?PhotoSize"
+          "name": "thumbs",
+          "type": "flags.4?Vector<PhotoSize>"
         },
         {
           "name": "thumb_dc_id",
@@ -15742,6 +15769,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.2?true"
         },
         {
+          "name": "just_joined",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "versioned",
+          "type": "flags.5?true"
+        },
+        {
           "name": "user_id",
           "type": "int"
         },
@@ -21529,12 +21564,12 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 3827890690,
+      "id": 3174935520,
       "method": "phone.createGroupCall",
       "params": [
         {
-          "name": "channel",
-          "type": "InputChannel"
+          "name": "peer",
+          "type": "InputPeer"
         },
         {
           "name": "random_id",
