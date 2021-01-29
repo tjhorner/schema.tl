@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 122
+var LAYER_NUMBER = 123
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1034,6 +1034,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.25?true"
         },
         {
+          "name": "fake",
+          "type": "flags.26?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -1329,6 +1333,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.24?true"
         },
         {
+          "name": "fake",
+          "type": "flags.25?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -1415,7 +1423,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": 231260545,
+      "id": 4081535734,
       "predicate": "chatFull",
       "params": [
         {
@@ -1452,7 +1460,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "exported_invite",
-          "type": "ExportedChatInvite"
+          "type": "flags.13?ExportedChatInvite"
         },
         {
           "name": "bot_info",
@@ -1474,7 +1482,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatFull"
     },
     {
-      "id": 4013583053,
+      "id": 2055070967,
       "predicate": "channelFull",
       "params": [
         {
@@ -1563,7 +1571,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "exported_invite",
-          "type": "ExportedChatInvite"
+          "type": "flags.23?ExportedChatInvite"
         },
         {
           "name": "bot_info",
@@ -1745,12 +1753,20 @@ var SCHEMA_GLOBAL = {
       "type": "ChatPhoto"
     },
     {
-      "id": 2212879956,
+      "id": 2426849924,
       "predicate": "messageEmpty",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "id",
           "type": "int"
+        },
+        {
+          "name": "peer_id",
+          "type": "flags.0?Peer"
         }
       ],
       "type": "Message"
@@ -3021,6 +3037,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.7?true"
         },
         {
+          "name": "invite_members",
+          "type": "flags.8?true"
+        },
+        {
           "name": "geo_distance",
           "type": "flags.6?int"
         }
@@ -3141,6 +3161,12 @@ var SCHEMA_GLOBAL = {
     {
       "id": 3688169197,
       "predicate": "inputReportReasonGeoIrrelevant",
+      "params": [],
+      "type": "ReportReason"
+    },
+    {
+      "id": 4124956391,
+      "predicate": "inputReportReasonFake",
       "params": [],
       "type": "ReportReason"
     },
@@ -6200,9 +6226,17 @@ var SCHEMA_GLOBAL = {
       "type": "EncryptedChat"
     },
     {
-      "id": 332848423,
+      "id": 505183301,
       "predicate": "encryptedChatDiscarded",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "history_deleted",
+          "type": "flags.0?true"
+        },
         {
           "name": "id",
           "type": "int"
@@ -6669,6 +6703,17 @@ var SCHEMA_GLOBAL = {
       "id": 3643548293,
       "predicate": "speakingInGroupCallAction",
       "params": [],
+      "type": "SendMessageAction"
+    },
+    {
+      "id": 3688534598,
+      "predicate": "sendMessageHistoryImportAction",
+      "params": [
+        {
+          "name": "progress",
+          "type": "int"
+        }
+      ],
       "type": "SendMessageAction"
     },
     {
@@ -7493,18 +7538,48 @@ var SCHEMA_GLOBAL = {
       "type": "ReceivedNotifyMessage"
     },
     {
-      "id": 1776236393,
-      "predicate": "chatInviteEmpty",
-      "params": [],
-      "type": "ExportedChatInvite"
-    },
-    {
-      "id": 4230874556,
+      "id": 1847917725,
       "predicate": "chatInviteExported",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "revoked",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "permanent",
+          "type": "flags.5?true"
+        },
+        {
           "name": "link",
           "type": "string"
+        },
+        {
+          "name": "admin_id",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "start_date",
+          "type": "flags.4?int"
+        },
+        {
+          "name": "expire_date",
+          "type": "flags.1?int"
+        },
+        {
+          "name": "usage_limit",
+          "type": "flags.2?int"
+        },
+        {
+          "name": "usage",
+          "type": "flags.3?int"
         }
       ],
       "type": "ExportedChatInvite"
@@ -9413,6 +9488,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "imported",
+          "type": "flags.7?true"
+        },
+        {
           "name": "from_id",
           "type": "flags.0?Peer"
         },
@@ -11271,16 +11350,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputPaymentCredentials"
     },
     {
-      "id": 3389379854,
-      "predicate": "inputPaymentCredentialsAndroidPay",
+      "id": 2328045569,
+      "predicate": "inputPaymentCredentialsGooglePay",
       "params": [
         {
           "name": "payment_token",
           "type": "DataJSON"
-        },
-        {
-          "name": "google_transaction_id",
-          "type": "string"
         }
       ],
       "type": "InputPaymentCredentials"
@@ -15749,7 +15824,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputGroupCall"
     },
     {
-      "id": 1454409673,
+      "id": 1690708501,
       "predicate": "groupCallParticipant",
       "params": [
         {
@@ -15777,6 +15852,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.5?true"
         },
         {
+          "name": "muted_by_you",
+          "type": "flags.9?true"
+        },
+        {
           "name": "user_id",
           "type": "int"
         },
@@ -15791,6 +15870,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "source",
           "type": "int"
+        },
+        {
+          "name": "volume",
+          "type": "flags.7?int"
         }
       ],
       "type": "GroupCallParticipant"
@@ -15874,6 +15957,63 @@ var SCHEMA_GLOBAL = {
       "predicate": "inlineQueryPeerTypeBroadcast",
       "params": [],
       "type": "InlineQueryPeerType"
+    },
+    {
+      "id": 375566091,
+      "predicate": "messages.historyImport",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        }
+      ],
+      "type": "messages.HistoryImport"
+    },
+    {
+      "id": 1578088377,
+      "predicate": "messages.historyImportParsed",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "pm",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "group",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "title",
+          "type": "flags.2?string"
+        }
+      ],
+      "type": "messages.HistoryImportParsed"
+    },
+    {
+      "id": 4019011180,
+      "predicate": "messages.affectedFoundMessages",
+      "params": [
+        {
+          "name": "pts",
+          "type": "int"
+        },
+        {
+          "name": "pts_count",
+          "type": "int"
+        },
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "messages",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "messages.AffectedFoundMessages"
     }
   ],
   "methods": [
@@ -18087,9 +18227,17 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 3764461334,
+      "id": 3308537242,
       "method": "messages.deleteChatUser",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "revoke_history",
+          "type": "flags.0?true"
+        },
         {
           "name": "chat_id",
           "type": "int"
@@ -18170,9 +18318,17 @@ var SCHEMA_GLOBAL = {
       "type": "EncryptedChat"
     },
     {
-      "id": 3990430661,
+      "id": 4086541984,
       "method": "messages.discardEncryption",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "delete_history",
+          "type": "flags.0?true"
+        },
         {
           "name": "chat_id",
           "type": "int"
@@ -20062,6 +20218,100 @@ var SCHEMA_GLOBAL = {
       "type": "messages.AffectedHistory"
     },
     {
+      "id": 2200206609,
+      "method": "messages.deleteChat",
+      "params": [
+        {
+          "name": "chat_id",
+          "type": "int"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 4190888969,
+      "method": "messages.deletePhoneCallHistory",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "revoke",
+          "type": "flags.0?true"
+        }
+      ],
+      "type": "messages.AffectedFoundMessages"
+    },
+    {
+      "id": 1140726259,
+      "method": "messages.checkHistoryImport",
+      "params": [
+        {
+          "name": "import_head",
+          "type": "string"
+        }
+      ],
+      "type": "messages.HistoryImportParsed"
+    },
+    {
+      "id": 873008187,
+      "method": "messages.initHistoryImport",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "file",
+          "type": "InputFile"
+        },
+        {
+          "name": "media_count",
+          "type": "int"
+        }
+      ],
+      "type": "messages.HistoryImport"
+    },
+    {
+      "id": 713433234,
+      "method": "messages.uploadImportedMedia",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "import_id",
+          "type": "long"
+        },
+        {
+          "name": "file_name",
+          "type": "string"
+        },
+        {
+          "name": "media",
+          "type": "InputMedia"
+        }
+      ],
+      "type": "MessageMedia"
+    },
+    {
+      "id": 3023958852,
+      "method": "messages.startHistoryImport",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "import_id",
+          "type": "long"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
       "id": 3990128682,
       "method": "updates.getState",
       "params": [],
@@ -20720,6 +20970,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "megagroup",
           "type": "flags.1?true"
+        },
+        {
+          "name": "for_import",
+          "type": "flags.3?true"
         },
         {
           "name": "title",
@@ -21617,7 +21871,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 1662282468,
+      "id": 2783407320,
       "method": "phone.editGroupCallMember",
       "params": [
         {
@@ -21635,6 +21889,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "user_id",
           "type": "InputUser"
+        },
+        {
+          "name": "volume",
+          "type": "flags.1?int"
         }
       ],
       "type": "Updates"
