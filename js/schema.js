@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 125
+var LAYER_NUMBER = 126
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -8858,7 +8858,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelParticipant"
     },
     {
-      "id": 470789295,
+      "id": 1352785878,
       "predicate": "channelParticipantBanned",
       "params": [
         {
@@ -8870,8 +8870,8 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
-          "name": "user_id",
-          "type": "int"
+          "name": "peer",
+          "type": "Peer"
         },
         {
           "name": "kicked_by",
@@ -8981,7 +8981,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelParticipantsFilter"
     },
     {
-      "id": 4117684904,
+      "id": 2595290799,
       "predicate": "channels.channelParticipants",
       "params": [
         {
@@ -8991,6 +8991,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "participants",
           "type": "Vector<ChannelParticipant>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
         },
         {
           "name": "users",
@@ -9006,12 +9010,16 @@ var SCHEMA_GLOBAL = {
       "type": "channels.ChannelParticipants"
     },
     {
-      "id": 3503927651,
+      "id": 3753378583,
       "predicate": "channels.channelParticipant",
       "params": [
         {
           "name": "participant",
           "type": "ChannelParticipant"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
         },
         {
           "name": "users",
@@ -16034,6 +16042,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.2?true"
         },
         {
+          "name": "join_date_asc",
+          "type": "flags.6?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -21607,7 +21619,7 @@ var SCHEMA_GLOBAL = {
       "type": "channels.ChannelParticipants"
     },
     {
-      "id": 1416484774,
+      "id": 2695589062,
       "method": "channels.getParticipant",
       "params": [
         {
@@ -21615,8 +21627,8 @@ var SCHEMA_GLOBAL = {
           "type": "InputChannel"
         },
         {
-          "name": "user_id",
-          "type": "InputUser"
+          "name": "participant",
+          "type": "InputPeer"
         }
       ],
       "type": "channels.ChannelParticipant"
@@ -21870,16 +21882,12 @@ var SCHEMA_GLOBAL = {
         {
           "name": "check_limit",
           "type": "flags.1?true"
-        },
-        {
-          "name": "for_groupcall",
-          "type": "flags.2?true"
         }
       ],
       "type": "messages.Chats"
     },
     {
-      "id": 1920559378,
+      "id": 2531708289,
       "method": "channels.editBanned",
       "params": [
         {
@@ -21887,8 +21895,8 @@ var SCHEMA_GLOBAL = {
           "type": "InputChannel"
         },
         {
-          "name": "user_id",
-          "type": "InputUser"
+          "name": "participant",
+          "type": "InputPeer"
         },
         {
           "name": "banned_rights",
