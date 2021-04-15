@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 126
+var LAYER_NUMBER = 128
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -486,6 +486,14 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "multiple_allowed",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "can_forward",
+          "type": "flags.2?true"
+        },
+        {
           "name": "title",
           "type": "string"
         },
@@ -820,7 +828,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputFileLocation"
     },
     {
-      "id": 668375447,
+      "id": 925204121,
       "predicate": "inputPeerPhotoFileLocation",
       "params": [
         {
@@ -836,18 +844,14 @@ var SCHEMA_GLOBAL = {
           "type": "InputPeer"
         },
         {
-          "name": "volume_id",
+          "name": "photo_id",
           "type": "long"
-        },
-        {
-          "name": "local_id",
-          "type": "int"
         }
       ],
       "type": "InputFileLocation"
     },
     {
-      "id": 230353641,
+      "id": 2642736091,
       "predicate": "inputStickerSetThumb",
       "params": [
         {
@@ -855,11 +859,7 @@ var SCHEMA_GLOBAL = {
           "type": "InputStickerSet"
         },
         {
-          "name": "volume_id",
-          "type": "long"
-        },
-        {
-          "name": "local_id",
+          "name": "thumb_version",
           "type": "int"
         }
       ],
@@ -1114,7 +1114,7 @@ var SCHEMA_GLOBAL = {
       "type": "UserProfilePhoto"
     },
     {
-      "id": 1775479590,
+      "id": 2194798342,
       "predicate": "userProfilePhoto",
       "params": [
         {
@@ -1130,12 +1130,8 @@ var SCHEMA_GLOBAL = {
           "type": "long"
         },
         {
-          "name": "photo_small",
-          "type": "FileLocation"
-        },
-        {
-          "name": "photo_big",
-          "type": "FileLocation"
+          "name": "stripped_thumb",
+          "type": "flags.1?bytes"
         },
         {
           "name": "dc_id",
@@ -1769,7 +1765,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatPhoto"
     },
     {
-      "id": 3523977020,
+      "id": 476978193,
       "predicate": "chatPhoto",
       "params": [
         {
@@ -1781,12 +1777,12 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
-          "name": "photo_small",
-          "type": "FileLocation"
+          "name": "photo_id",
+          "type": "long"
         },
         {
-          "name": "photo_big",
-          "type": "FileLocation"
+          "name": "stripped_thumb",
+          "type": "flags.1?bytes"
         },
         {
           "name": "dc_id",
@@ -2593,6 +2589,21 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
+      "id": 3013637729,
+      "predicate": "messageActionGroupCallScheduled",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "schedule_date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
       "id": 739712882,
       "predicate": "dialog",
       "params": [
@@ -2760,16 +2771,12 @@ var SCHEMA_GLOBAL = {
       "type": "PhotoSize"
     },
     {
-      "id": 2009052699,
+      "id": 1976012384,
       "predicate": "photoSize",
       "params": [
         {
           "name": "type",
           "type": "string"
-        },
-        {
-          "name": "location",
-          "type": "FileLocation"
         },
         {
           "name": "w",
@@ -2787,16 +2794,12 @@ var SCHEMA_GLOBAL = {
       "type": "PhotoSize"
     },
     {
-      "id": 3920049402,
+      "id": 35527382,
       "predicate": "photoCachedSize",
       "params": [
         {
           "name": "type",
           "type": "string"
-        },
-        {
-          "name": "location",
-          "type": "FileLocation"
         },
         {
           "name": "w",
@@ -2829,16 +2832,12 @@ var SCHEMA_GLOBAL = {
       "type": "PhotoSize"
     },
     {
-      "id": 1520986705,
+      "id": 4198431637,
       "predicate": "photoSizeProgressive",
       "params": [
         {
           "name": "type",
           "type": "string"
-        },
-        {
-          "name": "location",
-          "type": "FileLocation"
         },
         {
           "name": "w",
@@ -7869,7 +7868,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputStickerSet"
     },
     {
-      "id": 1088567208,
+      "id": 3621724538,
       "predicate": "stickerSet",
       "params": [
         {
@@ -7918,6 +7917,10 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "thumb_dc_id",
+          "type": "flags.4?int"
+        },
+        {
+          "name": "thumb_version",
           "type": "flags.4?int"
         },
         {
@@ -8889,12 +8892,12 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelParticipant"
     },
     {
-      "id": 3284564331,
+      "id": 453242886,
       "predicate": "channelParticipantLeft",
       "params": [
         {
-          "name": "user_id",
-          "type": "int"
+          "name": "peer",
+          "type": "Peer"
         }
       ],
       "type": "ChannelParticipant"
@@ -9247,6 +9250,61 @@ var SCHEMA_GLOBAL = {
       "type": "InputBotInlineMessage"
     },
     {
+      "id": 3576991109,
+      "predicate": "inputBotInlineMessageMediaInvoice",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "multiple_allowed",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "can_forward",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.0?InputWebDocument"
+        },
+        {
+          "name": "invoice",
+          "type": "Invoice"
+        },
+        {
+          "name": "payload",
+          "type": "bytes"
+        },
+        {
+          "name": "provider",
+          "type": "string"
+        },
+        {
+          "name": "provider_data",
+          "type": "DataJSON"
+        },
+        {
+          "name": "start_param",
+          "type": "string"
+        },
+        {
+          "name": "reply_markup",
+          "type": "flags.2?ReplyMarkup"
+        }
+      ],
+      "type": "InputBotInlineMessage"
+    },
+    {
       "id": 2294256409,
       "predicate": "inputBotInlineResult",
       "params": [
@@ -9509,6 +9567,49 @@ var SCHEMA_GLOBAL = {
         {
           "name": "vcard",
           "type": "string"
+        },
+        {
+          "name": "reply_markup",
+          "type": "flags.2?ReplyMarkup"
+        }
+      ],
+      "type": "BotInlineMessage"
+    },
+    {
+      "id": 894081801,
+      "predicate": "botInlineMessageMediaInvoice",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "shipping_address_requested",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "test",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.0?WebDocument"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "total_amount",
+          "type": "long"
         },
         {
           "name": "reply_markup",
@@ -11028,7 +11129,7 @@ var SCHEMA_GLOBAL = {
       "type": "LabeledPrice"
     },
     {
-      "id": 3272254296,
+      "id": 215516896,
       "predicate": "invoice",
       "params": [
         {
@@ -11074,6 +11175,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "prices",
           "type": "Vector<LabeledPrice>"
+        },
+        {
+          "name": "max_tip_amount",
+          "type": "flags.8?long"
+        },
+        {
+          "name": "suggested_tip_amounts",
+          "type": "flags.8?Vector<long>"
         }
       ],
       "type": "Invoice"
@@ -11313,7 +11422,7 @@ var SCHEMA_GLOBAL = {
       "type": "upload.WebFile"
     },
     {
-      "id": 1062645411,
+      "id": 2366317589,
       "predicate": "payments.paymentForm",
       "params": [
         {
@@ -11327,6 +11436,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "password_missing",
           "type": "flags.3?true"
+        },
+        {
+          "name": "form_id",
+          "type": "long"
         },
         {
           "name": "bot_id",
@@ -11409,7 +11522,7 @@ var SCHEMA_GLOBAL = {
       "type": "payments.PaymentResult"
     },
     {
-      "id": 1342771681,
+      "id": 280319440,
       "predicate": "payments.paymentReceipt",
       "params": [
         {
@@ -11425,12 +11538,24 @@ var SCHEMA_GLOBAL = {
           "type": "int"
         },
         {
-          "name": "invoice",
-          "type": "Invoice"
-        },
-        {
           "name": "provider_id",
           "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.2?WebDocument"
+        },
+        {
+          "name": "invoice",
+          "type": "Invoice"
         },
         {
           "name": "info",
@@ -11439,6 +11564,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "shipping",
           "type": "flags.1?ShippingOption"
+        },
+        {
+          "name": "tip_amount",
+          "type": "flags.3?long"
         },
         {
           "name": "currency",
@@ -14670,21 +14799,6 @@ var SCHEMA_GLOBAL = {
       "type": "EmojiLanguage"
     },
     {
-      "id": 3162490573,
-      "predicate": "fileLocationToBeDeprecated",
-      "params": [
-        {
-          "name": "volume_id",
-          "type": "long"
-        },
-        {
-          "name": "local_id",
-          "type": "int"
-        }
-      ],
-      "type": "FileLocation"
-    },
-    {
       "id": 4283715173,
       "predicate": "folder",
       "params": [
@@ -15585,7 +15699,7 @@ var SCHEMA_GLOBAL = {
       "type": "help.PromoData"
     },
     {
-      "id": 3895575894,
+      "id": 3727929492,
       "predicate": "videoSize",
       "params": [
         {
@@ -15595,10 +15709,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "type",
           "type": "string"
-        },
-        {
-          "name": "location",
-          "type": "FileLocation"
         },
         {
           "name": "w",
@@ -16026,7 +16136,7 @@ var SCHEMA_GLOBAL = {
       "type": "GroupCall"
     },
     {
-      "id": 3233940782,
+      "id": 3378275924,
       "predicate": "groupCall",
       "params": [
         {
@@ -16044,6 +16154,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "join_date_asc",
           "type": "flags.6?true"
+        },
+        {
+          "name": "schedule_start_subscribed",
+          "type": "flags.8?true"
         },
         {
           "name": "id",
@@ -16074,6 +16188,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.5?int"
         },
         {
+          "name": "schedule_date",
+          "type": "flags.7?int"
+        },
+        {
           "name": "version",
           "type": "int"
         }
@@ -16096,7 +16214,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputGroupCall"
     },
     {
-      "id": 430815881,
+      "id": 3110807022,
       "predicate": "groupCallParticipant",
       "params": [
         {
@@ -16166,6 +16284,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "raise_hand_rating",
           "type": "flags.13?long"
+        },
+        {
+          "name": "params",
+          "type": "flags.6?DataJSON"
         }
       ],
       "type": "GroupCallParticipant"
@@ -22148,20 +22270,36 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 2582681413,
+      "id": 2318613645,
       "method": "payments.getPaymentForm",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
           "name": "msg_id",
           "type": "int"
+        },
+        {
+          "name": "theme_params",
+          "type": "flags.0?DataJSON"
         }
       ],
       "type": "payments.PaymentForm"
     },
     {
-      "id": 2693966208,
+      "id": 611897804,
       "method": "payments.getPaymentReceipt",
       "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
         {
           "name": "msg_id",
           "type": "int"
@@ -22170,7 +22308,7 @@ var SCHEMA_GLOBAL = {
       "type": "payments.PaymentReceipt"
     },
     {
-      "id": 1997180532,
+      "id": 3675271536,
       "method": "payments.validateRequestedInfo",
       "params": [
         {
@@ -22180,6 +22318,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "save",
           "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
         },
         {
           "name": "msg_id",
@@ -22193,12 +22335,20 @@ var SCHEMA_GLOBAL = {
       "type": "payments.ValidatedRequestedInfo"
     },
     {
-      "id": 730364339,
+      "id": 818134173,
       "method": "payments.sendPaymentForm",
       "params": [
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "form_id",
+          "type": "long"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
         },
         {
           "name": "msg_id",
@@ -22215,6 +22365,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "credentials",
           "type": "InputPaymentCredentials"
+        },
+        {
+          "name": "tip_amount",
+          "type": "flags.2?long"
         }
       ],
       "type": "payments.PaymentResult"
@@ -22529,9 +22683,13 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 3174935520,
+      "id": 1221445336,
       "method": "phone.createGroupCall",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "peer",
           "type": "InputPeer"
@@ -22539,6 +22697,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "random_id",
           "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "schedule_date",
+          "type": "flags.1?int"
         }
       ],
       "type": "Updates"
@@ -22789,6 +22955,47 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "phone.ExportedGroupCallInvite"
+    },
+    {
+      "id": 563885286,
+      "method": "phone.toggleGroupCallStartSubscription",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "subscribed",
+          "type": "Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1451287362,
+      "method": "phone.startScheduledGroupCall",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1465786252,
+      "method": "phone.saveDefaultGroupCallJoinAs",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "join_as",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 4075959050,
