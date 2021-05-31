@@ -476,20 +476,12 @@
       "type": "InputMedia"
     },
     {
-      "id": 4108359363,
+      "id": 3648624756,
       "predicate": "inputMediaInvoice",
       "params": [
         {
           "name": "flags",
           "type": "#"
-        },
-        {
-          "name": "multiple_allowed",
-          "type": "flags.1?true"
-        },
-        {
-          "name": "can_forward",
-          "type": "flags.2?true"
         },
         {
           "name": "title",
@@ -521,7 +513,7 @@
         },
         {
           "name": "start_param",
-          "type": "string"
+          "type": "flags.1?string"
         }
       ],
       "type": "InputMedia"
@@ -5046,7 +5038,7 @@
       "type": "Update"
     },
     {
-      "id": 1123585836,
+      "id": 938909451,
       "predicate": "updateMessagePollVote",
       "params": [
         {
@@ -5060,6 +5052,10 @@
         {
           "name": "options",
           "type": "Vector<bytes>"
+        },
+        {
+          "name": "qts",
+          "type": "int"
         }
       ],
       "type": "Update"
@@ -5457,6 +5453,25 @@
         {
           "name": "qts",
           "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 192428418,
+      "predicate": "updateGroupCallConnection",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "presentation",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "params",
+          "type": "DataJSON"
         }
       ],
       "type": "Update"
@@ -6221,7 +6236,7 @@
       "type": "NearestDc"
     },
     {
-      "id": 497489295,
+      "id": 3434860080,
       "predicate": "help.appUpdate",
       "params": [
         {
@@ -6255,6 +6270,10 @@
         {
           "name": "url",
           "type": "flags.2?string"
+        },
+        {
+          "name": "sticker",
+          "type": "flags.3?Document"
         }
       ],
       "type": "help.AppUpdate"
@@ -9248,20 +9267,12 @@
       "type": "InputBotInlineMessage"
     },
     {
-      "id": 3576991109,
+      "id": 3622273573,
       "predicate": "inputBotInlineMessageMediaInvoice",
       "params": [
         {
           "name": "flags",
           "type": "#"
-        },
-        {
-          "name": "multiple_allowed",
-          "type": "flags.1?true"
-        },
-        {
-          "name": "can_forward",
-          "type": "flags.3?true"
         },
         {
           "name": "title",
@@ -9290,10 +9301,6 @@
         {
           "name": "provider_data",
           "type": "DataJSON"
-        },
-        {
-          "name": "start_param",
-          "type": "string"
         },
         {
           "name": "reply_markup",
@@ -14625,7 +14632,7 @@
       "type": "CodeSettings"
     },
     {
-      "id": 84438264,
+      "id": 499236004,
       "predicate": "wallPaperSettings",
       "params": [
         {
@@ -14647,6 +14654,14 @@
         {
           "name": "second_background_color",
           "type": "flags.4?int"
+        },
+        {
+          "name": "third_background_color",
+          "type": "flags.5?int"
+        },
+        {
+          "name": "fourth_background_color",
+          "type": "flags.6?int"
         },
         {
           "name": "intensity",
@@ -16134,7 +16149,7 @@
       "type": "GroupCall"
     },
     {
-      "id": 3378275924,
+      "id": 1698544301,
       "predicate": "groupCall",
       "params": [
         {
@@ -16158,6 +16173,10 @@
           "type": "flags.8?true"
         },
         {
+          "name": "can_start_video",
+          "type": "flags.9?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -16168,10 +16187,6 @@
         {
           "name": "participants_count",
           "type": "int"
-        },
-        {
-          "name": "params",
-          "type": "flags.0?DataJSON"
         },
         {
           "name": "title",
@@ -16212,7 +16227,7 @@
       "type": "InputGroupCall"
     },
     {
-      "id": 3110807022,
+      "id": 2830782887,
       "predicate": "groupCallParticipant",
       "params": [
         {
@@ -16284,8 +16299,12 @@
           "type": "flags.13?long"
         },
         {
-          "name": "params",
+          "name": "video",
           "type": "flags.6?DataJSON"
+        },
+        {
+          "name": "presentation",
+          "type": "flags.14?DataJSON"
         }
       ],
       "type": "GroupCallParticipant"
@@ -22720,6 +22739,10 @@
           "type": "flags.0?true"
         },
         {
+          "name": "video_muted",
+          "type": "flags.2?true"
+        },
+        {
           "name": "call",
           "type": "InputGroupCall"
         },
@@ -22841,7 +22864,7 @@
       "type": "phone.GroupParticipants"
     },
     {
-      "id": 3075111914,
+      "id": 3046963575,
       "method": "phone.checkGroupCall",
       "params": [
         {
@@ -22849,11 +22872,11 @@
           "type": "InputGroupCall"
         },
         {
-          "name": "source",
-          "type": "int"
+          "name": "sources",
+          "type": "Vector<int>"
         }
       ],
-      "type": "Bool"
+      "type": "Vector<int>"
     },
     {
       "id": 3224004311,
@@ -22879,16 +22902,12 @@
       "type": "Updates"
     },
     {
-      "id": 3648383872,
+      "id": 2932216036,
       "method": "phone.editGroupCallParticipant",
       "params": [
         {
           "name": "flags",
           "type": "#"
-        },
-        {
-          "name": "muted",
-          "type": "flags.0?true"
         },
         {
           "name": "call",
@@ -22899,12 +22918,20 @@
           "type": "InputPeer"
         },
         {
+          "name": "muted",
+          "type": "flags.0?Bool"
+        },
+        {
           "name": "volume",
           "type": "flags.1?int"
         },
         {
           "name": "raise_hand",
           "type": "flags.2?Bool"
+        },
+        {
+          "name": "video_muted",
+          "type": "flags.3?Bool"
         }
       ],
       "type": "Updates"
@@ -22994,6 +23021,32 @@
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 3421137860,
+      "method": "phone.joinGroupCallPresentation",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "params",
+          "type": "DataJSON"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 475058500,
+      "method": "phone.leaveGroupCallPresentation",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 4075959050,

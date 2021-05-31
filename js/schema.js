@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 128
+var LAYER_NUMBER = 129
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -478,20 +478,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": 4108359363,
+      "id": 3648624756,
       "predicate": "inputMediaInvoice",
       "params": [
         {
           "name": "flags",
           "type": "#"
-        },
-        {
-          "name": "multiple_allowed",
-          "type": "flags.1?true"
-        },
-        {
-          "name": "can_forward",
-          "type": "flags.2?true"
         },
         {
           "name": "title",
@@ -523,7 +515,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "start_param",
-          "type": "string"
+          "type": "flags.1?string"
         }
       ],
       "type": "InputMedia"
@@ -5048,7 +5040,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 1123585836,
+      "id": 938909451,
       "predicate": "updateMessagePollVote",
       "params": [
         {
@@ -5062,6 +5054,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "options",
           "type": "Vector<bytes>"
+        },
+        {
+          "name": "qts",
+          "type": "int"
         }
       ],
       "type": "Update"
@@ -5459,6 +5455,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "qts",
           "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 192428418,
+      "predicate": "updateGroupCallConnection",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "presentation",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "params",
+          "type": "DataJSON"
         }
       ],
       "type": "Update"
@@ -6223,7 +6238,7 @@ var SCHEMA_GLOBAL = {
       "type": "NearestDc"
     },
     {
-      "id": 497489295,
+      "id": 3434860080,
       "predicate": "help.appUpdate",
       "params": [
         {
@@ -6257,6 +6272,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "url",
           "type": "flags.2?string"
+        },
+        {
+          "name": "sticker",
+          "type": "flags.3?Document"
         }
       ],
       "type": "help.AppUpdate"
@@ -9250,20 +9269,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputBotInlineMessage"
     },
     {
-      "id": 3576991109,
+      "id": 3622273573,
       "predicate": "inputBotInlineMessageMediaInvoice",
       "params": [
         {
           "name": "flags",
           "type": "#"
-        },
-        {
-          "name": "multiple_allowed",
-          "type": "flags.1?true"
-        },
-        {
-          "name": "can_forward",
-          "type": "flags.3?true"
         },
         {
           "name": "title",
@@ -9292,10 +9303,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "provider_data",
           "type": "DataJSON"
-        },
-        {
-          "name": "start_param",
-          "type": "string"
         },
         {
           "name": "reply_markup",
@@ -14627,7 +14634,7 @@ var SCHEMA_GLOBAL = {
       "type": "CodeSettings"
     },
     {
-      "id": 84438264,
+      "id": 499236004,
       "predicate": "wallPaperSettings",
       "params": [
         {
@@ -14649,6 +14656,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "second_background_color",
           "type": "flags.4?int"
+        },
+        {
+          "name": "third_background_color",
+          "type": "flags.5?int"
+        },
+        {
+          "name": "fourth_background_color",
+          "type": "flags.6?int"
         },
         {
           "name": "intensity",
@@ -16136,7 +16151,7 @@ var SCHEMA_GLOBAL = {
       "type": "GroupCall"
     },
     {
-      "id": 3378275924,
+      "id": 1698544301,
       "predicate": "groupCall",
       "params": [
         {
@@ -16160,6 +16175,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.8?true"
         },
         {
+          "name": "can_start_video",
+          "type": "flags.9?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -16170,10 +16189,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "participants_count",
           "type": "int"
-        },
-        {
-          "name": "params",
-          "type": "flags.0?DataJSON"
         },
         {
           "name": "title",
@@ -16214,7 +16229,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputGroupCall"
     },
     {
-      "id": 3110807022,
+      "id": 2830782887,
       "predicate": "groupCallParticipant",
       "params": [
         {
@@ -16286,8 +16301,12 @@ var SCHEMA_GLOBAL = {
           "type": "flags.13?long"
         },
         {
-          "name": "params",
+          "name": "video",
           "type": "flags.6?DataJSON"
+        },
+        {
+          "name": "presentation",
+          "type": "flags.14?DataJSON"
         }
       ],
       "type": "GroupCallParticipant"
@@ -22722,6 +22741,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "video_muted",
+          "type": "flags.2?true"
+        },
+        {
           "name": "call",
           "type": "InputGroupCall"
         },
@@ -22843,7 +22866,7 @@ var SCHEMA_GLOBAL = {
       "type": "phone.GroupParticipants"
     },
     {
-      "id": 3075111914,
+      "id": 3046963575,
       "method": "phone.checkGroupCall",
       "params": [
         {
@@ -22851,11 +22874,11 @@ var SCHEMA_GLOBAL = {
           "type": "InputGroupCall"
         },
         {
-          "name": "source",
-          "type": "int"
+          "name": "sources",
+          "type": "Vector<int>"
         }
       ],
-      "type": "Bool"
+      "type": "Vector<int>"
     },
     {
       "id": 3224004311,
@@ -22881,16 +22904,12 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 3648383872,
+      "id": 2932216036,
       "method": "phone.editGroupCallParticipant",
       "params": [
         {
           "name": "flags",
           "type": "#"
-        },
-        {
-          "name": "muted",
-          "type": "flags.0?true"
         },
         {
           "name": "call",
@@ -22901,12 +22920,20 @@ var SCHEMA_GLOBAL = {
           "type": "InputPeer"
         },
         {
+          "name": "muted",
+          "type": "flags.0?Bool"
+        },
+        {
           "name": "volume",
           "type": "flags.1?int"
         },
         {
           "name": "raise_hand",
           "type": "flags.2?Bool"
+        },
+        {
+          "name": "video_muted",
+          "type": "flags.3?Bool"
         }
       ],
       "type": "Updates"
@@ -22996,6 +23023,32 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 3421137860,
+      "method": "phone.joinGroupCallPresentation",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "params",
+          "type": "DataJSON"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 475058500,
+      "method": "phone.leaveGroupCallPresentation",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 4075959050,
