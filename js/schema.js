@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 129
+var LAYER_NUMBER = 130
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -3148,9 +3148,13 @@ var SCHEMA_GLOBAL = {
       "type": "WallPaper"
     },
     {
-      "id": 2331249445,
+      "id": 3766501654,
       "predicate": "wallPaperNoFile",
       "params": [
+        {
+          "name": "id",
+          "type": "long"
+        },
         {
           "name": "flags",
           "type": "#"
@@ -8226,7 +8230,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReplyMarkup"
     },
     {
-      "id": 4094724768,
+      "id": 2259946248,
       "predicate": "replyKeyboardForceReply",
       "params": [
         {
@@ -8240,12 +8244,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "selective",
           "type": "flags.2?true"
+        },
+        {
+          "name": "placeholder",
+          "type": "flags.3?string"
         }
       ],
       "type": "ReplyMarkup"
     },
     {
-      "id": 889353612,
+      "id": 2245892561,
       "predicate": "replyKeyboardMarkup",
       "params": [
         {
@@ -8267,6 +8275,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "rows",
           "type": "Vector<KeyboardButtonRow>"
+        },
+        {
+          "name": "placeholder",
+          "type": "flags.3?string"
         }
       ],
       "type": "ReplyMarkup"
@@ -14584,9 +14596,14 @@ var SCHEMA_GLOBAL = {
       "type": "InputWallPaper"
     },
     {
-      "id": 2217196460,
+      "id": 2524595758,
       "predicate": "inputWallPaperNoFile",
-      "params": [],
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        }
+      ],
       "type": "InputWallPaper"
     },
     {
@@ -16229,7 +16246,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputGroupCall"
     },
     {
-      "id": 2830782887,
+      "id": 3953538814,
       "predicate": "groupCallParticipant",
       "params": [
         {
@@ -16273,6 +16290,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.12?true"
         },
         {
+          "name": "video_joined",
+          "type": "flags.15?true"
+        },
+        {
           "name": "peer",
           "type": "Peer"
         },
@@ -16302,11 +16323,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "video",
-          "type": "flags.6?DataJSON"
+          "type": "flags.6?GroupCallParticipantVideo"
         },
         {
           "name": "presentation",
-          "type": "flags.14?DataJSON"
+          "type": "flags.14?GroupCallParticipantVideo"
         }
       ],
       "type": "GroupCallParticipant"
@@ -16617,6 +16638,116 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "phone.ExportedGroupCallInvite"
+    },
+    {
+      "id": 3702593719,
+      "predicate": "groupCallParticipantVideoSourceGroup",
+      "params": [
+        {
+          "name": "semantics",
+          "type": "string"
+        },
+        {
+          "name": "sources",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "GroupCallParticipantVideoSourceGroup"
+    },
+    {
+      "id": 2028213859,
+      "predicate": "groupCallParticipantVideo",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "paused",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "endpoint",
+          "type": "string"
+        },
+        {
+          "name": "source_groups",
+          "type": "Vector<GroupCallParticipantVideoSourceGroup>"
+        }
+      ],
+      "type": "GroupCallParticipantVideo"
+    },
+    {
+      "id": 2248056895,
+      "predicate": "stickers.suggestedShortName",
+      "params": [
+        {
+          "name": "short_name",
+          "type": "string"
+        }
+      ],
+      "type": "stickers.SuggestedShortName"
+    },
+    {
+      "id": 795652779,
+      "predicate": "botCommandScopeDefault",
+      "params": [],
+      "type": "BotCommandScope"
+    },
+    {
+      "id": 1011811544,
+      "predicate": "botCommandScopeUsers",
+      "params": [],
+      "type": "BotCommandScope"
+    },
+    {
+      "id": 1877059713,
+      "predicate": "botCommandScopeChats",
+      "params": [],
+      "type": "BotCommandScope"
+    },
+    {
+      "id": 3114950762,
+      "predicate": "botCommandScopeChatAdmins",
+      "params": [],
+      "type": "BotCommandScope"
+    },
+    {
+      "id": 3684534653,
+      "predicate": "botCommandScopePeer",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "BotCommandScope"
+    },
+    {
+      "id": 1071145937,
+      "predicate": "botCommandScopePeerAdmins",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "BotCommandScope"
+    },
+    {
+      "id": 169026035,
+      "predicate": "botCommandScopePeerUser",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        }
+      ],
+      "type": "BotCommandScope"
     }
   ],
   "methods": [
@@ -22278,15 +22409,53 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 2153596662,
+      "id": 85399130,
       "method": "bots.setBotCommands",
       "params": [
+        {
+          "name": "scope",
+          "type": "BotCommandScope"
+        },
+        {
+          "name": "lang_code",
+          "type": "string"
+        },
         {
           "name": "commands",
           "type": "Vector<BotCommand>"
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 1032708345,
+      "method": "bots.resetBotCommands",
+      "params": [
+        {
+          "name": "scope",
+          "type": "BotCommandScope"
+        },
+        {
+          "name": "lang_code",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3813412310,
+      "method": "bots.getBotCommands",
+      "params": [
+        {
+          "name": "scope",
+          "type": "BotCommandScope"
+        },
+        {
+          "name": "lang_code",
+          "type": "string"
+        }
+      ],
+      "type": "Vector<BotCommand>"
     },
     {
       "id": 2318613645,
@@ -22429,7 +22598,7 @@ var SCHEMA_GLOBAL = {
       "type": "payments.BankCardData"
     },
     {
-      "id": 4043532160,
+      "id": 2418125671,
       "method": "stickers.createStickerSet",
       "params": [
         {
@@ -22463,6 +22632,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "stickers",
           "type": "Vector<InputStickerSetItem>"
+        },
+        {
+          "name": "software",
+          "type": "flags.3?string"
         }
       ],
       "type": "messages.StickerSet"
@@ -22522,6 +22695,28 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.StickerSet"
+    },
+    {
+      "id": 676017721,
+      "method": "stickers.checkShortName",
+      "params": [
+        {
+          "name": "short_name",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1303364867,
+      "method": "stickers.suggestShortName",
+      "params": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "type": "stickers.SuggestedShortName"
     },
     {
       "id": 1430593449,
@@ -22741,7 +22936,7 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
-          "name": "video_muted",
+          "name": "video_stopped",
           "type": "flags.2?true"
         },
         {
@@ -22904,7 +23099,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 2932216036,
+      "id": 2770811583,
       "method": "phone.editGroupCallParticipant",
       "params": [
         {
@@ -22932,8 +23127,16 @@ var SCHEMA_GLOBAL = {
           "type": "flags.2?Bool"
         },
         {
-          "name": "video_muted",
+          "name": "video_stopped",
           "type": "flags.3?Bool"
+        },
+        {
+          "name": "video_paused",
+          "type": "flags.4?Bool"
+        },
+        {
+          "name": "presentation_paused",
+          "type": "flags.5?Bool"
         }
       ],
       "type": "Updates"
