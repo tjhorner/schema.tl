@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 130
+var LAYER_NUMBER = 131
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -5483,6 +5483,25 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 3481143411,
+      "predicate": "updateBotCommands",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "bot_id",
+          "type": "int"
+        },
+        {
+          "name": "commands",
+          "type": "Vector<BotCommand>"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 2775329342,
       "predicate": "updates.state",
       "params": [
@@ -7595,7 +7614,7 @@ var SCHEMA_GLOBAL = {
       "type": "account.Authorizations"
     },
     {
-      "id": 2904965624,
+      "id": 408623183,
       "predicate": "account.password",
       "params": [
         {
@@ -7645,6 +7664,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "secure_random",
           "type": "bytes"
+        },
+        {
+          "name": "pending_reset_date",
+          "type": "flags.5?int"
         }
       ],
       "type": "account.Password"
@@ -16168,7 +16191,7 @@ var SCHEMA_GLOBAL = {
       "type": "GroupCall"
     },
     {
-      "id": 1698544301,
+      "id": 3583468812,
       "predicate": "groupCall",
       "params": [
         {
@@ -16222,6 +16245,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "schedule_date",
           "type": "flags.7?int"
+        },
+        {
+          "name": "unmuted_video_count",
+          "type": "flags.10?int"
+        },
+        {
+          "name": "unmuted_video_limit",
+          "type": "int"
         },
         {
           "name": "version",
@@ -16655,7 +16686,7 @@ var SCHEMA_GLOBAL = {
       "type": "GroupCallParticipantVideoSourceGroup"
     },
     {
-      "id": 2028213859,
+      "id": 1735736008,
       "predicate": "groupCallParticipantVideo",
       "params": [
         {
@@ -16673,6 +16704,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "source_groups",
           "type": "Vector<GroupCallParticipantVideoSourceGroup>"
+        },
+        {
+          "name": "audio_source",
+          "type": "flags.1?int"
         }
       ],
       "type": "GroupCallParticipantVideo"
@@ -16748,6 +16783,34 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "BotCommandScope"
+    },
+    {
+      "id": 3816265825,
+      "predicate": "account.resetPasswordFailedWait",
+      "params": [
+        {
+          "name": "retry_date",
+          "type": "int"
+        }
+      ],
+      "type": "account.ResetPasswordResult"
+    },
+    {
+      "id": 3924819069,
+      "predicate": "account.resetPasswordRequestedWait",
+      "params": [
+        {
+          "name": "until_date",
+          "type": "int"
+        }
+      ],
+      "type": "account.ResetPasswordResult"
+    },
+    {
+      "id": 3911636542,
+      "predicate": "account.resetPasswordOk",
+      "params": [],
+      "type": "account.ResetPasswordResult"
     }
   ],
   "methods": [
@@ -17055,12 +17118,20 @@ var SCHEMA_GLOBAL = {
       "type": "auth.PasswordRecovery"
     },
     {
-      "id": 1319464594,
+      "id": 923364464,
       "method": "auth.recoverPassword",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "code",
           "type": "string"
+        },
+        {
+          "name": "new_settings",
+          "type": "flags.0?account.PasswordInputSettings"
         }
       ],
       "type": "auth.Authorization"
@@ -17146,6 +17217,17 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Authorization"
+    },
+    {
+      "id": 221691769,
+      "method": "auth.checkRecoveryPassword",
+      "params": [
+        {
+          "name": "code",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 1754754159,
@@ -18127,6 +18209,18 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         }
       ],
+      "type": "Bool"
+    },
+    {
+      "id": 2466827803,
+      "method": "account.resetPassword",
+      "params": [],
+      "type": "account.ResetPasswordResult"
+    },
+    {
+      "id": 1284770294,
+      "method": "account.declinePasswordReset",
+      "params": [],
       "type": "Bool"
     },
     {
