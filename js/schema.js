@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 133
+var LAYER_NUMBER = 134
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1442,7 +1442,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": 1304281241,
+      "id": 1185349556,
       "predicate": "chatFull",
       "params": [
         {
@@ -1508,12 +1508,20 @@ var SCHEMA_GLOBAL = {
         {
           "name": "theme_emoticon",
           "type": "flags.16?string"
+        },
+        {
+          "name": "requests_pending",
+          "type": "flags.17?int"
+        },
+        {
+          "name": "recent_requesters",
+          "type": "flags.17?Vector<long>"
         }
       ],
       "type": "ChatFull"
     },
     {
-      "id": 3920787991,
+      "id": 1506802019,
       "predicate": "channelFull",
       "params": [
         {
@@ -1675,6 +1683,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "theme_emoticon",
           "type": "flags.27?string"
+        },
+        {
+          "name": "requests_pending",
+          "type": "flags.28?int"
+        },
+        {
+          "name": "recent_requesters",
+          "type": "flags.28?Vector<long>"
         }
       ],
       "type": "ChatFull"
@@ -2620,6 +2636,12 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         }
       ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 3955008459,
+      "predicate": "messageActionChatJoinedByRequest",
+      "params": [],
       "type": "MessageAction"
     },
     {
@@ -5533,6 +5555,56 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 1885586395,
+      "predicate": "updatePendingJoinRequests",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "requests_pending",
+          "type": "int"
+        },
+        {
+          "name": "recent_requesters",
+          "type": "Vector<long>"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 299870598,
+      "predicate": "updateBotChatInviteRequester",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "about",
+          "type": "string"
+        },
+        {
+          "name": "invite",
+          "type": "ExportedChatInvite"
+        },
+        {
+          "name": "qts",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 2775329342,
       "predicate": "updates.state",
       "params": [
@@ -6961,12 +7033,16 @@ var SCHEMA_GLOBAL = {
       "type": "SendMessageAction"
     },
     {
-      "id": 1781674934,
+      "id": 630664139,
       "predicate": "sendMessageEmojiInteraction",
       "params": [
         {
           "name": "emoticon",
           "type": "string"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
         },
         {
           "name": "interaction",
@@ -7812,7 +7888,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReceivedNotifyMessage"
     },
     {
-      "id": 2978022888,
+      "id": 179611673,
       "predicate": "chatInviteExported",
       "params": [
         {
@@ -7826,6 +7902,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "permanent",
           "type": "flags.5?true"
+        },
+        {
+          "name": "request_needed",
+          "type": "flags.6?true"
         },
         {
           "name": "link",
@@ -7854,6 +7934,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "usage",
           "type": "flags.3?int"
+        },
+        {
+          "name": "requested",
+          "type": "flags.7?int"
+        },
+        {
+          "name": "title",
+          "type": "flags.8?string"
         }
       ],
       "type": "ExportedChatInvite"
@@ -7870,7 +7958,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatInvite"
     },
     {
-      "id": 3754096014,
+      "id": 806110401,
       "predicate": "chatInvite",
       "params": [
         {
@@ -7894,8 +7982,16 @@ var SCHEMA_GLOBAL = {
           "type": "flags.3?true"
         },
         {
+          "name": "request_needed",
+          "type": "flags.6?true"
+        },
+        {
           "name": "title",
           "type": "string"
+        },
+        {
+          "name": "about",
+          "type": "flags.5?string"
         },
         {
           "name": "photo",
@@ -7974,6 +8070,12 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         }
       ],
+      "type": "InputStickerSet"
+    },
+    {
+      "id": 215889721,
+      "predicate": "inputStickerSetAnimatedEmojiAnimations",
+      "params": [],
       "type": "InputStickerSet"
     },
     {
@@ -8893,9 +8995,17 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelParticipant"
     },
     {
-      "id": 682146919,
+      "id": 900251559,
       "predicate": "channelParticipantSelf",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "via_invite",
+          "type": "flags.0?true"
+        },
         {
           "name": "user_id",
           "type": "long"
@@ -12803,16 +12913,16 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelAdminLogEventAction"
     },
     {
-      "id": 4268294541,
-      "predicate": "channelAdminLogEventActionChangeTheme",
+      "id": 2947945546,
+      "predicate": "channelAdminLogEventActionParticipantJoinByRequest",
       "params": [
         {
-          "name": "prev_value",
-          "type": "string"
+          "name": "invite",
+          "type": "ExportedChatInvite"
         },
         {
-          "name": "new_value",
-          "type": "string"
+          "name": "approved_by",
+          "type": "long"
         }
       ],
       "type": "ChannelAdminLogEventAction"
@@ -15179,7 +15289,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputTheme"
     },
     {
-      "id": 3892492508,
+      "id": 2685298646,
       "predicate": "theme",
       "params": [
         {
@@ -15220,7 +15330,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "settings",
-          "type": "flags.3?ThemeSettings"
+          "type": "flags.3?Vector<ThemeSettings>"
+        },
+        {
+          "name": "emoticon",
+          "type": "flags.6?string"
         },
         {
           "name": "installs_count",
@@ -16630,9 +16744,17 @@ var SCHEMA_GLOBAL = {
       "type": "messages.AffectedFoundMessages"
     },
     {
-      "id": 190633460,
+      "id": 2354765785,
       "predicate": "chatInviteImporter",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "requested",
+          "type": "flags.0?true"
+        },
         {
           "name": "user_id",
           "type": "long"
@@ -16640,6 +16762,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "date",
           "type": "int"
+        },
+        {
+          "name": "about",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "approved_by",
+          "type": "flags.1?long"
         }
       ],
       "type": "ChatInviteImporter"
@@ -16934,47 +17064,7 @@ var SCHEMA_GLOBAL = {
       "type": "account.ResetPasswordResult"
     },
     {
-      "id": 3976944691,
-      "predicate": "chatTheme",
-      "params": [
-        {
-          "name": "emoticon",
-          "type": "string"
-        },
-        {
-          "name": "theme",
-          "type": "Theme"
-        },
-        {
-          "name": "dark_theme",
-          "type": "Theme"
-        }
-      ],
-      "type": "ChatTheme"
-    },
-    {
-      "id": 3759268292,
-      "predicate": "account.chatThemesNotModified",
-      "params": [],
-      "type": "account.ChatThemes"
-    },
-    {
-      "id": 4266442429,
-      "predicate": "account.chatThemes",
-      "params": [
-        {
-          "name": "hash",
-          "type": "int"
-        },
-        {
-          "name": "themes",
-          "type": "Vector<ChatTheme>"
-        }
-      ],
-      "type": "account.ChatThemes"
-    },
-    {
-      "id": 708589599,
+      "id": 3511804314,
       "predicate": "sponsoredMessage",
       "params": [
         {
@@ -16988,6 +17078,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "from_id",
           "type": "Peer"
+        },
+        {
+          "name": "channel_post",
+          "type": "flags.2?int"
         },
         {
           "name": "start_param",
@@ -17022,6 +17116,110 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.SponsoredMessages"
+    },
+    {
+      "id": 3383776159,
+      "predicate": "searchResultsCalendarPeriod",
+      "params": [
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "min_msg_id",
+          "type": "int"
+        },
+        {
+          "name": "max_msg_id",
+          "type": "int"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "type": "SearchResultsCalendarPeriod"
+    },
+    {
+      "id": 343859772,
+      "predicate": "messages.searchResultsCalendar",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "inexact",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "min_date",
+          "type": "int"
+        },
+        {
+          "name": "min_msg_id",
+          "type": "int"
+        },
+        {
+          "name": "offset_id_offset",
+          "type": "flags.1?int"
+        },
+        {
+          "name": "periods",
+          "type": "Vector<SearchResultsCalendarPeriod>"
+        },
+        {
+          "name": "messages",
+          "type": "Vector<Message>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "messages.SearchResultsCalendar"
+    },
+    {
+      "id": 2137295719,
+      "predicate": "searchResultPosition",
+      "params": [
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "offset",
+          "type": "int"
+        }
+      ],
+      "type": "SearchResultsPosition"
+    },
+    {
+      "id": 1404185519,
+      "predicate": "messages.searchResultsPositions",
+      "params": [
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "positions",
+          "type": "Vector<SearchResultsPosition>"
+        }
+      ],
+      "type": "messages.SearchResultsPositions"
     }
   ],
   "methods": [
@@ -18217,7 +18415,7 @@ var SCHEMA_GLOBAL = {
       "type": "Document"
     },
     {
-      "id": 2217919007,
+      "id": 1697530880,
       "method": "account.createTheme",
       "params": [
         {
@@ -18238,13 +18436,13 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "settings",
-          "type": "flags.3?InputThemeSettings"
+          "type": "flags.3?Vector<InputThemeSettings>"
         }
       ],
       "type": "Theme"
     },
     {
-      "id": 1555261397,
+      "id": 737414348,
       "method": "account.updateTheme",
       "params": [
         {
@@ -18273,7 +18471,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "settings",
-          "type": "flags.3?InputThemeSettings"
+          "type": "flags.3?Vector<InputThemeSettings>"
         }
       ],
       "type": "Theme"
@@ -18294,7 +18492,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 2061776695,
+      "id": 3341269819,
       "method": "account.installTheme",
       "params": [
         {
@@ -18306,12 +18504,16 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
-          "name": "format",
-          "type": "flags.1?string"
-        },
-        {
           "name": "theme",
           "type": "flags.1?InputTheme"
+        },
+        {
+          "name": "format",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "base_theme",
+          "type": "flags.3?BaseTheme"
         }
       ],
       "type": "Bool"
@@ -18435,15 +18637,15 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 3604422011,
+      "id": 3594051209,
       "method": "account.getChatThemes",
       "params": [
         {
           "name": "hash",
-          "type": "int"
+          "type": "long"
         }
       ],
-      "type": "account.ChatThemes"
+      "type": "account.Themes"
     },
     {
       "id": 227648840,
@@ -18959,7 +19161,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.AffectedMessages"
     },
     {
-      "id": 469850889,
+      "id": 2962199082,
       "method": "messages.deleteHistory",
       "params": [
         {
@@ -18981,6 +19183,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "max_id",
           "type": "int"
+        },
+        {
+          "name": "min_date",
+          "type": "flags.2?int"
+        },
+        {
+          "name": "max_date",
+          "type": "flags.3?int"
         }
       ],
       "type": "messages.AffectedHistory"
@@ -19611,7 +19821,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageMedia"
     },
     {
-      "id": 347716823,
+      "id": 2687296981,
       "method": "messages.exportChatInvite",
       "params": [
         {
@@ -19621,6 +19831,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "legacy_revoke_permanent",
           "type": "flags.2?true"
+        },
+        {
+          "name": "request_needed",
+          "type": "flags.3?true"
         },
         {
           "name": "peer",
@@ -19633,6 +19847,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "usage_limit",
           "type": "flags.1?int"
+        },
+        {
+          "name": "title",
+          "type": "flags.4?string"
         }
       ],
       "type": "ExportedChatInvite"
@@ -20883,29 +21101,6 @@ var SCHEMA_GLOBAL = {
       "type": "ChatOnlines"
     },
     {
-      "id": 2167155430,
-      "method": "messages.getStatsURL",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "dark",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "peer",
-          "type": "InputPeer"
-        },
-        {
-          "name": "params",
-          "type": "string"
-        }
-      ],
-      "type": "StatsURL"
-    },
-    {
       "id": 3740665751,
       "method": "messages.editChatAbout",
       "params": [
@@ -21479,7 +21674,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.ExportedChatInvite"
     },
     {
-      "id": 48562110,
+      "id": 3184144245,
       "method": "messages.editExportedChatInvite",
       "params": [
         {
@@ -21505,6 +21700,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "usage_limit",
           "type": "flags.1?int"
+        },
+        {
+          "name": "request_needed",
+          "type": "flags.3?Bool"
+        },
+        {
+          "name": "title",
+          "type": "flags.4?string"
         }
       ],
       "type": "messages.ExportedChatInvite"
@@ -21551,16 +21754,28 @@ var SCHEMA_GLOBAL = {
       "type": "messages.ChatAdminsWithInvites"
     },
     {
-      "id": 654013065,
+      "id": 3741637966,
       "method": "messages.getChatInviteImporters",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "requested",
+          "type": "flags.0?true"
+        },
         {
           "name": "peer",
           "type": "InputPeer"
         },
         {
           "name": "link",
-          "type": "string"
+          "type": "flags.1?string"
+        },
+        {
+          "name": "q",
+          "type": "flags.2?string"
         },
         {
           "name": "offset_date",
@@ -21632,6 +21847,75 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Vector<long>"
+    },
+    {
+      "id": 1240514025,
+      "method": "messages.getSearchResultsCalendar",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "filter",
+          "type": "MessagesFilter"
+        },
+        {
+          "name": "offset_id",
+          "type": "int"
+        },
+        {
+          "name": "offset_date",
+          "type": "int"
+        }
+      ],
+      "type": "messages.SearchResultsCalendar"
+    },
+    {
+      "id": 1855292323,
+      "method": "messages.getSearchResultsPositions",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "filter",
+          "type": "MessagesFilter"
+        },
+        {
+          "name": "offset_id",
+          "type": "int"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.SearchResultsPositions"
+    },
+    {
+      "id": 2145904661,
+      "method": "messages.hideChatJoinRequest",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "approved",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 3990128682,
