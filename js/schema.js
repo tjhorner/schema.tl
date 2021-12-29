@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 135
+var LAYER_NUMBER = 136
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1450,7 +1450,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": 1185349556,
+      "id": 3515802150,
       "predicate": "chatFull",
       "params": [
         {
@@ -1524,12 +1524,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "recent_requesters",
           "type": "flags.17?Vector<long>"
+        },
+        {
+          "name": "available_reactions",
+          "type": "flags.18?Vector<string>"
         }
       ],
       "type": "ChatFull"
     },
     {
-      "id": 1449537070,
+      "id": 3778821408,
       "predicate": "channelFull",
       "params": [
         {
@@ -1703,6 +1707,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "default_send_as",
           "type": "flags.29?Peer"
+        },
+        {
+          "name": "available_reactions",
+          "type": "flags.30?Vector<string>"
         }
       ],
       "type": "ChatFull"
@@ -1847,7 +1855,7 @@ var SCHEMA_GLOBAL = {
       "type": "Message"
     },
     {
-      "id": 2245446626,
+      "id": 940666592,
       "predicate": "message",
       "params": [
         {
@@ -1961,6 +1969,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "grouped_id",
           "type": "flags.17?long"
+        },
+        {
+          "name": "reactions",
+          "type": "flags.20?MessageReactions"
         },
         {
           "name": "restriction_reason",
@@ -5645,6 +5657,25 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 357013699,
+      "predicate": "updateMessageReactions",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "reactions",
+          "type": "MessageReactions"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 2775329342,
       "predicate": "updates.state",
       "params": [
@@ -8859,6 +8890,21 @@ var SCHEMA_GLOBAL = {
     {
       "id": 1981704948,
       "predicate": "messageEntityBankCard",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": 852137487,
+      "predicate": "messageEntitySpoiler",
       "params": [
         {
           "name": "offset",
@@ -13059,6 +13105,21 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelAdminLogEventAction"
     },
     {
+      "id": 2633496426,
+      "predicate": "channelAdminLogEventActionChangeAvailableReactions",
+      "params": [
+        {
+          "name": "prev_value",
+          "type": "Vector<string>"
+        },
+        {
+          "name": "new_value",
+          "type": "Vector<string>"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
       "id": 531458253,
       "predicate": "channelAdminLogEvent",
       "params": [
@@ -17207,7 +17268,7 @@ var SCHEMA_GLOBAL = {
       "type": "account.ResetPasswordResult"
     },
     {
-      "id": 3511804314,
+      "id": 981691896,
       "predicate": "sponsoredMessage",
       "params": [
         {
@@ -17220,7 +17281,15 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "from_id",
-          "type": "Peer"
+          "type": "flags.3?Peer"
+        },
+        {
+          "name": "chat_invite",
+          "type": "flags.4?ChatInvite"
+        },
+        {
+          "name": "chat_invite_hash",
+          "type": "flags.4?string"
         },
         {
           "name": "channel_post",
@@ -17435,6 +17504,162 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "auth.LoggedOut"
+    },
+    {
+      "id": 1873957073,
+      "predicate": "reactionCount",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "chosen",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "reaction",
+          "type": "string"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "type": "ReactionCount"
+    },
+    {
+      "id": 142306870,
+      "predicate": "messageReactions",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "min",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "can_see_list",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "results",
+          "type": "Vector<ReactionCount>"
+        },
+        {
+          "name": "recent_reactons",
+          "type": "flags.1?Vector<MessageUserReaction>"
+        }
+      ],
+      "type": "MessageReactions"
+    },
+    {
+      "id": 2468889850,
+      "predicate": "messageUserReaction",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "reaction",
+          "type": "string"
+        }
+      ],
+      "type": "MessageUserReaction"
+    },
+    {
+      "id": 2741408316,
+      "predicate": "messages.messageReactionsList",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "reactions",
+          "type": "Vector<MessageUserReaction>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        },
+        {
+          "name": "next_offset",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "messages.MessageReactionsList"
+    },
+    {
+      "id": 35486795,
+      "predicate": "availableReaction",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "inactive",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "reaction",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "static_icon",
+          "type": "Document"
+        },
+        {
+          "name": "appear_animation",
+          "type": "Document"
+        },
+        {
+          "name": "select_animation",
+          "type": "Document"
+        },
+        {
+          "name": "activate_animation",
+          "type": "Document"
+        },
+        {
+          "name": "effect_animation",
+          "type": "Document"
+        }
+      ],
+      "type": "AvailableReaction"
+    },
+    {
+      "id": 2668042583,
+      "predicate": "messages.availableReactionsNotModified",
+      "params": [],
+      "type": "messages.AvailableReactions"
+    },
+    {
+      "id": 1989032621,
+      "predicate": "messages.availableReactions",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        },
+        {
+          "name": "reactions",
+          "type": "Vector<AvailableReaction>"
+        }
+      ],
+      "type": "messages.AvailableReactions"
     }
   ],
   "methods": [
@@ -19522,6 +19747,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.7?true"
         },
         {
+          "name": "noforwards",
+          "type": "flags.14?true"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
         },
@@ -19575,6 +19804,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "clear_draft",
           "type": "flags.7?true"
+        },
+        {
+          "name": "noforwards",
+          "type": "flags.14?true"
         },
         {
           "name": "peer",
@@ -19642,6 +19875,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "drop_media_captions",
           "type": "flags.12?true"
+        },
+        {
+          "name": "noforwards",
+          "type": "flags.14?true"
         },
         {
           "name": "from_peer",
@@ -21200,6 +21437,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.7?true"
         },
         {
+          "name": "noforwards",
+          "type": "flags.14?true"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
         },
@@ -22239,6 +22480,112 @@ var SCHEMA_GLOBAL = {
         {
           "name": "send_as",
           "type": "InputPeer"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 627641572,
+      "method": "messages.sendReaction",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "reaction",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 2344259814,
+      "method": "messages.getMessagesReactions",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 3773721463,
+      "method": "messages.getMessageReactionsList",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "reaction",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "offset",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.MessageReactionsList"
+    },
+    {
+      "id": 335875750,
+      "method": "messages.setChatAvailableReactions",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "available_reactions",
+          "type": "Vector<string>"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 417243308,
+      "method": "messages.getAvailableReactions",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        }
+      ],
+      "type": "messages.AvailableReactions"
+    },
+    {
+      "id": 3646997716,
+      "method": "messages.setDefaultReaction",
+      "params": [
+        {
+          "name": "reaction",
+          "type": "string"
         }
       ],
       "type": "Bool"
