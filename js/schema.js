@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 136
+var LAYER_NUMBER = 137
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -17598,7 +17598,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.MessageReactionsList"
     },
     {
-      "id": 35486795,
+      "id": 3229084673,
       "predicate": "availableReaction",
       "params": [
         {
@@ -17636,6 +17636,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "effect_animation",
           "type": "Document"
+        },
+        {
+          "name": "around_animation",
+          "type": "flags.1?Document"
+        },
+        {
+          "name": "center_icon",
+          "type": "flags.1?Document"
         }
       ],
       "type": "AvailableReaction"
