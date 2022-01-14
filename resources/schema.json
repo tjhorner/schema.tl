@@ -17596,7 +17596,7 @@
       "type": "messages.MessageReactionsList"
     },
     {
-      "id": 35486795,
+      "id": 3229084673,
       "predicate": "availableReaction",
       "params": [
         {
@@ -17634,6 +17634,14 @@
         {
           "name": "effect_animation",
           "type": "Document"
+        },
+        {
+          "name": "around_animation",
+          "type": "flags.1?Document"
+        },
+        {
+          "name": "center_icon",
+          "type": "flags.1?Document"
         }
       ],
       "type": "AvailableReaction"
