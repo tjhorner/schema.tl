@@ -64,10 +64,11 @@ async function start() {
       owner: "tjhorner",
       repo: "schema.tl",
       state: "open",
-      head: `layer-${newLayerNumber}`
+      head: `tjhorner:layer-${newLayerNumber}`
     })
 
     if(openPulls.length > 0) {
+      console.log(openPulls)
       console.log("There is an open PR for this layer; aborting.")
       process.exit(0)
     }
