@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 137
+var LAYER_NUMBER = 140
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1061,6 +1061,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.26?true"
         },
         {
+          "name": "bot_attach_menu",
+          "type": "flags.27?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -1212,10 +1216,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "creator",
           "type": "flags.0?true"
-        },
-        {
-          "name": "kicked",
-          "type": "flags.1?true"
         },
         {
           "name": "left",
@@ -1533,7 +1533,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChatFull"
     },
     {
-      "id": 3778821408,
+      "id": 3932726809,
       "predicate": "channelFull",
       "params": [
         {
@@ -1571,6 +1571,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "blocked",
           "type": "flags.22?true"
+        },
+        {
+          "name": "flags2",
+          "type": "#"
+        },
+        {
+          "name": "can_delete_channel",
+          "type": "flags2.0?true"
         },
         {
           "name": "id",
@@ -2673,7 +2681,33 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
-      "id": 739712882,
+      "id": 1205698681,
+      "predicate": "messageActionWebViewDataSentMe",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 3032714421,
+      "predicate": "messageActionWebViewDataSent",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 2834157813,
       "predicate": "dialog",
       "params": [
         {
@@ -2710,6 +2744,10 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "unread_mentions_count",
+          "type": "int"
+        },
+        {
+          "name": "unread_reactions_count",
           "type": "int"
         },
         {
@@ -3085,7 +3123,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputNotifyPeer"
     },
     {
-      "id": 2621249934,
+      "id": 3743350827,
       "predicate": "inputPeerNotifySettings",
       "params": [
         {
@@ -3106,13 +3144,13 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "sound",
-          "type": "flags.3?string"
+          "type": "flags.3?NotificationSound"
         }
       ],
       "type": "InputPeerNotifySettings"
     },
     {
-      "id": 2941295904,
+      "id": 2822439974,
       "predicate": "peerNotifySettings",
       "params": [
         {
@@ -3132,8 +3170,16 @@ var SCHEMA_GLOBAL = {
           "type": "flags.2?int"
         },
         {
-          "name": "sound",
-          "type": "flags.3?string"
+          "name": "ios_sound",
+          "type": "flags.3?NotificationSound"
+        },
+        {
+          "name": "android_sound",
+          "type": "flags.4?NotificationSound"
+        },
+        {
+          "name": "other_sound",
+          "type": "flags.5?NotificationSound"
         }
       ],
       "type": "PeerNotifySettings"
@@ -3320,7 +3366,19 @@ var SCHEMA_GLOBAL = {
       "type": "ReportReason"
     },
     {
-      "id": 3476448545,
+      "id": 177124030,
+      "predicate": "inputReportReasonIllegalDrugs",
+      "params": [],
+      "type": "ReportReason"
+    },
+    {
+      "id": 2663876157,
+      "predicate": "inputReportReasonPersonalDetails",
+      "params": [],
+      "type": "ReportReason"
+    },
+    {
+      "id": 2356341377,
       "predicate": "userFull",
       "params": [
         {
@@ -3398,6 +3456,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "private_forward_name",
           "type": "flags.16?string"
+        },
+        {
+          "name": "bot_group_admin_rights",
+          "type": "flags.17?ChatAdminRights"
+        },
+        {
+          "name": "bot_broadcast_admin_rights",
+          "type": "flags.18?ChatAdminRights"
         }
       ],
       "type": "UserFull"
@@ -5673,6 +5739,44 @@ var SCHEMA_GLOBAL = {
           "type": "MessageReactions"
         }
       ],
+      "type": "Update"
+    },
+    {
+      "id": 397910539,
+      "predicate": "updateAttachMenuBots",
+      "params": [],
+      "type": "Update"
+    },
+    {
+      "id": 361936797,
+      "predicate": "updateWebViewResultSent",
+      "params": [
+        {
+          "name": "query_id",
+          "type": "long"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 347625491,
+      "predicate": "updateBotMenuButton",
+      "params": [
+        {
+          "name": "bot_id",
+          "type": "long"
+        },
+        {
+          "name": "button",
+          "type": "BotMenuButton"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 1960361625,
+      "predicate": "updateSavedRingtones",
+      "params": [],
       "type": "Update"
     },
     {
@@ -8186,6 +8290,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.5?true"
         },
         {
+          "name": "videos",
+          "type": "flags.6?true"
+        },
+        {
           "name": "installed_date",
           "type": "flags.0?int"
         },
@@ -8269,7 +8377,7 @@ var SCHEMA_GLOBAL = {
       "type": "BotCommand"
     },
     {
-      "id": 460632885,
+      "id": 3826686813,
       "predicate": "botInfo",
       "params": [
         {
@@ -8283,6 +8391,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "commands",
           "type": "Vector<BotCommand>"
+        },
+        {
+          "name": "menu_button",
+          "type": "BotMenuButton"
         }
       ],
       "type": "BotInfo"
@@ -8506,6 +8618,36 @@ var SCHEMA_GLOBAL = {
         {
           "name": "user_id",
           "type": "long"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
+      "id": 326529584,
+      "predicate": "keyboardButtonWebView",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
+      "id": 2696958044,
+      "predicate": "keyboardButtonSimpleWebView",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
         }
       ],
       "type": "KeyboardButton"
@@ -16658,6 +16800,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.11?true"
         },
         {
+          "name": "rtmp_stream",
+          "type": "flags.12?true"
+        },
+        {
+          "name": "listeners_hidden",
+          "type": "flags.13?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -17529,7 +17679,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReactionCount"
     },
     {
-      "id": 142306870,
+      "id": 1328256121,
       "predicate": "messageReactions",
       "params": [
         {
@@ -17549,29 +17699,14 @@ var SCHEMA_GLOBAL = {
           "type": "Vector<ReactionCount>"
         },
         {
-          "name": "recent_reactons",
-          "type": "flags.1?Vector<MessageUserReaction>"
+          "name": "recent_reactions",
+          "type": "flags.1?Vector<MessagePeerReaction>"
         }
       ],
       "type": "MessageReactions"
     },
     {
-      "id": 2468889850,
-      "predicate": "messageUserReaction",
-      "params": [
-        {
-          "name": "user_id",
-          "type": "long"
-        },
-        {
-          "name": "reaction",
-          "type": "string"
-        }
-      ],
-      "type": "MessageUserReaction"
-    },
-    {
-      "id": 2741408316,
+      "id": 834488621,
       "predicate": "messages.messageReactionsList",
       "params": [
         {
@@ -17584,7 +17719,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "reactions",
-          "type": "Vector<MessageUserReaction>"
+          "type": "Vector<MessagePeerReaction>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
         },
         {
           "name": "users",
@@ -17668,6 +17807,344 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.AvailableReactions"
+    },
+    {
+      "id": 1741309751,
+      "predicate": "messages.translateNoResult",
+      "params": [],
+      "type": "messages.TranslatedText"
+    },
+    {
+      "id": 2719283152,
+      "predicate": "messages.translateResultText",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "type": "messages.TranslatedText"
+    },
+    {
+      "id": 1370914559,
+      "predicate": "messagePeerReaction",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "big",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "unread",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "peer_id",
+          "type": "Peer"
+        },
+        {
+          "name": "reaction",
+          "type": "string"
+        }
+      ],
+      "type": "MessagePeerReaction"
+    },
+    {
+      "id": 2162903215,
+      "predicate": "groupCallStreamChannel",
+      "params": [
+        {
+          "name": "channel",
+          "type": "int"
+        },
+        {
+          "name": "scale",
+          "type": "int"
+        },
+        {
+          "name": "last_timestamp_ms",
+          "type": "long"
+        }
+      ],
+      "type": "GroupCallStreamChannel"
+    },
+    {
+      "id": 3504636594,
+      "predicate": "phone.groupCallStreamChannels",
+      "params": [
+        {
+          "name": "channels",
+          "type": "Vector<GroupCallStreamChannel>"
+        }
+      ],
+      "type": "phone.GroupCallStreamChannels"
+    },
+    {
+      "id": 767505458,
+      "predicate": "phone.groupCallStreamRtmpUrl",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "key",
+          "type": "string"
+        }
+      ],
+      "type": "phone.GroupCallStreamRtmpUrl"
+    },
+    {
+      "id": 1165423600,
+      "predicate": "attachMenuBotIconColor",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "type": "int"
+        }
+      ],
+      "type": "AttachMenuBotIconColor"
+    },
+    {
+      "id": 2997303403,
+      "predicate": "attachMenuBotIcon",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "Document"
+        },
+        {
+          "name": "colors",
+          "type": "flags.0?Vector<AttachMenuBotIconColor>"
+        }
+      ],
+      "type": "AttachMenuBotIcon"
+    },
+    {
+      "id": 3913070450,
+      "predicate": "attachMenuBot",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "inactive",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "bot_id",
+          "type": "long"
+        },
+        {
+          "name": "short_name",
+          "type": "string"
+        },
+        {
+          "name": "icons",
+          "type": "Vector<AttachMenuBotIcon>"
+        }
+      ],
+      "type": "AttachMenuBot"
+    },
+    {
+      "id": 4057500252,
+      "predicate": "attachMenuBotsNotModified",
+      "params": [],
+      "type": "AttachMenuBots"
+    },
+    {
+      "id": 1011024320,
+      "predicate": "attachMenuBots",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        },
+        {
+          "name": "bots",
+          "type": "Vector<AttachMenuBot>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "AttachMenuBots"
+    },
+    {
+      "id": 2478794367,
+      "predicate": "attachMenuBotsBot",
+      "params": [
+        {
+          "name": "bot",
+          "type": "AttachMenuBot"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "AttachMenuBotsBot"
+    },
+    {
+      "id": 202659196,
+      "predicate": "webViewResultUrl",
+      "params": [
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "WebViewResult"
+    },
+    {
+      "id": 2284811963,
+      "predicate": "simpleWebViewResultUrl",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "SimpleWebViewResult"
+    },
+    {
+      "id": 211046684,
+      "predicate": "webViewMessageSent",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "msg_id",
+          "type": "flags.0?InputBotInlineMessageID"
+        }
+      ],
+      "type": "WebViewMessageSent"
+    },
+    {
+      "id": 1966318984,
+      "predicate": "botMenuButtonDefault",
+      "params": [],
+      "type": "BotMenuButton"
+    },
+    {
+      "id": 1113113093,
+      "predicate": "botMenuButtonCommands",
+      "params": [],
+      "type": "BotMenuButton"
+    },
+    {
+      "id": 3350559974,
+      "predicate": "botMenuButton",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "BotMenuButton"
+    },
+    {
+      "id": 4227262641,
+      "predicate": "account.savedRingtonesNotModified",
+      "params": [],
+      "type": "account.SavedRingtones"
+    },
+    {
+      "id": 3253284037,
+      "predicate": "account.savedRingtones",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        },
+        {
+          "name": "ringtones",
+          "type": "Vector<Document>"
+        }
+      ],
+      "type": "account.SavedRingtones"
+    },
+    {
+      "id": 2548612798,
+      "predicate": "notificationSoundDefault",
+      "params": [],
+      "type": "NotificationSound"
+    },
+    {
+      "id": 1863070943,
+      "predicate": "notificationSoundNone",
+      "params": [],
+      "type": "NotificationSound"
+    },
+    {
+      "id": 2198575844,
+      "predicate": "notificationSoundLocal",
+      "params": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ],
+      "type": "NotificationSound"
+    },
+    {
+      "id": 4285300809,
+      "predicate": "notificationSoundRingtone",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        }
+      ],
+      "type": "NotificationSound"
+    },
+    {
+      "id": 3072737133,
+      "predicate": "account.savedRingtone",
+      "params": [],
+      "type": "account.SavedRingtone"
+    },
+    {
+      "id": 523271863,
+      "predicate": "account.savedRingtoneConverted",
+      "params": [
+        {
+          "name": "document",
+          "type": "Document"
+        }
+      ],
+      "type": "account.SavedRingtone"
     }
   ],
   "methods": [
@@ -19130,6 +19607,51 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": 3784319624,
+      "method": "account.getSavedRingtones",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "account.SavedRingtones"
+    },
+    {
+      "id": 1038768899,
+      "method": "account.saveRingtone",
+      "params": [
+        {
+          "name": "id",
+          "type": "InputDocument"
+        },
+        {
+          "name": "unsave",
+          "type": "Bool"
+        }
+      ],
+      "type": "account.SavedRingtone"
+    },
+    {
+      "id": 2199552930,
+      "method": "account.uploadRingtone",
+      "params": [
+        {
+          "name": "file",
+          "type": "InputFile"
+        },
+        {
+          "name": "file_name",
+          "type": "string"
+        },
+        {
+          "name": "mime_type",
+          "type": "string"
+        }
+      ],
+      "type": "Document"
+    },
+    {
       "id": 227648840,
       "method": "users.getUsers",
       "params": [
@@ -19474,6 +19996,17 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": 2331591492,
+      "method": "contacts.resolvePhone",
+      "params": [
+        {
+          "name": "phone",
+          "type": "string"
+        }
+      ],
+      "type": "contacts.ResolvedPeer"
     },
     {
       "id": 1673946374,
@@ -22501,6 +23034,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "big",
+          "type": "flags.1?true"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
         },
@@ -22597,6 +23134,270 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 617508334,
+      "method": "messages.translateText",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "flags.0?InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "text",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "from_lang",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "to_lang",
+          "type": "string"
+        }
+      ],
+      "type": "messages.TranslatedText"
+    },
+    {
+      "id": 3898322458,
+      "method": "messages.getUnreadReactions",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "offset_id",
+          "type": "int"
+        },
+        {
+          "name": "add_offset",
+          "type": "int"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        },
+        {
+          "name": "max_id",
+          "type": "int"
+        },
+        {
+          "name": "min_id",
+          "type": "int"
+        }
+      ],
+      "type": "messages.Messages"
+    },
+    {
+      "id": 2195870167,
+      "method": "messages.readReactions",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "messages.AffectedHistory"
+    },
+    {
+      "id": 276705696,
+      "method": "messages.searchSentMedia",
+      "params": [
+        {
+          "name": "q",
+          "type": "string"
+        },
+        {
+          "name": "filter",
+          "type": "MessagesFilter"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.Messages"
+    },
+    {
+      "id": 385663691,
+      "method": "messages.getAttachMenuBots",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "AttachMenuBots"
+    },
+    {
+      "id": 1998676370,
+      "method": "messages.getAttachMenuBot",
+      "params": [
+        {
+          "name": "bot",
+          "type": "InputUser"
+        }
+      ],
+      "type": "AttachMenuBotsBot"
+    },
+    {
+      "id": 451818415,
+      "method": "messages.toggleBotInAttachMenu",
+      "params": [
+        {
+          "name": "bot",
+          "type": "InputUser"
+        },
+        {
+          "name": "enabled",
+          "type": "Bool"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 262163967,
+      "method": "messages.requestWebView",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "from_bot_menu",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "silent",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "bot",
+          "type": "InputUser"
+        },
+        {
+          "name": "url",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "start_param",
+          "type": "flags.3?string"
+        },
+        {
+          "name": "theme_params",
+          "type": "flags.2?DataJSON"
+        },
+        {
+          "name": "reply_to_msg_id",
+          "type": "flags.0?int"
+        }
+      ],
+      "type": "WebViewResult"
+    },
+    {
+      "id": 3526021448,
+      "method": "messages.prolongWebView",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "silent",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "bot",
+          "type": "InputUser"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "reply_to_msg_id",
+          "type": "flags.0?int"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1790652275,
+      "method": "messages.requestSimpleWebView",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "bot",
+          "type": "InputUser"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "theme_params",
+          "type": "flags.0?DataJSON"
+        }
+      ],
+      "type": "SimpleWebViewResult"
+    },
+    {
+      "id": 172168437,
+      "method": "messages.sendWebViewResultMessage",
+      "params": [
+        {
+          "name": "bot_query_id",
+          "type": "string"
+        },
+        {
+          "name": "result",
+          "type": "InputBotInlineResult"
+        }
+      ],
+      "type": "WebViewMessageSent"
+    },
+    {
+      "id": 3691135688,
+      "method": "messages.sendWebViewData",
+      "params": [
+        {
+          "name": "bot",
+          "type": "InputUser"
+        },
+        {
+          "name": "random_id",
+          "type": "long"
+        },
+        {
+          "name": "button_text",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 3990128682,
@@ -23551,9 +24352,17 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 2939592002,
+      "id": 2611648071,
       "method": "channels.deleteHistory",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "for_everyone",
+          "type": "flags.0?true"
+        },
         {
           "name": "channel",
           "type": "InputChannel"
@@ -23563,7 +24372,7 @@ var SCHEMA_GLOBAL = {
           "type": "int"
         }
       ],
-      "type": "Bool"
+      "type": "Updates"
     },
     {
       "id": 3938171212,
@@ -23814,6 +24623,54 @@ var SCHEMA_GLOBAL = {
       "type": "Vector<BotCommand>"
     },
     {
+      "id": 1157944655,
+      "method": "bots.setBotMenuButton",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "button",
+          "type": "BotMenuButton"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 2623597352,
+      "method": "bots.getBotMenuButton",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        }
+      ],
+      "type": "BotMenuButton"
+    },
+    {
+      "id": 2021942497,
+      "method": "bots.setBotBroadcastDefaultAdminRights",
+      "params": [
+        {
+          "name": "admin_rights",
+          "type": "ChatAdminRights"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 2455685610,
+      "method": "bots.setBotGroupDefaultAdminRights",
+      "params": [
+        {
+          "name": "admin_rights",
+          "type": "ChatAdminRights"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
       "id": 2318613645,
       "method": "payments.getPaymentForm",
       "params": [
@@ -23968,6 +24825,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "animated",
           "type": "flags.1?true"
+        },
+        {
+          "name": "videos",
+          "type": "flags.4?true"
         },
         {
           "name": "user_id",
@@ -24259,6 +25120,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "rtmp_stream",
+          "type": "flags.2?true"
         },
         {
           "name": "peer",
@@ -24620,6 +25485,32 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": 447879488,
+      "method": "phone.getGroupCallStreamChannels",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        }
+      ],
+      "type": "phone.GroupCallStreamChannels"
+    },
+    {
+      "id": 3736316863,
+      "method": "phone.getGroupCallStreamRtmpUrl",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "revoke",
+          "type": "Bool"
+        }
+      ],
+      "type": "phone.GroupCallStreamRtmpUrl"
     },
     {
       "id": 4075959050,
