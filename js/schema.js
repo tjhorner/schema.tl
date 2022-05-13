@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 140
+var LAYER_NUMBER = 142
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1366,6 +1366,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "noforwards",
           "type": "flags.27?true"
+        },
+        {
+          "name": "join_to_send",
+          "type": "flags.28?true"
+        },
+        {
+          "name": "join_request",
+          "type": "flags.29?true"
         },
         {
           "name": "id",
@@ -6286,6 +6294,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.4?true"
         },
         {
+          "name": "this_port_only",
+          "type": "flags.5?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -6339,6 +6351,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "pfs_enabled",
           "type": "flags.13?true"
+        },
+        {
+          "name": "force_try_ipv6",
+          "type": "flags.14?true"
         },
         {
           "name": "date",
@@ -12505,9 +12521,17 @@ var SCHEMA_GLOBAL = {
       "type": "PhoneCall"
     },
     {
-      "id": 2639009728,
+      "id": 2629903303,
       "predicate": "phoneConnection",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "tcp",
+          "type": "flags.0?true"
+        },
         {
           "name": "id",
           "type": "long"
@@ -16669,6 +16693,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "reply_to_scheduled",
+          "type": "flags.2?true"
+        },
+        {
           "name": "reply_to_msg_id",
           "type": "int"
         },
@@ -17424,6 +17452,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "recommended",
+          "type": "flags.5?true"
         },
         {
           "name": "random_id",
@@ -25511,6 +25543,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "phone.GroupCallStreamRtmpUrl"
+    },
+    {
+      "id": 1092913030,
+      "method": "phone.saveCallLog",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPhoneCall"
+        },
+        {
+          "name": "file",
+          "type": "InputFile"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 4075959050,
