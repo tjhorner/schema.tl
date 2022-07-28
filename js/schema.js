@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 143
+var LAYER_NUMBER = 144
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -2751,6 +2751,25 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
+      "id": 2879452614,
+      "predicate": "messageActionGiftPremium",
+      "params": [
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "amount",
+          "type": "long"
+        },
+        {
+          "name": "months",
+          "type": "int"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
       "id": 2834157813,
       "predicate": "dialog",
       "params": [
@@ -3422,7 +3441,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReportReason"
     },
     {
-      "id": 2356341377,
+      "id": 3299998783,
       "predicate": "userFull",
       "params": [
         {
@@ -3452,6 +3471,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "video_calls_available",
           "type": "flags.13?true"
+        },
+        {
+          "name": "voice_messages_forbidden",
+          "type": "flags.20?true"
         },
         {
           "name": "id",
@@ -3508,6 +3531,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "bot_broadcast_admin_rights",
           "type": "flags.18?ChatAdminRights"
+        },
+        {
+          "name": "premium_gifts",
+          "type": "flags.19?Vector<PremiumGiftOption>"
         }
       ],
       "type": "UserFull"
@@ -4610,6 +4637,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "masks",
           "type": "flags.0?true"
+        },
+        {
+          "name": "emojis",
+          "type": "flags.1?true"
         },
         {
           "name": "order",
@@ -5852,6 +5883,12 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         }
       ],
+      "type": "Update"
+    },
+    {
+      "id": 4216080748,
+      "predicate": "updateReadFeaturedEmojiStickers",
+      "params": [],
       "type": "Update"
     },
     {
@@ -7392,6 +7429,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputPrivacyKey"
     },
     {
+      "id": 2934349160,
+      "predicate": "inputPrivacyKeyVoiceMessages",
+      "params": [],
+      "type": "InputPrivacyKey"
+    },
+    {
       "id": 3157175088,
       "predicate": "privacyKeyStatusTimestamp",
       "params": [],
@@ -7436,6 +7479,12 @@ var SCHEMA_GLOBAL = {
     {
       "id": 1124062251,
       "predicate": "privacyKeyAddedByPhone",
+      "params": [],
+      "type": "PrivacyKey"
+    },
+    {
+      "id": 110621716,
+      "predicate": "privacyKeyVoiceMessages",
       "params": [],
       "type": "PrivacyKey"
     },
@@ -7730,6 +7779,29 @@ var SCHEMA_GLOBAL = {
       "id": 2550256375,
       "predicate": "documentAttributeHasStickers",
       "params": [],
+      "type": "DocumentAttribute"
+    },
+    {
+      "id": 4245985433,
+      "predicate": "documentAttributeCustomEmoji",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "free",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "stickerset",
+          "type": "InputStickerSet"
+        }
+      ],
       "type": "DocumentAttribute"
     },
     {
@@ -8355,7 +8427,13 @@ var SCHEMA_GLOBAL = {
       "type": "InputStickerSet"
     },
     {
-      "id": 3621724538,
+      "id": 3364567810,
+      "predicate": "inputStickerSetPremiumGifts",
+      "params": [],
+      "type": "InputStickerSet"
+    },
+    {
+      "id": 768691932,
       "predicate": "stickerSet",
       "params": [
         {
@@ -8381,6 +8459,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "videos",
           "type": "flags.6?true"
+        },
+        {
+          "name": "emojis",
+          "type": "flags.7?true"
         },
         {
           "name": "installed_date",
@@ -8413,6 +8495,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "thumb_version",
           "type": "flags.4?int"
+        },
+        {
+          "name": "thumb_document_id",
+          "type": "flags.8?long"
         },
         {
           "name": "count",
@@ -9156,6 +9242,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "length",
           "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": 3369010680,
+      "predicate": "messageEntityCustomEmoji",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        },
+        {
+          "name": "document_id",
+          "type": "long"
         }
       ],
       "type": "MessageEntity"
@@ -10781,9 +10886,17 @@ var SCHEMA_GLOBAL = {
       "type": "messages.FeaturedStickers"
     },
     {
-      "id": 2227184400,
+      "id": 3191351558,
       "predicate": "messages.featuredStickers",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "premium",
+          "type": "flags.0?true"
+        },
         {
           "name": "hash",
           "type": "long"
@@ -10889,6 +11002,25 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "covers",
+          "type": "Vector<Document>"
+        }
+      ],
+      "type": "StickerSetCovered"
+    },
+    {
+      "id": 451763941,
+      "predicate": "stickerSetFullCovered",
+      "params": [
+        {
+          "name": "set",
+          "type": "StickerSet"
+        },
+        {
+          "name": "packs",
+          "type": "Vector<StickerPack>"
+        },
+        {
+          "name": "documents",
           "type": "Vector<Document>"
         }
       ],
@@ -12066,7 +12198,7 @@ var SCHEMA_GLOBAL = {
       "type": "upload.WebFile"
     },
     {
-      "id": 2954050359,
+      "id": 2684716881,
       "predicate": "payments.paymentForm",
       "params": [
         {
@@ -12122,12 +12254,16 @@ var SCHEMA_GLOBAL = {
           "type": "flags.4?DataJSON"
         },
         {
+          "name": "additional_methods",
+          "type": "flags.6?Vector<PaymentFormMethod>"
+        },
+        {
           "name": "saved_info",
           "type": "flags.0?PaymentRequestedInfo"
         },
         {
           "name": "saved_credentials",
-          "type": "flags.1?PaymentSavedCredentials"
+          "type": "flags.1?Vector<PaymentSavedCredentials>"
         },
         {
           "name": "users",
@@ -18425,6 +18561,86 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "help.PremiumPromo"
+    },
+    {
+      "id": 2792693350,
+      "predicate": "inputStorePaymentPremiumSubscription",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "restore",
+          "type": "flags.0?true"
+        }
+      ],
+      "type": "InputStorePaymentPurpose"
+    },
+    {
+      "id": 1634697192,
+      "predicate": "inputStorePaymentGiftPremium",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "amount",
+          "type": "long"
+        }
+      ],
+      "type": "InputStorePaymentPurpose"
+    },
+    {
+      "id": 1958953753,
+      "predicate": "premiumGiftOption",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "months",
+          "type": "int"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "amount",
+          "type": "long"
+        },
+        {
+          "name": "bot_url",
+          "type": "string"
+        },
+        {
+          "name": "store_product",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "PremiumGiftOption"
+    },
+    {
+      "id": 2298016283,
+      "predicate": "paymentFormMethod",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "type": "PaymentFormMethod"
     }
   ],
   "methods": [
@@ -19042,12 +19258,20 @@ var SCHEMA_GLOBAL = {
       "type": "account.PrivacyRules"
     },
     {
-      "id": 1099779595,
+      "id": 2730545012,
       "method": "account.deleteAccount",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "reason",
           "type": "string"
+        },
+        {
+          "name": "password",
+          "type": "flags.0?InputCheckPasswordSRP"
         }
       ],
       "type": "Bool"
@@ -21369,6 +21593,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "emojis",
+          "type": "flags.1?true"
+        },
+        {
           "name": "order",
           "type": "Vector<long>"
         }
@@ -21838,6 +22066,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "masks",
           "type": "flags.0?true"
+        },
+        {
+          "name": "emojis",
+          "type": "flags.1?true"
         },
         {
           "name": "offset_id",
@@ -23726,6 +23958,39 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": 3651866452,
+      "method": "messages.getCustomEmojiDocuments",
+      "params": [
+        {
+          "name": "document_id",
+          "type": "Vector<long>"
+        }
+      ],
+      "type": "Vector<Document>"
+    },
+    {
+      "id": 4227637647,
+      "method": "messages.getEmojiStickers",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "messages.AllStickers"
+    },
+    {
+      "id": 248473398,
+      "method": "messages.getFeaturedEmojiStickers",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "messages.FeaturedStickers"
+    },
+    {
       "id": 3990128682,
       "method": "updates.getState",
       "params": [],
@@ -25172,54 +25437,44 @@ var SCHEMA_GLOBAL = {
       "type": "payments.ExportedInvoice"
     },
     {
-      "id": 267129798,
+      "id": 2163045501,
       "method": "payments.assignAppStoreTransaction",
       "params": [
         {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "restore",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "transaction_id",
-          "type": "string"
-        },
-        {
           "name": "receipt",
           "type": "bytes"
+        },
+        {
+          "name": "purpose",
+          "type": "InputStorePaymentPurpose"
         }
       ],
       "type": "Updates"
     },
     {
-      "id": 1336560365,
+      "id": 3757920467,
       "method": "payments.assignPlayMarketTransaction",
       "params": [
         {
-          "name": "purchase_token",
-          "type": "string"
+          "name": "receipt",
+          "type": "DataJSON"
+        },
+        {
+          "name": "purpose",
+          "type": "InputStorePaymentPurpose"
         }
       ],
       "type": "Updates"
     },
     {
-      "id": 3513049962,
-      "method": "payments.restorePlayMarketReceipt",
+      "id": 2680266422,
+      "method": "payments.canPurchasePremium",
       "params": [
         {
-          "name": "receipt",
-          "type": "bytes"
+          "name": "purpose",
+          "type": "InputStorePaymentPurpose"
         }
       ],
-      "type": "Updates"
-    },
-    {
-      "id": 2859110600,
-      "method": "payments.canPurchasePremium",
-      "params": [],
       "type": "Bool"
     },
     {
