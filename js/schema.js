@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 145
+var LAYER_NUMBER = 146
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -478,7 +478,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": 3648624756,
+      "id": 2394269397,
       "predicate": "inputMediaInvoice",
       "params": [
         {
@@ -516,6 +516,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "start_param",
           "type": "flags.1?string"
+        },
+        {
+          "name": "extended_media",
+          "type": "flags.2?InputMedia"
         }
       ],
       "type": "InputMedia"
@@ -2222,7 +2226,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageMedia"
     },
     {
-      "id": 2220168007,
+      "id": 4138027219,
       "predicate": "messageMediaInvoice",
       "params": [
         {
@@ -2264,6 +2268,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "start_param",
           "type": "string"
+        },
+        {
+          "name": "extended_media",
+          "type": "flags.4?MessageExtendedMedia"
         }
       ],
       "type": "MessageMedia"
@@ -5954,6 +5962,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "stickerset",
           "type": "long"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 1517529484,
+      "predicate": "updateMessageExtendedMedia",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "extended_media",
+          "type": "MessageExtendedMedia"
         }
       ],
       "type": "Update"
@@ -19079,6 +19106,44 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "SendAsPeer"
+    },
+    {
+      "id": 2908916936,
+      "predicate": "messageExtendedMediaPreview",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "w",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "h",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "thumb",
+          "type": "flags.1?PhotoSize"
+        },
+        {
+          "name": "video_duration",
+          "type": "flags.2?int"
+        }
+      ],
+      "type": "MessageExtendedMedia"
+    },
+    {
+      "id": 3997670500,
+      "predicate": "messageExtendedMedia",
+      "params": [
+        {
+          "name": "media",
+          "type": "MessageMedia"
+        }
+      ],
+      "type": "MessageExtendedMedia"
     }
   ],
   "methods": [
@@ -24557,6 +24622,21 @@ var SCHEMA_GLOBAL = {
       "method": "messages.clearRecentReactions",
       "params": [],
       "type": "Bool"
+    },
+    {
+      "id": 2230847508,
+      "method": "messages.getExtendedMedia",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 3990128682,
