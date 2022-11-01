@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 145
+var LAYER_NUMBER = 148
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -478,7 +478,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": 3648624756,
+      "id": 2394269397,
       "predicate": "inputMediaInvoice",
       "params": [
         {
@@ -516,6 +516,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "start_param",
           "type": "flags.1?string"
+        },
+        {
+          "name": "extended_media",
+          "type": "flags.2?InputMedia"
         }
       ],
       "type": "InputMedia"
@@ -993,7 +997,7 @@ var SCHEMA_GLOBAL = {
       "type": "User"
     },
     {
-      "id": 1570352622,
+      "id": 2409088552,
       "predicate": "user",
       "params": [
         {
@@ -1073,6 +1077,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.29?true"
         },
         {
+          "name": "flags2",
+          "type": "#"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -1123,6 +1131,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "emoji_status",
           "type": "flags.30?EmojiStatus"
+        },
+        {
+          "name": "usernames",
+          "type": "flags2.0?Vector<Username>"
         }
       ],
       "type": "User"
@@ -1304,7 +1316,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": 2187439201,
+      "id": 2200278116,
       "predicate": "channel",
       "params": [
         {
@@ -1388,6 +1400,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.29?true"
         },
         {
+          "name": "forum",
+          "type": "flags.30?true"
+        },
+        {
+          "name": "flags2",
+          "type": "#"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -1430,6 +1450,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "participants_count",
           "type": "flags.17?int"
+        },
+        {
+          "name": "usernames",
+          "type": "flags2.0?Vector<Username>"
         }
       ],
       "type": "Chat"
@@ -2222,7 +2246,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageMedia"
     },
     {
-      "id": 2220168007,
+      "id": 4138027219,
       "predicate": "messageMediaInvoice",
       "params": [
         {
@@ -2264,6 +2288,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "start_param",
           "type": "string"
+        },
+        {
+          "name": "extended_media",
+          "type": "flags.4?MessageExtendedMedia"
         }
       ],
       "type": "MessageMedia"
@@ -2774,6 +2802,52 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
+      "id": 228168278,
+      "predicate": "messageActionTopicCreate",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon_color",
+          "type": "int"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "flags.0?long"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 2978628380,
+      "predicate": "messageActionTopicEdit",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "title",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "flags.1?long"
+        },
+        {
+          "name": "closed",
+          "type": "flags.2?Bool"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
       "id": 2834157813,
       "predicate": "dialog",
       "params": [
@@ -3187,6 +3261,21 @@ var SCHEMA_GLOBAL = {
       "id": 2983951486,
       "predicate": "inputNotifyBroadcasts",
       "params": [],
+      "type": "InputNotifyPeer"
+    },
+    {
+      "id": 1548122514,
+      "predicate": "inputNotifyForumTopic",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "int"
+        }
+      ],
       "type": "InputNotifyPeer"
     },
     {
@@ -4136,7 +4225,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 3287417568,
+      "id": 2810480932,
       "predicate": "updateUserName",
       "params": [
         {
@@ -4152,8 +4241,8 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         },
         {
-          "name": "username",
-          "type": "string"
+          "name": "usernames",
+          "type": "Vector<Username>"
         }
       ],
       "type": "Update"
@@ -4872,12 +4961,20 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 3995842921,
+      "id": 457829485,
       "predicate": "updateDraftMessage",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "peer",
           "type": "Peer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         },
         {
           "name": "draft",
@@ -5107,12 +5204,20 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 1153291573,
+      "id": 3928556893,
       "predicate": "updateChannelReadMessagesContents",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "channel_id",
           "type": "long"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         },
         {
           "name": "messages",
@@ -5815,9 +5920,13 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 357013699,
+      "id": 1578843320,
       "predicate": "updateMessageReactions",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "peer",
           "type": "Peer"
@@ -5825,6 +5934,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "msg_id",
           "type": "int"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         },
         {
           "name": "reactions",
@@ -5954,6 +6067,44 @@ var SCHEMA_GLOBAL = {
         {
           "name": "stickerset",
           "type": "long"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 1517529484,
+      "predicate": "updateMessageExtendedMedia",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "extended_media",
+          "type": "MessageExtendedMedia"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 4136939694,
+      "predicate": "updateChannelPinnedTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "channel_id",
+          "type": "long"
+        },
+        {
+          "name": "topic_id",
+          "type": "flags.0?int"
         }
       ],
       "type": "Update"
@@ -7273,6 +7424,21 @@ var SCHEMA_GLOBAL = {
       "type": "NotifyPeer"
     },
     {
+      "id": 577659656,
+      "predicate": "notifyForumTopic",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "int"
+        }
+      ],
+      "type": "NotifyPeer"
+    },
+    {
       "id": 381645902,
       "predicate": "sendMessageTypingAction",
       "params": [],
@@ -8520,6 +8686,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputStickerSet"
     },
     {
+      "id": 1153562857,
+      "predicate": "inputStickerSetEmojiDefaultTopicIcons",
+      "params": [],
+      "type": "InputStickerSet"
+    },
+    {
       "id": 768691932,
       "predicate": "stickerSet",
       "params": [
@@ -8599,7 +8771,7 @@ var SCHEMA_GLOBAL = {
       "type": "StickerSet"
     },
     {
-      "id": 3054118054,
+      "id": 1846886166,
       "predicate": "messages.stickerSet",
       "params": [
         {
@@ -8609,6 +8781,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "packs",
           "type": "Vector<StickerPack>"
+        },
+        {
+          "name": "keywords",
+          "type": "Vector<StickerKeyword>"
         },
         {
           "name": "documents",
@@ -11145,7 +11321,7 @@ var SCHEMA_GLOBAL = {
       "type": "StickerSetCovered"
     },
     {
-      "id": 451763941,
+      "id": 1087454222,
       "predicate": "stickerSetFullCovered",
       "params": [
         {
@@ -11155,6 +11331,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "packs",
           "type": "Vector<StickerPack>"
+        },
+        {
+          "name": "keywords",
+          "type": "Vector<StickerKeyword>"
         },
         {
           "name": "documents",
@@ -13691,6 +13871,88 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelAdminLogEventAction"
     },
     {
+      "id": 4031755177,
+      "predicate": "channelAdminLogEventActionChangeUsernames",
+      "params": [
+        {
+          "name": "prev_value",
+          "type": "Vector<string>"
+        },
+        {
+          "name": "new_value",
+          "type": "Vector<string>"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 46949251,
+      "predicate": "channelAdminLogEventActionToggleForum",
+      "params": [
+        {
+          "name": "new_value",
+          "type": "Bool"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 1483767080,
+      "predicate": "channelAdminLogEventActionCreateTopic",
+      "params": [
+        {
+          "name": "topic",
+          "type": "ForumTopic"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 4033864200,
+      "predicate": "channelAdminLogEventActionEditTopic",
+      "params": [
+        {
+          "name": "prev_topic",
+          "type": "ForumTopic"
+        },
+        {
+          "name": "new_topic",
+          "type": "ForumTopic"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 2920712457,
+      "predicate": "channelAdminLogEventActionDeleteTopic",
+      "params": [
+        {
+          "name": "topic",
+          "type": "ForumTopic"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 1569535291,
+      "predicate": "channelAdminLogEventActionPinTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "prev_topic",
+          "type": "flags.0?ForumTopic"
+        },
+        {
+          "name": "new_topic",
+          "type": "flags.1?ForumTopic"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
       "id": 531458253,
       "predicate": "channelAdminLogEvent",
       "params": [
@@ -13807,6 +14069,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "send",
           "type": "flags.16?true"
+        },
+        {
+          "name": "forums",
+          "type": "flags.17?true"
         }
       ],
       "type": "ChannelAdminLogEventsFilter"
@@ -15503,6 +15769,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "other",
           "type": "flags.12?true"
+        },
+        {
+          "name": "manage_topics",
+          "type": "flags.13?true"
         }
       ],
       "type": "ChatAdminRights"
@@ -15562,6 +15832,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "pin_messages",
           "type": "flags.17?true"
+        },
+        {
+          "name": "manage_topics",
+          "type": "flags.18?true"
         },
         {
           "name": "until_date",
@@ -17108,6 +17382,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.2?true"
         },
         {
+          "name": "forum_topic",
+          "type": "flags.3?true"
+        },
+        {
           "name": "reply_to_msg_id",
           "type": "int"
         },
@@ -17869,6 +18147,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.5?true"
         },
         {
+          "name": "show_peer_photo",
+          "type": "flags.6?true"
+        },
+        {
           "name": "random_id",
           "type": "bytes"
         },
@@ -17904,9 +18186,17 @@ var SCHEMA_GLOBAL = {
       "type": "SponsoredMessage"
     },
     {
-      "id": 1705297877,
+      "id": 3387825543,
       "predicate": "messages.sponsoredMessages",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "posts_between",
+          "type": "flags.0?int"
+        },
         {
           "name": "messages",
           "type": "Vector<SponsoredMessage>"
@@ -17920,6 +18210,12 @@ var SCHEMA_GLOBAL = {
           "type": "Vector<User>"
         }
       ],
+      "type": "messages.SponsoredMessages"
+    },
+    {
+      "id": 406407439,
+      "predicate": "messages.sponsoredMessagesEmpty",
+      "params": [],
       "type": "messages.SponsoredMessages"
     },
     {
@@ -19079,6 +19375,211 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "SendAsPeer"
+    },
+    {
+      "id": 2908916936,
+      "predicate": "messageExtendedMediaPreview",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "w",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "h",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "thumb",
+          "type": "flags.1?PhotoSize"
+        },
+        {
+          "name": "video_duration",
+          "type": "flags.2?int"
+        }
+      ],
+      "type": "MessageExtendedMedia"
+    },
+    {
+      "id": 3997670500,
+      "predicate": "messageExtendedMedia",
+      "params": [
+        {
+          "name": "media",
+          "type": "MessageMedia"
+        }
+      ],
+      "type": "MessageExtendedMedia"
+    },
+    {
+      "id": 4244550300,
+      "predicate": "stickerKeyword",
+      "params": [
+        {
+          "name": "document_id",
+          "type": "long"
+        },
+        {
+          "name": "keyword",
+          "type": "Vector<string>"
+        }
+      ],
+      "type": "StickerKeyword"
+    },
+    {
+      "id": 3020371527,
+      "predicate": "username",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "editable",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "active",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "username",
+          "type": "string"
+        }
+      ],
+      "type": "Username"
+    },
+    {
+      "id": 37687451,
+      "predicate": "forumTopicDeleted",
+      "params": [
+        {
+          "name": "id",
+          "type": "int"
+        }
+      ],
+      "type": "ForumTopic"
+    },
+    {
+      "id": 1903173033,
+      "predicate": "forumTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "my",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "closed",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "pinned",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon_color",
+          "type": "int"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "flags.0?long"
+        },
+        {
+          "name": "top_message",
+          "type": "int"
+        },
+        {
+          "name": "read_inbox_max_id",
+          "type": "int"
+        },
+        {
+          "name": "read_outbox_max_id",
+          "type": "int"
+        },
+        {
+          "name": "unread_count",
+          "type": "int"
+        },
+        {
+          "name": "unread_mentions_count",
+          "type": "int"
+        },
+        {
+          "name": "unread_reactions_count",
+          "type": "int"
+        },
+        {
+          "name": "from_id",
+          "type": "Peer"
+        },
+        {
+          "name": "notify_settings",
+          "type": "PeerNotifySettings"
+        },
+        {
+          "name": "draft",
+          "type": "flags.4?DraftMessage"
+        }
+      ],
+      "type": "ForumTopic"
+    },
+    {
+      "id": 913709011,
+      "predicate": "messages.forumTopics",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "order_by_create_date",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "topics",
+          "type": "Vector<ForumTopic>"
+        },
+        {
+          "name": "messages",
+          "type": "Vector<Message>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        },
+        {
+          "name": "pts",
+          "type": "int"
+        }
+      ],
+      "type": "messages.ForumTopics"
     }
   ],
   "methods": [
@@ -20398,7 +20899,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 2375906347,
+      "id": 978872812,
       "method": "account.getTheme",
       "params": [
         {
@@ -20408,10 +20909,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "theme",
           "type": "InputTheme"
-        },
-        {
-          "name": "document_id",
-          "type": "long"
         }
       ],
       "type": "Theme"
@@ -20642,6 +21139,32 @@ var SCHEMA_GLOBAL = {
       "id": 404757166,
       "method": "account.clearRecentEmojiStatuses",
       "params": [],
+      "type": "Bool"
+    },
+    {
+      "id": 4015001259,
+      "method": "account.reorderUsernames",
+      "params": [
+        {
+          "name": "order",
+          "type": "Vector<string>"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1490465654,
+      "method": "account.toggleUsername",
+      "params": [
+        {
+          "name": "username",
+          "type": "string"
+        },
+        {
+          "name": "active",
+          "type": "Bool"
+        }
+      ],
       "type": "Bool"
     },
     {
@@ -21257,7 +21780,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 228423076,
+      "id": 482476935,
       "method": "messages.sendMessage",
       "params": [
         {
@@ -21297,6 +21820,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?int"
         },
         {
+          "name": "top_msg_id",
+          "type": "flags.9?int"
+        },
+        {
           "name": "message",
           "type": "string"
         },
@@ -21324,7 +21851,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 3797940448,
+      "id": 1967638886,
       "method": "messages.sendMedia",
       "params": [
         {
@@ -21360,6 +21887,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?int"
         },
         {
+          "name": "top_msg_id",
+          "type": "flags.9?int"
+        },
+        {
           "name": "media",
           "type": "InputMedia"
         },
@@ -21391,7 +21922,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 3425708299,
+      "id": 3328293828,
       "method": "messages.forwardMessages",
       "params": [
         {
@@ -21437,6 +21968,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "to_peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.9?int"
         },
         {
           "name": "schedule_date",
@@ -22216,7 +22751,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 2057376407,
+      "id": 3556498635,
       "method": "messages.sendInlineBotResult",
       "params": [
         {
@@ -22246,6 +22781,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "reply_to_msg_id",
           "type": "flags.0?int"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.9?int"
         },
         {
           "name": "random_id",
@@ -22437,7 +22976,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.PeerDialogs"
     },
     {
-      "id": 3157909835,
+      "id": 3023248959,
       "method": "messages.saveDraft",
       "params": [
         {
@@ -22451,6 +22990,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "reply_to_msg_id",
           "type": "flags.0?int"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.2?int"
         },
         {
           "name": "peer",
@@ -22906,12 +23449,20 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 1180140658,
+      "id": 4043827088,
       "method": "messages.getUnreadMentions",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         },
         {
           "name": "offset_id",
@@ -22937,12 +23488,20 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 251759059,
+      "id": 921026381,
       "method": "messages.readMentions",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         }
       ],
       "type": "messages.AffectedHistory"
@@ -22967,7 +23526,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 4160951183,
+      "id": 3069254172,
       "method": "messages.sendMultiMedia",
       "params": [
         {
@@ -23001,6 +23560,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "reply_to_msg_id",
           "type": "flags.0?int"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.9?int"
         },
         {
           "name": "multi_media",
@@ -23247,12 +23810,20 @@ var SCHEMA_GLOBAL = {
       "type": "EmojiURL"
     },
     {
-      "id": 1932455680,
+      "id": 11435201,
       "method": "messages.getSearchCounters",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         },
         {
           "name": "filters",
@@ -23587,12 +24158,20 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 4029004939,
+      "id": 3995253160,
       "method": "messages.unpinAllMessages",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         }
       ],
       "type": "messages.AffectedHistory"
@@ -24184,12 +24763,20 @@ var SCHEMA_GLOBAL = {
       "type": "messages.TranslatedText"
     },
     {
-      "id": 3898322458,
+      "id": 841173339,
       "method": "messages.getUnreadReactions",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         },
         {
           "name": "offset_id",
@@ -24215,12 +24802,20 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 2195870167,
+      "id": 1420459918,
       "method": "messages.readReactions",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         }
       ],
       "type": "messages.AffectedHistory"
@@ -24282,7 +24877,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 4236748092,
+      "id": 395003915,
       "method": "messages.requestWebView",
       "params": [
         {
@@ -24326,6 +24921,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?int"
         },
         {
+          "name": "top_msg_id",
+          "type": "flags.9?int"
+        },
+        {
           "name": "send_as",
           "type": "flags.13?InputPeer"
         }
@@ -24333,7 +24932,7 @@ var SCHEMA_GLOBAL = {
       "type": "WebViewResult"
     },
     {
-      "id": 3932142798,
+      "id": 2146648841,
       "method": "messages.prolongWebView",
       "params": [
         {
@@ -24359,6 +24958,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "reply_to_msg_id",
           "type": "flags.0?int"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.9?int"
         },
         {
           "name": "send_as",
@@ -24557,6 +25160,21 @@ var SCHEMA_GLOBAL = {
       "method": "messages.clearRecentReactions",
       "params": [],
       "type": "Bool"
+    },
+    {
+      "id": 2230847508,
+      "method": "messages.getExtendedMedia",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 3990128682,
@@ -25737,6 +26355,216 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": 3025988893,
+      "method": "channels.reorderUsernames",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "order",
+          "type": "Vector<string>"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1358053637,
+      "method": "channels.toggleUsername",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "username",
+          "type": "string"
+        },
+        {
+          "name": "active",
+          "type": "Bool"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 170155475,
+      "method": "channels.deactivateAllUsernames",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 2754186025,
+      "method": "channels.toggleForum",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "enabled",
+          "type": "Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 4094427684,
+      "method": "channels.createForumTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon_color",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "flags.3?long"
+        },
+        {
+          "name": "random_id",
+          "type": "long"
+        },
+        {
+          "name": "send_as",
+          "type": "flags.2?InputPeer"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 233136337,
+      "method": "channels.getForumTopics",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "q",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "offset_date",
+          "type": "int"
+        },
+        {
+          "name": "offset_id",
+          "type": "int"
+        },
+        {
+          "name": "offset_topic",
+          "type": "int"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.ForumTopics"
+    },
+    {
+      "id": 2961383097,
+      "method": "channels.getForumTopicsByID",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "topics",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "messages.ForumTopics"
+    },
+    {
+      "id": 1820868141,
+      "method": "channels.editForumTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "topic_id",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "flags.1?long"
+        },
+        {
+          "name": "closed",
+          "type": "flags.2?Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1814925350,
+      "method": "channels.updatePinnedForumTopic",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "topic_id",
+          "type": "int"
+        },
+        {
+          "name": "pinned",
+          "type": "Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 876830509,
+      "method": "channels.deleteTopicHistory",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "int"
+        }
+      ],
+      "type": "messages.AffectedHistory"
     },
     {
       "id": 2854709741,
