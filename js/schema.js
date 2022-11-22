@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 148
+var LAYER_NUMBER = 149
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -3887,7 +3887,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 1682413576,
+      "id": 3346446926,
       "predicate": "messages.channelMessages",
       "params": [
         {
@@ -3913,6 +3913,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "messages",
           "type": "Vector<Message>"
+        },
+        {
+          "name": "topics",
+          "type": "Vector<ForumTopic>"
         },
         {
           "name": "chats",
@@ -6091,8 +6095,31 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 4136939694,
+      "id": 422509539,
       "predicate": "updateChannelPinnedTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "pinned",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "channel_id",
+          "type": "long"
+        },
+        {
+          "name": "topic_id",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 4263085570,
+      "predicate": "updateChannelPinnedTopics",
       "params": [
         {
           "name": "flags",
@@ -6103,8 +6130,8 @@ var SCHEMA_GLOBAL = {
           "type": "long"
         },
         {
-          "name": "topic_id",
-          "type": "flags.0?int"
+          "name": "order",
+          "type": "flags.0?Vector<int>"
         }
       ],
       "type": "Update"
@@ -19484,6 +19511,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.3?true"
         },
         {
+          "name": "short",
+          "type": "flags.5?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -26565,6 +26596,29 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.AffectedHistory"
+    },
+    {
+      "id": 693150095,
+      "method": "channels.reorderPinnedForumTopics",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "force",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "order",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 2854709741,
