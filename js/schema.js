@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 149
+var LAYER_NUMBER = 150
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1625,6 +1625,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags2.0?true"
         },
         {
+          "name": "antispam",
+          "type": "flags2.1?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -2714,12 +2718,20 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
-      "id": 2853895165,
+      "id": 1007897979,
       "predicate": "messageActionSetMessagesTTL",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "period",
           "type": "int"
+        },
+        {
+          "name": "auto_setting_from",
+          "type": "flags.0?long"
         }
       ],
       "type": "MessageAction"
@@ -2825,7 +2837,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
-      "id": 2978628380,
+      "id": 3230943264,
       "predicate": "messageActionTopicEdit",
       "params": [
         {
@@ -2843,12 +2855,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "closed",
           "type": "flags.2?Bool"
+        },
+        {
+          "name": "hidden",
+          "type": "flags.3?Bool"
         }
       ],
       "type": "MessageAction"
     },
     {
-      "id": 2834157813,
+      "id": 3582593222,
       "predicate": "dialog",
       "params": [
         {
@@ -2906,6 +2922,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "folder_id",
           "type": "flags.4?int"
+        },
+        {
+          "name": "ttl_period",
+          "type": "flags.5?int"
         }
       ],
       "type": "Dialog"
@@ -10813,6 +10833,12 @@ var SCHEMA_GLOBAL = {
       "type": "auth.CodeType"
     },
     {
+      "id": 116234636,
+      "predicate": "auth.codeTypeFragmentSms",
+      "params": [],
+      "type": "auth.CodeType"
+    },
+    {
       "id": 1035688326,
       "predicate": "auth.sentCodeTypeApp",
       "params": [
@@ -10917,6 +10943,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "google_signin_allowed",
           "type": "flags.1?true"
+        }
+      ],
+      "type": "auth.SentCodeType"
+    },
+    {
+      "id": 3646315577,
+      "predicate": "auth.sentCodeTypeFragmentSms",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "length",
+          "type": "int"
         }
       ],
       "type": "auth.SentCodeType"
@@ -13975,6 +14016,17 @@ var SCHEMA_GLOBAL = {
         {
           "name": "new_topic",
           "type": "flags.1?ForumTopic"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
+      "id": 1693675004,
+      "predicate": "channelAdminLogEventActionToggleAntiSpam",
+      "params": [
+        {
+          "name": "new_value",
+          "type": "Bool"
         }
       ],
       "type": "ChannelAdminLogEventAction"
@@ -19515,6 +19567,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.5?true"
         },
         {
+          "name": "hidden",
+          "type": "flags.6?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -19611,6 +19667,32 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.ForumTopics"
+    },
+    {
+      "id": 1135897376,
+      "predicate": "defaultHistoryTTL",
+      "params": [
+        {
+          "name": "period",
+          "type": "int"
+        }
+      ],
+      "type": "DefaultHistoryTTL"
+    },
+    {
+      "id": 1103040667,
+      "predicate": "exportedContactToken",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "expires",
+          "type": "int"
+        }
+      ],
+      "type": "ExportedContactToken"
     }
   ],
   "methods": [
@@ -20036,6 +20118,25 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 767062953,
+      "method": "auth.importWebTokenAuthorization",
+      "params": [
+        {
+          "name": "api_id",
+          "type": "int"
+        },
+        {
+          "name": "api_hash",
+          "type": "string"
+        },
+        {
+          "name": "web_auth_token",
+          "type": "string"
+        }
+      ],
+      "type": "auth.Authorization"
     },
     {
       "id": 3968205178,
@@ -21556,6 +21657,23 @@ var SCHEMA_GLOBAL = {
       "type": "contacts.ResolvedPeer"
     },
     {
+      "id": 4167385127,
+      "method": "contacts.exportContactToken",
+      "params": [],
+      "type": "ExportedContactToken"
+    },
+    {
+      "id": 318789512,
+      "method": "contacts.importContactToken",
+      "params": [
+        {
+          "name": "token",
+          "type": "string"
+        }
+      ],
+      "type": "User"
+    },
+    {
       "id": 1673946374,
       "method": "messages.getMessages",
       "params": [
@@ -22155,9 +22273,13 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 164303470,
+      "id": 3450904,
       "method": "messages.createChat",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "users",
           "type": "Vector<InputUser>"
@@ -22165,6 +22287,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "title",
           "type": "string"
+        },
+        {
+          "name": "ttl_period",
+          "type": "flags.0?int"
         }
       ],
       "type": "Updates"
@@ -25208,6 +25334,23 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
+      "id": 2662667333,
+      "method": "messages.setDefaultHistoryTTL",
+      "params": [
+        {
+          "name": "period",
+          "type": "int"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1703637384,
+      "method": "messages.getDefaultHistoryTTL",
+      "params": [],
+      "type": "DefaultHistoryTTL"
+    },
+    {
       "id": 3990128682,
       "method": "updates.getState",
       "params": [],
@@ -25847,7 +25990,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.ChatFull"
     },
     {
-      "id": 1029681423,
+      "id": 2432722695,
       "method": "channels.createChannel",
       "params": [
         {
@@ -25881,6 +26024,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "address",
           "type": "flags.2?string"
+        },
+        {
+          "name": "ttl_period",
+          "type": "flags.4?int"
         }
       ],
       "type": "Updates"
@@ -26533,7 +26680,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.ForumTopics"
     },
     {
-      "id": 1820868141,
+      "id": 4108296581,
       "method": "channels.editForumTopic",
       "params": [
         {
@@ -26559,6 +26706,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "closed",
           "type": "flags.2?Bool"
+        },
+        {
+          "name": "hidden",
+          "type": "flags.3?Bool"
         }
       ],
       "type": "Updates"
@@ -26619,6 +26770,36 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": 1760814315,
+      "method": "channels.toggleAntiSpam",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "enabled",
+          "type": "Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 2823857811,
+      "method": "channels.reportAntiSpamFalsePositive",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 2854709741,
