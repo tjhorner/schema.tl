@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 150
+var LAYER_NUMBER = 151
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -264,6 +264,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "spoiler",
+          "type": "flags.2?true"
+        },
+        {
           "name": "file",
           "type": "InputFile"
         },
@@ -285,6 +289,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "spoiler",
+          "type": "flags.1?true"
         },
         {
           "name": "id",
@@ -348,6 +356,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.4?true"
         },
         {
+          "name": "spoiler",
+          "type": "flags.5?true"
+        },
+        {
           "name": "file",
           "type": "InputFile"
         },
@@ -381,6 +393,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "spoiler",
+          "type": "flags.2?true"
         },
         {
           "name": "id",
@@ -437,6 +453,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "spoiler",
+          "type": "flags.1?true"
+        },
+        {
           "name": "url",
           "type": "string"
         },
@@ -454,6 +474,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "spoiler",
+          "type": "flags.1?true"
         },
         {
           "name": "url",
@@ -1158,6 +1182,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "personal",
+          "type": "flags.2?true"
+        },
+        {
           "name": "photo_id",
           "type": "long"
         },
@@ -1627,6 +1655,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "antispam",
           "type": "flags2.1?true"
+        },
+        {
+          "name": "participants_hidden",
+          "type": "flags2.2?true"
         },
         {
           "name": "id",
@@ -2119,6 +2151,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "spoiler",
+          "type": "flags.3?true"
+        },
+        {
           "name": "photo",
           "type": "flags.0?Photo"
         },
@@ -2184,6 +2220,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "nopremium",
           "type": "flags.3?true"
+        },
+        {
+          "name": "spoiler",
+          "type": "flags.4?true"
         },
         {
           "name": "document",
@@ -2861,6 +2901,23 @@ var SCHEMA_GLOBAL = {
           "type": "flags.3?Bool"
         }
       ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 1474192222,
+      "predicate": "messageActionSuggestProfilePhoto",
+      "params": [
+        {
+          "name": "photo",
+          "type": "Photo"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 3890700183,
+      "predicate": "messageActionAttachMenuBotAllowed",
+      "params": [],
       "type": "MessageAction"
     },
     {
@@ -3554,7 +3611,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReportReason"
     },
     {
-      "id": 3299998783,
+      "id": 4174588653,
       "predicate": "userFull",
       "params": [
         {
@@ -3602,8 +3659,16 @@ var SCHEMA_GLOBAL = {
           "type": "PeerSettings"
         },
         {
+          "name": "personal_photo",
+          "type": "flags.21?Photo"
+        },
+        {
           "name": "profile_photo",
           "type": "flags.2?Photo"
+        },
+        {
+          "name": "fallback_photo",
+          "type": "flags.22?Photo"
         },
         {
           "name": "notify_settings",
@@ -4267,29 +4332,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "usernames",
           "type": "Vector<Username>"
-        }
-      ],
-      "type": "Update"
-    },
-    {
-      "id": 4062676620,
-      "predicate": "updateUserPhoto",
-      "params": [
-        {
-          "name": "user_id",
-          "type": "long"
-        },
-        {
-          "name": "date",
-          "type": "int"
-        },
-        {
-          "name": "photo",
-          "type": "UserProfilePhoto"
-        },
-        {
-          "name": "previous",
-          "type": "Bool"
         }
       ],
       "type": "Update"
@@ -6152,6 +6194,17 @@ var SCHEMA_GLOBAL = {
         {
           "name": "order",
           "type": "flags.0?Vector<int>"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 542282808,
+      "predicate": "updateUser",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "long"
         }
       ],
       "type": "Update"
@@ -8078,6 +8131,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "text_color",
+          "type": "flags.1?true"
+        },
+        {
           "name": "alt",
           "type": "string"
         },
@@ -9217,6 +9274,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "selective",
           "type": "flags.2?true"
+        },
+        {
+          "name": "persistent",
+          "type": "flags.4?true"
         },
         {
           "name": "rows",
@@ -11407,6 +11468,17 @@ var SCHEMA_GLOBAL = {
         {
           "name": "documents",
           "type": "Vector<Document>"
+        }
+      ],
+      "type": "StickerSetCovered"
+    },
+    {
+      "id": 2008112412,
+      "predicate": "stickerSetNoCovered",
+      "params": [
+        {
+          "name": "set",
+          "type": "StickerSet"
         }
       ],
       "type": "StickerSetCovered"
@@ -18774,6 +18846,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.1?true"
         },
         {
+          "name": "request_write_access",
+          "type": "flags.2?true"
+        },
+        {
           "name": "bot_id",
           "type": "long"
         },
@@ -25019,9 +25095,17 @@ var SCHEMA_GLOBAL = {
       "type": "AttachMenuBotsBot"
     },
     {
-      "id": 451818415,
+      "id": 1777704297,
       "method": "messages.toggleBotInAttachMenu",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "write_allowed",
+          "type": "flags.0?true"
+        },
         {
           "name": "bot",
           "type": "InputUser"
@@ -25415,9 +25499,17 @@ var SCHEMA_GLOBAL = {
       "type": "updates.ChannelDifference"
     },
     {
-      "id": 1926525996,
+      "id": 473782614,
       "method": "photos.updateProfilePhoto",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "fallback",
+          "type": "flags.0?true"
+        },
         {
           "name": "id",
           "type": "InputPhoto"
@@ -25432,6 +25524,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "fallback",
+          "type": "flags.3?true"
         },
         {
           "name": "file",
@@ -25481,6 +25577,41 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "photos.Photos"
+    },
+    {
+      "id": 3105522623,
+      "method": "photos.uploadContactProfilePhoto",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "suggest",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "save",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "file",
+          "type": "flags.0?InputFile"
+        },
+        {
+          "name": "video",
+          "type": "flags.1?InputFile"
+        },
+        {
+          "name": "video_start_ts",
+          "type": "flags.2?double"
+        }
+      ],
+      "type": "photos.Photo"
     },
     {
       "id": 3003426337,
@@ -26800,6 +26931,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 1785624660,
+      "method": "channels.toggleParticipantsHidden",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "enabled",
+          "type": "Bool"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 2854709741,
