@@ -6266,6 +6266,17 @@
       "type": "Update"
     },
     {
+      "id": 3438316246,
+      "predicate": "updateGroupInvitePrivacyForbidden",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "long"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 2775329342,
       "predicate": "updates.state",
       "params": [
@@ -18871,7 +18882,7 @@
       "type": "messages.AvailableReactions"
     },
     {
-      "id": 2975268508,
+      "id": 2356786748,
       "predicate": "messagePeerReaction",
       "params": [
         {
@@ -18889,6 +18900,10 @@
         {
           "name": "peer_id",
           "type": "Peer"
+        },
+        {
+          "name": "date",
+          "type": "int"
         },
         {
           "name": "reaction",

@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 154
+var LAYER_NUMBER = 155
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -6265,6 +6265,17 @@ var SCHEMA_GLOBAL = {
       "id": 3959795863,
       "predicate": "updateAutoSaveSettings",
       "params": [],
+      "type": "Update"
+    },
+    {
+      "id": 3438316246,
+      "predicate": "updateGroupInvitePrivacyForbidden",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "long"
+        }
+      ],
       "type": "Update"
     },
     {
@@ -18873,7 +18884,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.AvailableReactions"
     },
     {
-      "id": 2975268508,
+      "id": 2356786748,
       "predicate": "messagePeerReaction",
       "params": [
         {
@@ -18891,6 +18902,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "peer_id",
           "type": "Peer"
+        },
+        {
+          "name": "date",
+          "type": "int"
         },
         {
           "name": "reaction",
