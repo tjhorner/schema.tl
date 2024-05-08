@@ -51,7 +51,7 @@ async function start() {
   const currentLayerNumber = parseInt(currentSchema.match(layerRegex)[1])
   console.log("Latest fetched layer number:", currentLayerNumber)
 
-  const { body: latestSchema } = await request(`https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/tl/api.tl?${Date.now()}`)
+  const { body: latestSchema } = await request(`https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/SourceFiles/mtproto/scheme/api.tl?${Date.now()}`)
   const newLayerNumber = parseInt(latestSchema.match(layerRegex)[1])
   console.log("New fetched layer number:", newLayerNumber)
 
