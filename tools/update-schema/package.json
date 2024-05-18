@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@octokit/rest": "^16.16.0",
+    "@octokit/rest": "17.0.0",
     "request": "^2.88.0",
     "rimraf": "^2.6.3",
     "tl-to-json": "1.0.0"
